@@ -10,7 +10,7 @@ namespace Sagui.Application.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Sagui";
 
             return View();
         }
