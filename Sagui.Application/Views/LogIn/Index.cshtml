@@ -1,0 +1,18 @@
+﻿<div class="row">
+    <div class="jumbotron row">
+        <div class="containerLogIn">
+            @using (Html.BeginForm("Login", "LogIn", FormMethod.Post))
+            {
+                <fieldset>
+                    <ul>
+                        <li><span class="login">Log In</span></li>
+                        <li>@Html.TextBox("userName")</li>
+                        <li>@Html.TextBox("userPwd")</li>
+                        <li><input type="submit" name="acessar" value="Log In"/></li>
+                    </ul>
+
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
