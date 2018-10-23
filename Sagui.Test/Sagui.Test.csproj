@@ -57,13 +57,17 @@
     <Compile Include="CadastroGTO_Test.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sagui.Business\Sagui.Business.csproj">
-      <Project>{7c88ec98-010f-4ff5-b850-f24913d403c7}</Project>
-      <Name>Sagui.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">
       <Project>{4756932D-515E-47B0-9E4E-D52C3A4230C9}</Project>
       <Name>Sagui.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sagui.Service.RequestResponse\Sagui.Service.RequestResponse.csproj">
+      <Project>{221f4894-e833-4f14-bbaa-26cb316394d7}</Project>
+      <Name>Sagui.Service.RequestResponse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sagui.Service\Sagui.Service.csproj">
+      <Project>{bd8d642d-1bcd-49aa-b0bc-2b40fbff3b74}</Project>
+      <Name>Sagui.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

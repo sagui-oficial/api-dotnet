@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Model;
-using System.Collections.Generic;
-using Sagui.Business;
+using Sagui.Service.GTO;
+using Sagui.Service.RequestResponse;
+using Sagui.Service.RequestResponse.ValueObject;
 using Sagui.Test.Mocks;
 
 namespace Sagui.Test
@@ -13,26 +14,30 @@ namespace Sagui.Test
         [TestMethod]
         public void CadastrarGTO()
         {
-            GTO Guia = new GTO();
+            RequestGTO requestGTO = new RequestGTO();
+
             MockGTO mock = new MockGTO();
-            Guia = mock.CriarMockGTO();
-            
-            Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
-            gtoBusiness.Cadastrar(Guia);
+            requestGTO = mock.CriarMockGTO();
+
+            GTOService gtoService = new GTOService();
+            var response = gtoService.Cadastrar(requestGTO);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+
         }
 
 
         [TestMethod]
         public void CadastrarGTO_SemDataSolicitacao()
         {
-            GTO Guia = new GTO();
-            MockGTO mock = new MockGTO();
-            Guia = mock.CriarMockGTO();
-            Guia.Solicitacao = DateTime.MinValue;
-			Guia.Vencimento = DateTime.MinValue;
+   //         GTO Guia = new GTO();
+   //         MockGTO mock = new MockGTO();
+   //         Guia = mock.CriarMockGTO();
+   //         Guia.Solicitacao = DateTime.MinValue;
+			//Guia.Vencimento = DateTime.MinValue;
 
-            Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
-            gtoBusiness.Cadastrar(Guia);
+   //         Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
+   //         gtoBusiness.Cadastrar(Guia);
         }
     }
 }

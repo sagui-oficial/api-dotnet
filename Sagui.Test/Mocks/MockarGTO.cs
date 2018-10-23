@@ -1,4 +1,5 @@
 ﻿using Sagui.Model;
+using Sagui.Service.RequestResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace Sagui.Test.Mocks
 {
     public class MockGTO
     {
-        public GTO CriarMockGTO()
+        public RequestGTO CriarMockGTO()
         {
 
-            GTO Guia = new GTO();
+            RequestGTO Guia = new RequestGTO();
+            Guia.IdGTO = 1;
             Guia.NumeroGTO = 1;
             Guia.Operadora = new Operadora();
             Guia.Operadora.IdOperadora = 1;
