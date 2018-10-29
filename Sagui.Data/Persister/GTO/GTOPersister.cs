@@ -9,7 +9,7 @@ namespace Sagui.Data.Persister.GTO
 {
     public class GTOPersister
     {
-        public Model.GTO SaveGTO(Model.GTO GTO)
+        public Model.GTO SaveGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
@@ -26,7 +26,6 @@ namespace Sagui.Data.Persister.GTO
                 {
                     GTO.IdGTO = newId;
                 }
-                return GTO;
             }
             catch
             {
@@ -36,7 +35,10 @@ namespace Sagui.Data.Persister.GTO
             {
                 dataInfrastructure.transaction.Commit();
             }
-            return null;
+
+            _dataInfrastructure = dataInfrastructure;
+
+            return GTO;
         }
     }
 }
