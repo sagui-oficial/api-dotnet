@@ -24,6 +24,31 @@ namespace Sagui.Base.DAL
             return command;
         }
 
+        public override IDbCommand CreateCommand(string commandText, IEnumerable<KeyValuePair<string, object>> dbParams, IDbConnection connection)
+        {
+            SqlCommand command = (SqlCommand)CreateCommand();
+            command.CommandText = commandText;
+            command.Connection = (SqlConnection)connection;
+            command.CommandType = CommandType.Text;
+            IDataParameter[] parameters = this.CreateParameter(dbParams);
+            command.Parameters.AddRange(parameters);
+
+            return command;
+        }
+
+        public override IDbCommand CreateCommand(string commandText, IEnumerable<KeyValuePair<string, object>> dbParams, IDbConnection connection, IDbTransaction transaction)
+        {
+            SqlCommand command = (SqlCommand)CreateCommand();
+            command.CommandText = commandText;
+            command.Connection = (SqlConnection)connection;
+            command.CommandType = CommandType.Text;
+            IDataParameter[] parameters = this.CreateParameter(dbParams);
+            command.Parameters.AddRange(parameters);
+            command.Transaction = (SqlTransaction)transaction;
+
+            return command;
+        }
+
         public override IDbConnection CreateConnection()
         {
             return new SqlConnection(connectionString);
@@ -39,6 +64,17 @@ namespace Sagui.Base.DAL
         public override IDataParameter CreateParameter(string parameterName, object parameterValue)
         {
             return new SqlParameter(parameterName, parameterValue);
+        }
+
+        public override IDataParameter[] CreateParameter(IEnumerable<KeyValuePair<string, object>> dbParams)
+        {
+            SqlParameter[] sqlParameters = new SqlParameter[dbParams.Count()];
+            for(int i =0; i<dbParams.Count(); i++)
+            {
+                sqlParameters[i] = new SqlParameter(dbParams.ElementAt(i).Key, dbParams.ElementAt(i).Value);
+            }
+
+            return sqlParameters;
         }
 
         public override IDbCommand CreateStoredProcCommand(string procName, IDbConnection connection)

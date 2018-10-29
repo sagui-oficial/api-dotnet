@@ -16,7 +16,7 @@ namespace Sagui.Base.DAL
             _database = DbFactory.CreateDataBase();
         }
 
-        public DALBase dataBase
+        protected DALBase dataBase
         {
             get
             {

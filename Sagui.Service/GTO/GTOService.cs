@@ -12,9 +12,11 @@ namespace Sagui.Service.GTO
     {
         public ResponseGTO Cadastrar(RequestGTO requestGTO)
         {
-            using (Business.GTO.CadastrarGTOBusiness cadastrarGTOBusiness = new Business.GTO.CadastrarGTOBusiness())
+            using (var cadastrarGTOBusiness = new Business.GTO.CadastrarGTOBusiness())
             {
-                return cadastrarGTOBusiness.Cadastrar(requestGTO);
+                var _return = cadastrarGTOBusiness.Cadastrar(requestGTO);
+                cadastrarGTOBusiness.Dispose();
+                return _return;
             }
         }
     }

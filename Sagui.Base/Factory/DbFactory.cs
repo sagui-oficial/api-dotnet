@@ -2,6 +2,7 @@
 using Sagui.Base.DAL;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
@@ -12,11 +13,20 @@ namespace Sagui.Base.Factory
 {
     public sealed class DbFactory
     {
-        public static DALBaseHandler sectionHandler = (DALBaseHandler)ConfigurationManager.GetSection("BaseHandler");
+        //public static DALBaseHandler sectionHandler = (DALBaseHandler)ConfigurationManager.GetSection("DbFactoryConfiguration");
+
+        
+
+        public static DALBaseHandler sectionHandler = null;
+
         private DbFactory() { }
 
         public static DALBase CreateDataBase()
         {
+            //sectionHandler = (DALBaseHandler)ConfigurationManager.GetSection("DbFactoryConfiguration");
+            var x = (NameValueCollection)ConfigurationManager.GetSection("DbFactoryConfiguration");
+            var y = ConfigurationManager.ConnectionStrings;
+
             if (sectionHandler?.Name?.Length == 0) throw new Exception("Database name not defined in DbFactoryConfiguration section of config file");
             try
             {

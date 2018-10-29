@@ -3,30 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sagui.Business.Base;
 using Sagui.Business.Validador.GTO;
+using Sagui.Data.Persister.GTO;
 using Sagui.Model;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.ValueObject;
 
 namespace Sagui.Business.GTO
 {
-    public class CadastrarGTOBusiness : IDisposable
+    public class CadastrarGTOBusiness : BusinessBase
     {
-        protected bool disposed = false;
-
-        #region Destructor
-        ~CadastrarGTOBusiness()
-        {
-            Dispose(false);
-        }
-        #endregion
-
-        public ResponseGTO Cadastrar(Model.GTO gto)
+        public ResponseGTO Cadastrar(RequestGTO gto)
         {
             var errors = ValidadorGTO.Validate(gto);
 
             if (errors.Count() == 0)
             {
+                GTOPersister gtoPersister = new GTOPersister();
+                gtoPersister.SaveGTO(gto);
+
                 ResponseGTO responseGTO = new ResponseGTO();
                 return responseGTO;
             }
@@ -39,25 +35,5 @@ namespace Sagui.Business.GTO
                 return responseGTO;
             }
         }
-
-        #region Dispose
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-
-                }
-                disposed = true;
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        #endregion
     }
 }

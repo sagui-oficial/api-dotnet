@@ -14,14 +14,14 @@ namespace Sagui.Base.DAL
         {
             get
             {
-                return (string)base["Name"];
+                return (string)base["name"];
             }
         }
         public string ConnectionStringName
         {
             get
             {
-                return (string)base["CnnectionStringName"];
+                return (string)base["connectionString"];
             }
         }
         public string ConnectionString

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BusinessBase.cs" />
     <Compile Include="GTO\CadastrarGTO.cs" />
     <Compile Include="Validador\Arquivos\ValidadorArquivo.cs" />
     <Compile Include="Validador\GTO\ValidadorGTO.cs" />
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\Sagui.Base\Sagui.Base.csproj">
       <Project>{42DEB4DD-331A-4AB6-BAC7-BE34F47E8A6E}</Project>
       <Name>Sagui.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sagui.Data\Sagui.Data.csproj">
+      <Project>{553a3627-2c53-498f-a571-db21450e25c3}</Project>
+      <Name>Sagui.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">
       <Project>{4756932d-515e-47b0-9e4e-d52c3a4230c9}</Project>
