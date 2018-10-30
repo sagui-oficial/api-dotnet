@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /Sagui.POC
+*.ldf
+*.mdf
