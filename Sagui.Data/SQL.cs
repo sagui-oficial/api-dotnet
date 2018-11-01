@@ -8,7 +8,7 @@ namespace Sagui.Data
 {
     public static class SQL
     {
-        public static string DeleteGTO = @"";
+        public static string DeleteGTO = @"AA";
 
         public static string UpdateGTO = @"";
 
