@@ -9,6 +9,31 @@ namespace Sagui.Data.Persister.GTO
 {
     public class GTOPersister
     {
+        public Model.GTO UpdateGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
+        {
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            {
+                _dataInfrastructure = dataInfrastructure;
+            }
+
+            return GTO;
+        }
+
+
+        public Model.GTO DeleteGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
+        {
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            {
+                _dataInfrastructure = dataInfrastructure;
+            }
+
+            return GTO;
+        }
+
         public Model.GTO SaveGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {
             if (GTO == null)
@@ -28,20 +53,20 @@ namespace Sagui.Data.Persister.GTO
                 {
                     var newId = dataInfrastructure.command.ExecuteScalar();
 
-                    if (Convert.ToInt32(newId)> 0)
+                    if (Convert.ToInt32(newId) > 0)
                     {
                         GTO.Id = Convert.ToInt32(newId);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     dataInfrastructure.transaction.Rollback();
                 }
-   
+
 
                 _dataInfrastructure = dataInfrastructure;
             }
-            
+
             return GTO;
         }
     }
