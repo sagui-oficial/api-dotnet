@@ -11,14 +11,23 @@ namespace Sagui.Data.Base
     {
         public SqlCommand command;
         public SqlTransaction transaction;
+        protected IDbConnection connection;
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams)
         {
-            using (var conn = dataBase.CreateOpenConnection())
-            {
-                transaction = (SqlTransaction)conn.BeginTransaction();
-                command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, conn, transaction);
-            }
+            connection = dataBase.CreateOpenConnection();
+
+            transaction = (SqlTransaction)connection.BeginTransaction();
+            command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
+
+        }
+
+        public DataBase(string queryCommand)
+        {
+            connection = dataBase.CreateOpenConnection();
+
+            command = (SqlCommand)dataBase.CreateCommand(queryCommand, connection);
+
         }
     }
 }

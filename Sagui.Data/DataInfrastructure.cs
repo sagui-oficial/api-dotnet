@@ -8,11 +8,19 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data
 {
-    public class DataInfrastructure : DataBase
+    public class DataInfrastructure : DataBase, IDisposable
     {
         public DataInfrastructure(string queryCommand, Dictionary<string, object> DbParams) :base(queryCommand, DbParams)
         {
-            
+        }
+
+        public DataInfrastructure(string queryCommand) : base(queryCommand)
+        {
+        }
+
+        public void Dispose()
+        {
+            connection.Close();
         }
     }
 

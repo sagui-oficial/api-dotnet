@@ -8,8 +8,8 @@ namespace Sagui.Model
 {
     public class GTO
     {
-        public int IdGTO { get; set; }
-        public int NumeroGTO { get; set; }
+        public int Id { get; set; }
+        public int Numero { get; set; }
         public Operadora Operadora { get; set; }
         public Paciente Paciente { get; set; }
         public List<Arquivos> Arquivos { get; set; }

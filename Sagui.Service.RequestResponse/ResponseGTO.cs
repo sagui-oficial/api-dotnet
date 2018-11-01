@@ -9,5 +9,6 @@ namespace Sagui.Service.RequestResponse
 {
     public class ResponseGTO : ResponseBase
     {
+        public List<Model.GTO> GTOs { get; set; }
     }
 }

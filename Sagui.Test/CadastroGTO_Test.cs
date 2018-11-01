@@ -27,17 +27,32 @@ namespace Sagui.Test
         }
 
 
-        [TestMethod]
-        public void CadastrarGTO_SemDataSolicitacao()
-        {
-   //         GTO Guia = new GTO();
-   //         MockGTO mock = new MockGTO();
-   //         Guia = mock.CriarMockGTO();
-   //         Guia.Solicitacao = DateTime.MinValue;
-			//Guia.Vencimento = DateTime.MinValue;
+   //     [TestMethod]
+   //     public void CadastrarGTO_SemDataSolicitacao()
+   //     {
+   ////         GTO Guia = new GTO();
+   ////         MockGTO mock = new MockGTO();
+   ////         Guia = mock.CriarMockGTO();
+   ////         Guia.Solicitacao = DateTime.MinValue;
+			////Guia.Vencimento = DateTime.MinValue;
 
-   //         Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
-   //         gtoBusiness.Cadastrar(Guia);
+   ////         Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
+   ////         gtoBusiness.Cadastrar(Guia);
+   //     }
+
+        [TestMethod]
+        public void ListarTodasGTO()
+        {
+            RequestGTO requestGTO = new RequestGTO();
+
+            MockGTO mock = new MockGTO();
+            requestGTO = mock.CriarMockGTO();
+
+            GTOService gtoService = new GTOService();
+            var response = gtoService.ListGTOs();
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.GTOs.Count >= 0);
         }
     }
 }

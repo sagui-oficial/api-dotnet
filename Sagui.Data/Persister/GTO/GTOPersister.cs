@@ -15,29 +15,33 @@ namespace Sagui.Data.Persister.GTO
                 throw new ArgumentNullException(nameof(GTO));
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(GTO.NumeroGTO), GTO.NumeroGTO);
+            DbParams.Add(nameof(GTO.Numero), GTO.Numero.ToString());
+            DbParams.Add(nameof(GTO.Status), GTO.Status);
+            DbParams.Add(nameof(GTO.Operadora), GTO.Operadora.IdOperadora);
+            DbParams.Add(nameof(GTO.Paciente), GTO.Paciente.IdPaciente);
+            DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
+            DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams);
-            try
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
             {
-                var newId = (int)dataInfrastructure.command.ExecuteScalar();
-
-                if (newId > 0)
+                try
                 {
-                    GTO.IdGTO = newId;
+                    var newId = dataInfrastructure.command.ExecuteScalar();
+
+                    if (Convert.ToInt32(newId)> 0)
+                    {
+                        GTO.Id = Convert.ToInt32(newId);
+                    }
                 }
-            }
-            catch
-            {
-                dataInfrastructure.transaction.Rollback();
-            }
-            finally
-            {
-                dataInfrastructure.transaction.Commit();
-            }
+                catch(Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+   
 
-            _dataInfrastructure = dataInfrastructure;
-
+                _dataInfrastructure = dataInfrastructure;
+            }
+            
             return GTO;
         }
     }

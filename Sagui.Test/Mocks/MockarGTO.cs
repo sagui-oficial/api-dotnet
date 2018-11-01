@@ -14,8 +14,8 @@ namespace Sagui.Test.Mocks
         {
 
             RequestGTO Guia = new RequestGTO();
-            Guia.IdGTO = 1;
-            Guia.NumeroGTO = 1;
+            Guia.Id = 1;
+            Guia.Numero = 1;
             Guia.Operadora = new Operadora();
             Guia.Operadora.IdOperadora = 1;
             Guia.Operadora.NomeOperadora = "Operadora 1";
