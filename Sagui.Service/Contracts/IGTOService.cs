@@ -10,5 +10,7 @@ namespace Sagui.Service.Contracts
     public interface IGTOService
     {
         ResponseGTO Cadastrar(RequestGTO requestGTO);
+
+        ResponseGTO ListGTOs(RequestGTO requestGTO = null);
     }
 }

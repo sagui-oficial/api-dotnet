@@ -10,15 +10,29 @@ namespace Sagui.Data.Base
     public class DataBase : DALWorker
     {
         public SqlCommand command;
-        public SqlTransaction transaction;
+        public IDbTransaction transaction;
+        public IDbConnection connection;
+
+        public DataBase(string queryCommand, Dictionary<string, object> DbParams, IDbConnection _connection, IDbTransaction _transaction)
+        {
+            transaction = _transaction;
+            connection = _connection;
+            command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, _connection, _transaction);
+        }
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams)
         {
-            using (var conn = dataBase.CreateOpenConnection())
-            {
-                transaction = (SqlTransaction)conn.BeginTransaction();
-                command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, conn, transaction);
-            }
+            connection = dataBase.CreateOpenConnection();
+
+            transaction = (SqlTransaction)connection.BeginTransaction();
+            command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
+        }
+
+        public DataBase(string queryCommand)
+        {
+            connection = dataBase.CreateOpenConnection();
+
+            command = (SqlCommand)dataBase.CreateCommand(queryCommand, connection);
         }
     }
 }

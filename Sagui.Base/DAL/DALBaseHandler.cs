@@ -8,20 +8,23 @@ using System.Threading.Tasks;
 
 namespace Sagui.Base.DAL
 {
-    public class DALBaseHandler: ConfigurationSection
+    public class DALBaseHandler : ConfigurationSection
     {
+        [ConfigurationProperty("Name")]
         public string Name
         {
             get
             {
-                return (string)base["name"];
+                return (string)base["Name"];
             }
         }
+
+        [ConfigurationProperty("ConnectionStringName")]
         public string ConnectionStringName
         {
             get
             {
-                return (string)base["connectionString"];
+                return (string)base["ConnectionStringName"];
             }
         }
         public string ConnectionString

@@ -27,5 +27,7 @@ namespace Sagui.Base.Utils
 		public static string MensagemOperadoraNaoinformada = "Nenhuma Operadora informada a GTO";
 		public static string MensagemPacienteNaoinformado = "Nenhuma paciente informado a GTO";
 		public static string MensagemProcedimentosNaoInformados = "Nenhuma procedimento informado a GTO";
-	}
+
+        public static string MensagemGTOsNaoEncontradas = "Não foram encontradas GTOs";
+    }
 }

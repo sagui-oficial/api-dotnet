@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[GTO] (
-    [Id]          NUMERIC (18)  NOT NULL,
+    [Id]          NUMERIC (18)  NOT NULL IDENTITY(1, 1),
     [Numero]      NVARCHAR (50) NULL,
     [Status]      NUMERIC (18)  NULL,
     [Operadora]   NUMERIC (18)  NULL,

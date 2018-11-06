@@ -43,7 +43,10 @@
   <ItemGroup>
     <Compile Include="DataInfrastructure.cs" />
     <Compile Include="Base\DataBase.cs" />
+    <Compile Include="Lookup\GTO\GTOLookup.cs" />
     <Compile Include="Persister\GTO\GTOPersister.cs" />
+    <Compile Include="Persister\Procedimento\ProcedimentoGTOPersister.cs" />
+    <Compile Include="Persister\Procedimento\ProcedimentoPersister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL.cs" />
   </ItemGroup>
@@ -57,9 +60,7 @@
       <Name>Sagui.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Lookup\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

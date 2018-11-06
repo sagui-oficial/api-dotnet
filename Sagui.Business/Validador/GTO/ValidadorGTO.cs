@@ -21,8 +21,8 @@ namespace Sagui.Business.Validador.GTO
 
             ErrorsResult = validarData.HandleValidation(gto.Solicitacao, nameof(gto.Solicitacao), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(gto.Vencimento, nameof(gto.Vencimento), ref ErrorsResult);
-            ErrorsResult = validadorCampo.HandleValidation(gto.IdGTO, nameof(gto.IdGTO), ref ErrorsResult);
-            ErrorsResult = validadorCampo.HandleValidation(gto.NumeroGTO, nameof(gto.NumeroGTO), ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(gto.Id, nameof(gto.Id), ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(gto.Numero, nameof(gto.Numero), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(gto.Status, nameof(gto.Status), ref ErrorsResult);
 
 

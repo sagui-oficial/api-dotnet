@@ -9,7 +9,7 @@ namespace Sagui.Service.RequestResponse.Base
         //campos de rastreamento
         public DateTime ExecutionDate { get; set; }
         public TimeSpan ExecutionTime { get; set; }
-        public List<Tuple<dynamic, dynamic, dynamic>> ErrorsMessage { get; set; }
+        public List<Tuple<dynamic, dynamic, dynamic>> Message { get; set; }
         public ResponseType ResponseType { get; set; }
     }
 }
