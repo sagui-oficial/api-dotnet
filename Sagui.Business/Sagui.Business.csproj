@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Base\BusinessBase.cs" />
     <Compile Include="GTO\CadastrarGTO.cs" />
+    <Compile Include="Procedimento\CadastrarProcedimento.cs" />
     <Compile Include="Validador\Arquivos\ValidadorArquivo.cs" />
     <Compile Include="Validador\GTO\ValidadorGTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

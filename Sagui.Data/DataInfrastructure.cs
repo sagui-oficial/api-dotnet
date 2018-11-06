@@ -10,6 +10,10 @@ namespace Sagui.Data
 {
     public class DataInfrastructure : DataBase, IDisposable
     {
+        public DataInfrastructure(string queryCommand, Dictionary<string, object> DbParams, IDbConnection dbConnection, IDbTransaction dbTransaction) : base(queryCommand, DbParams, dbConnection, dbTransaction)
+        {
+        }
+
         public DataInfrastructure(string queryCommand, Dictionary<string, object> DbParams) :base(queryCommand, DbParams)
         {
         }

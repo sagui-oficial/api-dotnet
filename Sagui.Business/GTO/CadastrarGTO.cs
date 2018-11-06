@@ -8,6 +8,7 @@ using Sagui.Business.Base;
 using Sagui.Business.Validador;
 using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.GTO;
+using Sagui.Data.Persister.Procedimento;
 using Sagui.Model;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.ValueObject;
@@ -51,30 +52,15 @@ namespace Sagui.Business.GTO
                 GTOPersister gtoPersister = new GTOPersister();
                 gtoPersister.SaveGTO(gto, out Data.DataInfrastructure dataInfrastructure);
 
-                foreach (Arquivos arquivo in gto.Arquivos)
-                {
-                    var errorsArquivos = Validador.Arquivos.ValidadorArquivo.Validate(arquivo);
-                    if (errorsArquivos.Count() == 0)
-                    {
-                        //todo: Arquivo Persister
-                    }
-                    else
-                    {
-                        dataInfrastructure.transaction.Rollback();
-                        ResponseGTO responseGTO_Arquivos = new ResponseGTO();
-                        responseGTO_Arquivos.ExecutionDate = DateTime.Now;
-                        responseGTO_Arquivos.ResponseType = ResponseType.Error;
-                        responseGTO_Arquivos.Message = errors;
-                        return responseGTO_Arquivos;
-                    }
-                }
+                Data.DataInfrastructure _dataInfrastructure = dataInfrastructure;
 
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
                     var errorsProcedimentos = Validador.Procedimentos.ValidatorProcedimento.Validate(procedimento);
                     if (errorsProcedimentos.Count() == 0)
                     {
-                        //todo: Procedimento Persister
+                        ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
+                        procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento, _dataInfrastructure, out dataInfrastructure);
                     }
                     else
                     {
@@ -87,10 +73,31 @@ namespace Sagui.Business.GTO
                     }
                 }
 
+                //foreach (Arquivos arquivo in gto.Arquivos)
+                //{
+                //    var errorsArquivos = Validador.Arquivos.ValidadorArquivo.Validate(arquivo);
+                //    if (errorsArquivos.Count() == 0)
+                //    {
+                //        //todo: Arquivo Persister
+                //    }
+                //    else
+                //    {
+                //        dataInfrastructure.transaction.Rollback();
+                //        ResponseGTO responseGTO_Arquivos = new ResponseGTO();
+                //        responseGTO_Arquivos.ExecutionDate = DateTime.Now;
+                //        responseGTO_Arquivos.ResponseType = ResponseType.Error;
+                //        responseGTO_Arquivos.Message = errors;
+                //        return responseGTO_Arquivos;
+                //    }
+                //}
+
+               
+
                 ResponseGTO responseGTO = new ResponseGTO();
                 responseGTO.ExecutionDate = DateTime.Now;
                 responseGTO.ResponseType = ResponseType.Success;
 
+                dataInfrastructure.transaction.Commit();
                 dataInfrastructure.Dispose();
 
                 return responseGTO;

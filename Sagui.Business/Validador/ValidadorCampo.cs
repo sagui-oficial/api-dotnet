@@ -35,8 +35,14 @@ namespace Sagui.Business.Validador
 					ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.CampoNaoPreenchido, namevalue, Constantes.MensagemCampoNaoPreenchida));
 				}
 			}
-
-			return ErrorsResult;
+            else if (t == typeof(decimal))
+            {
+                if (value == 0 || value == null)
+                {
+                    ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.CampoNaoPreenchido, namevalue, Constantes.MensagemCampoNaoPreenchida));
+                }
+            }
+            return ErrorsResult;
 		}
 
 		public override List<Tuple<dynamic, dynamic, dynamic>> HandleValidation(dynamic value1, dynamic value2)

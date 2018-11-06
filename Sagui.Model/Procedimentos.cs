@@ -12,5 +12,7 @@ namespace Sagui.Model
         public int Codigo { get; set; }
         public string NomeProcedimento { get; set; }
         public double ValorProcedimento { get; set; }
+        public string Exigencias { get; set; }
+        public string Anotacoes { get; set; }
     }
 }

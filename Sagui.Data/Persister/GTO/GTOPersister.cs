@@ -47,25 +47,25 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams);
+
+            try
             {
-                try
+                var newId = dataInfrastructure.command.ExecuteScalar();
+
+                if (Convert.ToInt32(newId) > 0)
                 {
-                    var newId = dataInfrastructure.command.ExecuteScalar();
-
-                    if (Convert.ToInt32(newId) > 0)
-                    {
-                        GTO.Id = Convert.ToInt32(newId);
-                    }
+                    GTO.Id = Convert.ToInt32(newId);
                 }
-                catch (Exception e)
-                {
-                    dataInfrastructure.transaction.Rollback();
-                }
-
-
-                _dataInfrastructure = dataInfrastructure;
             }
+            catch (Exception e)
+            {
+                dataInfrastructure.transaction.Rollback();
+            }
+
+
+            _dataInfrastructure = dataInfrastructure;
+
 
             return GTO;
         }
