@@ -1,6 +1,6 @@
 ﻿using Sagui.Model;
 using System.Data.Entity;
-
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace SaguiDB
 {
@@ -18,6 +18,12 @@ namespace SaguiDB
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<Plano> Plano { get; set; }
         public DbSet<Procedimentos> Procedimentos { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 
 }

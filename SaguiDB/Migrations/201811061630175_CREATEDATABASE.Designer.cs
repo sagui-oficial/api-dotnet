@@ -13,7 +13,7 @@ namespace SaguiDB.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201811061540436_CREATE DATABASE"; }
+            get { return "201811061630175_CREATEDATABASE"; }
         }
         
         string IMigrationMetadata.Source

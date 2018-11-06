@@ -48,9 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201811061540436_CREATE DATABASE.cs" />
-    <Compile Include="Migrations\201811061540436_CREATE DATABASE.Designer.cs">
-      <DependentUpon>201811061540436_CREATE DATABASE.cs</DependentUpon>
+    <Compile Include="Migrations\201811061630175_CREATEDATABASE.cs" />
+    <Compile Include="Migrations\201811061630175_CREATEDATABASE.Designer.cs">
+      <DependentUpon>201811061630175_CREATEDATABASE.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
@@ -66,8 +66,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811061540436_CREATE DATABASE.resx">
-      <DependentUpon>201811061540436_CREATE DATABASE.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811061630175_CREATEDATABASE.resx">
+      <DependentUpon>201811061630175_CREATEDATABASE.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
