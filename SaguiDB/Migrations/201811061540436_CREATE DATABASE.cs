@@ -1,9 +1,9 @@
-namespace Sagui.Model.Migrations
+namespace SaguiDB.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _00criadasastabelasprincipais : DbMigration
+    public partial class CREATEDATABASE : DbMigration
     {
         public override void Up()
         {

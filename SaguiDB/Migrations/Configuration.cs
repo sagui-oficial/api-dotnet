@@ -1,18 +1,18 @@
-namespace Sagui.Model.Migrations
+namespace SaguiDB.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Sagui.Model.Contexto>
+    internal sealed class Configuration : DbMigrationsConfiguration<SaguiDB.Sagui>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Sagui.Model.Contexto context)
+        protected override void Seed(SaguiDB.Sagui context)
         {
             //  This method will be called after migrating to the latest version.
 

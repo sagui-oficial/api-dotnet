@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Sagui.Model;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sagui.Model
+
+namespace SaguiDB
 {
-    public class Contexto : DbContext
+    public class Sagui : DbContext
     {
+
+        public Sagui() : base("sagui2")
+        {
+            
+        }
+
         public DbSet<Arquivos> Arquivos { get; set; }
         public DbSet<GTO> GTO { get; set; }
         public DbSet<Operadora> Operadora { get; set; }
@@ -16,4 +19,5 @@ namespace Sagui.Model
         public DbSet<Plano> Plano { get; set; }
         public DbSet<Procedimentos> Procedimentos { get; set; }
     }
+
 }
