@@ -52,6 +52,18 @@
     <Compile Include="Migrations\201811061630175_CREATEDATABASE.Designer.cs">
       <DependentUpon>201811061630175_CREATEDATABASE.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811061654212_ADD Procedimento_GTO.cs" />
+    <Compile Include="Migrations\201811061654212_ADD Procedimento_GTO.Designer.cs">
+      <DependentUpon>201811061654212_ADD Procedimento_GTO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811061701133_ADD Arquivo_GTO.cs" />
+    <Compile Include="Migrations\201811061701133_ADD Arquivo_GTO.Designer.cs">
+      <DependentUpon>201811061701133_ADD Arquivo_GTO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811061703336_ADD Arquivo_GTO2.cs" />
+    <Compile Include="Migrations\201811061703336_ADD Arquivo_GTO2.Designer.cs">
+      <DependentUpon>201811061703336_ADD Arquivo_GTO2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +80,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201811061630175_CREATEDATABASE.resx">
       <DependentUpon>201811061630175_CREATEDATABASE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061654212_ADD Procedimento_GTO.resx">
+      <DependentUpon>201811061654212_ADD Procedimento_GTO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061701133_ADD Arquivo_GTO.resx">
+      <DependentUpon>201811061701133_ADD Arquivo_GTO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061703336_ADD Arquivo_GTO2.resx">
+      <DependentUpon>201811061703336_ADD Arquivo_GTO2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
