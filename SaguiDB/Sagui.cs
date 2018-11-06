@@ -7,7 +7,7 @@ namespace SaguiDB
     public class Sagui : DbContext
     {
 
-        public Sagui() : base("sagui2")
+        public Sagui() : base("sagui")
         {
             
         }
