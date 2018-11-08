@@ -65,6 +65,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Mocks\MockArquivos.cs" />
     <Compile Include="Mocks\MockProcedimento.cs" />
     <Compile Include="TestGTO\ListarGTO_Test.cs" />
     <Compile Include="Mocks\MockarGTO.cs" />

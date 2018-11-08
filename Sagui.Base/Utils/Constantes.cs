@@ -8,7 +8,14 @@ namespace Sagui.Base.Utils
 {
 	public static class Constantes
 	{
-		public static string DataNaoPreenchida = "DataNaoPreenchida";
+        public static string InseridoComSucesso = "Inserido com sucesso!";
+        public static string ProblemaAoInserir = "Ocorreu um problema ao inserir!";
+
+        public static string MensagemGTOInseridaComSucesso = "GTO inserida com sucesso!";
+        public static string MensagemGTONaoInserida = "GTO não inserida!";
+
+
+        public static string DataNaoPreenchida = "DataNaoPreenchida";
 		public static string DataRange = "DataRange";
 		public static string _DataRange = "Data Range";
 		public static string CampoNaoPreenchido = "CampoNaoPreenchido";

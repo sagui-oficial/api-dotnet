@@ -1,12 +1,7 @@
 ﻿using Sagui.Base.Utils;
-using Sagui.Business.Validador;
-using Sagui.Business.Validador.Arquivos;
-using Sagui.Business.Validador.Operadora;
-using Sagui.Business.Validador.Paciente;
 using Sagui.Business.Validador.Procedimentos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Sagui.Business.Validador.GTO
 {
@@ -53,7 +48,19 @@ namespace Sagui.Business.Validador.GTO
             {
                 foreach(Model.Procedimentos procedimento in gto.Procedimentos)
                 {
-                    ErrorsResult = validadorCampo.HandleValidation(procedimento.IdProcedimento, nameof(procedimento.IdProcedimento), ref ErrorsResult);
+                    ErrorsResult = ValidatorProcedimento.Validate(procedimento);
+                }
+            }
+
+            if (gto.Arquivos.Count == 0)
+            {
+                ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.MensagemArquivosNaoAnexados, nameof(gto.Arquivos), Constantes.MensagemArquivosNaoAnexados));
+            }
+            else
+            {
+                foreach (Model.Arquivos arquivo in gto.Arquivos)
+                {
+                    ErrorsResult = Arquivos.ValidadorArquivo.Validate(arquivo);
                 }
             }
 

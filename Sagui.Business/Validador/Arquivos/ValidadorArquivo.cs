@@ -17,8 +17,9 @@ namespace Sagui.Business.Validador.Arquivos
 			ValidadorData validarData = new ValidadorData();
 			ValidadorCampo validadorCampo = new ValidadorCampo();
 
-			ErrorsResult = validadorCampo.HandleValidation(arquivo.NomeArquivo, nameof(arquivo.NomeArquivo));
-			ErrorsResult = validarData.HandleValidation(arquivo.DataArquivo, nameof(arquivo.DataArquivo));
+			ErrorsResult = validadorCampo.HandleValidation(arquivo.PathArquivo, nameof(arquivo.PathArquivo),  ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(arquivo.Nome, nameof(arquivo.Nome), ref ErrorsResult);
+            ErrorsResult = validarData.HandleValidation(arquivo.DataCriacao, nameof(arquivo.DataCriacao), ref ErrorsResult);
 
 			return ErrorsResult;
 		}

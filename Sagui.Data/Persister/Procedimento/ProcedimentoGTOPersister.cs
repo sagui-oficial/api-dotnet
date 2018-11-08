@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Procedimento
 {
-    public class ProcedimentoGTOPersister
+    public class ProcedimentoGTOPersister: PersisterBase
     {
         public bool SaveProcedimentoGTO(int IdGTO, int IdProcedimento, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {
-            Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(IdGTO), IdGTO);
             DbParams.Add(nameof(IdProcedimento), IdProcedimento);
 

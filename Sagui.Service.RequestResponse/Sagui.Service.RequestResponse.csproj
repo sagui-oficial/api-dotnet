@@ -41,19 +41,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseRequestHandler.cs" />
     <Compile Include="Base\RequestBase.cs" />
     <Compile Include="Base\ResponseBase.cs" />
+    <Compile Include="Handlers\CriarGTORequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestArquivo.cs" />
     <Compile Include="RequestGTO.cs" />
     <Compile Include="RequestProcedimento.cs" />
+    <Compile Include="ResponseArquivo.cs" />
     <Compile Include="ResponseGTO.cs" />
     <Compile Include="ResponseProcedimento.cs" />
     <Compile Include="ValueObject\ResponseType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sagui.Base\Sagui.Base.csproj">
+      <Project>{42DEB4DD-331A-4AB6-BAC7-BE34F47E8A6E}</Project>
+      <Name>Sagui.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sagui.Business\Sagui.Business.csproj">
+      <Project>{7c88ec98-010f-4ff5-b850-f24913d403c7}</Project>
+      <Name>Sagui.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">
       <Project>{4756932d-515e-47b0-9e4e-d52c3a4230c9}</Project>
       <Name>Sagui.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sagui.Service\Sagui.Service.csproj">
+      <Project>{bd8d642d-1bcd-49aa-b0bc-2b40fbff3b74}</Project>
+      <Name>Sagui.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

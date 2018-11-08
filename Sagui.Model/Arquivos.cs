@@ -8,7 +8,10 @@ namespace Sagui.Model
 {
     public class Arquivos
     {
-        public string NomeArquivo { get; set; }
-        public DateTime DataArquivo { get; set; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public byte[] Stream { get; set; }
+        public DateTime DataCriacao { get; set; }
+        public string PathArquivo { get; set; }
     }
 }

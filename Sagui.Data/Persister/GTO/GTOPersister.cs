@@ -1,18 +1,13 @@
-﻿using System;
+﻿using Sagui.Data.Base;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.GTO
 {
-    public class GTOPersister
+    public class GTOPersister: PersisterBase
     {
         public Model.GTO UpdateGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {
-            Dictionary<string, object> DbParams = new Dictionary<string, object>();
-
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
             {
                 _dataInfrastructure = dataInfrastructure;
@@ -24,8 +19,6 @@ namespace Sagui.Data.Persister.GTO
 
         public Model.GTO DeleteGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {
-            Dictionary<string, object> DbParams = new Dictionary<string, object>();
-
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
             {
                 _dataInfrastructure = dataInfrastructure;
@@ -39,7 +32,6 @@ namespace Sagui.Data.Persister.GTO
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
 
-            Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(GTO.Numero), GTO.Numero.ToString());
             DbParams.Add(nameof(GTO.Status), GTO.Status);
             DbParams.Add(nameof(GTO.Operadora), GTO.Operadora.IdOperadora);
