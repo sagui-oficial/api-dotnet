@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse;
+using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
 using Sagui.Test.Mocks;
 using System;
@@ -18,14 +19,17 @@ namespace Sagui.Test.TestProcedimentos
         public void CadastrarProcedimento()
         {
             RequestProcedimento requestProcedimento = new RequestProcedimento();
-
             MockProcedimento mock = new MockProcedimento();
+
             requestProcedimento = mock.CriarMockProcedimento();
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
-            var response = procedimentoService.Cadastrar(requestProcedimento);
 
-            //Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            CriarProcedimentoRequestHandler criarProcedimentoRequestHandler = new CriarProcedimentoRequestHandler(procedimentoService);
+
+            var response = criarProcedimentoRequestHandler.Cadastrar(requestProcedimento);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
 
         }
     }

@@ -8,7 +8,7 @@ namespace Sagui.Service.Procedimento
     {
         public Model.Procedimentos Cadastrar(Model.Procedimentos Procedimento)
         {
-            using (var ProcedimentoBusiness = new Business.Procedimento.CadastrarProcedimento())
+            using (var ProcedimentoBusiness = new Business.Procedimento.CadastrarProcedimentoBusiness())
             {
                 var _return = ProcedimentoBusiness.Cadastrar(Procedimento);
                 ProcedimentoBusiness.Dispose();

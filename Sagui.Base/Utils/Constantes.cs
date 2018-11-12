@@ -13,6 +13,8 @@ namespace Sagui.Base.Utils
 
         public static string MensagemGTOInseridaComSucesso = "GTO inserida com sucesso!";
         public static string MensagemGTONaoInserida = "GTO não inserida!";
+        public static string MensagemProcedimentosInseridosComSucesso = "Procedimento(s) inserido(s) com sucesso!";
+        public static string MensagemProcedimentoNaoInserida = "Procedimento(s) não inserido(s)!";
 
 
         public static string DataNaoPreenchida = "DataNaoPreenchida";

@@ -44,6 +44,8 @@
     <Compile Include="GTO\CadastrarGTO.cs" />
     <Compile Include="Procedimento\CadastrarProcedimento.cs" />
     <Compile Include="Validador\Arquivos\ValidadorArquivo.cs" />
+    <Compile Include="Validador\Base\IValidador.cs" />
+    <Compile Include="Validador\Base\IValidadorBase.cs" />
     <Compile Include="Validador\GTO\ValidadorGTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validador\Base\ValidadorBase.cs" />

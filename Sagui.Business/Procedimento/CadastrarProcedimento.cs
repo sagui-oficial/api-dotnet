@@ -6,7 +6,7 @@ using Sagui.Data.Persister.GTO;
 namespace Sagui.Business.Procedimento
 {
 
-    public class CadastrarProcedimento : BusinessBase
+    public class CadastrarProcedimentoBusiness : BusinessBase
     {
         public List<Model.Procedimentos> ListProcedimentos(Model.Procedimentos procedimento)
         {
@@ -15,29 +15,16 @@ namespace Sagui.Business.Procedimento
 
         public Model.Procedimentos Cadastrar(Model.Procedimentos procedimento)
         {
-            var errors = Validador.Procedimentos.ValidatorProcedimento.Validate(procedimento);
+            ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
+            procedimentoPersister.SaveProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
 
-            if (errors.Count() == 0)
-            {
-                ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
-                procedimentoPersister.SaveProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
+            //responseProcedimento.ExecutionDate = DateTime.Now;
+            //responseProcedimento.ResponseType = ResponseType.Success;
 
-                Model.Procedimentos responseProcedimento = new Model.Procedimentos();
-                //responseProcedimento.ExecutionDate = DateTime.Now;
-                //responseProcedimento.ResponseType = ResponseType.Success;
+            dataInfrastructure.Dispose();
 
-                dataInfrastructure.Dispose();
-
-                return responseProcedimento;
-            }
-            else
-            {
-                Model.Procedimentos responseProcedimento = new Model.Procedimentos();
-                //responseProcedimento.ExecutionDate = DateTime.Now;
-                //responseProcedimento.ResponseType = ResponseType.Error;
-                //responseProcedimento.Message = errors;
-                return responseProcedimento;
-            }
+            return responseProcedimento;
         }
     }
 }

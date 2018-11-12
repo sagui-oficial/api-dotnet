@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Business.Validador.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,21 @@ using System.Threading.Tasks;
 
 namespace Sagui.Business.Validador.Procedimentos
 {
-    public class ValidatorProcedimento
+    public class ValidatorProcedimento : IValidadorBase<Model.Procedimentos>
     {
-        public static List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Procedimentos procedimento)
+        ValidadorData validarData = null;
+        ValidadorCampo validadorCampo = null;
+        List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = null;
+
+        public ValidatorProcedimento()
         {
-            List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+            validarData = new ValidadorData();
+            validadorCampo = new ValidadorCampo();
+            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+        }
 
-            ValidadorData validarData = new ValidadorData();
-            ValidadorCampo validadorCampo = new ValidadorCampo();
-
+        public List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Procedimentos procedimento)
+        {
             ErrorsResult = validadorCampo.HandleValidation(procedimento.NomeProcedimento, nameof(procedimento.NomeProcedimento), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(procedimento.Codigo, nameof(procedimento.Codigo), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(procedimento.ValorProcedimento, nameof(procedimento.ValorProcedimento), ref ErrorsResult);

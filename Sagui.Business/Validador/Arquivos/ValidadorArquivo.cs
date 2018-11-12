@@ -8,15 +8,21 @@ using System.Threading.Tasks;
 
 namespace Sagui.Business.Validador.Arquivos
 {
-	public static class ValidadorArquivo
-	{
-		public static List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Arquivos arquivo)
+	public class ValidadorArquivo : IValidadorBase<Model.Arquivos>
+    {
+        private List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult;
+        private ValidadorData validarData;
+        private ValidadorCampo validadorCampo;
+
+        public ValidadorArquivo()
+        {
+            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+            validarData = new ValidadorData();
+            validadorCampo = new ValidadorCampo();
+        }
+
+		public List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Arquivos arquivo)
 		{
-			List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
-
-			ValidadorData validarData = new ValidadorData();
-			ValidadorCampo validadorCampo = new ValidadorCampo();
-
 			ErrorsResult = validadorCampo.HandleValidation(arquivo.PathArquivo, nameof(arquivo.PathArquivo),  ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(arquivo.Nome, nameof(arquivo.Nome), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(arquivo.DataCriacao, nameof(arquivo.DataCriacao), ref ErrorsResult);

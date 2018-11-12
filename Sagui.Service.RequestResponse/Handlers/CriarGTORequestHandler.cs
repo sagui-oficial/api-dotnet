@@ -13,15 +13,17 @@ namespace Sagui.Service.RequestResponse.Handlers
     public class CriarGTORequestHandler : BaseRequestHandler<RequestGTO, ResponseGTO>
     {
         private IGTOService IGTOService { get; set; }
+        private Business.Validador.GTO.ValidadorGTO validadorGTO { get; set; }
 
         public CriarGTORequestHandler(IGTOService iGTOService)
         {
             IGTOService = iGTOService;
+            validadorGTO = new Business.Validador.GTO.ValidadorGTO();
         }
 
         public ResponseGTO Cadastrar(Model.GTO GTO)
         {
-            var errors = Business.Validador.GTO.ValidadorGTO.Validate(GTO);
+            var errors = validadorGTO.Validate(GTO);
 
             if (errors.Count() == 0)
             {

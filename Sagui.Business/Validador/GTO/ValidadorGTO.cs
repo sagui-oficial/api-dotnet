@@ -1,19 +1,30 @@
 ﻿using Sagui.Base.Utils;
+using Sagui.Business.Validador.Base;
 using Sagui.Business.Validador.Procedimentos;
 using System;
 using System.Collections.Generic;
 
 namespace Sagui.Business.Validador.GTO
 {
-    public static class ValidadorGTO
+    public class ValidadorGTO : IValidadorBase<Model.GTO>
     {
-        public static List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.GTO gto)
+        private ValidadorData validarData;
+        private ValidadorCampo validadorCampo;
+        private List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult;
+        private ValidatorProcedimento validatorProcedimento;
+        private Arquivos.ValidadorArquivo validadorArquivo;
+
+        public ValidadorGTO()
         {
-            List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+            validarData = new ValidadorData();
+            validadorCampo = new ValidadorCampo();
+            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+            validatorProcedimento = new ValidatorProcedimento();
+            validadorArquivo = new Arquivos.ValidadorArquivo();
+        }
 
-            ValidadorData validarData = new ValidadorData();
-            ValidadorCampo validadorCampo = new ValidadorCampo();
-
+        public List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.GTO gto)
+        {
             ErrorsResult = validarData.HandleValidation(gto.Solicitacao, nameof(gto.Solicitacao), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(gto.Vencimento, nameof(gto.Vencimento), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(gto.Id, nameof(gto.Id), ref ErrorsResult);
@@ -48,7 +59,7 @@ namespace Sagui.Business.Validador.GTO
             {
                 foreach(Model.Procedimentos procedimento in gto.Procedimentos)
                 {
-                    ErrorsResult = ValidatorProcedimento.Validate(procedimento);
+                    ErrorsResult = validatorProcedimento.Validate(procedimento);
                 }
             }
 
@@ -60,7 +71,7 @@ namespace Sagui.Business.Validador.GTO
             {
                 foreach (Model.Arquivos arquivo in gto.Arquivos)
                 {
-                    ErrorsResult = Arquivos.ValidadorArquivo.Validate(arquivo);
+                    ErrorsResult = validadorArquivo.Validate(arquivo);
                 }
             }
 
