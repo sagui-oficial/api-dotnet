@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arquivos.cs" />
+    <Compile Include="Base\IBaseModel.cs" />
     <Compile Include="GTO.cs" />
     <Compile Include="Operadora.cs" />
     <Compile Include="Paciente.cs" />

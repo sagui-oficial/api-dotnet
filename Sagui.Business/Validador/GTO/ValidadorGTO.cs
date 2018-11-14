@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Sagui.Business.Validador.GTO
 {
-    public class ValidadorGTO : IValidadorBase<Model.GTO>
+    public class ValidadorGTO : Validador
     {
         private ValidadorData validarData;
         private ValidadorCampo validadorCampo;
@@ -76,6 +76,11 @@ namespace Sagui.Business.Validador.GTO
             }
 
             return ErrorsResult;
+        }
+
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Validador @class)
+        {
+            throw new NotImplementedException();
         }
     }
 }

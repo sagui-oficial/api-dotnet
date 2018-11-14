@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sagui.Business.Validador
 {
-    public class ValidadorCampo : ValidadorBase
+    public class ValidadorCampo : IValidadorBaseCampo
     {
-        public override List<Tuple<dynamic, dynamic, dynamic>> HandleValidation(dynamic value, string namevalue, ref List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult)
+        public List<Tuple<dynamic, dynamic, dynamic>> HandleValidation(dynamic value, string namevalue, ref List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult)
         {
             Type t = value.GetType();
 
@@ -50,11 +50,6 @@ namespace Sagui.Business.Validador
                 }
             }
             return ErrorsResult;
-        }
-
-        public override List<Tuple<dynamic, dynamic, dynamic>> HandleValidation(dynamic value1, dynamic value2)
-        {
-            throw new NotImplementedException();
         }
     }
 }
