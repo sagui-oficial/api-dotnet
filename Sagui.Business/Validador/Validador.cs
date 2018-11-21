@@ -19,7 +19,6 @@ namespace Sagui.Business.Validador
             validadorCampo = new ValidadorCampo();
         }
 
-        public abstract List<Tuple<dynamic, dynamic, dynamic>> Validate(Validador @class);
-
+        public abstract List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class);
     }
 }

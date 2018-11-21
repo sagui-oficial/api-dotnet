@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sagui.Model.Base;
 
 namespace Sagui.Business.Validador.Paciente
 {
-	public class ValidadorPaciente
+	public class ValidadorPaciente : Validador
 	{
-		public static List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Paciente paciente)
-		{
-			List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+        private ValidadorData validarData;
+        private ValidadorCampo validadorCampo;
+        private List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult;
 
-			ValidadorData validarData = new ValidadorData();
-			ValidadorCampo validadorCampo = new ValidadorCampo();
+        public ValidadorPaciente()
+        {
+            validarData = new ValidadorData();
+            validadorCampo = new ValidadorCampo();
+            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+        }
 
-			ErrorsResult = validadorCampo.HandleValidation(paciente.NomePaciente, nameof(paciente.NomePaciente));
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class)
+        {
+            var paciente = @class as Model.Paciente;
 
-			return ErrorsResult;
-		}
-	}
+            ErrorsResult = validadorCampo.HandleValidation(paciente.NomePaciente, nameof(paciente.NomePaciente), ref ErrorsResult);
+
+            return ErrorsResult;
+        }
+    }
 }

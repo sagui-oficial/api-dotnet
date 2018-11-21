@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Business.Validador.Base
 {
-    public interface IValidadorBase<T> where T : class
+    public  interface IValidadorBase<T> where T : class
     {
         List<Tuple<dynamic, dynamic, dynamic>> Validate(T @class);
     }

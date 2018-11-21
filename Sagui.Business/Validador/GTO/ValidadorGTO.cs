@@ -1,6 +1,7 @@
 ﻿using Sagui.Base.Utils;
 using Sagui.Business.Validador.Base;
 using Sagui.Business.Validador.Procedimentos;
+using Sagui.Model.Base;
 using System;
 using System.Collections.Generic;
 
@@ -23,8 +24,10 @@ namespace Sagui.Business.Validador.GTO
             validadorArquivo = new Arquivos.ValidadorArquivo();
         }
 
-        public List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.GTO gto)
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class)
         {
+            var gto = @class as Model.GTO;
+
             ErrorsResult = validarData.HandleValidation(gto.Solicitacao, nameof(gto.Solicitacao), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(gto.Vencimento, nameof(gto.Vencimento), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(gto.Id, nameof(gto.Id), ref ErrorsResult);
@@ -57,7 +60,7 @@ namespace Sagui.Business.Validador.GTO
             }
             else
             {
-                foreach(Model.Procedimentos procedimento in gto.Procedimentos)
+                foreach (Model.Procedimentos procedimento in gto.Procedimentos)
                 {
                     ErrorsResult = validatorProcedimento.Validate(procedimento);
                 }
@@ -76,11 +79,6 @@ namespace Sagui.Business.Validador.GTO
             }
 
             return ErrorsResult;
-        }
-
-        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Validador @class)
-        {
-            throw new NotImplementedException();
         }
     }
 }
