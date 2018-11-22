@@ -22,14 +22,14 @@ namespace Sagui.Business.Procedimento
             return null;
         }
 
-        public ResponseProcedimento Cadastrar(RequestProcedimento procedimento)
+        public ResponseProcedimento Cadastrar(RequestProcedimento procedimentos)
         {
-            var errors = Validador.Procedimentos.ValidatorProcedimento.Validate(procedimento);
+            var errors = Validador.Procedimentos.ValidatorProcedimento.Validate(procedimentos);
 
             if (errors.Count() == 0)
             {
                 ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
-                procedimentoPersister.SaveProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+                procedimentoPersister.SaveProcedimento(procedimentos, out Data.DataInfrastructure dataInfrastructure);
 
                 ResponseProcedimento responseProcedimento = new ResponseProcedimento();
                 responseProcedimento.ExecutionDate = DateTime.Now;

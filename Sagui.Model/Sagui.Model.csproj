@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arquivo.cs" />
+    <Compile Include="Arquivos.cs" />
     <Compile Include="Arquivo_GTO.cs" />
     <Compile Include="Procedimento_GTO.cs" />
     <Compile Include="GTO.cs" />

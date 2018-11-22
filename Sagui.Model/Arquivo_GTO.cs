@@ -14,6 +14,6 @@ namespace Sagui.Model
         public int idArquivo { get; set; }
 
         public ICollection<GTO> GTO { get; set; }
-        public ICollection<Arquivo> Arquivo { get; set; }
+        public ICollection<Arquivos> Arquivo { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Procedimento
+    public class Procedimentos
     {   [Key]
         public int IdProcedimento { get; set; } 
         public int Codigo { get; set; }

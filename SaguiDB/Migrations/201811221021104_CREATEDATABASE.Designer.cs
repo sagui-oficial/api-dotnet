@@ -7,13 +7,13 @@ namespace SaguiDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ADDArquivo_GTO2 : IMigrationMetadata
+    public sealed partial class CREATEDATABASE : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ADDArquivo_GTO2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CREATEDATABASE));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811061703336_ADD Arquivo_GTO2"; }
+            get { return "201811221021104_CREATEDATABASE"; }
         }
         
         string IMigrationMetadata.Source

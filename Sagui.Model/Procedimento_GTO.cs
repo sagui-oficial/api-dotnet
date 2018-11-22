@@ -14,6 +14,6 @@ namespace Sagui.Model
         public int idProcedimento { get; set; }
 
         public ICollection<GTO> GTO { get; set; }
-        public ICollection<Procedimento> Procedimento { get; set; }
+        public ICollection<Procedimentos> Procedimento { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Arquivo
+    public class Arquivos
     {[Key]
         public int id { get; set; }
         public string NomeArquivo { get; set; }
