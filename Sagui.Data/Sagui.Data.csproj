@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\PersisterBase.cs" />
     <Compile Include="DataInfrastructure.cs" />
     <Compile Include="Base\DataBase.cs" />
     <Compile Include="Lookup\GTO\GTOLookup.cs" />
+    <Compile Include="Persister\Arquivo\ArquivoPersister.cs" />
     <Compile Include="Persister\GTO\GTOPersister.cs" />
     <Compile Include="Persister\Procedimento\ProcedimentoGTOPersister.cs" />
     <Compile Include="Persister\Procedimento\ProcedimentoPersister.cs" />

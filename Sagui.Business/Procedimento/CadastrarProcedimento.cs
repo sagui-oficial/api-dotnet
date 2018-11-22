@@ -1,52 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sagui.Base.Utils;
 using Sagui.Business.Base;
-using Sagui.Business.Validador;
-using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.GTO;
-using Sagui.Model;
-using Sagui.Service.RequestResponse;
-using Sagui.Service.RequestResponse.ValueObject;
 
 namespace Sagui.Business.Procedimento
 {
 
-    public class CadastrarProcedimento : BusinessBase
+    public class CadastrarProcedimentoBusiness : BusinessBase
     {
-        public ResponseProcedimento ListProcedimentos(RequestProcedimento procedimento)
+        public List<Model.Procedimentos> ListProcedimentos(Model.Procedimentos procedimento)
         {
             return null;
         }
 
-        public ResponseProcedimento Cadastrar(RequestProcedimento procedimentos)
+        public Model.Procedimentos Cadastrar(Model.Procedimentos procedimento)
         {
-            var errors = Validador.Procedimentos.ValidatorProcedimento.Validate(procedimentos);
+            ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
+            procedimentoPersister.SaveProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
 
-            if (errors.Count() == 0)
-            {
-                ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
-                procedimentoPersister.SaveProcedimento(procedimentos, out Data.DataInfrastructure dataInfrastructure);
+            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
+            //responseProcedimento.ExecutionDate = DateTime.Now;
+            //responseProcedimento.ResponseType = ResponseType.Success;
 
-                ResponseProcedimento responseProcedimento = new ResponseProcedimento();
-                responseProcedimento.ExecutionDate = DateTime.Now;
-                responseProcedimento.ResponseType = ResponseType.Success;
+            dataInfrastructure.Dispose();
 
-                dataInfrastructure.Dispose();
-
-                return responseProcedimento;
-            }
-            else
-            {
-                ResponseProcedimento responseProcedimento = new ResponseProcedimento();
-                responseProcedimento.ExecutionDate = DateTime.Now;
-                responseProcedimento.ResponseType = ResponseType.Error;
-                responseProcedimento.Message = errors;
-                return responseProcedimento;
-            }
+            return responseProcedimento;
         }
     }
 }

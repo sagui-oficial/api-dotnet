@@ -1,16 +1,11 @@
-﻿using Sagui.Service.RequestResponse;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Sagui.Service.Contracts
 {
     public interface IGTOService
     {
-        ResponseGTO Cadastrar(RequestGTO requestGTO);
+        Model.GTO Cadastrar(Model.GTO GTO);
 
-        ResponseGTO ListGTOs(RequestGTO requestGTO = null);
+        List<Model.GTO> ListGTOs(Model.GTO GTO = null);
     }
 }

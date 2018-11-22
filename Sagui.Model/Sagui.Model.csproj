@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Arquivos.cs" />
     <Compile Include="Arquivo_GTO.cs" />
+    <Compile Include="Base\IBaseModel.cs" />
     <Compile Include="Procedimento_GTO.cs" />
     <Compile Include="GTO.cs" />
     <Compile Include="Operadora.cs" />

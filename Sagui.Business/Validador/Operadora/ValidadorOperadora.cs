@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sagui.Model.Base;
 
 namespace Sagui.Business.Validador.Operadora
 {
-	public class ValidadorOperadora
-	{
-		public static List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Operadora operadora)
-		{
-			List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+	public class ValidadorOperadora : Validador
+    {
+        private ValidadorData validarData;
+        private ValidadorCampo validadorCampo;
+        private List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult;
 
-			ValidadorData validarData = new ValidadorData();
-			ValidadorCampo validadorCampo = new ValidadorCampo();
+        public ValidadorOperadora()
+        {
+            validarData = new ValidadorData();
+            validadorCampo = new ValidadorCampo();
+            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+        }
 
-			ErrorsResult = validadorCampo.HandleValidation(operadora.NomeOperadora, nameof(operadora.NomeOperadora));
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class)
+        {
+            var operadora = @class as Model.Operadora;
 
-			return ErrorsResult;
-		}
-	}
+            ErrorsResult = validadorCampo.HandleValidation(operadora.NomeOperadora, nameof(operadora.NomeOperadora), ref ErrorsResult);
+
+            return ErrorsResult;
+        }
+    }
 }

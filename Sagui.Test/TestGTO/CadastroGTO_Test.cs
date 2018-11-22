@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Model;
 using Sagui.Service.GTO;
 using Sagui.Service.RequestResponse;
+using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
 using Sagui.Test.Mocks;
 
@@ -15,15 +16,17 @@ namespace Sagui.Test.TestGTO
         public void CadastrarGTO()
         {
             RequestGTO requestGTO = new RequestGTO();
-
             MockGTO mock = new MockGTO();
+
             requestGTO = mock.CriarMockGTO();
 
-            GTOService gtoService = new GTOService();
-            var response = gtoService.Cadastrar(requestGTO);
+            GTOService gTOService = new GTOService();
+
+            CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
+
+            var response = criarGTORequestHandler.Cadastrar(requestGTO);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-
         }
 
 

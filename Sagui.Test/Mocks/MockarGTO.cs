@@ -12,7 +12,9 @@ namespace Sagui.Test.Mocks
     {
         public RequestGTO CriarMockGTO()
         {
-            MockProcedimento mock = new MockProcedimento(); ;
+            MockProcedimento mockProcedimento = new MockProcedimento();
+            MockArquivos mockArquivos  = new MockArquivos();
+
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 1;
             Guia.Numero = 1;
@@ -24,15 +26,8 @@ namespace Sagui.Test.Mocks
             Guia.Paciente.NomePaciente = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
-            Guia.Procedimentos = new List<Model.Procedimentos>() { mock.CriarMockProcedimento() };
-            Guia.Arquivos = new List<Arquivos>()
-            {
-                new Arquivos()
-                {
-                    NomeArquivo = "arquivo1.pdf",
-                    DataArquivo = DateTime.Now
-                }
-            };
+            Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
+            Guia.Arquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
             Guia.Status = 1;
 
             return Guia;

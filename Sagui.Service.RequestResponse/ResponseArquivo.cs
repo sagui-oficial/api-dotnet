@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse
 {
-    public class ResponseGTO : ResponseBase
+    public class ResponseArquivo : ResponseBase
     {
-        public Model.GTO GTO { get; set; }
-        public List<Model.GTO> GTOs { get; set; }
+        public List<Model.Arquivos> Arquivos { get; set; }
     }
 }

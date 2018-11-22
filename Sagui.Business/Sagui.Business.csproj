@@ -44,12 +44,18 @@
     <Compile Include="GTO\CadastrarGTO.cs" />
     <Compile Include="Procedimento\CadastrarProcedimento.cs" />
     <Compile Include="Validador\Arquivos\ValidadorArquivo.cs" />
+    <Compile Include="Validador\Base\IValidador.cs" />
+    <Compile Include="Validador\Base\IValidadorBase.cs" />
+    <Compile Include="Validador\Base\IValidadorBaseCampo.cs" />
+    <Compile Include="Validador\Base\IValidadorBaseData.cs" />
+    <Compile Include="Validador\Base\IValidadorBaseSetSucessor.cs" />
     <Compile Include="Validador\GTO\ValidadorGTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validador\Base\ValidadorBase.cs" />
     <Compile Include="Validador\Operadora\ValidadorOperadora.cs" />
     <Compile Include="Validador\Paciente\ValidadorPaciente.cs" />
     <Compile Include="Validador\Procedimentos\ValidatorProcedimento.cs" />
+    <Compile Include="Validador\Validador.cs" />
     <Compile Include="Validador\ValidadorCampo.cs" />
     <Compile Include="Validador\ValidadorData.cs" />
   </ItemGroup>
@@ -65,10 +71,6 @@
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">
       <Project>{4756932d-515e-47b0-9e4e-d52c3a4230c9}</Project>
       <Name>Sagui.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Sagui.Service.RequestResponse\Sagui.Service.RequestResponse.csproj">
-      <Project>{221F4894-E833-4F14-BBAA-26CB316394D7}</Project>
-      <Name>Sagui.Service.RequestResponse</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

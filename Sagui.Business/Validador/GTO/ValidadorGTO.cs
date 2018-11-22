@@ -1,23 +1,32 @@
 ﻿using Sagui.Base.Utils;
-using Sagui.Business.Validador;
-using Sagui.Business.Validador.Arquivos;
-using Sagui.Business.Validador.Operadora;
-using Sagui.Business.Validador.Paciente;
+using Sagui.Business.Validador.Base;
 using Sagui.Business.Validador.Procedimentos;
+using Sagui.Model.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Sagui.Business.Validador.GTO
 {
-    public static class ValidadorGTO
+    public class ValidadorGTO : Validador
     {
-        public static List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.GTO gto)
-        {
-            List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+        private ValidadorData validarData;
+        private ValidadorCampo validadorCampo;
+        private List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult;
+        private ValidatorProcedimento validatorProcedimento;
+        private Arquivos.ValidadorArquivo validadorArquivo;
 
-            ValidadorData validarData = new ValidadorData();
-            ValidadorCampo validadorCampo = new ValidadorCampo();
+        public ValidadorGTO()
+        {
+            validarData = new ValidadorData();
+            validadorCampo = new ValidadorCampo();
+            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
+            validatorProcedimento = new ValidatorProcedimento();
+            validadorArquivo = new Arquivos.ValidadorArquivo();
+        }
+
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class)
+        {
+            var gto = @class as Model.GTO;
 
             ErrorsResult = validarData.HandleValidation(gto.Solicitacao, nameof(gto.Solicitacao), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(gto.Vencimento, nameof(gto.Vencimento), ref ErrorsResult);
@@ -51,9 +60,21 @@ namespace Sagui.Business.Validador.GTO
             }
             else
             {
-                foreach(Model.Procedimentos procedimento in gto.Procedimentos)
+                foreach (Model.Procedimentos procedimento in gto.Procedimentos)
                 {
-                    ErrorsResult = validadorCampo.HandleValidation(procedimento.IdProcedimento, nameof(procedimento.IdProcedimento), ref ErrorsResult);
+                    ErrorsResult = validatorProcedimento.Validate(procedimento);
+                }
+            }
+
+            if (gto.Arquivos.Count == 0)
+            {
+                ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.MensagemArquivosNaoAnexados, nameof(gto.Arquivos), Constantes.MensagemArquivosNaoAnexados));
+            }
+            else
+            {
+                foreach (Model.Arquivos arquivo in gto.Arquivos)
+                {
+                    ErrorsResult = validadorArquivo.Validate(arquivo);
                 }
             }
 

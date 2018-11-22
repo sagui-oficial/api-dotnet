@@ -8,15 +8,30 @@ namespace Sagui.Data
 {
     public static class SQL
     {
-        public static string CreateProcedimentoGTO = @"
-                    INSERT INTO dbo.Procedimento_GTO
-                       (IdGTO
-                       ,IdProcedimento)
-                 VALUES
-                       (@IdGTO
-                       ,@IdProcedimento);
+        public static string CreateArquivo = @"
+                   INSERT INTO dbo.Arquivo
+                               (IdGto
+                               ,Nome
+                               ,DataCriacao
+                               ,Stream)
+                         VALUES
+                               (@IdGto
+                               ,@Nome
+                               ,@DataCriacao
+                               ,@Stream);
 
                 SELECT SCOPE_IDENTITY();";
+
+
+        public static string CreateProcedimentoGTO = @"
+                    INSERT INTO dbo.Procedimento_GTO
+                               (IdGTO
+                               ,IdProcedimento)
+                         VALUES
+                               (@IdGTO
+                               ,@IdProcedimento);
+
+                        SELECT SCOPE_IDENTITY();";
 
 
         public static string CreateProcedimento = @"
