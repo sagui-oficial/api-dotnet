@@ -9,7 +9,7 @@ namespace Sagui.Data
     public static class SQL
     {
         public static string CreateArquivo = @"
-                   INSERT INTO dbo.Arquivo
+                   INSERT INTO dbo.Arquivos
                                (IdGto
                                ,Nome
                                ,DataCriacao
@@ -35,7 +35,7 @@ namespace Sagui.Data
 
 
         public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimento
+                    INSERT INTO dbo.Procedimentos
                                (Codigo
                                ,NomeProcedimento
                                ,ValorProcedimento)
