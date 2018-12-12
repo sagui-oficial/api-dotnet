@@ -11,5 +11,10 @@ namespace Sagui.Service.RequestResponse.Base
         public TimeSpan ExecutionTime { get; set; }
         public List<Tuple<dynamic, dynamic, dynamic>> Message { get; set; }
         public ResponseType ResponseType { get; set; }
+
+        public ResponseBase()
+        {
+            Message = new List<Tuple<dynamic, dynamic, dynamic>>();
+        }
     }
 }

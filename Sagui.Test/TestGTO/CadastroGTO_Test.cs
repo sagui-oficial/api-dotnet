@@ -26,6 +26,7 @@ namespace Sagui.Test.TestGTO
 
             var response = criarGTORequestHandler.Cadastrar(requestGTO);
 
+            Assert.IsNotNull(response.GTO);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
 

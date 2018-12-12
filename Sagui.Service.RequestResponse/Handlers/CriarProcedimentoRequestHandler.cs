@@ -29,12 +29,12 @@ namespace Sagui.Service.RequestResponse.Handlers
             {
                 var _Procedimento = IProcedimentoService.Cadastrar(Procedimentos);
 
-                if (_Procedimento.IdProcedimento > 0)
+                if (_Procedimento.IdProcedimento != 0)
                 {
                     ResponseProcedimento responseProcedimento = new ResponseProcedimento();
+                    responseProcedimento.Procedimento = _Procedimento;
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Success;
-                    responseProcedimento.Message = new List<Tuple<dynamic, dynamic, dynamic>>();
                     responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, 
                                                                                           nameof(Procedimentos), 
                                                                                           Constantes.MensagemProcedimentosInseridosComSucesso));

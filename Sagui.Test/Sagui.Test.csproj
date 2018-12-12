@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestGTO\CadastroGTO_Test.cs" />
     <Compile Include="TestProcedimentos\CadastrarProcedimento_Test.cs" />
+    <Compile Include="TestProcedimentos\ListarProcedimento_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">

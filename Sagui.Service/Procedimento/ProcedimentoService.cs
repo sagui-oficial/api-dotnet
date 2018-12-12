@@ -8,7 +8,7 @@ namespace Sagui.Service.Procedimento
     {
         public Model.Procedimentos Cadastrar(Model.Procedimentos Procedimento)
         {
-            using (var ProcedimentoBusiness = new Business.Procedimento.CadastrarProcedimentoBusiness())
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
             {
                 var _return = ProcedimentoBusiness.Cadastrar(Procedimento);
                 ProcedimentoBusiness.Dispose();
@@ -18,7 +18,12 @@ namespace Sagui.Service.Procedimento
 
         public List<Model.Procedimentos> ListProcedimentos(Model.Procedimentos Procedimento = null)
         {
-            throw new NotImplementedException();
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.ListProcedimentos(Procedimento);
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
         }
     }
 }

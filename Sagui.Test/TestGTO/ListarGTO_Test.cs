@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Service.GTO;
 using Sagui.Service.RequestResponse;
+using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
 using Sagui.Test.Mocks;
 using System;
@@ -17,16 +18,27 @@ namespace Sagui.Test.TestGTO
         [TestMethod]
         public void ListarTodasGTO()
         {
-            RequestGTO requestGTO = new RequestGTO();
+            GTOService gTOService = new GTOService();
 
-            MockGTO mock = new MockGTO();
-            requestGTO = mock.CriarMockGTO();
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
 
-            GTOService gtoService = new GTOService();
-            var response = gtoService.ListGTOs();
+            var response = listarGTORequestHandler.Listar();
 
-            //Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            //Assert.IsTrue(response.GTOs.Count >= 0);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.GTOs.Count > 0 );
+        }
+
+        [TestMethod]
+        public void ListarNenhumsGTO()
+        {
+            GTOService gTOService = new GTOService();
+
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+
+            var response = listarGTORequestHandler.Listar();
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Info);
+            Assert.IsTrue(response.GTOs.Count == 0);
         }
     }
 }
