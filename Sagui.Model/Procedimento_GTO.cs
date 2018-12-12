@@ -10,6 +10,7 @@ namespace Sagui.Model
    public class Procedimento_GTO
     {
         [Key]
+        public int idProcedimento_GTO { get; set; }
         public int idGTO { get; set; }
         public int idProcedimento { get; set; }
 

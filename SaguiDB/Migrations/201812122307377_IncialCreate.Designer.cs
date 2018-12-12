@@ -7,13 +7,13 @@ namespace SaguiDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CREATEDATABASE : IMigrationMetadata
+    public sealed partial class IncialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CREATEDATABASE));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IncialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811221021104_CREATEDATABASE"; }
+            get { return "201812122307377_IncialCreate"; }
         }
         
         string IMigrationMetadata.Source
