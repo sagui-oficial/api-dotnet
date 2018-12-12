@@ -48,9 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201812122307377_IncialCreate.cs" />
-    <Compile Include="Migrations\201812122307377_IncialCreate.Designer.cs">
-      <DependentUpon>201812122307377_IncialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201812122332524_InitialCreate.cs" />
+    <Compile Include="Migrations\201812122332524_InitialCreate.Designer.cs">
+      <DependentUpon>201812122332524_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
@@ -66,8 +66,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812122307377_IncialCreate.resx">
-      <DependentUpon>201812122307377_IncialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812122332524_InitialCreate.resx">
+      <DependentUpon>201812122332524_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
