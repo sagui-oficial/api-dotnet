@@ -35,7 +35,7 @@ namespace Sagui.Data
 
 
         public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimentos
+                    INSERT INTO dbo.Procedimento
                                (Codigo
                                ,NomeProcedimento
                                ,ValorProcedimento)
@@ -77,5 +77,35 @@ namespace Sagui.Data
                                   ,Solicitacao
                                   ,Vencimento
                              FROM sagui.dbo.GTO";
+
+        public static string ListProcedimento = @"
+                            SELECT Id
+                                  ,Codigo
+                                  ,NomeProcedimento
+                                  ,ValorProcedimento
+                             FROM sagui.dbo.Procedimento";
+
+        public static string ListUsuario = @"
+                            SELECT *
+                             FROM sagui.dbo.usuarios";
+
+        public static string CreateUsuario = @"
+                INSERT INTO dbo.GTO
+                           (Numero
+                           , Status
+                           , Operadora
+                           , Paciente
+                           , Solicitacao
+                           , Vencimento)
+                     VALUES
+                           (@Numero
+                           , @Status
+                           , @Operadora
+                           , @Paciente
+                           , @Solicitacao
+                           , @Vencimento);
+                
+                SELECT SCOPE_IDENTITY()";
+
     }
 }

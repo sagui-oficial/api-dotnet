@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Paciente : IBaseModel
+    public class Paciente : BaseModel
     {[Key]
         public int IdPaciente { get; set; }
         public string NomePaciente { get; set; }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sagui.Model.Base
+namespace Sagui.Service.RequestResponse
 {
-    public interface IBaseModel
+    public class RequestUsuario : Model.Usuario
     {
+
     }
 }

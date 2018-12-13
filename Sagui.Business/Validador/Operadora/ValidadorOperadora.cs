@@ -7,7 +7,7 @@ using Sagui.Model.Base;
 
 namespace Sagui.Business.Validador.Operadora
 {
-	public class ValidadorOperadora : Validador
+	public class ValidadorOperadora : Validador<Model.Operadora>
     {
         private ValidadorData validarData;
         private ValidadorCampo validadorCampo;
@@ -20,10 +20,8 @@ namespace Sagui.Business.Validador.Operadora
             ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
         }
 
-        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class)
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Operadora operadora)
         {
-            var operadora = @class as Model.Operadora;
-
             ErrorsResult = validadorCampo.HandleValidation(operadora.NomeOperadora, nameof(operadora.NomeOperadora), ref ErrorsResult);
 
             return ErrorsResult;

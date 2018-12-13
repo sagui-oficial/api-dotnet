@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Model.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Procedimentos
+    public class Procedimentos : BaseModel
     {   [Key]
         public int IdProcedimento { get; set; } 
         public int Codigo { get; set; }

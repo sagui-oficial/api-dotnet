@@ -29,6 +29,7 @@ namespace Sagui.Test.TestProcedimentos
 
             var response = criarProcedimentoRequestHandler.Cadastrar(requestProcedimento);
 
+            Assert.IsNotNull(response.Procedimento);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
 
         }

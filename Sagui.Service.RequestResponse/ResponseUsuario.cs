@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse
 {
-    public class ResponseProcedimento : ResponseBase
+    public class ResponseUsuario : ResponseBase
     {
-        public Model.Procedimentos Procedimento { get; set; }
-        public List<Model.Procedimentos> Procedimentos { get; set; }
+        public Model.Usuario Usuario { get; set; }
+        public List<Model.Usuario> Usuarios { get; set; }
     }
 }

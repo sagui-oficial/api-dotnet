@@ -1,33 +1,26 @@
 ﻿using Sagui.Base.Utils;
 using Sagui.Business.Validador.Base;
 using Sagui.Business.Validador.Procedimentos;
+using Sagui.Model;
 using Sagui.Model.Base;
 using System;
 using System.Collections.Generic;
 
 namespace Sagui.Business.Validador.GTO
 {
-    public class ValidadorGTO : Validador
+    public class ValidadorGTO : Validador<Model.GTO>
     {
-        private ValidadorData validarData;
-        private ValidadorCampo validadorCampo;
-        private List<Tuple<dynamic, dynamic, dynamic>> ErrorsResult;
         private ValidatorProcedimento validatorProcedimento;
         private Arquivos.ValidadorArquivo validadorArquivo;
 
         public ValidadorGTO()
         {
-            validarData = new ValidadorData();
-            validadorCampo = new ValidadorCampo();
-            ErrorsResult = new List<Tuple<dynamic, dynamic, dynamic>>();
             validatorProcedimento = new ValidatorProcedimento();
             validadorArquivo = new Arquivos.ValidadorArquivo();
         }
 
-        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(IBaseModel @class)
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.GTO gto)
         {
-            var gto = @class as Model.GTO;
-
             ErrorsResult = validarData.HandleValidation(gto.Solicitacao, nameof(gto.Solicitacao), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(gto.Vencimento, nameof(gto.Vencimento), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(gto.Id, nameof(gto.Id), ref ErrorsResult);

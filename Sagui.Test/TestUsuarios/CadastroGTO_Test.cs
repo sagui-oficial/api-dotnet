@@ -7,26 +7,26 @@ using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
 using Sagui.Test.Mocks;
 
-namespace Sagui.Test.TestGTO
+namespace Sagui.Test.TestUsuarios
 {
     [TestClass]
-    public class CadastroGTO_Test
+    public class CadastroUsuario_Test
     {
         [TestMethod]
-        public void CadastrarGTO()
+        public void CadastrarUsuario()
         {
-            RequestGTO requestGTO = new RequestGTO();
-            MockGTO mock = new MockGTO();
+            RequestUsuario requestUsuario = new RequestUsuario();
+            MockUsuario mock = new MockUsuario();
 
-            requestGTO = mock.CriarMockGTO();
+            requestUsuario = mock.CriarMockUsuario();
 
-            GTOService gTOService = new GTOService();
+            UsuarioService usuarioService = new UsuarioService();
 
-            CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
+            CriarUsuarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioRequestHandler(usuarioService);
 
-            var response = criarGTORequestHandler.Cadastrar(requestGTO);
+            var response = criarUsuarioRequestHandler.Cadastrar(requestUsuario);
 
-            Assert.IsNotNull(response.GTO);
+            Assert.IsNotNull(response.Usuario);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
 

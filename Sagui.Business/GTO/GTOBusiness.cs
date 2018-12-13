@@ -18,24 +18,7 @@ namespace Sagui.Business.GTO
             GTOLookup gtoLookup = new GTOLookup();
             var listGTO = gtoLookup.ListGTO(gto);
 
-            dynamic namevalue = nameof(listGTO);
-
-            List<Model.GTO> responseGTO_Procedimentos = new List<Model.GTO>();
-
-            if (listGTO.Count() == 0)
-            {
-                //responseGTO_Procedimentos.ExecutionDate = DateTime.Now;
-                //responseGTO_Procedimentos.ResponseType = ResponseType.Info;
-                //responseGTO_Procedimentos.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.CampoNaoPreenchido, namevalue, Constantes.MensagemGTOsNaoEncontradas));
-            }
-            else
-            {
-                //responseGTO_Procedimentos.ExecutionDate = DateTime.Now;
-                //responseGTO_Procedimentos.ResponseType = ResponseType.Success;
-                //responseGTO_Procedimentos.GTOs = listGTO;
-            }
-            return responseGTO_Procedimentos;
-
+            return listGTO;
         }
 
         public Model.GTO Cadastrar(Model.GTO gto)

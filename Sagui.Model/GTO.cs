@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class GTO : IBaseModel
+    public class GTO : BaseModel
     {   [Key]
         public int Id { get; set; }
         public int Numero { get; set; }
