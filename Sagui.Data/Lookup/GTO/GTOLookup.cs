@@ -8,7 +8,8 @@ namespace Sagui.Data.Lookup.GTO
 {
     public class GTOLookup
     {
-        //todo: refazer a query para trazer Operadora e Paciente, assim que o Backoffice estiver pronto.
+        //todo: refazer a query para trazer Operadora e Paciente
+        //todo: refazer a query para trazer Procedimento da GTO e Arquivo da GTO
 
         public List<Model.GTO> ListGTO(Model.GTO GTO)
         {

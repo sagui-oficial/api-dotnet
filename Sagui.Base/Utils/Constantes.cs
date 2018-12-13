@@ -29,6 +29,13 @@ namespace Sagui.Base.Utils
         public static string MensagemProcedimentoNaoListado = "Procedimentos não listados!";
         #endregion
 
+        #region Usuarios
+        public static string MensagemUsuarioInseridosComSucesso = "Usuario(s) inserido(s) com sucesso!";
+        public static string MensagemUsuarioNaoInserido = "Usuario(s) não inserido(s)!";
+        public static string MensagemUsuarioListadaComSucesso = "Usuarios listados com sucesso!";
+        public static string MensagemUsuarioNaoListado = "Usuarios não listados!";
+        #endregion
+
         #region ErrorTypes
         public static string DataNaoPreenchida = "DataNaoPreenchida";
         public static string DataRange = "DataRange";
