@@ -10,20 +10,17 @@ namespace SaguiDB.Migrations
             CreateTable(
                 "dbo.Arquivos",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
-                        Stream = c.Binary(),
-                        DataCriacao = c.DateTime(nullable: false),
-                        PathArquivo = c.String(),
-                        Arquivo_GTO_idArquivo_GTO = c.Int(),
-                        GTO_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Arquivo_GTO", t => t.Arquivo_GTO_idArquivo_GTO)
-                .ForeignKey("dbo.GTO", t => t.GTO_Id)
-                .Index(t => t.Arquivo_GTO_idArquivo_GTO)
-                .Index(t => t.GTO_Id);
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Nome = c.String(),
+                    Stream = c.Binary(),
+                    DataCriacao = c.DateTime(nullable: false),
+                    PathArquivo = c.String(),
+                    // GTO_Id = c.Int(),
+                })
+                .PrimaryKey(t => t.Id);
+                //.ForeignKey("dbo.GTO", t => t.GTO_Id)
+                //.Index(t => t.GTO_Id);
             
             CreateTable(
                 "dbo.Arquivo_GTO",
@@ -46,18 +43,12 @@ namespace SaguiDB.Migrations
                         Status = c.Int(nullable: false),
                         Operadora_IdOperadora = c.Int(),
                         Paciente_IdPaciente = c.Int(),
-                        Arquivo_GTO_idArquivo_GTO = c.Int(),
-                        Procedimento_GTO_idProcedimento_GTO = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Operadora", t => t.Operadora_IdOperadora)
                 .ForeignKey("dbo.Paciente", t => t.Paciente_IdPaciente)
-                .ForeignKey("dbo.Arquivo_GTO", t => t.Arquivo_GTO_idArquivo_GTO)
-                .ForeignKey("dbo.Procedimento_GTO", t => t.Procedimento_GTO_idProcedimento_GTO)
                 .Index(t => t.Operadora_IdOperadora)
-                .Index(t => t.Paciente_IdPaciente)
-                .Index(t => t.Arquivo_GTO_idArquivo_GTO)
-                .Index(t => t.Procedimento_GTO_idProcedimento_GTO);
+                .Index(t => t.Paciente_IdPaciente);
             
             CreateTable(
                 "dbo.Operadora",
@@ -76,25 +67,22 @@ namespace SaguiDB.Migrations
                         NomePaciente = c.String(),
                     })
                 .PrimaryKey(t => t.IdPaciente);
-            
+
             CreateTable(
                 "dbo.Procedimentos",
                 c => new
-                    {
-                        IdProcedimento = c.Int(nullable: false, identity: true),
-                        Codigo = c.Int(nullable: false),
-                        NomeProcedimento = c.String(),
-                        ValorProcedimento = c.Double(nullable: false),
-                        Exigencias = c.String(),
-                        Anotacoes = c.String(),
-                        GTO_Id = c.Int(),
-                        Procedimento_GTO_idProcedimento_GTO = c.Int(),
-                    })
-                .PrimaryKey(t => t.IdProcedimento)
-                .ForeignKey("dbo.GTO", t => t.GTO_Id)
-                .ForeignKey("dbo.Procedimento_GTO", t => t.Procedimento_GTO_idProcedimento_GTO)
-                .Index(t => t.GTO_Id)
-                .Index(t => t.Procedimento_GTO_idProcedimento_GTO);
+                {
+                    IdProcedimento = c.Int(nullable: false, identity: true),
+                    Codigo = c.Int(nullable: false),
+                    NomeProcedimento = c.String(),
+                    ValorProcedimento = c.Double(nullable: false),
+                    Exigencias = c.String(),
+                    Anotacoes = c.String(),
+                    //GTO_Id = c.Int(),
+                })
+                .PrimaryKey(t => t.IdProcedimento);
+                //.ForeignKey("dbo.GTO", t => t.GTO_Id)
+                //.Index(t => t.GTO_Id);
             
             CreateTable(
                 "dbo.Plano",
@@ -121,22 +109,14 @@ namespace SaguiDB.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Procedimentos", "Procedimento_GTO_idProcedimento_GTO", "dbo.Procedimento_GTO");
-            DropForeignKey("dbo.GTO", "Procedimento_GTO_idProcedimento_GTO", "dbo.Procedimento_GTO");
-            DropForeignKey("dbo.GTO", "Arquivo_GTO_idArquivo_GTO", "dbo.Arquivo_GTO");
             DropForeignKey("dbo.Procedimentos", "GTO_Id", "dbo.GTO");
             DropForeignKey("dbo.GTO", "Paciente_IdPaciente", "dbo.Paciente");
             DropForeignKey("dbo.GTO", "Operadora_IdOperadora", "dbo.Operadora");
             DropForeignKey("dbo.Arquivos", "GTO_Id", "dbo.GTO");
-            DropForeignKey("dbo.Arquivos", "Arquivo_GTO_idArquivo_GTO", "dbo.Arquivo_GTO");
-            DropIndex("dbo.Procedimentos", new[] { "Procedimento_GTO_idProcedimento_GTO" });
             DropIndex("dbo.Procedimentos", new[] { "GTO_Id" });
-            DropIndex("dbo.GTO", new[] { "Procedimento_GTO_idProcedimento_GTO" });
-            DropIndex("dbo.GTO", new[] { "Arquivo_GTO_idArquivo_GTO" });
             DropIndex("dbo.GTO", new[] { "Paciente_IdPaciente" });
             DropIndex("dbo.GTO", new[] { "Operadora_IdOperadora" });
             DropIndex("dbo.Arquivos", new[] { "GTO_Id" });
-            DropIndex("dbo.Arquivos", new[] { "Arquivo_GTO_idArquivo_GTO" });
             DropTable("dbo.Procedimento_GTO");
             DropTable("dbo.Plano");
             DropTable("dbo.Procedimentos");

@@ -25,6 +25,7 @@ namespace Sagui.Data.Persister.Arquivo
                 if (Convert.ToInt32(newId) > 0)
                 {
                     arquivo.Id = Convert.ToInt32(newId);
+
                 }
             }
             catch (Exception e)

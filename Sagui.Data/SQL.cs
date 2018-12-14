@@ -10,13 +10,11 @@ namespace Sagui.Data
     {
         public static string CreateArquivo = @"
                    INSERT INTO dbo.Arquivos
-                               (Id
-                               ,Nome
+                               (Nome
                                ,DataCriacao
                                ,Stream)
                          VALUES
-                               (@IdGto
-                               ,@Nome
+                               (@Nome
                                ,@DataCriacao
                                ,@Stream);
 
