@@ -48,9 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201811221021104_CREATEDATABASE.cs" />
-    <Compile Include="Migrations\201811221021104_CREATEDATABASE.Designer.cs">
-      <DependentUpon>201811221021104_CREATEDATABASE.cs</DependentUpon>
+    <Compile Include="Migrations\201812141524063_InitialCreate.cs" />
+    <Compile Include="Migrations\201812141524063_InitialCreate.Designer.cs">
+      <DependentUpon>201812141524063_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812141529113_add FK.cs" />
+    <Compile Include="Migrations\201812141529113_add FK.Designer.cs">
+      <DependentUpon>201812141529113_add FK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812141530478_Remove FK.cs" />
+    <Compile Include="Migrations\201812141530478_Remove FK.Designer.cs">
+      <DependentUpon>201812141530478_Remove FK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
@@ -66,8 +74,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811221021104_CREATEDATABASE.resx">
-      <DependentUpon>201811221021104_CREATEDATABASE.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812141524063_InitialCreate.resx">
+      <DependentUpon>201812141524063_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812141529113_add FK.resx">
+      <DependentUpon>201812141529113_add FK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812141530478_Remove FK.resx">
+      <DependentUpon>201812141530478_Remove FK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

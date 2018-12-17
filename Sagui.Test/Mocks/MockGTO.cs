@@ -16,7 +16,7 @@ namespace Sagui.Test.Mocks
             MockArquivos mockArquivos  = new MockArquivos();
 
             RequestGTO Guia = new RequestGTO();
-            Guia.Id = 1;
+            Guia.Id = 10;
             Guia.Numero = 1;
             Guia.Operadora = new Operadora();
             Guia.Operadora.IdOperadora = 1;

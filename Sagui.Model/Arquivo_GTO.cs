@@ -10,10 +10,11 @@ namespace Sagui.Model
    public class Arquivo_GTO
     {
         [Key]
+        public int idArquivo_GTO { get; set; }
         public int idGTO { get; set; }
         public int idArquivo { get; set; }
 
-        public ICollection<GTO> GTO { get; set; }
-        public ICollection<Arquivos> Arquivo { get; set; }
+        //public ICollection<GTO> GTO { get; set; }
+        //public ICollection<Arquivos> Arquivo { get; set; }
     }
 }

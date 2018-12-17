@@ -10,13 +10,11 @@ namespace Sagui.Data
     {
         public static string CreateArquivo = @"
                    INSERT INTO dbo.Arquivos
-                               (IdGto
-                               ,Nome
+                               (Nome
                                ,DataCriacao
                                ,Stream)
                          VALUES
-                               (@IdGto
-                               ,@Nome
+                               (@Nome
                                ,@DataCriacao
                                ,@Stream);
 
@@ -54,8 +52,8 @@ namespace Sagui.Data
                 INSERT INTO dbo.GTO
                            (Numero
                            , Status
-                           , Operadora
-                           , Paciente
+                           , Operadora_IdOperadora
+                           , Paciente_IdPaciente
                            , Solicitacao
                            , Vencimento)
                      VALUES
@@ -72,8 +70,8 @@ namespace Sagui.Data
                             SELECT Id
                                   ,Numero
                                   ,Status
-                                  ,Operadora
-                                  ,Paciente
+                                  ,Operadora_IdOperadora
+                                  ,Paciente_IdPaciente
                                   ,Solicitacao
                                   ,Vencimento
                              FROM sagui.dbo.GTO";
