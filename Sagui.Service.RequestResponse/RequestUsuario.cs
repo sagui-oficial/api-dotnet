@@ -10,4 +10,9 @@ namespace Sagui.Service.RequestResponse
     {
 
     }
+
+    public class RequestUsuarioEspecialista : Model.UsuarioEspecialista
+    {
+
+    }
 }

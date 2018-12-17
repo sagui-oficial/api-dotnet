@@ -52,6 +52,8 @@
     <Compile Include="Plano.cs" />
     <Compile Include="Procedimentos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioBase.cs" />
+    <Compile Include="UsuarioEspecialista.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

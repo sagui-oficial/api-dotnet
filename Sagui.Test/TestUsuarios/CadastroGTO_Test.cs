@@ -31,32 +31,23 @@ namespace Sagui.Test.TestUsuarios
         }
 
 
-        //     [TestMethod]
-        //     public void CadastrarGTO_SemDataSolicitacao()
-        //     {
-        ////         GTO Guia = new GTO();
-        ////         MockGTO mock = new MockGTO();
-        ////         Guia = mock.CriarMockGTO();
-        ////         Guia.Solicitacao = DateTime.MinValue;
-        ////Guia.Vencimento = DateTime.MinValue;
+        [TestMethod]
+        public void CadastrarUsuarioEspecialista()
+        {
+            RequestUsuario requestUsuario = new RequestUsuario();
+            MockUsuario mock = new MockUsuario();
 
-        ////         Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
-        ////         gtoBusiness.Cadastrar(Guia);
-        //     }
+            requestUsuario = mock.CriarMockUsuario();
 
-        //     [TestMethod]
-        //     public void CadastrarGTO_SemDataVencimento()
-        //     {
-        ////         GTO Guia = new GTO();
-        ////         MockGTO mock = new MockGTO();
-        ////         Guia = mock.CriarMockGTO();
-        ////         Guia.Solicitacao = DateTime.MinValue;
-        ////Guia.Vencimento = DateTime.MinValue;
+            UsuarioService usuarioService = new UsuarioService();
 
-        ////         Business.GTO.CadastrarGTOBusiness gtoBusiness = new Business.GTO.CadastrarGTOBusiness();
-        ////         gtoBusiness.Cadastrar(Guia);
-        //     }
+            CriarUsuarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioRequestHandler(usuarioService);
 
+            var response = criarUsuarioRequestHandler.Cadastrar(requestUsuario);
+
+            Assert.IsNotNull(response.Usuario);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+        }
 
     }
 }

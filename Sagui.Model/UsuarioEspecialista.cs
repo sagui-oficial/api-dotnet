@@ -1,15 +1,13 @@
-﻿using Sagui.Model.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Usuario : UsuarioBase
+    public class UsuarioEspecialista : UsuarioBase
     {
-
+        public string CRO { get; set; }
     }
 }
