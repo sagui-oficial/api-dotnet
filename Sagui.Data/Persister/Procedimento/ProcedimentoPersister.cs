@@ -40,9 +40,9 @@ namespace Sagui.Data.Persister.GTO
                 throw new ArgumentNullException(nameof(Procedimentos));
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            //DbParams.Add(nameof(Procedimentos.Anotacoes), Procedimentos.Anotacoes);
+            DbParams.Add(nameof(Procedimentos.Anotacoes), Procedimentos.Anotacoes);
             DbParams.Add(nameof(Procedimentos.Codigo), Procedimentos.Codigo);
-            //DbParams.Add(nameof(Procedimentos.Exigencias), Procedimentos.Exigencias);
+            DbParams.Add(nameof(Procedimentos.Exigencias), Procedimentos.Exigencias);
             DbParams.Add(nameof(Procedimentos.NomeProcedimento), Procedimentos.NomeProcedimento);
             DbParams.Add(nameof(Procedimentos.ValorProcedimento), Procedimentos.ValorProcedimento);
 

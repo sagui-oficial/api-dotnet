@@ -33,14 +33,18 @@ namespace Sagui.Data
 
 
         public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimento
+                    INSERT INTO dbo.Procedimentos
                                (Codigo
                                ,NomeProcedimento
-                               ,ValorProcedimento)
+                               ,ValorProcedimento
+                               ,Exigencias
+                               ,Anotacoes)
                          VALUES
                                (@Codigo
                                ,@NomeProcedimento
-                               ,@ValorProcedimento);
+                               ,@ValorProcedimento
+                               ,@Exigencias
+                               ,@Anotacoes);
 
                             SELECT SCOPE_IDENTITY();";
 
