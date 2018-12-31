@@ -81,11 +81,13 @@ namespace Sagui.Data
                              FROM sagui.dbo.GTO";
 
         public static string ListProcedimento = @"
-                            SELECT Id
+                            SELECT IdProcedimento
                                   ,Codigo
                                   ,NomeProcedimento
                                   ,ValorProcedimento
-                             FROM sagui.dbo.Procedimento";
+                                  ,Exigencias
+                                  ,Anotacoes
+                             FROM sagui.dbo.Procedimentos";
 
         public static string ListUsuario = @"
                             SELECT *
