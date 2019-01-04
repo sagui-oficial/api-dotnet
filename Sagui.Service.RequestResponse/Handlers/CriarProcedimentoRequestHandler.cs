@@ -1,5 +1,6 @@
 ﻿using Sagui.Base.Utils;
 using Sagui.Service.Contracts;
+using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse.Base;
 using Sagui.Service.RequestResponse.ValueObject;
 using System;
@@ -10,50 +11,50 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class CriarProcedimentoRequestHandler : BaseRequestHandler<RequestProcedimento, ResponseProcedimento>
+    public class CriarProcedimentoRequestHandler : IBaseRequestHandler<RequestProcedimento, ResponseProcedimento>
     {
-        private IProcedimentoService IProcedimentoService { get; set; }
+        ProcedimentoService procedimentoService;
         private Business.Validador.Procedimentos.ValidatorProcedimento ValidatorProcedimento { get; set; }
 
-        public CriarProcedimentoRequestHandler(IProcedimentoService _IProcedimentoService)
+        ResponseProcedimento responseProcedimento;
+
+        public CriarProcedimentoRequestHandler(ProcedimentoService _procedimentoService)
         {
-            IProcedimentoService = _IProcedimentoService;
+            procedimentoService = _procedimentoService;
             ValidatorProcedimento = new Business.Validador.Procedimentos.ValidatorProcedimento();
+            responseProcedimento = new ResponseProcedimento();
         }
 
-        public ResponseProcedimento Cadastrar(Model.Procedimentos Procedimentos)
+        public async Task<ResponseProcedimento> Handle(RequestProcedimento Procedimentos)
         {
             var errors = ValidatorProcedimento.Validate(Procedimentos);
 
             if (errors.Count() == 0)
             {
-                var _Procedimento = IProcedimentoService.Cadastrar(Procedimentos);
+                var _Procedimento = procedimentoService.Cadastrar(Procedimentos);
 
                 if (_Procedimento.IdProcedimento != 0)
                 {
-                    ResponseProcedimento responseProcedimento = new ResponseProcedimento();
                     responseProcedimento.Procedimento = _Procedimento;
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Success;
-                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, 
-                                                                                          nameof(Procedimentos), 
+                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
+                                                                                          nameof(Procedimentos),
                                                                                           Constantes.MensagemProcedimentosInseridosComSucesso));
                     return responseProcedimento;
                 }
                 else
                 {
-                    ResponseProcedimento responseProcedimento = new ResponseProcedimento();
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Error;
-                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir, 
-                                                                                nameof(Procedimentos), 
+                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
+                                                                                nameof(Procedimentos),
                                                                                 Constantes.MensagemProcedimentoNaoInserida));
                     return responseProcedimento;
                 }
             }
             else
             {
-                ResponseProcedimento responseProcedimento = new ResponseProcedimento();
                 responseProcedimento.ExecutionDate = DateTime.Now;
                 responseProcedimento.ResponseType = ResponseType.Error;
                 responseProcedimento.Message = errors;

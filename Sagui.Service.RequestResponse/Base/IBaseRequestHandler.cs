@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Base
 {
-    public class BaseRequestHandler<TRequest, TResponse>
+    public interface IBaseRequestHandler<TRequest, TResponse>
     {
-
+        Task<TResponse> Handle(TRequest request);
     }
 }

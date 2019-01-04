@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Base\ICRUDBase.cs" />
     <Compile Include="Contracts\IUsuarioService.cs" />
     <Compile Include="Contracts\IProcedimentoService .cs" />
     <Compile Include="Contracts\IGTOService.cs" />

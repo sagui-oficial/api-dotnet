@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseRequestHandler.cs" />
+    <Compile Include="Base\IBaseRequestHandler.cs" />
     <Compile Include="Base\RequestBase.cs" />
     <Compile Include="Base\ResponseBase.cs" />
     <Compile Include="Handlers\CriarGTORequestHandler.cs" />

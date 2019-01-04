@@ -8,10 +8,10 @@ namespace Sagui.Business.Usuario
 
     public class UsuarioBusiness : BusinessBase
     {
-        public List<Model.Usuario> ListUsuarios(Model.Usuario usuario)
+        public List<Model.Usuario> ListUsuarios()
         {
             UsuarioLookup usuarioLookup = new UsuarioLookup();
-            var listUsuarios = usuarioLookup.ListUsuario(usuario);
+            var listUsuarios = usuarioLookup.ListUsuario();
 
             return listUsuarios;
         }

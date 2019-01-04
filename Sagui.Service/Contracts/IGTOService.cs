@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Sagui.Service.Contracts.Base;
+using System.Collections.Generic;
 
 namespace Sagui.Service.Contracts
 {
-    public interface IGTOService
+    public interface IGTOService<TRequest, TResponse> : ICRUDBase<TResponse, TRequest> where TRequest : class where TResponse : class
     {
-        Model.GTO Cadastrar(Model.GTO GTO);
 
-        List<Model.GTO> ListGTOs(Model.GTO GTO = null);
     }
 }

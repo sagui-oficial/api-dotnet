@@ -11,7 +11,7 @@ namespace Sagui.Data.Lookup.GTO
         //todo: refazer a query para trazer Operadora e Paciente
         //todo: refazer a query para trazer Procedimento da GTO e Arquivo da GTO
 
-        public List<Model.GTO> ListGTO(Model.GTO GTO)
+        public List<Model.GTO> ListGTO()
         {
             List<Model.GTO> ListGTO = new List<Model.GTO>();
 

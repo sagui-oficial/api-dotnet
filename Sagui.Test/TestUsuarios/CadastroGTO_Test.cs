@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Model;
-using Sagui.Service.GTO;
+using Sagui.Service.Usuario;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
@@ -13,7 +14,7 @@ namespace Sagui.Test.TestUsuarios
     public class CadastroUsuario_Test
     {
         [TestMethod]
-        public void CadastrarUsuario()
+        public async Task CadastrarUsuario()
         {
             RequestUsuario requestUsuario = new RequestUsuario();
             MockUsuario mock = new MockUsuario();
@@ -24,7 +25,7 @@ namespace Sagui.Test.TestUsuarios
 
             CriarUsuarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioRequestHandler(usuarioService);
 
-            var response = criarUsuarioRequestHandler.Cadastrar(requestUsuario);
+            var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
 
             Assert.IsNotNull(response.Usuario);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
@@ -32,7 +33,7 @@ namespace Sagui.Test.TestUsuarios
 
 
         [TestMethod]
-        public void CadastrarUsuarioEspecialista()
+        public async Task CadastrarUsuarioEspecialista()
         {
             RequestUsuario requestUsuario = new RequestUsuario();
             MockUsuario mock = new MockUsuario();
@@ -43,7 +44,7 @@ namespace Sagui.Test.TestUsuarios
 
             CriarUsuarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioRequestHandler(usuarioService);
 
-            var response = criarUsuarioRequestHandler.Cadastrar(requestUsuario);
+            var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
 
             Assert.IsNotNull(response.Usuario);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

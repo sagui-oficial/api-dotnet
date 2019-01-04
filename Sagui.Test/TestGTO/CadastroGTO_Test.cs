@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Model;
 using Sagui.Service.GTO;
@@ -13,7 +14,7 @@ namespace Sagui.Test.TestGTO
     public class CadastroGTO_Test
     {
         [TestMethod]
-        public void CadastrarGTO()
+        public async Task CadastrarGTO()
         {
             RequestGTO requestGTO = new RequestGTO();
             MockGTO mock = new MockGTO();
@@ -24,7 +25,7 @@ namespace Sagui.Test.TestGTO
 
             CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
 
-            var response = criarGTORequestHandler.Cadastrar(requestGTO);
+            var response = await criarGTORequestHandler.Handle(requestGTO);
 
             Assert.IsNotNull(response.GTO);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

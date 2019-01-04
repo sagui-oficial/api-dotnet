@@ -8,7 +8,7 @@ namespace Sagui.Data.Lookup.Procedimento
 {
     public class ProcedimentoLookup
     {
-        public List<Model.Procedimentos> ListProcedimento(Model.Procedimentos Procedimentos)
+        public List<Model.Procedimentos> ListProcedimento()
         {
             List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
 

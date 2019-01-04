@@ -8,7 +8,7 @@ namespace Sagui.Data.Lookup.GTO
 {
     public class UsuarioLookup
     {
-        public List<Model.Usuario> ListUsuario(Model.Usuario Usuario)
+        public List<Model.Usuario> ListUsuario()
         {
             List<Model.Usuario> ListUsuario = new List<Model.Usuario>();
 

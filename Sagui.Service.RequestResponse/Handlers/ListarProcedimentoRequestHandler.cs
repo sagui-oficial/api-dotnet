@@ -1,5 +1,6 @@
 ﻿using Sagui.Base.Utils;
 using Sagui.Service.Contracts;
+using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse.Base;
 using Sagui.Service.RequestResponse.ValueObject;
 using System;
@@ -10,25 +11,26 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class ListarProcedimentoRequestHandler : BaseRequestHandler<RequestProcedimento, ResponseProcedimento>
+    public class ListarProcedimentoRequestHandler : IBaseRequestHandler<RequestProcedimento, ResponseProcedimento>
     {
-        private IProcedimentoService IProcedimentoService { get; set; }
+        ProcedimentoService procedimentoService;
         private Business.Validador.Procedimentos.ValidatorProcedimento validatorProcedimento{ get; set; }
 
-        public ListarProcedimentoRequestHandler(IProcedimentoService iProcedimentoService)
+        ResponseProcedimento responseProcedimento;
+
+        public ListarProcedimentoRequestHandler(ProcedimentoService _procedimentoService)
         {
-            IProcedimentoService = iProcedimentoService;
+            procedimentoService = _procedimentoService;
             validatorProcedimento = new Business.Validador.Procedimentos.ValidatorProcedimento();
+            responseProcedimento = new ResponseProcedimento();
         }
 
-
-        public ResponseProcedimento Listar()
+        public async Task<ResponseProcedimento> Handle(RequestProcedimento request)
         {
-            var ListProcedimento = IProcedimentoService.ListProcedimentos();
+            var ListProcedimento = procedimentoService.Listar();
 
             if (ListProcedimento.Count > 0)
             {
-                ResponseProcedimento responseProcedimento = new ResponseProcedimento();
                 responseProcedimento.Procedimentos = ListProcedimento;
                 responseProcedimento.ExecutionDate = DateTime.Now;
                 responseProcedimento.ResponseType = ResponseType.Success;
@@ -37,7 +39,6 @@ namespace Sagui.Service.RequestResponse.Handlers
             }
             else
             {
-                ResponseProcedimento responseProcedimento = new ResponseProcedimento();
                 responseProcedimento.ExecutionDate = DateTime.Now;
                 responseProcedimento.ResponseType = ResponseType.Info;
                 responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemProcedimentoNaoListado));

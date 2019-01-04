@@ -17,26 +17,30 @@ namespace Sagui.Test.TestGTO
     public class ListarProcedimento_Test
     {
         [TestMethod]
-        public void ListarTodosProcedimentos()
+        public async Task ListarTodosProcedimentos()
         {
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
             ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
 
-            var response = listarProcedimentoRequestHandler.Listar();
+            RequestProcedimento requestProcedimento = default(RequestProcedimento);
+
+            var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.Procedimentos.Count > 0 );
+            Assert.IsTrue(response.Procedimentos.Count > 0);
         }
 
         [TestMethod]
-        public void ListarNenhumProcedimento()
+        public async Task ListarNenhumProcedimento()
         {
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
             ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
 
-            var response = listarProcedimentoRequestHandler.Listar();
+            RequestProcedimento requestProcedimento = default(RequestProcedimento);
+
+            var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Info);
             Assert.IsTrue(response.Procedimentos.Count == 0);
