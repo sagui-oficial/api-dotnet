@@ -11,7 +11,7 @@ using Sagui.Service.RequestResponse.Handlers;
 
 namespace Sagui.Application.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("backoffice/[controller]")]
     [ApiController]
     public class GTOController : ControllerBase
     {
@@ -35,14 +35,17 @@ namespace Sagui.Application.Controllers
         {
         }
 
-        [HttpPost]
-        public void Post([FromBody]  RequestGTO requestGTO)
+        
+        [HttpPost("CriarGTO", Name = "CriarGTO")]
+        public async Task<IActionResult> CriarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
 
             CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
 
-            var response = criarGTORequestHandler.Cadastrar(requestGTO);
+            var response = await criarGTORequestHandler.Handle(requestGTO);
+
+            return Ok(response);
         }
 
         // PUT: api/GTO/5
