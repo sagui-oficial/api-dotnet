@@ -10,30 +10,31 @@ namespace Sagui.Test.Mocks
 {
     public class MockUsuario
     {
-        public RequestUsuario CriarMockUsuario()
+        public RequestUsuarioFuncionario CriarMockUsuarioFuncionario()
         {
-            RequestUsuario Usuario = new RequestUsuario();
-            Usuario.Id = 1;
-            Usuario.Nome = "Maria";
-            Usuario.Funcao = "Secretaria";
-            Usuario.Anotacoes = "Faz tudo";
-            Usuario.CPF = "30030030030";
-            Usuario.Email = "aaa@aaa.com.br";
+            RequestUsuarioFuncionario UsuarioFuncionario = new RequestUsuarioFuncionario();
+            UsuarioFuncionario.Id = 1;
+            UsuarioFuncionario.Nome = "Maria";
+            UsuarioFuncionario.Funcao = "Secretaria";
+            UsuarioFuncionario.Anotacoes = "Faz tudo";
+            UsuarioFuncionario.CPF = "30030030030";
+            UsuarioFuncionario.Email = "aaa@aaa.com.br";
 
-            return Usuario;
+            return UsuarioFuncionario;
         }
 
-        public RequestUsuario CriarMockUsuarioEspecialista()
+        public RequestUsuarioDentista CriarMockUsuarioDentista()
         {
-            RequestUsuario Usuario = new RequestUsuario();
-            Usuario.Id = 1;
-            Usuario.Nome = "Maria";
-            Usuario.Funcao = "Secretaria";
-            Usuario.Anotacoes = "Faz tudo";
-            Usuario.CPF = "30030030030";
-            Usuario.Email = "aaa@aaa.com.br";
+            RequestUsuarioDentista UsuarioDentista = new RequestUsuarioDentista();
+            UsuarioDentista.Id = 1;
+            UsuarioDentista.Nome = "Maria";
+            UsuarioDentista.Funcao = "Secretaria";
+            UsuarioDentista.Anotacoes = "Faz tudo";
+            UsuarioDentista.CPF = "30030030030";
+            UsuarioDentista.Email = "aaa@aaa.com.br";
+            UsuarioDentista.CRO = "CRO0001111";
 
-            return Usuario;
+            return UsuarioDentista;
         }
     }
 }

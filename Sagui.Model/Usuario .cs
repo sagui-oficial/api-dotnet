@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Usuario : UsuarioBase
+    public class Funcionario : UsuarioBase
     {
 
     }

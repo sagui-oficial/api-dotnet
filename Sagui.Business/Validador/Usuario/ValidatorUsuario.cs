@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 
 namespace Sagui.Business.Validador.Usuario
 {
-    public class ValidatorUsuario : Validador<Model.Usuario>
+    public class ValidatorUsuarioBase : Validador<Model.UsuarioBase>
     {
-        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Usuario usuario)
+        public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.UsuarioBase usuario)
         {
-            ErrorsResult = validadorCampo.HandleValidation(usuario.Anotacoes, nameof(usuario.Anotacoes), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(usuario.Funcao, nameof(usuario.Funcao), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(usuario.Nome, nameof(usuario.Nome), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(usuario.CPF, nameof(usuario.CPF), ref ErrorsResult);
-
             ErrorsResult = validadorCampo.HandleValidation(usuario.Email, nameof(usuario.Email), ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(usuario.Email, nameof(usuario.Telefone), ref ErrorsResult);
 
             return ErrorsResult;
         }

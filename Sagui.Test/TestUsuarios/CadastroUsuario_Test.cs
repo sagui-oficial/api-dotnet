@@ -14,18 +14,18 @@ namespace Sagui.Test.TestUsuarios
     public class CadastroUsuario_Test
     {
         [TestMethod]
-        public async Task CadastrarUsuario()
+        public async Task CadastrarFuncionario()
         {
-            RequestUsuario requestUsuario = new RequestUsuario();
+            RequestUsuarioFuncionario requestUsuarioFuncionario = new RequestUsuarioFuncionario();
             MockUsuario mock = new MockUsuario();
 
-            requestUsuario = mock.CriarMockUsuario();
+            requestUsuarioFuncionario = mock.CriarMockUsuarioFuncionario();
 
             UsuarioService usuarioService = new UsuarioService();
 
-            CriarUsuarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioRequestHandler(usuarioService);
+            CriarUsuarioFuncionarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioFuncionarioRequestHandler(usuarioService);
 
-            var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
+            var response = await criarUsuarioRequestHandler.Handle(requestUsuarioFuncionario);
 
             Assert.IsNotNull(response.Usuario);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
@@ -33,16 +33,16 @@ namespace Sagui.Test.TestUsuarios
 
 
         [TestMethod]
-        public async Task CadastrarUsuarioEspecialista()
+        public async Task CadastrarDentista()
         {
-            RequestUsuario requestUsuario = new RequestUsuario();
+            RequestUsuarioDentista requestUsuario = new RequestUsuarioDentista();
             MockUsuario mock = new MockUsuario();
 
-            requestUsuario = mock.CriarMockUsuario();
+            requestUsuario = mock.CriarMockUsuarioDentista();
 
             UsuarioService usuarioService = new UsuarioService();
 
-            CriarUsuarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioRequestHandler(usuarioService);
+            CriarUsuarioDentistaRequestHandler criarUsuarioRequestHandler = new CriarUsuarioDentistaRequestHandler(usuarioService);
 
             var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
 
