@@ -48,8 +48,9 @@
     <Compile Include="GTO\GTOService.cs" />
     <Compile Include="Procedimento\ProcedimentoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuario\UsuarioServiceEspecialista.cs" />
-    <Compile Include="Usuario\UsuarioService.cs" />
+    <Compile Include="Usuario\UsuarioPacienteService.cs" />
+    <Compile Include="Usuario\UsuarioDentistaService.cs" />
+    <Compile Include="Usuario\UsuarioFuncionarioService.cs" />
     <Compile Include="ValueObject\ResponseType.cs" />
   </ItemGroup>
   <ItemGroup>

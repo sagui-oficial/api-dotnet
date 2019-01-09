@@ -6,11 +6,11 @@ using Sagui.Data.Persister.GTO;
 namespace Sagui.Business.Usuario
 {
 
-    public class UsuarioDentistaaBusiness : BusinessBase
+    public class UsuarioDentistaBusiness : BusinessBase
     {
         public List<Model.Dentinsta> ListUsuarios()
         {
-            UsuarioLookup usuarioLookup = new UsuarioLookup();
+            UsuarioDentistaLookup usuarioLookup = new UsuarioDentistaLookup();
             var listUsuarios = usuarioLookup.ListUsuarioDentista();
 
             return listUsuarios;

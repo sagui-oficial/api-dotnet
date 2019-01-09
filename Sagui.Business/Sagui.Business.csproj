@@ -43,8 +43,9 @@
     <Compile Include="Base\BusinessBase.cs" />
     <Compile Include="GTO\GTOBusiness.cs" />
     <Compile Include="Procedimento\ProcedimentoBusiness.cs" />
-    <Compile Include="Usuario\UsuarioEspecialistaBusiness.cs" />
-    <Compile Include="Usuario\UsuarioBusiness.cs" />
+    <Compile Include="Usuario\UsuarioDentistaBusiness.cs" />
+    <Compile Include="Usuario\UsuarioPacienteBusiness.cs" />
+    <Compile Include="Usuario\UsuarioFuncionarioBusiness.cs" />
     <Compile Include="Validador\Arquivos\ValidadorArquivo.cs" />
     <Compile Include="Validador\Base\IValidador.cs" />
     <Compile Include="Validador\Base\IValidadorBase.cs" />
@@ -57,7 +58,8 @@
     <Compile Include="Validador\Operadora\ValidadorOperadora.cs" />
     <Compile Include="Validador\Paciente\ValidadorPaciente.cs" />
     <Compile Include="Validador\Procedimentos\ValidatorProcedimento.cs" />
-    <Compile Include="Validador\Usuario\ValidatorUsuarioEspecialista.cs" />
+    <Compile Include="Validador\Usuario\ValidatorUsuarioPaciente.cs" />
+    <Compile Include="Validador\Usuario\ValidatorUsuarioDentista.cs" />
     <Compile Include="Validador\Usuario\ValidatorUsuario.cs" />
     <Compile Include="Validador\Validador.cs" />
     <Compile Include="Validador\ValidadorCampo.cs" />

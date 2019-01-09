@@ -30,7 +30,7 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Operadora = new Model.Operadora();
                         _GTO.Operadora.IdOperadora = Convert.ToInt32(reader["Operadora"]);
                         _GTO.Paciente = new Model.Paciente();
-                        _GTO.Paciente.IdPaciente = Convert.ToInt32(reader["Paciente"]);
+                        _GTO.Paciente.Id = Convert.ToInt32(reader["Paciente"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         ListGTO.Add(_GTO);

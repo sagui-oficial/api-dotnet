@@ -22,7 +22,7 @@ namespace Sagui.Business.Validador.Paciente
 
         public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Paciente paciente)
         {
-            ErrorsResult = validadorCampo.HandleValidation(paciente.NomePaciente, nameof(paciente.NomePaciente), ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(paciente.Nome, nameof(paciente.Nome), ref ErrorsResult);
 
             return ErrorsResult;
         }

@@ -44,16 +44,16 @@
     <Compile Include="Arquivos.cs" />
     <Compile Include="Arquivo_GTO.cs" />
     <Compile Include="Base\BaseModel.cs" />
-    <Compile Include="Usuario .cs" />
+    <Compile Include="UsuarioPaciente.cs" />
+    <Compile Include="UsuarioFuncionario .cs" />
     <Compile Include="Procedimento_GTO.cs" />
     <Compile Include="GTO.cs" />
     <Compile Include="Operadora.cs" />
-    <Compile Include="Paciente.cs" />
     <Compile Include="Plano.cs" />
     <Compile Include="Procedimentos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioBase.cs" />
-    <Compile Include="UsuarioEspecialista.cs" />
+    <Compile Include="UsuarioDentista.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

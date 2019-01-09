@@ -43,8 +43,8 @@ namespace Sagui.Business.Validador.GTO
             }
             else
             {
-                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.IdPaciente, nameof(gto.Paciente.IdPaciente), ref ErrorsResult);
-                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.NomePaciente, nameof(gto.Paciente.NomePaciente), ref ErrorsResult);
+                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Id, nameof(gto.Paciente.Id), ref ErrorsResult);
+                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Nome, nameof(gto.Paciente.Nome), ref ErrorsResult);
             }
 
             if (gto.Procedimentos.Count == 0)

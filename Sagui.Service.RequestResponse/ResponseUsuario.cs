@@ -9,13 +9,19 @@ namespace Sagui.Service.RequestResponse
 {
     public class ResponseUsuarioFuncionario : ResponseBase
     {
-        public Model.Funcionario Usuario { get; set; }
-        public List<Model.Funcionario> Usuarios { get; set; }
+        public Model.Funcionario Funcionario { get; set; }
+        public List<Model.Funcionario> Funcionarios { get; set; }
     }
 
     public class ResponseUsuarioDentista : ResponseBase
     {
-        public Model.Dentinsta Usuario { get; set; }
-        public List<Model.Dentinsta> Usuarios { get; set; }
+        public Model.Dentinsta Dentinsta { get; set; }
+        public List<Model.Dentinsta> Dentinstas { get; set; }
+    }
+
+    public class ResponseUsuarioPaciente : ResponseBase
+    {
+        public Model.Paciente Paciente { get; set; }
+        public List<Model.Paciente> Pacientes { get; set; }
     }
 }

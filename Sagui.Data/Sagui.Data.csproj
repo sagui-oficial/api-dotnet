@@ -46,7 +46,9 @@
     <Compile Include="Base\DataBase.cs" />
     <Compile Include="Lookup\GTO\GTOLookup.cs" />
     <Compile Include="Lookup\Procedimento\ProcedimentoLookup.cs" />
-    <Compile Include="Lookup\Usuario\UsuarioLookup.cs" />
+    <Compile Include="Lookup\Usuario\UsuarioDentistaLookup.cs" />
+    <Compile Include="Lookup\Usuario\UsuarioPacienteLookup.cs" />
+    <Compile Include="Lookup\Usuario\UsuarioFuncionarioLookup.cs" />
     <Compile Include="Persister\Arquivo\ArquivoPersister.cs" />
     <Compile Include="Persister\GTO\GTOPersister.cs" />
     <Compile Include="Persister\Procedimento\ProcedimentoGTOPersister.cs" />

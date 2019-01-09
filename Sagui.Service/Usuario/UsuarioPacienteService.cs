@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Sagui.Service.Usuario
 {
-    public class UsuarioServiceEspecialista : IUsuarioService<Model.Dentinsta, Model.Dentinsta>
+    public class UsuarioPacienteService : IUsuarioService<Model.Paciente, Model.Paciente>
     {
-        public Model.Dentinsta Atualizar(Model.Dentinsta model)
+        public Model.Paciente Atualizar(Model.Paciente model)
         {
             throw new System.NotImplementedException();
         }
 
-        public Model.Dentinsta Cadastrar(Model.Dentinsta Usuario)
+        public Model.Paciente Cadastrar(Model.Paciente Usuario)
         {
-            using (var usuarioBusiness = new Business.Usuario.UsuarioBusiness())
+            using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
             {
                 var _return = usuarioBusiness.Cadastrar(Usuario);
                 usuarioBusiness.Dispose();
@@ -20,16 +20,16 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public Model.Dentinsta Deletar(Model.Dentinsta model)
+        public Model.Paciente Deletar(Model.Paciente model)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<Model.Dentinsta> Listar()
+        public List<Model.Paciente> Listar()
         {
-            using (var usuarioBusiness = new Business.Usuario.UsuarioBusiness())
+            using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
             {
-                var _return = usuarioBusiness.ListUsuariosDentista();
+                var _return = usuarioBusiness.ListUsuarios();
                 usuarioBusiness.Dispose();
                 return _return;
             }

@@ -15,4 +15,9 @@ namespace Sagui.Service.RequestResponse
     {
 
     }
+
+    public class RequestUsuarioPaciente : Model.Paciente
+    {
+
+    }
 }

@@ -36,5 +36,27 @@ namespace Sagui.Test.Mocks
 
             return UsuarioDentista;
         }
+
+
+        public RequestUsuarioPaciente CriarMockUsuarioPaciente()
+        {
+            RequestUsuarioPaciente UsuarioPaciente = new RequestUsuarioPaciente();
+            UsuarioPaciente.Id = 1;
+            UsuarioPaciente.Nome = "Maria";
+            UsuarioPaciente.Funcao = "Secretaria";
+            UsuarioPaciente.Anotacoes = "Faz tudo";
+            UsuarioPaciente.CPF = "30030030030";
+            UsuarioPaciente.Email = "aaa@aaa.com.br";
+            UsuarioPaciente.Plano = new Plano
+            {
+                CNPJ = "0000000000000",
+                NomeFantasia = "Plano",
+                PlanoId = 1,
+                RazaoSocial = "Plano SA"
+            };
+            UsuarioPaciente.NumeroPlano = "123456789";
+
+            return UsuarioPaciente;
+        }
     }
 }

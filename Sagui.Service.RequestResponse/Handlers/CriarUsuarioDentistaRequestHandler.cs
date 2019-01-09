@@ -12,23 +12,26 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class CriarUsuarioFuncionarioRequestHandler : IBaseRequestHandler<RequestUsuarioFuncionario, ResponseUsuarioFuncionario>
+    public class CriarUsuarioDentistaRequestHandler : IBaseRequestHandler<RequestUsuarioDentista, ResponseUsuarioDentista>
     {
-        private UsuarioService usuarioService;
+        private UsuarioDentistaService usuarioService;
+        private Business.Validador.Usuario.ValidatorUsuarioDentista ValidatorUsuario;
         private Business.Validador.Usuario.ValidatorUsuarioBase ValidatorUsuarioBase;
 
-        ResponseUsuarioFuncionario responseUsuario;
+        ResponseUsuarioDentista responseUsuario;
 
-        public CriarUsuarioFuncionarioRequestHandler(UsuarioService _UsuarioService)
+        public CriarUsuarioDentistaRequestHandler(UsuarioDentistaService _UsuarioService)
         {
             usuarioService = _UsuarioService;
+            ValidatorUsuario = new Business.Validador.Usuario.ValidatorUsuarioDentista();
             ValidatorUsuarioBase = new Business.Validador.Usuario.ValidatorUsuarioBase();
-            responseUsuario = new ResponseUsuarioFuncionario();
+            responseUsuario = new ResponseUsuarioDentista();
         }
 
-        public async Task<ResponseUsuarioFuncionario> Handle(RequestUsuarioFuncionario Usuario)
+        public async Task<ResponseUsuarioDentista> Handle(RequestUsuarioDentista Usuario)
         {
             var errors = ValidatorUsuarioBase.Validate(Usuario);
+            errors = ValidatorUsuario.Validate(Usuario);
 
             if (errors.Count() == 0)
             {
@@ -36,7 +39,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
                 if (_Usuario.Id != 0)
                 {
-                    responseUsuario.Usuario = _Usuario;
+                    responseUsuario.Dentinsta = _Usuario;
                     responseUsuario.ExecutionDate = DateTime.Now;
                     responseUsuario.ResponseType = ResponseType.Success;
                     responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
@@ -64,3 +67,4 @@ namespace Sagui.Service.RequestResponse.Handlers
         }
     }
 }
+
