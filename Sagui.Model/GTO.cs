@@ -12,7 +12,7 @@ namespace Sagui.Model
     {   [Key]
         public int Id { get; set; }
         public int Numero { get; set; }
-        public Operadora Operadora { get; set; }
+        public PlanoOperadora PlanoOperadora { get; set; }
         public Paciente Paciente { get; set; }
         public List<Arquivos> Arquivos { get; set; }
         public DateTime Solicitacao { get; set; }

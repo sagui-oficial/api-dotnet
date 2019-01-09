@@ -46,6 +46,7 @@
     <Compile Include="Contracts\IProcedimentoService .cs" />
     <Compile Include="Contracts\IGTOService.cs" />
     <Compile Include="GTO\GTOService.cs" />
+    <Compile Include="PlanoOperadora\PlanoOperadoraService.cs" />
     <Compile Include="Procedimento\ProcedimentoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\UsuarioPacienteService.cs" />

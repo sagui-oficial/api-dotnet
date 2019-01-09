@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sagui.Data.Persister.GTO
+namespace Sagui.Data.Persister.Usuario
 {
     public class UsuarioPersister: PersisterBase
     {

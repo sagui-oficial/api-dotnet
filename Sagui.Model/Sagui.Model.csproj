@@ -48,8 +48,7 @@
     <Compile Include="UsuarioFuncionario .cs" />
     <Compile Include="Procedimento_GTO.cs" />
     <Compile Include="GTO.cs" />
-    <Compile Include="Operadora.cs" />
-    <Compile Include="Plano.cs" />
+    <Compile Include="PlanoOperadora.cs" />
     <Compile Include="Procedimentos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioBase.cs" />

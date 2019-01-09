@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Plano
+    public class PlanoOperadora : Base.BaseModel
     {[Key]
-        public int PlanoId { get; set; }
+        public int Id { get; set; }
         public string NomeFantasia { get; set; }
         public string RazaoSocial { get; set; }
         public string CNPJ { get; set; }
+        public DateTime DataEnvioLote { get; set; }
+        public DateTime DataRecebimentoLote { get; set; }
+        public List<Procedimentos> ListaProcedimentos { get; set; }
+        public List<Arquivos> ListaArquivos { get; set; }
     }
 }

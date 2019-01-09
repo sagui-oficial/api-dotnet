@@ -13,7 +13,7 @@ namespace Sagui.Business.Validador.Usuario
     {
         public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Paciente usuario)
         {
-            if (usuario.Plano == null)
+            if (usuario.PlanoOperadora == null)
             {
 
             }

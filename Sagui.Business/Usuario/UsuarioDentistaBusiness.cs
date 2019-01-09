@@ -2,6 +2,7 @@
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.GTO;
+using Sagui.Data.Persister.Usuario;
 
 namespace Sagui.Business.Usuario
 {
