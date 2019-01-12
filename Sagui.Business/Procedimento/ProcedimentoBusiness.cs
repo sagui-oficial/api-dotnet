@@ -29,5 +29,31 @@ namespace Sagui.Business.Procedimento
 
             return responseProcedimento;
         }
+
+        public Model.Procedimentos Deletar(Model.Procedimentos procedimento)
+        {
+            ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
+            procedimentoPersister.DeletarProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+
+            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
+            responseProcedimento = procedimento;
+
+            dataInfrastructure.Dispose();
+
+            return responseProcedimento;
+        }
+
+        public Model.Procedimentos Atualizar(Model.Procedimentos procedimento)
+        {
+            ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
+            procedimentoPersister.AtualizarProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+
+            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
+            responseProcedimento = procedimento;
+
+            dataInfrastructure.Dispose();
+
+            return responseProcedimento;
+        }
     }
 }

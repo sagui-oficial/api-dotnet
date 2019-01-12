@@ -22,9 +22,14 @@ namespace Sagui.Service.Procedimento
             }
         }
 
-        public Procedimentos Deletar(Procedimentos model)
+        public Procedimentos Deletar(Model.Procedimentos Procedimento)
         {
-            throw new NotImplementedException();
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.Deletar(Procedimento);
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
         }
 
         public List<Procedimentos> Listar()

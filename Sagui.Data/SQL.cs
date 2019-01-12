@@ -89,6 +89,19 @@ namespace Sagui.Data
                                   ,Anotacoes
                              FROM sagui.dbo.Procedimentos";
 
+        public static string DeleteProcedimento = @"
+                            DELETE FROM sagui.dbo.Procedimentos
+                            WHERE IdProcedimento = @IdProcedimento";
+
+        public static string UpdateProcedimento = @"
+                            UPDATE  sagui.dbo.Procedimentos
+                                    SET Codigo = @Codigo
+                                      ,NomeProcedimento = @NomeProcedimento
+                                      ,ValorProcedimento = @ValorProcedimento
+                                      ,Exigencias = @Exigencias
+                                      ,Anotacoes = @Anotacoes
+                            WHERE IdProcedimento = @IdProcedimento";
+
         public static string ListUsuario = @"
                             SELECT *
                              FROM sagui.dbo.usuarios";

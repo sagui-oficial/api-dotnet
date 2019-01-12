@@ -9,11 +9,17 @@ namespace Sagui.Data.Persister.GTO
 {
     public class ProcedimentoPersister
     {
-        public Model.Procedimentos UpdateProcedimento(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
+        public Model.Procedimentos AtualizarProcedimento(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
         {
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add(nameof(Procedimentos.IdProcedimento), Procedimentos.IdProcedimento);
+            DbParams.Add(nameof(Procedimentos.Anotacoes), Procedimentos.Anotacoes);
+            DbParams.Add(nameof(Procedimentos.Codigo), Procedimentos.Codigo);
+            DbParams.Add(nameof(Procedimentos.Exigencias), Procedimentos.Exigencias);
+            DbParams.Add(nameof(Procedimentos.NomeProcedimento), Procedimentos.NomeProcedimento);
+            DbParams.Add(nameof(Procedimentos.ValorProcedimento), Procedimentos.ValorProcedimento);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateProcedimento, DbParams))
             {
                 _dataInfrastructure = dataInfrastructure;
             }
@@ -22,11 +28,15 @@ namespace Sagui.Data.Persister.GTO
         }
 
 
-        public Model.Procedimentos DeleteGTO(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
+        public Model.Procedimentos DeletarProcedimento(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
         {
-            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            if (Procedimentos == null)
+                throw new ArgumentNullException(nameof(Procedimentos));
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add(nameof(Procedimentos.IdProcedimento), Procedimentos.IdProcedimento);
+
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteProcedimento, DbParams))
             {
                 _dataInfrastructure = dataInfrastructure;
             }
