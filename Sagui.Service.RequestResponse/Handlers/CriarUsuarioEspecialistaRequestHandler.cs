@@ -12,23 +12,23 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class CriarUsuarioFuncionarioRequestHandler : IBaseRequestHandler<RequestUsuarioFuncionario, ResponseUsuarioFuncionario>
+    public class CriarUsuarioDentistaRequestHandler : IBaseRequestHandler<RequestUsuarioDentista, ResponseUsuarioDentista>
     {
         private UsuarioService usuarioService;
-        private Business.Validador.Usuario.ValidatorUsuarioBase ValidatorUsuarioBase;
+        private Business.Validador.Usuario.ValidatorUsuarioDentista ValidatorUsuario;
 
-        ResponseUsuarioFuncionario responseUsuario;
+        ResponseUsuarioDentista responseUsuario;
 
-        public CriarUsuarioFuncionarioRequestHandler(UsuarioService _UsuarioService)
+        public CriarUsuarioDentistaRequestHandler(UsuarioService _UsuarioService)
         {
             usuarioService = _UsuarioService;
-            ValidatorUsuarioBase = new Business.Validador.Usuario.ValidatorUsuarioBase();
-            responseUsuario = new ResponseUsuarioFuncionario();
+            ValidatorUsuario = new Business.Validador.Usuario.ValidatorUsuarioDentista();
+            responseUsuario = new ResponseUsuarioDentista();
         }
 
-        public async Task<ResponseUsuarioFuncionario> Handle(RequestUsuarioFuncionario Usuario)
+        public async Task<ResponseUsuarioDentista> Handle(RequestUsuarioDentista Usuario)
         {
-            var errors = ValidatorUsuarioBase.Validate(Usuario);
+            var errors = ValidatorUsuario.Validate(Usuario);
 
             if (errors.Count() == 0)
             {

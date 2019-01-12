@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sagui.POC", "Sagui.POC\Sagu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sagui.DB", "SaguiDB\Sagui.DB.csproj", "{56C89952-FC99-4F83-A12F-CC35700BB389}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sagui.Application", "Sagui.Application\Sagui.Application.csproj", "{020E6CB1-8284-4B2F-9331-D465CA1216CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{56C89952-FC99-4F83-A12F-CC35700BB389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56C89952-FC99-4F83-A12F-CC35700BB389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56C89952-FC99-4F83-A12F-CC35700BB389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{020E6CB1-8284-4B2F-9331-D465CA1216CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{020E6CB1-8284-4B2F-9331-D465CA1216CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{020E6CB1-8284-4B2F-9331-D465CA1216CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{020E6CB1-8284-4B2F-9331-D465CA1216CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

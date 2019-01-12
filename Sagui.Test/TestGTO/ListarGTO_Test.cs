@@ -16,26 +16,30 @@ namespace Sagui.Test.TestGTO
     public class ListarGTO_Test
     {
         [TestMethod]
-        public void ListarTodasGTO()
+        public async Task ListarTodasGTO()
         {
             GTOService gTOService = new GTOService();
 
             ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
 
-            var response = listarGTORequestHandler.Listar();
+            RequestGTO requestGTO = default(RequestGTO);
+
+            var response = await listarGTORequestHandler.Handle(requestGTO);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
             Assert.IsTrue(response.GTOs.Count > 0 );
         }
 
         [TestMethod]
-        public void ListarNenhumsGTO()
+        public async Task ListarNenhumsGTO()
         {
             GTOService gTOService = new GTOService();
 
             ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
 
-            var response = listarGTORequestHandler.Listar();
+            RequestGTO requestGTO = default(RequestGTO);
+
+            var response = await listarGTORequestHandler.Handle(requestGTO);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Info);
             Assert.IsTrue(response.GTOs.Count == 0);

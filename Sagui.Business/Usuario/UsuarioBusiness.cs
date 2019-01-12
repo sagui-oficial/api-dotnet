@@ -8,21 +8,42 @@ namespace Sagui.Business.Usuario
 
     public class UsuarioBusiness : BusinessBase
     {
-        public List<Model.Usuario> ListUsuarios(Model.Usuario usuario)
+        public List<Model.Dentinsta> ListUsuariosDentista()
         {
             UsuarioLookup usuarioLookup = new UsuarioLookup();
-            var listUsuarios = usuarioLookup.ListUsuario(usuario);
+            var listUsuarios = usuarioLookup.ListUsuarioDentista();
 
             return listUsuarios;
         }
 
-        public Model.Usuario Cadastrar(Model.Usuario usuario)
+        public List<Model.Funcionario> ListUsuariosFuncionario()
+        {
+            UsuarioLookup usuarioLookup = new UsuarioLookup();
+            var listUsuarios = usuarioLookup.ListUsuarioFuncionario();
+
+            return listUsuarios;
+        }
+
+        public Model.Funcionario Cadastrar(Model.Funcionario usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.SaveUsuario(usuario, out Data.DataInfrastructure dataInfrastructure);
+            usuarioPersister.SaveUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
 
-            Model.Usuario responseUsuario = new Model.Usuario();
-            responseUsuario = usuario;
+            Model.Funcionario responseUsuario = new Model.Funcionario();
+            responseUsuario = usuarioFuncionario;
+
+            dataInfrastructure.Dispose();
+
+            return responseUsuario;
+        }
+
+        public Model.Dentinsta Cadastrar(Model.Dentinsta usuarioDentista)
+        {
+            UsuarioPersister usuarioPersister = new UsuarioPersister();
+            usuarioPersister.SaveUsuario(usuarioDentista, out Data.DataInfrastructure dataInfrastructure);
+
+            Model.Dentinsta responseUsuario = new Model.Dentinsta();
+            responseUsuario = usuarioDentista;
 
             dataInfrastructure.Dispose();
 

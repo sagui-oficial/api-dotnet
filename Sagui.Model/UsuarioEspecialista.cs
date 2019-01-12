@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class UsuarioEspecialista : UsuarioBase
+    public class Dentinsta : UsuarioBase
     {
         public string CRO { get; set; }
     }

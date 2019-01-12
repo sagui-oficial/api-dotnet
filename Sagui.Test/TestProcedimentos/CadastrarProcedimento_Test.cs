@@ -16,7 +16,7 @@ namespace Sagui.Test.TestProcedimentos
     public class CadastrarProcedimento_Test
     {
         [TestMethod]
-        public void CadastrarProcedimento()
+        public async Task CadastrarProcedimento()
         {
             RequestProcedimento requestProcedimento = new RequestProcedimento();
             MockProcedimento mock = new MockProcedimento();
@@ -27,7 +27,7 @@ namespace Sagui.Test.TestProcedimentos
 
             CriarProcedimentoRequestHandler criarProcedimentoRequestHandler = new CriarProcedimentoRequestHandler(procedimentoService);
 
-            var response = criarProcedimentoRequestHandler.Cadastrar(requestProcedimento);
+            var response = await criarProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsNotNull(response.Procedimento);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

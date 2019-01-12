@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse
 {
-    public class RequestUsuario : Model.Usuario
+    public class RequestUsuarioFuncionario : Model.Funcionario
     {
 
     }
 
-    public class RequestUsuarioEspecialista : Model.UsuarioEspecialista
+    public class RequestUsuarioDentista : Model.Dentinsta
     {
 
     }

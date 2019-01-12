@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sagui.Application.Infra;
 using Sagui.Service.Contracts;
 using Sagui.Service.GTO;
 using Sagui.Service.RequestResponse;
@@ -11,9 +12,10 @@ using Sagui.Service.RequestResponse.Handlers;
 
 namespace Sagui.Application.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("backoffice/[controller]")]
+    [Produces ("application/json")]
     [ApiController]
-    public class GTOController : ControllerBase
+    public class GTOController : Controller
     {
         // GET: api/GTO
         [HttpGet]
@@ -35,14 +37,17 @@ namespace Sagui.Application.Controllers
         {
         }
 
-        [HttpPost]
-        public void Post([FromBody]  RequestGTO requestGTO)
+        
+        [HttpPost("CriarGTO", Name = "CriarGTO")]
+        
+        public async Task<IActionResult> CriarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
 
             CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
 
-            var response = criarGTORequestHandler.Cadastrar(requestGTO);
+            return await this.HandleRequest(criarGTORequestHandler, requestGTO);
+
         }
 
         // PUT: api/GTO/5

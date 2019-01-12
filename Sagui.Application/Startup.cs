@@ -41,7 +41,7 @@ namespace Sagui.Application
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

@@ -13,10 +13,10 @@ namespace Sagui.Business.GTO
 
     public class GTOBusiness : BusinessBase
     {
-        public List<Model.GTO> ListGTOs(Model.GTO gto)
+        public List<Model.GTO> ListGTOs()
         {
             GTOLookup gtoLookup = new GTOLookup();
-            var listGTO = gtoLookup.ListGTO(gto);
+            var listGTO = gtoLookup.ListGTO();
 
             return listGTO;
         }
