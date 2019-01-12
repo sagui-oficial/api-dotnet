@@ -65,6 +65,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Mocks\MockPlanosOperadoras.cs" />
     <Compile Include="Mocks\MockArquivos.cs" />
     <Compile Include="Mocks\MockUsuario.cs" />
     <Compile Include="Mocks\MockProcedimento.cs" />
@@ -98,7 +99,6 @@
   <ItemGroup>
     <Folder Include="TestOperadora\" />
     <Folder Include="TestPaciente\" />
-    <Folder Include="TestPlanos\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

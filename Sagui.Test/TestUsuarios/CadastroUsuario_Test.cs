@@ -21,13 +21,13 @@ namespace Sagui.Test.TestUsuarios
 
             requestUsuarioFuncionario = mock.CriarMockUsuarioFuncionario();
 
-            UsuarioService usuarioService = new UsuarioService();
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
             CriarUsuarioFuncionarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioFuncionarioRequestHandler(usuarioService);
 
             var response = await criarUsuarioRequestHandler.Handle(requestUsuarioFuncionario);
 
-            Assert.IsNotNull(response.Usuario);
+            Assert.IsNotNull(response.Funcionario);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
 
@@ -40,13 +40,32 @@ namespace Sagui.Test.TestUsuarios
 
             requestUsuario = mock.CriarMockUsuarioDentista();
 
-            UsuarioService usuarioService = new UsuarioService();
+            UsuarioDentistaService usuarioService = new UsuarioDentistaService();
 
             CriarUsuarioDentistaRequestHandler criarUsuarioRequestHandler = new CriarUsuarioDentistaRequestHandler(usuarioService);
 
             var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
 
-            Assert.IsNotNull(response.Usuario);
+            Assert.IsNotNull(response.Dentinstas);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+        }
+
+
+        [TestMethod]
+        public async Task CadastrarPaciente()
+        {
+            RequestUsuarioPaciente requestUsuario = new RequestUsuarioPaciente();
+            MockUsuario mock = new MockUsuario();
+
+            requestUsuario = mock.CriarMockUsuarioPaciente();
+
+            UsuarioPacienteService usuarioService = new UsuarioPacienteService();
+
+            CriarUsuarioPacienteRequestHandler criarUsuarioRequestHandler = new CriarUsuarioPacienteRequestHandler(usuarioService);
+
+            var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
+
+            Assert.IsNotNull(response.Paciente);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
 

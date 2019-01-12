@@ -28,13 +28,13 @@ namespace Sagui.Business.Validador.GTO
             ErrorsResult = validadorCampo.HandleValidation(gto.Status, nameof(gto.Status), ref ErrorsResult);
 
 
-            if (gto.Operadora == null)
+            if (gto.PlanoOperadora == null)
             {
-                ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.OperadoraNaoinformada, nameof(gto.Operadora), Constantes.MensagemOperadoraNaoinformada));
+                ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.OperadoraNaoinformada, nameof(gto.PlanoOperadora), Constantes.MensagemOperadoraNaoinformada));
             }
             else
             {
-                ErrorsResult = validadorCampo.HandleValidation(gto.Operadora.IdOperadora, nameof(gto.Operadora.IdOperadora), ref ErrorsResult);
+                ErrorsResult = validadorCampo.HandleValidation(gto.PlanoOperadora.Id, nameof(gto.PlanoOperadora.Id), ref ErrorsResult);
             }
 
             if (gto.Paciente == null)
@@ -43,8 +43,8 @@ namespace Sagui.Business.Validador.GTO
             }
             else
             {
-                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.IdPaciente, nameof(gto.Paciente.IdPaciente), ref ErrorsResult);
-                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.NomePaciente, nameof(gto.Paciente.NomePaciente), ref ErrorsResult);
+                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Id, nameof(gto.Paciente.Id), ref ErrorsResult);
+                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Nome, nameof(gto.Paciente.Nome), ref ErrorsResult);
             }
 
             if (gto.Procedimentos.Count == 0)

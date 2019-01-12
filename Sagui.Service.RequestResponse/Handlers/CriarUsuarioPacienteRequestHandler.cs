@@ -12,23 +12,26 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class CriarUsuarioDentistaRequestHandler : IBaseRequestHandler<RequestUsuarioDentista, ResponseUsuarioDentista>
+    public class CriarUsuarioPacienteRequestHandler : IBaseRequestHandler<RequestUsuarioPaciente, ResponseUsuarioPaciente>
     {
-        private UsuarioService usuarioService;
-        private Business.Validador.Usuario.ValidatorUsuarioDentista ValidatorUsuario;
+        private UsuarioPacienteService usuarioService;
+        private Business.Validador.Usuario.ValidatorUsuarioBase ValidatorUsuarioBase;
+        private Business.Validador.Usuario.ValidatorUsuarioPaciente ValidatorUsuarioPaciente;
 
-        ResponseUsuarioDentista responseUsuario;
+        ResponseUsuarioPaciente responseUsuario;
 
-        public CriarUsuarioDentistaRequestHandler(UsuarioService _UsuarioService)
+        public CriarUsuarioPacienteRequestHandler(UsuarioPacienteService _UsuarioService)
         {
             usuarioService = _UsuarioService;
-            ValidatorUsuario = new Business.Validador.Usuario.ValidatorUsuarioDentista();
-            responseUsuario = new ResponseUsuarioDentista();
+            ValidatorUsuarioBase = new Business.Validador.Usuario.ValidatorUsuarioBase();
+            ValidatorUsuarioPaciente = new Business.Validador.Usuario.ValidatorUsuarioPaciente();
+            responseUsuario = new ResponseUsuarioPaciente();
         }
 
-        public async Task<ResponseUsuarioDentista> Handle(RequestUsuarioDentista Usuario)
+        public async Task<ResponseUsuarioPaciente> Handle(RequestUsuarioPaciente Usuario)
         {
-            var errors = ValidatorUsuario.Validate(Usuario);
+            var errors = ValidatorUsuarioBase.Validate(Usuario);
+            errors = ValidatorUsuarioPaciente.Validate(Usuario);
 
             if (errors.Count() == 0)
             {
@@ -36,7 +39,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
                 if (_Usuario.Id != 0)
                 {
-                    responseUsuario.Usuario = _Usuario;
+                    responseUsuario.Paciente = Usuario;
                     responseUsuario.ExecutionDate = DateTime.Now;
                     responseUsuario.ResponseType = ResponseType.Success;
                     responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,

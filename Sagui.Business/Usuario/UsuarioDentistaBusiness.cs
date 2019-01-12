@@ -2,15 +2,16 @@
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.GTO;
+using Sagui.Data.Persister.Usuario;
 
 namespace Sagui.Business.Usuario
 {
 
-    public class UsuarioDentistaaBusiness : BusinessBase
+    public class UsuarioDentistaBusiness : BusinessBase
     {
         public List<Model.Dentinsta> ListUsuarios()
         {
-            UsuarioLookup usuarioLookup = new UsuarioLookup();
+            UsuarioDentistaLookup usuarioLookup = new UsuarioDentistaLookup();
             var listUsuarios = usuarioLookup.ListUsuarioDentista();
 
             return listUsuarios;

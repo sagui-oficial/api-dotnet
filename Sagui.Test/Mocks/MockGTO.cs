@@ -18,12 +18,12 @@ namespace Sagui.Test.Mocks
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 10;
             Guia.Numero = 1;
-            Guia.Operadora = new Operadora();
-            Guia.Operadora.IdOperadora = 1;
-            Guia.Operadora.NomeOperadora = "Operadora 1";
+            Guia.PlanoOperadora = new PlanoOperadora();
+            Guia.PlanoOperadora.Id = 1;
+            Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
             Guia.Paciente = new Paciente();
-            Guia.Paciente.IdPaciente = 1;
-            Guia.Paciente.NomePaciente = "Paciente 1";
+            Guia.Paciente.Id = 1;
+            Guia.Paciente.Nome = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
             Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };

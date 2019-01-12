@@ -34,8 +34,8 @@ namespace Sagui.Data.Persister.GTO
 
             DbParams.Add(nameof(GTO.Numero), GTO.Numero.ToString());
             DbParams.Add(nameof(GTO.Status), GTO.Status);
-            DbParams.Add(nameof(GTO.Operadora), GTO.Operadora.IdOperadora);
-            DbParams.Add(nameof(GTO.Paciente), GTO.Paciente.IdPaciente);
+            DbParams.Add(nameof(GTO.PlanoOperadora), GTO.PlanoOperadora.Id);
+            DbParams.Add(nameof(GTO.Paciente), GTO.Paciente.Id);
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
 
