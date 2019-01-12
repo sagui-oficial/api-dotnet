@@ -36,8 +36,21 @@ namespace Sagui.Data.Persister.GTO
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Procedimentos.IdProcedimento), Procedimentos.IdProcedimento);
 
+           
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteProcedimento, DbParams))
             {
+                try
+                {
+                                         
+                    dataInfrastructure.transaction.Commit();
+                    
+                }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+
+
                 _dataInfrastructure = dataInfrastructure;
             }
 
