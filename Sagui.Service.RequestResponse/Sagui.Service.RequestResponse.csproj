@@ -48,6 +48,7 @@
     <Compile Include="Handlers\CriarUsuarioEspecialistaRequestHandler.cs" />
     <Compile Include="Handlers\CriarUsuarioRequestHandler.cs" />
     <Compile Include="Handlers\CriarProcedimentoRequestHandler.cs" />
+    <Compile Include="Handlers\DeletarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\ListarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\ListarGTORequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,6 +8,7 @@ namespace Sagui.Data
 {
     public static class SQL
     {
+        #region arquivos
         public static string CreateArquivo = @"
                    INSERT INTO dbo.Arquivos
                                (Nome
@@ -20,6 +21,9 @@ namespace Sagui.Data
 
                 SELECT SCOPE_IDENTITY();";
 
+        #endregion
+
+        #region GTR
 
         public static string CreateProcedimentoGTO = @"
                     INSERT INTO dbo.Procedimento_GTO
@@ -32,21 +36,7 @@ namespace Sagui.Data
                         SELECT SCOPE_IDENTITY();";
 
 
-        public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimentos
-                               (Codigo
-                               ,NomeProcedimento
-                               ,ValorProcedimento
-                               ,Exigencias
-                               ,Anotacoes)
-                         VALUES
-                               (@Codigo
-                               ,@NomeProcedimento
-                               ,@ValorProcedimento
-                               ,@Exigencias
-                               ,@Anotacoes);
-
-                            SELECT SCOPE_IDENTITY();";
+        
 
         public static string DeleteGTO = @"AA";
 
@@ -80,6 +70,25 @@ namespace Sagui.Data
                                   ,Vencimento
                              FROM sagui.dbo.GTO";
 
+        #endregion
+
+        #region procedimento
+
+        public static string CreateProcedimento = @"
+                    INSERT INTO dbo.Procedimentos
+                               (Codigo
+                               ,NomeProcedimento
+                               ,ValorProcedimento
+                               ,Exigencias
+                               ,Anotacoes)
+                         VALUES
+                               (@Codigo
+                               ,@NomeProcedimento
+                               ,@ValorProcedimento
+                               ,@Exigencias
+                               ,@Anotacoes);
+
+                            SELECT SCOPE_IDENTITY();";
         public static string ListProcedimento = @"
                             SELECT IdProcedimento
                                   ,Codigo
@@ -101,6 +110,9 @@ namespace Sagui.Data
                                       ,Exigencias = @Exigencias
                                       ,Anotacoes = @Anotacoes
                             WHERE IdProcedimento = @IdProcedimento";
+        #endregion
+
+        #region usuario
 
         public static string ListUsuario = @"
                             SELECT *
@@ -123,6 +135,8 @@ namespace Sagui.Data
                            , @Vencimento);
                 
                 SELECT SCOPE_IDENTITY()";
+
+        #endregion
 
     }
 }
