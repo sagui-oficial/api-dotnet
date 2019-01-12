@@ -22,7 +22,18 @@ namespace Sagui.Test.Mocks
             return Procedimento;
         }
 
+        public RequestProcedimento AtualizarMockProcedimento()
+        {
+            RequestProcedimento Procedimento = new RequestProcedimento();
+            Procedimento.IdProcedimento = 1;
+            Procedimento.Codigo = 1;
+            Procedimento.Anotacoes = "ZZZZZZZ";
+            Procedimento.Exigencias = "ZZZZZZZZ";
+            Procedimento.NomeProcedimento = "Procedimento de Teste UPDATE";
+            Procedimento.ValorProcedimento = 1.00;
 
+            return Procedimento;
+        }
 
     }
 }
