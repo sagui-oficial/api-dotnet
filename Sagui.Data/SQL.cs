@@ -44,7 +44,7 @@ namespace Sagui.Data
 
                             SELECT SCOPE_IDENTITY();";
 
-        public static string DeleteGTO = @"AA";
+        public static string DeleteGTO = @"";
 
         public static string UpdateGTO = @"";
 
@@ -104,6 +104,8 @@ namespace Sagui.Data
                            , @Vencimento);
                 
                 SELECT SCOPE_IDENTITY()";
+
+        public static string CreatePlanoOperadoraPaciente = @"";
 
     }
 }

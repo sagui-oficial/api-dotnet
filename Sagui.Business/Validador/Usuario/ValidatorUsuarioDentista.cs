@@ -13,6 +13,7 @@ namespace Sagui.Business.Validador.Usuario
     {
         public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Dentinsta usuario)
         {
+
             ErrorsResult = validadorCampo.HandleValidation(usuario.CRO, nameof(usuario.Anotacoes), ref ErrorsResult);
 
             return ErrorsResult;

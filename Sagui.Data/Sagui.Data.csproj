@@ -52,6 +52,7 @@
     <Compile Include="Lookup\Usuario\UsuarioFuncionarioLookup.cs" />
     <Compile Include="Persister\Arquivo\ArquivoPersister.cs" />
     <Compile Include="Persister\GTO\GTOPersister.cs" />
+    <Compile Include="Persister\PlanoOperadora\PlanoOperadoraPacientePersister .cs" />
     <Compile Include="Persister\Procedimento\ProcedimentoGTOPersister.cs" />
     <Compile Include="Persister\Procedimento\ProcedimentoPersister.cs" />
     <Compile Include="Persister\PlanoOperadora\PlanoOperadoraPersister.cs" />

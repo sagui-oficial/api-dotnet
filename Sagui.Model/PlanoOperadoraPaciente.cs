@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-    public class Paciente : UsuarioBase
+    public class PlanoOperadoraPaciente
     {
-        public List<PlanoOperadoraPaciente> ListaPlanoOperadoraPaciente { get; set; }
+        public PlanoOperadora PlanoOperadora { get; set; }
+        public string NumeroPlano { get; set; }
     }
 }
