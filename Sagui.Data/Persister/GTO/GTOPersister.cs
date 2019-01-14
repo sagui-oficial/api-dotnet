@@ -6,12 +6,34 @@ namespace Sagui.Data.Persister.GTO
 {
     public class GTOPersister: PersisterBase
     {
-        public Model.GTO UpdateGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
+        public Model.GTO AtualizarGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            if (GTO == null)
+                throw new ArgumentNullException(nameof(GTO));
+
+            DbParams.Add(nameof(GTO.Numero), GTO.Numero.ToString());
+            DbParams.Add(nameof(GTO.Status), GTO.Status);
+            DbParams.Add(nameof(GTO.PlanoOperadora), GTO.PlanoOperadora.Id);
+            DbParams.Add(nameof(GTO.Paciente), GTO.Paciente.Id);
+            DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
+            DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
+
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateGTO, DbParams);
+
+            try
             {
-                _dataInfrastructure = dataInfrastructure;
+                dataInfrastructure.command.ExecuteNonQuery();
+                dataInfrastructure.transaction.Commit();
+                                
             }
+            catch (Exception e)
+            {
+                dataInfrastructure.transaction.Rollback();
+            }
+
+
+            _dataInfrastructure = dataInfrastructure;
+
 
             return GTO;
         }

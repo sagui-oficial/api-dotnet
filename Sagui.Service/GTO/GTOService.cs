@@ -6,9 +6,14 @@ namespace Sagui.Service.GTO
 {
     public class GTOService : IGTOService<Model.GTO, Model.GTO>
     {
-        public Model.GTO Atualizar(Model.GTO model)
+        public Model.GTO Atualizar(Model.GTO GTO)
         {
-            throw new System.NotImplementedException();
+            using (var GTOBusiness = new Business.GTO.GTOBusiness())
+            {
+                var _return = GTOBusiness.Atualizar(GTO);
+                GTOBusiness.Dispose();
+                return _return;
+            }
         }
 
         public Model.GTO Cadastrar(Model.GTO GTO)

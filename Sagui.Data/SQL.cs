@@ -46,14 +46,14 @@ namespace Sagui.Data
                 INSERT INTO dbo.GTO
                            (Numero
                            , Status
-                           , Operadora_IdOperadora
-                           , Paciente_IdPaciente
+                           , PlanoOperadora_Id
+                           , Paciente_Id
                            , Solicitacao
                            , Vencimento)
                      VALUES
                            (@Numero
                            , @Status
-                           , @Operadora
+                           , @PlanoOperadora
                            , @Paciente
                            , @Solicitacao
                            , @Vencimento);

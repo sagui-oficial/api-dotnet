@@ -32,5 +32,29 @@ namespace Sagui.Test.Mocks
 
             return Guia;
         }
+
+         public RequestGTO AtualizarMockGTO()
+        {
+            MockProcedimento mockProcedimento = new MockProcedimento();
+            MockArquivos mockArquivos  = new MockArquivos();
+
+            RequestGTO Guia = new RequestGTO();
+            Guia.Id = 10;
+            Guia.Numero = 1;
+            Guia.PlanoOperadora = new PlanoOperadora();
+            Guia.PlanoOperadora.Id = 2;
+            Guia.PlanoOperadora.NomeFantasia = "Operadora 1ZZZZZ";
+            Guia.Paciente = new Paciente();
+            Guia.Paciente.Id = 1;
+            Guia.Paciente.Nome = "Paciente 1";
+            Guia.Solicitacao = DateTime.Now;
+            Guia.Vencimento = DateTime.Now.AddMonths(1);
+            Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
+            Guia.Arquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+            Guia.Status = 1;
+
+            return Guia;
+        }
+ 
     }
 }
