@@ -7,9 +7,14 @@ namespace Sagui.Service.Procedimento
 {
     public class ProcedimentoService : IProcedimentoService<Model.Procedimentos, Model.Procedimentos>
     {
-        public Procedimentos Atualizar(Procedimentos model)
+        public Procedimentos Atualizar(Procedimentos Procedimento)
         {
-            throw new NotImplementedException();
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.Atualizar(Procedimento);
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
         }
 
         public Model.Procedimentos Cadastrar(Model.Procedimentos Procedimento)

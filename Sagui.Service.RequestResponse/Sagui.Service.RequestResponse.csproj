@@ -50,6 +50,7 @@
     <Compile Include="Handlers\CriarUsuarioPacienteRequestHandler.cs" />
     <Compile Include="Handlers\CriarUsuarioFuncionarioRequestHandler.cs" />
     <Compile Include="Handlers\CriarProcedimentoRequestHandler.cs" />
+    <Compile Include="Handlers\AtualizarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\DeletarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\ListarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\ListarGTORequestHandler.cs" />

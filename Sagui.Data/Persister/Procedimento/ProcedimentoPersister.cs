@@ -21,6 +21,18 @@ namespace Sagui.Data.Persister.GTO
 
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateProcedimento, DbParams))
             {
+                try
+                {
+                    dataInfrastructure.command.ExecuteNonQuery();
+
+                    dataInfrastructure.transaction.Commit();
+
+                }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+
                 _dataInfrastructure = dataInfrastructure;
             }
 
@@ -41,7 +53,7 @@ namespace Sagui.Data.Persister.GTO
             {
                 try
                 {
-                                         
+                    dataInfrastructure.command.ExecuteNonQuery();
                     dataInfrastructure.transaction.Commit();
                     
                 }
