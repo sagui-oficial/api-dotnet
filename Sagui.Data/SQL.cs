@@ -38,7 +38,7 @@ namespace Sagui.Data
 
         
 
-        public static string DeleteGTO = @"AA";
+        public static string DeleteGTO = @"";
 
         public static string UpdateGTO = @"";
 
@@ -137,6 +137,7 @@ namespace Sagui.Data
                 SELECT SCOPE_IDENTITY()";
 
         #endregion
+        public static string CreatePlanoOperadoraPaciente = @"";
 
     }
 }

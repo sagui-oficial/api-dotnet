@@ -47,14 +47,19 @@ namespace Sagui.Test.Mocks
             UsuarioPaciente.Anotacoes = "Faz tudo";
             UsuarioPaciente.CPF = "30030030030";
             UsuarioPaciente.Email = "aaa@aaa.com.br";
-            UsuarioPaciente.PlanoOperadora = new PlanoOperadora
+
+            PlanoOperadoraPaciente planoOperadoraPaciente = new PlanoOperadoraPaciente();
+            planoOperadoraPaciente.PlanoOperadora = new PlanoOperadora
             {
                 CNPJ = "0000000000000",
                 NomeFantasia = "Plano",
                 Id = 1,
                 RazaoSocial = "Plano SA"
             };
-            UsuarioPaciente.NumeroPlano = "123456789";
+            planoOperadoraPaciente.NumeroPlano = "123456789";
+
+            UsuarioPaciente.ListaPlanoOperadoraPaciente = new List<PlanoOperadoraPaciente>();
+            UsuarioPaciente.ListaPlanoOperadoraPaciente.Add(planoOperadoraPaciente);
 
             return UsuarioPaciente;
         }
