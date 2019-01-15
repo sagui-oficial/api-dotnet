@@ -13,7 +13,7 @@ namespace SaguiDB.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201812141524063_InitialCreate"; }
+            get { return "201901142353127_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -48,21 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201812141524063_InitialCreate.cs" />
-    <Compile Include="Migrations\201812141524063_InitialCreate.Designer.cs">
-      <DependentUpon>201812141524063_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812141529113_add FK.cs" />
-    <Compile Include="Migrations\201812141529113_add FK.Designer.cs">
-      <DependentUpon>201812141529113_add FK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812141530478_Remove FK.cs" />
-    <Compile Include="Migrations\201812141530478_Remove FK.Designer.cs">
-      <DependentUpon>201812141530478_Remove FK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901122221131_add tabelas de usuario.cs" />
-    <Compile Include="Migrations\201901122221131_add tabelas de usuario.Designer.cs">
-      <DependentUpon>201901122221131_add tabelas de usuario.cs</DependentUpon>
+    <Compile Include="Migrations\201901142353127_InitialCreate.cs" />
+    <Compile Include="Migrations\201901142353127_InitialCreate.Designer.cs">
+      <DependentUpon>201901142353127_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
@@ -78,17 +66,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812141524063_InitialCreate.resx">
-      <DependentUpon>201812141524063_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812141529113_add FK.resx">
-      <DependentUpon>201812141529113_add FK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812141530478_Remove FK.resx">
-      <DependentUpon>201812141530478_Remove FK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901122221131_add tabelas de usuario.resx">
-      <DependentUpon>201901122221131_add tabelas de usuario.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901142353127_InitialCreate.resx">
+      <DependentUpon>201901142353127_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

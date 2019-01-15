@@ -12,7 +12,7 @@ namespace Sagui.Test.Mocks
         public RequestProcedimento CriarMockProcedimento()
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
-            Procedimento.IdProcedimento = 2;
+            Procedimento.IdProcedimento = 1;
             Procedimento.Codigo = 1;
             Procedimento.Anotacoes = "AAAAAA";
             Procedimento.Exigencias = "AAAAAA";

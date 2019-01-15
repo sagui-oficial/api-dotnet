@@ -35,12 +35,19 @@ namespace Sagui.Data
 
                         SELECT SCOPE_IDENTITY();";
 
-
-        
+             
 
         public static string DeleteGTO = @"";
 
-        public static string UpdateGTO = @"";
+        public static string UpdateGTO = @"
+                   UPDATE dbo.GTO
+                       SET Numero = @Numero
+                          ,Solicitacao = @Solicitacao
+                          ,Vencimento = @Vencimento
+                          ,Status = @Status
+                          ,Paciente_Id = @Paciente
+                          ,PlanoOperadora_Id = @PlanoOperadora
+                     WHERE Id = @Id   ";
 
         public static string CreateGTO = @"
                 INSERT INTO dbo.GTO

@@ -10,7 +10,7 @@ namespace Sagui.Data.Persister.GTO
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
-
+            DbParams.Add(nameof(GTO.Id), GTO.Id.ToString());
             DbParams.Add(nameof(GTO.Numero), GTO.Numero.ToString());
             DbParams.Add(nameof(GTO.Status), GTO.Status);
             DbParams.Add(nameof(GTO.PlanoOperadora), GTO.PlanoOperadora.Id);

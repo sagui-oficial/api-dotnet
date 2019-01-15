@@ -21,8 +21,11 @@ namespace SaguiDB
 
         #region usuarios
         public DbSet<UsuarioBase> UsuarioBase { get; set; }
+
         
         #endregion
+
+            public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {            
