@@ -2,6 +2,7 @@
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.GTO;
+using Sagui.Data.Persister.PlanoOperadora;
 using Sagui.Data.Persister.Usuario;
 
 namespace Sagui.Business.Usuario
@@ -21,6 +22,23 @@ namespace Sagui.Business.Usuario
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
             usuarioPersister.SaveUsuario(usuarioPaciente, out Data.DataInfrastructure dataInfrastructure);
+
+            if (usuarioPaciente.Id != 0)
+            {
+                Data.DataInfrastructure _dataInfrastructure = dataInfrastructure;
+
+                foreach (Model.PlanoOperadoraPaciente planoOperadoraPaciente in usuarioPaciente.ListaPlanoOperadoraPaciente)
+                {
+                    PlanoOperadoraPacientePersister planoOperadoraPacientePersister = new PlanoOperadoraPacientePersister();
+                    var _persisted = planoOperadoraPacientePersister.SavePlanoOperadoraPaciente(planoOperadoraPaciente.PlanoOperadora.Id, usuarioPaciente.Id, planoOperadoraPaciente.NumeroPlano, _dataInfrastructure, out dataInfrastructure);
+
+                    if (!_persisted)
+                    {
+                        dataInfrastructure.transaction.Rollback();
+                        return null;
+                    }
+                }
+            }
 
             Model.Paciente responseUsuario = new Model.Paciente();
             responseUsuario = usuarioPaciente;
