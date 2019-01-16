@@ -32,5 +32,30 @@ namespace Sagui.Base.Factory
                 throw new Exception("Error instantiating database " + sectionHandler.Name + ". " + excep.Message);
             }
         }
+
+        //static string HandlerName = "";
+
+        //static string HandlerConnection = default(string);
+
+        //public DbFactory() { }
+
+        //public static DALBase CreateDataBase()
+        //{
+        //    HandlerName = "Sagui.Base.DAL.DALBaseSQL";
+        //    HandlerConnection = ConfigurationManager.ConnectionStrings[0].ConnectionString;
+
+        //    try
+        //    {
+        //        Type database = Type.GetType(HandlerName);
+        //        ConstructorInfo constructorInfo = database.GetConstructor(new Type[] { });
+        //        DALBase databaseObj = (DALBase)constructorInfo.Invoke(null);
+        //        databaseObj.connectionString = HandlerConnection;
+        //        return databaseObj;
+        //    }
+        //    catch (Exception excep)
+        //    {
+        //        throw new Exception("Error instantiating database " + HandlerName + ". " + excep.Message);
+        //    }
+        //}
     }
 }
