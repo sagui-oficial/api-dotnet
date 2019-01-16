@@ -14,22 +14,40 @@ namespace Sagui.Base.Factory
 {
     public sealed class DbFactory
     {
-        public static DALBaseHandler sectionHandler = (DALBaseHandler)ConfigurationManager.GetSection("DALBaseHandler");
-        private DbFactory() { }
+        //public static DALBaseHandler sectionHandler = (DALBaseHandler)ConfigurationManager.GetSection("DALBaseHandler");
+        //private DbFactory() { }
+        //public static DALBase CreateDataBase()
+        //{
+        //    if (sectionHandler?.Name?.Length == 0) throw new Exception("Database name not defined in DbFactoryConfiguration section of config file");
+        //    try
+        //    {
+        //        Type database = Type.GetType(sectionHandler.Name);
+        //        ConstructorInfo constructorInfo = database.GetConstructor(new Type[] { });
+        //        DALBase databaseObj = (DALBase)constructorInfo.Invoke(null);
+        //        databaseObj.connectionString = sectionHandler.ConnectionString;
+        //        return databaseObj;
+        //    }
+        //    catch (Exception excep)
+        //    {
+        //        throw new Exception("Error instantiating database " + sectionHandler.Name + ". " + excep.Message);
+        //    }
+        //}
+
+        public DbFactory() { }
+
         public static DALBase CreateDataBase()
         {
-            if (sectionHandler?.Name?.Length == 0) throw new Exception("Database name not defined in DbFactoryConfiguration section of config file");
             try
             {
-                Type database = Type.GetType(sectionHandler.Name);
+                Type database = Type.GetType(Comum.DALComum.HandlerName);
                 ConstructorInfo constructorInfo = database.GetConstructor(new Type[] { });
                 DALBase databaseObj = (DALBase)constructorInfo.Invoke(null);
-                databaseObj.connectionString = sectionHandler.ConnectionString;
+                databaseObj.connectionString = Comum.DALComum.HandlerConnection;
                 return databaseObj;
             }
             catch (Exception excep)
             {
-                throw new Exception("Error instantiating database " + sectionHandler.Name + ". " + excep.Message);
+                throw new Exception("Error instantiating database " + Comum.DALComum.HandlerConnection + ". " + excep.Message);
             }
         }
     }
