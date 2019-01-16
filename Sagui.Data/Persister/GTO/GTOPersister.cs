@@ -75,11 +75,10 @@ namespace Sagui.Data.Persister.GTO
             catch (Exception e)
             {
                 dataInfrastructure.transaction.Rollback();
+                GTO = null;
             }
-
-
+            
             _dataInfrastructure = dataInfrastructure;
-
 
             return GTO;
         }

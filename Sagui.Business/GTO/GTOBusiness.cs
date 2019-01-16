@@ -27,7 +27,7 @@ namespace Sagui.Business.GTO
 
             var _gto = gtoPersister.SaveGTO(gto, out Data.DataInfrastructure dataInfrastructure);
 
-            if (_gto.Id > 0)
+            if (_gto != null)
             {
                 gto.Id = _gto.Id;
 
@@ -74,6 +74,10 @@ namespace Sagui.Business.GTO
                 dataInfrastructure.transaction.Commit();
                 dataInfrastructure.Dispose();
             }
+            else
+            {
+                gto = _gto;
+            }
 
             return gto;
         }
@@ -92,7 +96,7 @@ namespace Sagui.Business.GTO
             return responseGTO;
 
         }
-                
+
 
     }
 }
