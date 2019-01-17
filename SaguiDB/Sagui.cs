@@ -15,7 +15,6 @@ namespace SaguiDB
         public DbSet<Arquivos> Arquivo { get; set; }
         public DbSet<GTO> GTO { get; set; }
         public DbSet<PlanoOperadora> PlanoOperadora { get; set; }
-       
         public DbSet<Procedimento_GTO> Procedimento_GTO { get; set; }
         public DbSet<Procedimentos> Procedimento { get; set; }
 
