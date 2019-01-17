@@ -122,29 +122,109 @@ namespace Sagui.Data
         #region usuario
 
         public static string ListUsuario = @"
-                            SELECT *
-                             FROM sagui.dbo.usuarios";
+                            SELECT Id
+                                  ,Funcao
+                                  ,Nome
+                                  ,Anotacoes
+                                  ,CPF
+                                  ,Email
+                                  ,Telefone
+                                  ,CRO
+                                  ,Discriminator
+                              FROM dbo.UsuarioBase";
+
 
         public static string CreateUsuario = @"
-                INSERT INTO dbo.GTO
-                           (Numero
-                           , Status
-                           , Operadora
-                           , Paciente
-                           , Solicitacao
-                           , Vencimento)
-                     VALUES
-                           (@Numero
-                           , @Status
-                           , @Operadora
-                           , @Paciente
-                           , @Solicitacao
-                           , @Vencimento);
+                INSERT INTO dbo.UsuarioBase
+                               (Funcao
+                               ,Nome
+                               ,Anotacoes
+                               ,CPF
+                               ,Email
+                               ,Telefone
+                               ,TipoUsuario)
+                         VALUES
+                               (@Funcao
+                               ,@Nome
+                               ,@Anotacoes
+                               ,@CPF
+                               ,@Email
+                               ,@Telefone
+                               ,@TipoUsuario);
                 
                 SELECT SCOPE_IDENTITY()";
 
+
+
+        public static string CreateUsuarioFuncionario = @"
+                INSERT INTO dbo.UsuarioBase
+                               (Funcao
+                               ,Nome
+                               ,Anotacoes
+                               ,CPF
+                               ,Email
+                               ,Telefone
+                               ,TipoUsuario)
+                         VALUES
+                               (@Funcao
+                               ,@Nome
+                               ,@Anotacoes
+                               ,@CPF
+                               ,@Email
+                               ,@Telefone
+                               ,@TipoUsuario);
+                
+                SELECT SCOPE_IDENTITY()";
+
+        public static string CreateUsuarioDentista = @"
+                INSERT INTO dbo.UsuarioBase
+                               (Funcao
+                               ,Nome
+                               ,Anotacoes
+                               ,CPF
+                               ,Email
+                               ,Telefone
+                               ,TipoUsuario
+                               ,CRO)
+                         VALUES
+                               (@Funcao
+                               ,@Nome
+                               ,@Anotacoes
+                               ,@CPF
+                               ,@Email
+                               ,@Telefone
+                               ,@TipoUsuario
+                               ,@CRO);
+                
+                SELECT SCOPE_IDENTITY()";
+
+        public static string UpdateUsuario = @"
+                UPDATE dbo.UsuarioBase
+                       SET Funcao = @Funcao
+                          ,Nome = @Nome
+                          ,Anotacoes = @Anotacoes
+                          ,CPF = @CPF
+                          ,Email = @Email
+                          ,Telefone = @Telefone
+                          ,CRO = @CRO
+                          ,Discriminator = @Discriminator
+                     WHERE Id = @Id";
+
+
+        public static string DeleteUsuario = @"";
+
         #endregion
-        public static string CreatePlanoOperadoraPaciente = @"";
+        public static string CreatePlanoOperadoraPaciente = @"
+                    INSERT INTO dbo.PlanoOperadoraPaciente
+                       (NumeroPlano
+                       ,PlanoOperadora_Id
+                       ,Paciente_Id)
+                 VALUES
+                       (@NumeroPlano
+                       ,@PlanoOperadora_Id
+                       ,@Paciente_Id);
+
+                SELECT SCOPE_IDENTITY();";
 
     }
 }

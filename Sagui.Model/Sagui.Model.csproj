@@ -46,6 +46,7 @@
     <Compile Include="Base\BaseModel.cs" />
     <Compile Include="Lote.cs" />
     <Compile Include="PlanoOperadoraPaciente.cs" />
+    <Compile Include="TipoUsuario.cs" />
     <Compile Include="UsuarioPaciente.cs" />
     <Compile Include="UsuarioFuncionario .cs" />
     <Compile Include="Procedimento_GTO.cs" />

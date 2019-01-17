@@ -22,8 +22,13 @@ namespace Sagui.Business.Usuario
             UsuarioPersister usuarioPersister = new UsuarioPersister();
             usuarioPersister.SaveUsuario(usuario, out Data.DataInfrastructure dataInfrastructure);
 
-            Model.Dentinsta responseUsuario = new Model.Dentinsta();
-            responseUsuario = usuario;
+            Model.Dentinsta responseUsuario = default(Model.Dentinsta);
+
+            if (usuario.Id > 0)
+            {
+                dataInfrastructure.transaction.Commit();
+                responseUsuario = usuario;
+            }
 
             dataInfrastructure.Dispose();
 

@@ -12,8 +12,13 @@ namespace Sagui.Data.Persister.Usuario
                 throw new ArgumentNullException(nameof(Usuario));
 
             DbParams.Add(nameof(Usuario.Anotacoes), Usuario.Anotacoes);
-            DbParams.Add(nameof(Usuario.Funcao), Usuario.Funcao);
+            DbParams.Add(nameof(Usuario.CPF), Usuario.Funcao);
+            DbParams.Add(nameof(Usuario.Email), Usuario.Nome);
+            DbParams.Add(nameof(Usuario.Funcao), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
+            DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
+            DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            
 
             DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuario, DbParams);
 
@@ -45,10 +50,14 @@ namespace Sagui.Data.Persister.Usuario
                 throw new ArgumentNullException(nameof(Usuario));
 
             DbParams.Add(nameof(Usuario.Anotacoes), Usuario.Anotacoes);
+            DbParams.Add(nameof(Usuario.CPF), Usuario.CPF);
+            DbParams.Add(nameof(Usuario.Email), Usuario.Email);
             DbParams.Add(nameof(Usuario.Funcao), Usuario.Funcao);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
+            DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
+            DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuario, DbParams);
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioFuncionario, DbParams);
 
             try
             {
@@ -78,10 +87,15 @@ namespace Sagui.Data.Persister.Usuario
                 throw new ArgumentNullException(nameof(Usuario));
 
             DbParams.Add(nameof(Usuario.Anotacoes), Usuario.Anotacoes);
+            DbParams.Add(nameof(Usuario.CPF), Usuario.CPF);
+            DbParams.Add(nameof(Usuario.CRO), Usuario.CRO);
+            DbParams.Add(nameof(Usuario.Email), Usuario.Email);
             DbParams.Add(nameof(Usuario.Funcao), Usuario.Funcao);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
+            DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
+            DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuario, DbParams);
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioDentista, DbParams);
 
             try
             {
