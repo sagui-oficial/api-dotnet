@@ -22,6 +22,7 @@ namespace Sagui.Business.Usuario
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
             usuarioPersister.SaveUsuario(usuarioPaciente, out Data.DataInfrastructure dataInfrastructure);
+            Model.Paciente responseUsuario = default(Model.Paciente);
 
             if (usuarioPaciente.Id != 0)
             {
@@ -37,11 +38,13 @@ namespace Sagui.Business.Usuario
                         dataInfrastructure.transaction.Rollback();
                         return null;
                     }
+                    else
+                    {
+                        dataInfrastructure.transaction.Commit();
+                        responseUsuario = usuarioPaciente;
+                    }
                 }
             }
-
-            Model.Paciente responseUsuario = new Model.Paciente();
-            responseUsuario = usuarioPaciente;
 
             dataInfrastructure.Dispose();
 

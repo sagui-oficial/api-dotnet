@@ -6,10 +6,11 @@ namespace Sagui.Data.Persister.PlanoOperadora
 {
     public class PlanoOperadoraPacientePersister : PersisterBase
     {
-        public bool SavePlanoOperadoraPaciente(int IdPlanoOperadora, int IdUsuarioPaciente, string numeroPlano, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public bool SavePlanoOperadoraPaciente(int PlanoOperadora_Id, int Paciente_Id, string NumeroPlano, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {
-            DbParams.Add(nameof(IdPlanoOperadora), IdPlanoOperadora);
-            DbParams.Add(nameof(IdUsuarioPaciente), IdUsuarioPaciente);
+            DbParams.Add(nameof(NumeroPlano), NumeroPlano);
+            DbParams.Add(nameof(PlanoOperadora_Id), PlanoOperadora_Id);
+            DbParams.Add(nameof(Paciente_Id), Paciente_Id);
 
             _dataInfrastructure = new DataInfrastructure(SQL.CreatePlanoOperadoraPaciente, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
 

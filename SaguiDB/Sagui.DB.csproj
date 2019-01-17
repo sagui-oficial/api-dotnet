@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201901142353127_InitialCreate.Designer.cs">
       <DependentUpon>201901142353127_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901162357172_Adicionado campo TipoUsuario.cs" />
+    <Compile Include="Migrations\201901162357172_Adicionado campo TipoUsuario.Designer.cs">
+      <DependentUpon>201901162357172_Adicionado campo TipoUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901142353127_InitialCreate.resx">
       <DependentUpon>201901142353127_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901162357172_Adicionado campo TipoUsuario.resx">
+      <DependentUpon>201901162357172_Adicionado campo TipoUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,8 +23,13 @@ namespace Sagui.Business.Usuario
             UsuarioPersister usuarioPersister = new UsuarioPersister();
             usuarioPersister.SaveUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
 
-            Model.Funcionario responseUsuario = new Model.Funcionario();
-            responseUsuario = usuarioFuncionario;
+            Model.Funcionario responseUsuario = default(Model.Funcionario);
+
+            if(usuarioFuncionario.Id > 0)
+            {
+                dataInfrastructure.transaction.Commit();
+                responseUsuario = usuarioFuncionario;
+            }
 
             dataInfrastructure.Dispose();
 
