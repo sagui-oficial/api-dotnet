@@ -46,6 +46,35 @@ namespace SaguiDB.Migrations
                 context.SaveChanges();
             }
 
+            if (!context.UsuarioBase.Any())
+            {
+                var funcionarios = new List<Funcionario>
+                {
+                new Funcionario{Nome="João", Anotacoes="AAAAAAAAAAAAA", CPF="00000000000", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 1},
+                new Funcionario{Nome="Mauro", Anotacoes="AAAAAAAAAAAAA", CPF="00000000001", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000", TipoUsuario = 1},
+                };
+
+                funcionarios.ForEach(s => context.UsuarioBase.Add(s));
+                context.SaveChanges();
+
+                var dentinstas = new List<Dentinsta>
+                {
+                new Dentinsta{Nome="Carlos", Anotacoes="AAAAAAAAAAAAA", CPF="00000000002", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",CRO="10000000", TipoUsuario = 2},
+                new Dentinsta{Nome="Antonio", Anotacoes="AAAAAAAAAAAAA", CPF="00000000003", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",CRO="20000000", TipoUsuario = 2},
+                };
+
+                dentinstas.ForEach(s => context.UsuarioBase.Add(s));
+                context.SaveChanges();
+
+                var pacientes = new List<Paciente>
+                {
+                new Paciente{Nome="Pedro", Anotacoes="AAAAAAAAAAAAA", CPF="00000000004", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 3},
+                new Paciente{Nome="José", Anotacoes="AAAAAAAAAAAAA", CPF="00000000005", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 3},
+                };
+
+                pacientes.ForEach(s => context.UsuarioBase.Add(s));
+                context.SaveChanges();
+            }
 
 
         }
