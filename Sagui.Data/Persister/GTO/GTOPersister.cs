@@ -41,10 +41,27 @@ namespace Sagui.Data.Persister.GTO
 
         public Model.GTO DeleteGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams))
+            if (GTO == null)
+                throw new ArgumentNullException(nameof(GTO));
+            DbParams.Add(nameof(GTO.Id), GTO.Id.ToString());
+            DbParams.Add(nameof(GTO.Status), GTO.Status);
+           
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteGTO, DbParams);
+
+            try
             {
-                _dataInfrastructure = dataInfrastructure;
+                dataInfrastructure.command.ExecuteNonQuery();
+                dataInfrastructure.transaction.Commit();
+
             }
+            catch (Exception e)
+            {
+                dataInfrastructure.transaction.Rollback();
+            }
+
+
+            _dataInfrastructure = dataInfrastructure;
+
 
             return GTO;
         }

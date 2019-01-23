@@ -44,6 +44,7 @@
     <Compile Include="Base\IBaseRequestHandler.cs" />
     <Compile Include="Base\RequestBase.cs" />
     <Compile Include="Base\ResponseBase.cs" />
+    <Compile Include="Handlers\DeletarGTORequestHandler.cs" />
     <Compile Include="Handlers\AtualizarGTORequestHandler .cs" />
     <Compile Include="Handlers\CriarGTORequestHandler.cs" />
     <Compile Include="Handlers\CriarPlanoOperadoraRequestHandler.cs" />

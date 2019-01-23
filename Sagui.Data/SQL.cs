@@ -37,7 +37,9 @@ namespace Sagui.Data
 
              
 
-        public static string DeleteGTO = @"";
+        public static string DeleteGTO = @" UPDATE dbo.GTO
+                                       SET Status = @Status
+                                       WHERE Id = @Id   ";
 
         public static string UpdateGTO = @"
                    UPDATE dbo.GTO

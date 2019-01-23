@@ -21,7 +21,14 @@ namespace Sagui.Application.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "AAA", "QQQ" };
+            GTOService gTOService = new GTOService();
+
+            CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+
+            RequestGTO requestGTO = default(RequestGTO);
+
+            return this.HandleRequest(listarGTORequestHandler, requestGTO);
         }
 
         // GET: api/GTO/5
@@ -39,7 +46,6 @@ namespace Sagui.Application.Controllers
 
         
         [HttpPost("CriarGTO", Name = "CriarGTO")]
-        
         public async Task<IActionResult> CriarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
@@ -50,16 +56,28 @@ namespace Sagui.Application.Controllers
 
         }
 
-        // PUT: api/GTO/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost("AtualizarGTO", Name = "AtualizarGTO")]
+        public async Task<IActionResult> AtualizarGTO([FromBody]  RequestGTO requestGTO)
         {
+            GTOService gTOService = new GTOService();
+
+            AtualizarGTORequestHandler criarGTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+
+            return await this.HandleRequest(criarGTORequestHandler, requestGTO);
+
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost("DeletarGTO", Name = "DeletarGTO")]
+        public async Task<IActionResult> DeletarGTO([FromBody]  RequestGTO requestGTO)
         {
+            GTOService gTOService = new GTOService();
+
+            AtualizarGTORequestHandler criarGTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+
+            return await this.HandleRequest(criarGTORequestHandler, requestGTO);
+
         }
+
+      
     }
 }

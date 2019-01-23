@@ -26,9 +26,14 @@ namespace Sagui.Service.GTO
             }
         }
 
-        public Model.GTO Deletar(Model.GTO model)
+        public Model.GTO Deletar(Model.GTO GTO)
         {
-            throw new System.NotImplementedException();
+            using (var GTOBusiness = new Business.GTO.GTOBusiness())
+            {
+                var _return = GTOBusiness.Deletar(GTO);
+                GTOBusiness.Dispose();
+                return _return;
+            }
         }
 
         public List<Model.GTO> Listar()

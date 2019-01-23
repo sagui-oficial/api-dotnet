@@ -69,6 +69,7 @@
     <Compile Include="Mocks\MockArquivos.cs" />
     <Compile Include="Mocks\MockUsuario.cs" />
     <Compile Include="Mocks\MockProcedimento.cs" />
+    <Compile Include="TestGTO\DeletarGTO_Test.cs" />
     <Compile Include="TestGTO\AtualizarGTO_Test .cs" />
     <Compile Include="TestGTO\ListarGTO_Test.cs" />
     <Compile Include="Mocks\MockGTO.cs" />

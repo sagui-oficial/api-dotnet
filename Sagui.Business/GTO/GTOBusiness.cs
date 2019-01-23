@@ -97,6 +97,21 @@ namespace Sagui.Business.GTO
 
         }
 
+        public Model.GTO Deletar(Model.GTO gto)
+        {
+
+            GTOPersister gtoPersister = new GTOPersister();
+            gtoPersister.AtualizarGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+
+            Model.GTO responseGTO = new Model.GTO();
+            responseGTO = gto;
+
+            dataInfrastructure.Dispose();
+
+            return responseGTO;
+
+        }
+
 
     }
 }
