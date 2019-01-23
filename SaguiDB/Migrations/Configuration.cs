@@ -24,13 +24,15 @@ namespace SaguiDB.Migrations
 
             if (!context.Procedimento.Any())
             {
+                var guid = Guid.NewGuid();
                 var procedimentos = new List<Procedimentos>
                 {
-                new Procedimentos{Codigo=1,NomeProcedimento="Alexander",Exigencias="2005-09-01", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
-                new Procedimentos{Codigo=2,NomeProcedimento="Fabio",Exigencias="2005-09-01", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
+                new Procedimentos{Codigo=1,NomeProcedimento="Alexander",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
+                new Procedimentos{Codigo=2,NomeProcedimento="Fabio",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
                 };
 
                 procedimentos.ForEach(s => context.Procedimento.Add(s));
+
                 context.SaveChanges();
             }
 
