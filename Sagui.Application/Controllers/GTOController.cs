@@ -27,8 +27,9 @@ namespace Sagui.Application.Controllers
             ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
 
             RequestGTO requestGTO = default(RequestGTO);
+            return new string[] { "AAA", "QQQ" };
 
-            return this.HandleRequest(listarGTORequestHandler, requestGTO);
+            //  return this.HandleRequest(listarGTORequestHandler, requestGTO);
         }
 
         // GET: api/GTO/5
