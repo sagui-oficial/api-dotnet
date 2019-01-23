@@ -19,15 +19,17 @@ namespace Sagui.Application.Controllers
     {
         // GET: api/GTO
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetAsync()
         {
+            RequestGTO requestGTO = default(RequestGTO);
+
             GTOService gTOService = new GTOService();
 
-            CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
             ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
 
-            RequestGTO requestGTO = default(RequestGTO);
-            return new string[] { "AAA", "QQQ" };
+            return await this.HandleRequest(listarGTORequestHandler, requestGTO);
+
+
 
             //  return this.HandleRequest(listarGTORequestHandler, requestGTO);
         }
