@@ -79,7 +79,9 @@
     <Compile Include="TestProcedimentos\DeletarProcedimneto_Test.cs" />
     <Compile Include="TestProcedimentos\CadastrarProcedimento_Test.cs" />
     <Compile Include="TestProcedimentos\ListarProcedimento_Test.cs" />
+    <Compile Include="TestUsuarios\AtualizarUsuario_Test.cs" />
     <Compile Include="TestUsuarios\CadastroUsuario_Test.cs" />
+    <Compile Include="TestUsuarios\ListarUsuario_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">

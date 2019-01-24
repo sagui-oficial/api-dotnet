@@ -54,6 +54,9 @@
     <Compile Include="Handlers\CriarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\AtualizarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\DeletarProcedimentoRequestHandler.cs" />
+    <Compile Include="Handlers\ListarUsuarioDentistaRequestHandler.cs" />
+    <Compile Include="Handlers\ListarUsuarioPacienteRequestHandler.cs" />
+    <Compile Include="Handlers\ListarUsuarioFuncionarioRequestHandler.cs" />
     <Compile Include="Handlers\ListarProcedimentoRequestHandler.cs" />
     <Compile Include="Handlers\ListarGTORequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

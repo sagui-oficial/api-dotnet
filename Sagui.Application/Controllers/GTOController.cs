@@ -29,10 +29,7 @@ namespace Sagui.Application.Controllers
 
             return await this.HandleRequest(listarGTORequestHandler, requestGTO);
 
-
-
-            //  return this.HandleRequest(listarGTORequestHandler, requestGTO);
-        }
+            }
 
         // GET: api/GTO/5
         [HttpGet("{id}", Name = "Get")]

@@ -10,21 +10,23 @@ using Sagui.Service.RequestResponse.Handlers;
 
 namespace Sagui.Application.Controllers
 {
+    [Route("backoffice/[controller]")]
+    [Produces("application/json")]
+    [ApiController]
     public class ProcedimentoController : Controller
     {
-        // GET: api/Procedimento
-        [HttpGet]
-        public IEnumerable<string> Get()
+      //  GET: api/Procedimento
+       [HttpGet]
+        public async Task<IActionResult> GetAsync()
         {
+            RequestProcedimento requestProcedimento = default(RequestProcedimento);
+
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
 
-            CriarProcedimentoRequestHandler criarProcedimentoRequestHandler = new CriarProcedimentoRequestHandler(ProcedimentoService);
             ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(ProcedimentoService);
-
-            RequestProcedimento requestProcedimento = default(RequestProcedimento);
-            return new string[] { "AAA", "QQQ" };
-
-            //  return this.HandleRequest(listarProcedimentoRequestHandler, requestProcedimento);
+            
+            return await this.HandleRequest(listarProcedimentoRequestHandler, requestProcedimento);
+            
         }
 
         // GET: api/Procedimento/5
