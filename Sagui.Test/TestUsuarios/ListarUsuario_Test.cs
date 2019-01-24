@@ -47,6 +47,7 @@ namespace Sagui.Test.TestGTO
             Assert.IsTrue(response.Pacientes.Count > 0);
         }
 
+        [TestMethod]
         public async Task ListarTodosDentistas()
         {
             UsuarioDentistaService usuarioService = new UsuarioDentistaService();

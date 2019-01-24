@@ -123,6 +123,7 @@ namespace Sagui.Data
 
         #region usuario
 
+        
         public static string ListUsuario = @"
                             SELECT Id
                                   ,Funcao
@@ -133,7 +134,8 @@ namespace Sagui.Data
                                   ,Telefone
                                   ,CRO
                                   ,Discriminator
-                              FROM dbo.UsuarioBase";
+                              FROM dbo.UsuarioBase 
+                            WHERE TipoUsuario = @TipoUsuario";
 
 
         public static string CreateUsuario = @"
@@ -216,6 +218,7 @@ namespace Sagui.Data
         public static string DeleteUsuario = @"";
 
         #endregion
+
         public static string CreatePlanoOperadoraPaciente = @"
                     INSERT INTO dbo.PlanoOperadoraPaciente
                        (NumeroPlano

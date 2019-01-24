@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,10 @@ namespace Sagui.Data.Lookup.Usuario
         {
             List<Model.Funcionario> ListUsuario = new List<Model.Funcionario>();
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListGTO))
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Funcionario);
+
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
             {
                 try
                 {
