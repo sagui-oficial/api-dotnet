@@ -32,6 +32,21 @@ namespace Sagui.Test.TestGTO
         }
 
         [TestMethod]
+        public async Task ObterProcedimentos()
+        {
+            ProcedimentoService procedimentoService = new ProcedimentoService();
+
+            ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
+
+            RequestProcedimento requestProcedimento = default(RequestProcedimento);
+
+            var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.Procedimentos.Count > 0);
+        }
+
+        [TestMethod]
         public async Task ListarNenhumProcedimento()
         {
             ProcedimentoService procedimentoService = new ProcedimentoService();
