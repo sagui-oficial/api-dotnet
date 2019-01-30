@@ -17,7 +17,7 @@ namespace Sagui.Test.Mocks
 
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 10;
-            Guia.Numero = 1;
+            Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
@@ -40,7 +40,7 @@ namespace Sagui.Test.Mocks
 
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 1;
-            Guia.Numero = 1;
+            Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
@@ -63,7 +63,7 @@ namespace Sagui.Test.Mocks
 
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 1;
-            Guia.Numero = 1;
+            Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";

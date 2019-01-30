@@ -36,6 +36,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
                 if (_GTO != null)
                 {
+                    responseGTO.GTO = _GTO;
                     responseGTO.ExecutionDate = DateTime.Now;
                     responseGTO.ResponseType = ResponseType.Success;
                     responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, nameof(GTO), Constantes.MensagemGTOInseridaComSucesso));

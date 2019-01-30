@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201901162357172_Adicionado campo TipoUsuario.Designer.cs">
       <DependentUpon>201901162357172_Adicionado campo TipoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901302315157_Alterado numero da gti para string.cs" />
+    <Compile Include="Migrations\201901302315157_Alterado numero da gti para string.Designer.cs">
+      <DependentUpon>201901302315157_Alterado numero da gti para string.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901162357172_Adicionado campo TipoUsuario.resx">
       <DependentUpon>201901162357172_Adicionado campo TipoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901302315157_Alterado numero da gti para string.resx">
+      <DependentUpon>201901302315157_Alterado numero da gti para string.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

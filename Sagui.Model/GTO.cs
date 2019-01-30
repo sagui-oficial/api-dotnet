@@ -12,7 +12,7 @@ namespace Sagui.Model
     public class GTO : BaseModel
     {   [Key]
         public int Id { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public PlanoOperadora PlanoOperadora { get; set; }
         public Paciente Paciente { get; set; }
         public List<Arquivos> Arquivos { get; set; }

@@ -56,7 +56,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("AtualizarGTO", Name = "AtualizarGTO")]
+        [HttpPut("AtualizarGTO", Name = "AtualizarGTO")]
         public async Task<IActionResult> AtualizarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
@@ -67,7 +67,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("DeletarGTO", Name = "DeletarGTO")]
+        [HttpPut("DeletarGTO", Name = "DeletarGTO")]
         public async Task<IActionResult> DeletarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();

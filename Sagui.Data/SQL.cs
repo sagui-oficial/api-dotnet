@@ -70,11 +70,11 @@ namespace Sagui.Data
                 SELECT SCOPE_IDENTITY()";
 
         public static string ListGTO = @"
-                            SELECT Id
+                                     SELECT Id
                                   ,Numero
                                   ,Status
-                                  ,Operadora_IdOperadora
-                                  ,Paciente_IdPaciente
+                                  ,PlanoOperadora_Id
+                                  ,Paciente_Id
                                   ,Solicitacao
                                   ,Vencimento
                              FROM sagui.dbo.GTO";
