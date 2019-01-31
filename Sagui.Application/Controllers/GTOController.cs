@@ -13,13 +13,27 @@ using Sagui.Service.RequestResponse.Handlers;
 namespace Sagui.Application.Controllers
 {
     [Route("backoffice/[controller]")]
-    [Produces ("application/json")]
+    [Produces("application/json")]
     [ApiController]
     public class GTOController : Controller
     {
         // GET: api/GTO
-        [HttpGet]
-        public async Task<IActionResult> GetAsync()
+        [HttpGet("/{gtopublicid}/ObterGTO", Name = "ObterGTO")]
+        public async Task<IActionResult> ObterGTO()
+        {
+            RequestGTO requestGTO = default(RequestGTO);
+
+
+            GTOService gTOService = new GTOService();
+
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+
+            return await this.HandleRequest(listarGTORequestHandler, requestGTO);
+
+        }
+
+        [HttpGet("ListarGTO", Name = "ListarGTO")]
+        public async Task<IActionResult> ListarGTO()
         {
             RequestGTO requestGTO = default(RequestGTO);
 
@@ -29,22 +43,8 @@ namespace Sagui.Application.Controllers
 
             return await this.HandleRequest(listarGTORequestHandler, requestGTO);
 
-            }
-
-        // GET: api/GTO/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST: api/GTO
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
         }
 
-        
         [HttpPost("CriarGTO", Name = "CriarGTO")]
         public async Task<IActionResult> CriarGTO([FromBody]  RequestGTO requestGTO)
         {
@@ -78,6 +78,6 @@ namespace Sagui.Application.Controllers
 
         }
 
-      
+
     }
 }
