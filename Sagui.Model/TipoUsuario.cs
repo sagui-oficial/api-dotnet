@@ -11,11 +11,11 @@ namespace Sagui.Model
     {
         public enum Tipo
         {
-            [Description("Funcionario")]
+            //[Description("Funcionario")]
             Funcionario = 1,
-            [Description("Dentista")]
+            //[Description("Dentista")]
             Dentista = 2,
-            [Description("Paciente")]
+           // [Description("Paciente")]
             Paciente = 3
         }
     }

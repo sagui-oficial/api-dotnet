@@ -10,15 +10,14 @@ using System.Threading.Tasks;
 namespace Sagui.Model
 {
     public class Procedimentos : BaseModel
-    {   [Key]
-        public int IdProcedimento { get; set; } 
+    {   [Key, Column(Order=1)]
+        public int IdProcedimento { get; set; }
         public int Codigo { get; set; }
         public string NomeProcedimento { get; set; }
         public double ValorProcedimento { get; set; }
         public string Exigencias { get; set; }
         public string Anotacoes { get; set; }
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public Guid PublicID { get; set; }
+     
 
     }
 }
