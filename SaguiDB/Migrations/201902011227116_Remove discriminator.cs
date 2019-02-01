@@ -7,12 +7,12 @@ namespace SaguiDB.Migrations
     {
         public override void Up()
         {
-            DropColumn("dbo.UsuarioBase", "Discriminator");
+            AlterColumn("dbo.UsuarioBase", "Discriminator", c => c.String(maxLength: 128));
         }
         
         public override void Down()
         {
-            AddColumn("dbo.UsuarioBase", "TipoUsuario", c => c.String(maxLength: 128));
+            AddColumn("dbo.UsuarioBase", "TipoUsuario", c => c.String(nullable: false, maxLength: 128));
         }
     }
 }

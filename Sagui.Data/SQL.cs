@@ -231,5 +231,21 @@ namespace Sagui.Data
 
                 SELECT SCOPE_IDENTITY();";
 
+        public static string CreatePlanoOperadora = @"
+                    INSERT INTO dbo.PlanoOperadora
+                       (NomeFantasia
+                       ,RazaoSocial
+                       ,CNPJ
+                       ,DataEnvioLote
+                       ,DataRecebimentoLote)
+                 VALUES
+                       (@NomeFantasia
+                       ,@RazaoSocial
+                       ,@CNPJ
+                       ,@DataEnvioLote
+                       ,@DataRecebimentoLote);
+
+                SELECT SCOPE_IDENTITY();";
+
     }
 }

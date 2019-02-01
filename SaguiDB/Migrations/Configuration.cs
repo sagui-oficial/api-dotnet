@@ -33,9 +33,7 @@ namespace SaguiDB.Migrations
                 new Procedimentos{Codigo=2,NomeProcedimento="Fabio",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
                 };
 
-                //procedimentos.ForEach(s => context.Procedimento.Add(s));
-                //context.SaveChanges();
-
+              
                 foreach (Procedimentos p in procedimentos)
                 {
                     context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
@@ -49,19 +47,28 @@ namespace SaguiDB.Migrations
 
             }
 
-            //if (!context.PlanoOperadora.Any())
-            //{
-            //    var planoOperadora = new List<PlanoOperadora>
-            //    {
-            //    new PlanoOperadora{NomeFantasia="Plano 1", RazaoSocial="Plano numero 1", CNPJ="00000000000000", DataEnvioLote=DateTime.Parse("2019-09-01"),DataRecebimentoLote=DateTime.Parse("2019-09-01")},
-            //    new PlanoOperadora{NomeFantasia="Plano 2", RazaoSocial="Plano numero 2", CNPJ="00000000000001", DataEnvioLote=DateTime.Parse("2019-09-01"),DataRecebimentoLote=DateTime.Parse("2019-09-01")},
-            //    };
-
-            //    planoOperadora.ForEach(s => context.PlanoOperadora.Add(s));
-            //    context.SaveChanges();
+            if (!context.PlanoOperadora.Any())
+            {
+                var planoOperadora = new List<PlanoOperadora>
+                {
+                new PlanoOperadora{NomeFantasia="Plano 1", RazaoSocial="Plano numero 1", CNPJ="00000000000000", DataEnvioLote=DateTime.Parse("2019-09-01"),DataRecebimentoLote=DateTime.Parse("2019-09-01")},
+                new PlanoOperadora{NomeFantasia="Plano 2", RazaoSocial="Plano numero 2", CNPJ="00000000000001", DataEnvioLote=DateTime.Parse("2019-09-01"),DataRecebimentoLote=DateTime.Parse("2019-09-01")},
+                };
 
 
-            //}
+                foreach (PlanoOperadora p in planoOperadora)
+                {
+                    context.Database.ExecuteSqlCommand(SQL.CreatePlanoOperadora,
+                    new SqlParameter("NomeFantasia", p.NomeFantasia),
+                    new SqlParameter("RazaoSocial", p.RazaoSocial),
+                    new SqlParameter("CNPJ", p.CNPJ),
+                    new SqlParameter("DataEnvioLote", p.DataEnvioLote),
+                    new SqlParameter("DataRecebimentoLote", p.DataRecebimentoLote));
+                }
+
+
+
+            }
 
             if (!context.UsuarioBase.Any())
             {
@@ -83,47 +90,47 @@ namespace SaguiDB.Migrations
                     new SqlParameter("TipoUsuario", p.TipoUsuario));
                 }
 
-             
-
-                //var dentinstas = new List<Dentinsta>
-                //{
-                //new Dentinsta{Nome="Carlos", Anotacoes="AAAAAAAAAAAAA", CPF="00000000002", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",CRO="10000000", TipoUsuario = 2},
-                //new Dentinsta{Nome="Antonio", Anotacoes="AAAAAAAAAAAAA", CPF="00000000003", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",CRO="20000000", TipoUsuario = 2},
-                //};
-
-                //foreach (Dentinsta p in dentinstas)
-                //{
-                //    context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
-                //    new SqlParameter("Nome", p.Nome),
-                //    new SqlParameter("Anotacoes", p.Anotacoes),
-                //    new SqlParameter("CPF", p.CPF),
-                //    new SqlParameter("Email", p.Email),
-                //    new SqlParameter("Funcao", p.Funcao),
-                //    new SqlParameter("Telefone", p.Telefone),
-                //    new SqlParameter("TipoUsuario", p.TipoUsuario),
-                //    new SqlParameter("CRO", p.CRO));
-                //}
 
 
-                //var pacientes = new List<Paciente>
-                //{
-                //new Paciente{Nome="Pedro", Anotacoes="AAAAAAAAAAAAA", CPF="00000000004", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 3},
-                //new Paciente{Nome="José", Anotacoes="AAAAAAAAAAAAA", CPF="00000000005", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 3},
-                //};
+                var dentinstas = new List<Dentinsta>
+                {
+                new Dentinsta{Nome="Carlos", Anotacoes="AAAAAAAAAAAAA", CPF="00000000002", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",CRO="10000000", TipoUsuario = 2},
+                new Dentinsta{Nome="Antonio", Anotacoes="AAAAAAAAAAAAA", CPF="00000000003", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",CRO="20000000", TipoUsuario = 2},
+                };
 
-                //foreach (Paciente p in pacientes)
-                //{
-                //    context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
-                //    new SqlParameter("Nome", p.Nome),
-                //    new SqlParameter("Anotacoes", p.Anotacoes),
-                //    new SqlParameter("CPF", p.CPF),
-                //    new SqlParameter("Email", p.Email),
-                //    new SqlParameter("Funcao", p.Funcao),
-                //    new SqlParameter("Telefone", p.Telefone),
-                //    new SqlParameter("TipoUsuario", p.TipoUsuario));
-                //}
+                foreach (Dentinsta p in dentinstas)
+                {
+                    context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
+                    new SqlParameter("Nome", p.Nome),
+                    new SqlParameter("Anotacoes", p.Anotacoes),
+                    new SqlParameter("CPF", p.CPF),
+                    new SqlParameter("Email", p.Email),
+                    new SqlParameter("Funcao", p.Funcao),
+                    new SqlParameter("Telefone", p.Telefone),
+                    new SqlParameter("TipoUsuario", p.TipoUsuario),
+                    new SqlParameter("CRO", p.CRO));
+                }
+
+
+                var pacientes = new List<Paciente>
+                {
+                new Paciente{Nome="Pedro", Anotacoes="AAAAAAAAAAAAA", CPF="00000000004", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 3},
+                new Paciente{Nome="José", Anotacoes="AAAAAAAAAAAAA", CPF="00000000005", Email="email@email.com.br",Funcao="Usuario", Telefone="11-00000-0000",TipoUsuario = 3},
+                };
+
+                foreach (Paciente p in pacientes)
+                {
+                    context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
+                    new SqlParameter("Nome", p.Nome),
+                    new SqlParameter("Anotacoes", p.Anotacoes),
+                    new SqlParameter("CPF", p.CPF),
+                    new SqlParameter("Email", p.Email),
+                    new SqlParameter("Funcao", p.Funcao),
+                    new SqlParameter("Telefone", p.Telefone),
+                    new SqlParameter("TipoUsuario", p.TipoUsuario));
+                }
             }
-                        
+
         }
     }
 }
