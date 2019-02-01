@@ -12,5 +12,5 @@ stages:
 build:
  stage: build
  script:
-  - 'msbuild.exe Sagui.sln'
+  - 'dotnet build Sagui.sln'
 
