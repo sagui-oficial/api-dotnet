@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -65,6 +66,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DB\DB_Test.cs" />
     <Compile Include="Mocks\MockPlanosOperadoras.cs" />
     <Compile Include="Mocks\MockArquivos.cs" />
     <Compile Include="Mocks\MockUsuario.cs" />
@@ -84,6 +86,10 @@
     <Compile Include="TestUsuarios\ListarUsuario_Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sagui.Data\Sagui.Data.csproj">
+      <Project>{553A3627-2C53-498F-A571-DB21450E25C3}</Project>
+      <Name>Sagui.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">
       <Project>{4756932D-515E-47B0-9E4E-D52C3A4230C9}</Project>
       <Name>Sagui.Model</Name>
@@ -95,6 +101,10 @@
     <ProjectReference Include="..\Sagui.Service\Sagui.Service.csproj">
       <Project>{bd8d642d-1bcd-49aa-b0bc-2b40fbff3b74}</Project>
       <Name>Sagui.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaguiDB\Sagui.DB.csproj">
+      <Project>{56C89952-FC99-4F83-A12F-CC35700BB389}</Project>
+      <Name>Sagui.DB</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

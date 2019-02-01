@@ -19,8 +19,7 @@ namespace SaguiDB
         public DbSet<Procedimentos> Procedimento { get; set; }
 
         #region usuarios
-        public DbSet<UsuarioBase> UsuarioBase { get; set; }
-
+           public DbSet<UsuarioBase> UsuarioBase { get; set; }
         
         #endregion
 
