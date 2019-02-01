@@ -12,5 +12,5 @@ stages:
 build:
  stage: build
  script:
-  - 'echo script ok'
+  - 'msbuild.exe Sagui.sln'
 
