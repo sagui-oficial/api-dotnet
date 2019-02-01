@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace Sagui.Model
 {
     public class GTO : BaseModel
-    {   [Key]
+    {
+        [Key, Column(Order = 1)]
         public int Id { get; set; }
         public string Numero { get; set; }
         public PlanoOperadora PlanoOperadora { get; set; }

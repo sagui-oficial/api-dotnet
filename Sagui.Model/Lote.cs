@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Sagui.Model
 {
     public class Lote : BaseModel
     {
-        [Key]
+        [Key, Column(Order = 1)]
         public int IdLote { get; set; }
         public PlanoOperadora PlanoOperadora { get; set; }
         public List<GTO> ListaGTO { get; set; }

@@ -60,6 +60,18 @@
     <Compile Include="Migrations\201901302315157_Alterado numero da gti para string.Designer.cs">
       <DependentUpon>201901302315157_Alterado numero da gti para string.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902011029120_add publicID.cs" />
+    <Compile Include="Migrations\201902011029120_add publicID.Designer.cs">
+      <DependentUpon>201902011029120_add publicID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902011116191_add publicID para todas as class BaseModel.cs" />
+    <Compile Include="Migrations\201902011116191_add publicID para todas as class BaseModel.Designer.cs">
+      <DependentUpon>201902011116191_add publicID para todas as class BaseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902011227116_Remove discriminator.cs" />
+    <Compile Include="Migrations\201902011227116_Remove discriminator.Designer.cs">
+      <DependentUpon>201902011227116_Remove discriminator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Sagui.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +80,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sagui.Data\Sagui.Data.csproj">
+      <Project>{553A3627-2C53-498F-A571-DB21450E25C3}</Project>
+      <Name>Sagui.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj">
       <Project>{4756932D-515E-47B0-9E4E-D52C3A4230C9}</Project>
       <Name>Sagui.Model</Name>
@@ -82,6 +98,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901302315157_Alterado numero da gti para string.resx">
       <DependentUpon>201901302315157_Alterado numero da gti para string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902011029120_add publicID.resx">
+      <DependentUpon>201902011029120_add publicID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902011116191_add publicID para todas as class BaseModel.resx">
+      <DependentUpon>201902011116191_add publicID para todas as class BaseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902011227116_Remove discriminator.resx">
+      <DependentUpon>201902011227116_Remove discriminator.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
