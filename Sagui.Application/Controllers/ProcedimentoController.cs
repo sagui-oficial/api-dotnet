@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
 using Sagui.Service.Procedimento;
@@ -21,9 +18,9 @@ namespace Sagui.Application.Controllers
         {
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
 
-            ProcedimentoService ProcedimentoService = new ProcedimentoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(ProcedimentoService);
+            ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
             
             return await this.HandleRequest(listarProcedimentoRequestHandler, requestProcedimento);
             

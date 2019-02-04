@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Sagui.Data</AssemblyName>
+    <RootNamespace>Sagui.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sagui.BaseN\Sagui.Base.csproj" />
+    <ProjectReference Include="..\Sagui.ModelN\Sagui.Model.csproj" />
+  </ItemGroup>
+
+</Project>

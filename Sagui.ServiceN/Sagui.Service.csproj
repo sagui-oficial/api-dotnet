@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sagui.BusinessN\Sagui.Business.csproj" />
+    <ProjectReference Include="..\Sagui.ModelN\Sagui.Model.csproj" />
+  </ItemGroup>
+
+</Project>
