@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sagui.Base\Sagui.Base.csproj" />
-    <ProjectReference Include="..\Sagui.Business\Sagui.Business.csproj" />
-    <ProjectReference Include="..\Sagui.Service\Sagui.Service.csproj" />
+    <ProjectReference Include="..\Sagui.Data\Sagui.Data.csproj" />
+    <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj" />
   </ItemGroup>
 
 </Project>

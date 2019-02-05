@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sagui.BaseN\Sagui.Base.csproj" />
-    <ProjectReference Include="..\Sagui.ModelN\Sagui.Model.csproj" />
+    <ProjectReference Include="..\Sagui.Base\Sagui.Base.csproj" />
+    <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj" />
   </ItemGroup>
 
 </Project>

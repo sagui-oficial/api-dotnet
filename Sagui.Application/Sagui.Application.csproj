@@ -16,8 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sagui.Service.RequestResponseN\Sagui.Service.RequestResponse.csproj" />
-    <ProjectReference Include="..\Sagui.ServiceN\Sagui.Service.csproj" />
+    <ProjectReference Include="..\Sagui.DBNN\Sagui.DBNN.csproj" />
+    <ProjectReference Include="..\Sagui.Service.RequestResponse\Sagui.Service.RequestResponse.csproj" />
+    <ProjectReference Include="..\Sagui.Service\Sagui.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

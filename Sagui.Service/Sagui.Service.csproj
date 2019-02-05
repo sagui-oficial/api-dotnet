@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sagui.BusinessN\Sagui.Business.csproj" />
-    <ProjectReference Include="..\Sagui.ModelN\Sagui.Model.csproj" />
+    <ProjectReference Include="..\Sagui.Business\Sagui.Business.csproj" />
+    <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj" />
   </ItemGroup>
 
 </Project>
