@@ -27,7 +27,7 @@ namespace Sagui.Application
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<Sagui.DBNN.Sagui>(options =>
+            services.AddDbContext<Sagui.DB.Sagui>(options =>
                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

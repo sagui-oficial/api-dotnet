@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Sagui.DBNN.Migrations
+namespace Sagui.DB.Migrations
 {
     public partial class initial : Migration
     {
@@ -66,7 +66,7 @@ namespace Sagui.DBNN.Migrations
                     Email = table.Column<string>(nullable: true),
                     Telefone = table.Column<string>(nullable: true),
                     TipoUsuario = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false)
+                    Discriminator = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -140,24 +140,24 @@ namespace Sagui.DBNN.Migrations
                     Stream = table.Column<byte[]>(nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false),
                     PathArquivo = table.Column<string>(nullable: true),
-                    GTOId = table.Column<int>(nullable: true),
-                    PlanoOperadoraId = table.Column<int>(nullable: true)
+                    //GTOId = table.Column<int>(nullable: true),
+                    //PlanoOperadoraId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Arquivo", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Arquivo_GTO_GTOId",
-                        column: x => x.GTOId,
-                        principalTable: "GTO",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Arquivo_PlanoOperadora_PlanoOperadoraId",
-                        column: x => x.PlanoOperadoraId,
-                        principalTable: "PlanoOperadora",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    //table.ForeignKey(
+                    //    name: "FK_Arquivo_GTO_GTOId",
+                    //    column: x => x.GTOId,
+                    //    principalTable: "GTO",
+                    //    principalColumn: "Id",
+                    //    onDelete: ReferentialAction.Restrict);
+                    //table.ForeignKey(
+                    //    name: "FK_Arquivo_PlanoOperadora_PlanoOperadoraId",
+                    //    column: x => x.PlanoOperadoraId,
+                    //    principalTable: "PlanoOperadora",
+                    //    principalColumn: "Id",
+                    //    onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -171,35 +171,35 @@ namespace Sagui.DBNN.Migrations
                     ValorProcedimento = table.Column<double>(nullable: false),
                     Exigencias = table.Column<string>(nullable: true),
                     Anotacoes = table.Column<string>(nullable: true),
-                    GTOId = table.Column<int>(nullable: true),
-                    PlanoOperadoraId = table.Column<int>(nullable: true)
+                   // GTOId = table.Column<int>(nullable: true),
+                    //PlanoOperadoraId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Procedimento", x => x.IdProcedimento);
-                    table.ForeignKey(
-                        name: "FK_Procedimento_GTO_GTOId",
-                        column: x => x.GTOId,
-                        principalTable: "GTO",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Procedimento_PlanoOperadora_PlanoOperadoraId",
-                        column: x => x.PlanoOperadoraId,
-                        principalTable: "PlanoOperadora",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    //table.ForeignKey(
+                    //    name: "FK_Procedimento_GTO_GTOId",
+                    //    column: x => x.GTOId,
+                    //    principalTable: "GTO",
+                    //    principalColumn: "Id",
+                    //    onDelete: ReferentialAction.Restrict);
+                    //table.ForeignKey(
+                    //    name: "FK_Procedimento_PlanoOperadora_PlanoOperadoraId",
+                    //    column: x => x.PlanoOperadoraId,
+                    //    principalTable: "PlanoOperadora",
+                    //    principalColumn: "Id",
+                    //    onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Arquivo_GTOId",
-                table: "Arquivo",
-                column: "GTOId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Arquivo_GTOId",
+            //    table: "Arquivo",
+            //    column: "GTOId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Arquivo_PlanoOperadoraId",
-                table: "Arquivo",
-                column: "PlanoOperadoraId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Arquivo_PlanoOperadoraId",
+            //    table: "Arquivo",
+            //    column: "PlanoOperadoraId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GTO_PacienteId",
@@ -221,15 +221,15 @@ namespace Sagui.DBNN.Migrations
                 table: "PlanoOperadoraPaciente",
                 column: "PlanoOperadoraId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Procedimento_GTOId",
-                table: "Procedimento",
-                column: "GTOId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Procedimento_GTOId",
+            //    table: "Procedimento",
+            //    column: "GTOId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Procedimento_PlanoOperadoraId",
-                table: "Procedimento",
-                column: "PlanoOperadoraId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Procedimento_PlanoOperadoraId",
+            //    table: "Procedimento",
+            //    column: "PlanoOperadoraId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

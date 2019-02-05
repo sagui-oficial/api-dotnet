@@ -2,7 +2,7 @@
 using Sagui.Model;
 using System;
 
-namespace Sagui.DBNN
+namespace Sagui.DB
 {
     
     public class Sagui : DbContext
@@ -28,6 +28,12 @@ namespace Sagui.DBNN
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<GTO>().HasKey(c => new { c.Id, c.PublicID });
+            //modelBuilder.Entity<PlanoOperadora>().HasKey(c => new { c.Id, c.PublicID });
+            //modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
+            //modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
+                        
+
             // exemplo para remover os plurais das tabelas.
             //modelBuilder.Entity<Course>().ToTable("Course");
             //modelBuilder.Entity<Enrollment>().ToTable("Enrollment");

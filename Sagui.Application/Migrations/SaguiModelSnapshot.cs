@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sagui.DBNN;
+using Sagui.DB;
 
 namespace Sagui.Application.Migrations
 {
-    [DbContext(typeof(Sagui.DBNN.Sagui))]
+    [DbContext(typeof(Sagui.DB.Sagui))]
     partial class SaguiModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

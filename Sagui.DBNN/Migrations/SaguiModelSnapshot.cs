@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sagui.DBNN;
+using Sagui.DB;
 
-namespace Sagui.DBNN.Migrations
+namespace Sagui.DB.Migrations
 {
     [DbContext(typeof(Sagui))]
     partial class SaguiModelSnapshot : ModelSnapshot

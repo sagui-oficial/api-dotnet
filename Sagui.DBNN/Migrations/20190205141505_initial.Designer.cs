@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sagui.DBNN;
+using Sagui.DB;
 
-namespace Sagui.DBNN.Migrations
+namespace Sagui.DB.Migrations
 {
     [DbContext(typeof(Sagui))]
-    [Migration("20190205124105_initial")]
+    [Migration("20190205141505_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
