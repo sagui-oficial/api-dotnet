@@ -23,12 +23,12 @@ namespace Sagui.DBNN
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB");//, b => b.MigrationsAssembly("Sagui.Application"));
+                      
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // exemplo para remover os plurais das tabelas.
             //modelBuilder.Entity<Course>().ToTable("Course");
             //modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
             //modelBuilder.Entity<Student>().ToTable("Student");

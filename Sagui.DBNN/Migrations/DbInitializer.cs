@@ -20,19 +20,19 @@ namespace Sagui.DBNN.Migrations
             {
                 var procedimentos = new List<Procedimentos>
                 {
-                new Procedimentos{Codigo=1,NomeProcedimento="Alexander",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
-                new Procedimentos{Codigo=2,NomeProcedimento="Fabio",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
+                new Procedimentos{Codigo=1,NomeProcedimento="Procedimento 1",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
+                new Procedimentos{Codigo=2,NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
                 };
 
 
                 foreach (Procedimentos p in procedimentos)
                 {
-                    //context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
-                    //new SqlParameter("Codigo", p.Codigo),
-                    //new SqlParameter("NomeProcedimento", p.NomeProcedimento),
-                    //new SqlParameter("ValorProcedimento", p.ValorProcedimento),
-                    //new SqlParameter("Exigencias", p.Exigencias),
-                    //new SqlParameter("Anotacoes", p.Anotacoes));
+                    context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
+                    new SqlParameter("Codigo", p.Codigo),
+                    new SqlParameter("NomeProcedimento", p.NomeProcedimento),
+                    new SqlParameter("ValorProcedimento", p.ValorProcedimento),
+                    new SqlParameter("Exigencias", p.Exigencias),
+                    new SqlParameter("Anotacoes", p.Anotacoes));
                 }
 
                 if (!context.PlanoOperadora.Any())
@@ -46,12 +46,12 @@ namespace Sagui.DBNN.Migrations
 
                     foreach (PlanoOperadora p in planoOperadora)
                     {
-                        //context.Database.ExecuteSqlCommand(SQL.CreatePlanoOperadora,
-                        //new SqlParameter("NomeFantasia", p.NomeFantasia),
-                        //new SqlParameter("RazaoSocial", p.RazaoSocial),
-                        //new SqlParameter("CNPJ", p.CNPJ),
-                        //new SqlParameter("DataEnvioLote", p.DataEnvioLote),
-                        //new SqlParameter("DataRecebimentoLote", p.DataRecebimentoLote));
+                        context.Database.ExecuteSqlCommand(SQL.CreatePlanoOperadora,
+                        new SqlParameter("NomeFantasia", p.NomeFantasia),
+                        new SqlParameter("RazaoSocial", p.RazaoSocial),
+                        new SqlParameter("CNPJ", p.CNPJ),
+                        new SqlParameter("DataEnvioLote", p.DataEnvioLote),
+                        new SqlParameter("DataRecebimentoLote", p.DataRecebimentoLote));
                     }
 
 

@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sagui.Base", "Sagui.Base\Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sagui.Model", "Sagui.Model\Sagui.Model.csproj", "{45180535-4B4E-4661-B1A9-D336988EC7DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sagui.DBNN", "Sagui.DBNN\Sagui.DBNN.csproj", "{190D7CAC-3009-41C9-BBA6-C6F82ED3976D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sagui.DB", "Sagui.DBNN\Sagui.DB.csproj", "{190D7CAC-3009-41C9-BBA6-C6F82ED3976D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

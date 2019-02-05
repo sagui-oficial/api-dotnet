@@ -84,7 +84,7 @@ namespace Sagui.Data
         #region procedimento
 
         public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimentos
+                    INSERT INTO dbo.Procedimento
                                (Codigo
                                ,NomeProcedimento
                                ,ValorProcedimento
@@ -105,14 +105,14 @@ namespace Sagui.Data
                                   ,ValorProcedimento
                                   ,Exigencias
                                   ,Anotacoes
-                             FROM sagui.dbo.Procedimentos";
+                             FROM sagui.dbo.Procedimento";
 
         public static string DeleteProcedimento = @"
                             DELETE FROM sagui.dbo.Procedimentos
                             WHERE IdProcedimento = @IdProcedimento";
 
         public static string UpdateProcedimento = @"
-                            UPDATE  sagui.dbo.Procedimentos
+                            UPDATE  sagui.dbo.Procedimento
                                     SET Codigo = @Codigo
                                       ,NomeProcedimento = @NomeProcedimento
                                       ,ValorProcedimento = @ValorProcedimento
