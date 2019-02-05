@@ -9,6 +9,7 @@ namespace Sagui.DBNN
     {
         public Sagui(DbContextOptions<Sagui> options) : base(options)
         {
+
         }
 
         public DbSet<Arquivo_GTO> Arquivo_GTO { get; set; }
@@ -19,6 +20,12 @@ namespace Sagui.DBNN
         public DbSet<Procedimentos> Procedimento { get; set; }
         public DbSet<UsuarioBase> UsuarioBase { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB");//, b => b.MigrationsAssembly("Sagui.Application"));
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

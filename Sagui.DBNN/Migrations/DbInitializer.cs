@@ -1,4 +1,5 @@
-﻿using Sagui.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Sagui.Data;
 using Sagui.Model;
 using System;
 using System.Collections.Generic;
