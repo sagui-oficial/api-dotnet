@@ -28,11 +28,18 @@ namespace Sagui.DB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<GTO>().HasKey(c => new { c.Id, c.PublicID });
-            //modelBuilder.Entity<PlanoOperadora>().HasKey(c => new { c.Id, c.PublicID });
-            //modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
-            //modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
-                        
+            modelBuilder.Entity<GTO>().HasKey(c => new { c.Id, c.PublicID });
+            modelBuilder.Entity<GTO>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+
+            modelBuilder.Entity<PlanoOperadora>().HasKey(c => new { c.Id, c.PublicID });
+            modelBuilder.Entity<PlanoOperadora>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+
+            modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
+            modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+
+            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
+            modelBuilder.Entity<Procedimentos>(b =>{b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()");            });
+            
 
             // exemplo para remover os plurais das tabelas.
             //modelBuilder.Entity<Course>().ToTable("Course");
