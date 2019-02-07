@@ -24,7 +24,7 @@ namespace Sagui.DB.Migrations
                 new Procedimentos{Codigo=2,NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0},
                 };
 
-
+              
                 foreach (Procedimentos p in procedimentos)
                 {
                     context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
@@ -34,8 +34,10 @@ namespace Sagui.DB.Migrations
                     new SqlParameter("Exigencias", p.Exigencias),
                     new SqlParameter("Anotacoes", p.Anotacoes));
                 }
+            }
 
-                if (!context.PlanoOperadora.Any())
+
+            if (!context.PlanoOperadora.Any())
                 {
                     var planoOperadora = new List<PlanoOperadora>
                 {
@@ -56,7 +58,7 @@ namespace Sagui.DB.Migrations
 
 
 
-                }
+             }
 
                 if (!context.UsuarioBase.Any())
                 {
@@ -121,7 +123,7 @@ namespace Sagui.DB.Migrations
 
                 }
 
-            }
+            
         }
     }
 }
