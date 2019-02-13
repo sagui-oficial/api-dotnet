@@ -3,9 +3,9 @@ image: microsoft/dotnet:latest
 pages:
   stage: deploy
   script:
-    - cd Sagui.Application
-    - dotnet build Sagui.Application.csproj -c Release -o /app
-    - dotnet publish Sagui.Application.csproj -c Release -o /app
-    - dotnet Sagui.Application.dll
+  - cd Sagui.Application
+  - dotnet build Sagui.Application.csproj -c Release -o /app
+  - dotnet publish Sagui.Application.csproj -c Release -o /app
+  - dotnet Sagui.Application.dll
   only:
   - master
