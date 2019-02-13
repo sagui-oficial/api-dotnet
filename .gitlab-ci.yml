@@ -1,11 +1,12 @@
 image: microsoft/dotnet:latest
 
-pages:
+before_script:
+  - cd "Sagui.Application"
+  - dotnet publish "Sagui.Application.csproj" -c Release -o /app
+
+deploy:
   stage: deploy
   script:
-  - cd Sagui.Application
-  - dotnet build Sagui.Application.csproj -c Release -o /app
-  - dotnet publish Sagui.Application.csproj -c Release -o /app
-  - dotnet Sagui.Application.dll
+    - dotnet "app/Sagui.Application.dll"
   only:
-  - master
+    - master
