@@ -8,5 +8,9 @@ deploy:
   stage: deploy
   script:
     - dotnet "app/Sagui.Application.dll"
+  artifacts:
+    name: "Sagui.Application"
+    paths:
+      - app/Sagui.Application.dll
   only:
     - master
