@@ -1,0 +1,16 @@
+variables:
+   PRJ_NAME: "Sagui.Application"
+
+    
+stages:
+  - build
+#  - teste
+#  - deploy
+
+
+
+build:
+ stage: build
+ script:
+  - 'echo script ok'
+

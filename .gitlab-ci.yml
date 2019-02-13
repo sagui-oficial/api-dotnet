@@ -1,16 +1,11 @@
-variables:
-   PRJ_NAME: "Sagui.Application"
+image: microsoft/dotnet:latest
 
-    
-stages:
-  - build
-#  - teste
-#  - deploy
-
-
-
-build:
- stage: build
- script:
-  - 'echo script ok'
-
+pages:
+  stage: deploy
+  script:
+    - cd Sagui.Application
+    - dotnet build Sagui.Application.csproj -c Release -o /app
+    - dotnet publish Sagui.Application.csproj -c Release -o /app
+    - dotnet Sagui.Application.dll
+  only:
+  - master
