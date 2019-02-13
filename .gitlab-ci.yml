@@ -8,7 +8,7 @@ deploy:
   script:
     - dotnet build Sagui.Application.csproj
     - dotnet publish Sagui.Application.csproj
-    - dotnet Sagui.Application/bin/Sagui.Application.dll
+    # - dotnet Sagui.Application/bin/Sagui.Application.dll
 
   artifacts:
     paths:
