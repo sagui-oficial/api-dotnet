@@ -12,7 +12,7 @@ deploy:
 
   artifacts:
     paths:
-      - app
+      - Sagui.Application
 
   only:
     - master
