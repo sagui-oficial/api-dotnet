@@ -2,11 +2,11 @@ image: microsoft/dotnet:latest
 
 before_script:
   - cd Sagui.Application
-  - dotnet publish Sagui.Application.csproj -c Release -o /app
 
 deploy:
   stage: deploy
-  # script:
+  script:
+    - dotnet publish Sagui.Application.csproj -c Release -o /app
     # - dotnet /Sagui.Application.dll
 
   artifacts:
