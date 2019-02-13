@@ -7,12 +7,11 @@ before_script:
 deploy:
   stage: deploy
   script:
-    - dotnet "app/Sagui.Application.dll"
+    - dotnet "Sagui.Application.dll"
 
   artifacts:
-    name: "Sagui.Application"
     paths:
-      - app/Sagui.Application.dll
+      - app
 
   only:
     - master
