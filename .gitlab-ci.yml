@@ -6,9 +6,9 @@ before_script:
 deploy:
   stage: deploy
   script:
-    - dotnet build Sagui.Application.csproj -c Release -o /app
-    - dotnet publish Sagui.Application.csproj -c Release -o /app
-    # - dotnet /Sagui.Application.dll
+    - dotnet build Sagui.Application.csproj
+    - dotnet publish Sagui.Application.csproj
+    - dotnet Sagui.Application/bin/Sagui.Application.dll
 
   artifacts:
     paths:
