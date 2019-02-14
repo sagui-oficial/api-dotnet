@@ -47,8 +47,8 @@ namespace Sagui.Data
                           ,Solicitacao = @Solicitacao
                           ,Vencimento = @Vencimento
                           ,Status = @Status
-                          ,Paciente_Id = @Paciente
-                          ,PlanoOperadora_Id = @PlanoOperadora
+                          ,PacienteId = @Paciente
+                          ,PlanoOperadoraId = @PlanoOperadora
                      WHERE Id = @Id   ";
 
         public static string CreateGTO = @"
@@ -73,8 +73,8 @@ namespace Sagui.Data
                                      SELECT Id
                                   ,Numero
                                   ,Status
-                                  ,PlanoOperadora_Id
-                                  ,Paciente_Id
+                                  ,PlanoOperadoraId
+                                  ,PacienteId
                                   ,Solicitacao
                                   ,Vencimento
                              FROM sagui.dbo.GTO";
