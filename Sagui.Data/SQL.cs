@@ -10,7 +10,7 @@ namespace Sagui.Data
     {
         #region arquivos
         public static string CreateArquivo = @"
-                   INSERT INTO dbo.Arquivos
+                   INSERT INTO dbo.Arquivo
                                (Nome
                                ,DataCriacao
                                ,Stream)
@@ -55,8 +55,8 @@ namespace Sagui.Data
                 INSERT INTO dbo.GTO
                            (Numero
                            , Status
-                           , PlanoOperadora_Id
-                           , Paciente_Id
+                           , PlanoOperadoraId
+                           , PacienteId
                            , Solicitacao
                            , Vencimento)
                      VALUES
