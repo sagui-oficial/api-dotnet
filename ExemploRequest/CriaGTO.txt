@@ -1,0 +1,46 @@
+{
+   "Id":10,
+   "Numero":"1A",
+   "PlanoOperadora":{
+      "Id":1,
+      "NomeFantasia":"Operadora 1",
+      "RazaoSocial":null,
+      "CNPJ":null,
+      "DataEnvioLote":"0001-01-01T00:00:00",
+      "DataRecebimentoLote":"0001-01-01T00:00:00",
+      "ListaProcedimentos":null,
+      "ListaArquivos":null
+   },
+   "Paciente":{
+      "ListaPlanoOperadoraPaciente":null,
+      "Id":1,
+      "Funcao":null,
+      "Nome":"Paciente 1",
+      "Anotacoes":null,
+      "CPF":null,
+      "Email":null,
+      "Telefone":null
+   },
+   "Arquivos":[
+      {
+         "Id":0,
+         "Nome":"ArquivoTeste",
+         "Stream":null,
+         "DataCriacao":"2019-01-14T20:43:07.4768306-02:00",
+         "PathArquivo":"C:\\"
+      }
+   ],
+   "Solicitacao":"2019-01-14T20:43:07.4698345-02:00",
+   "Vencimento":"2019-02-14T20:43:07.4748316-02:00",
+   "Procedimentos":[
+      {
+         "IdProcedimento":1,
+         "Codigo":1,
+         "NomeProcedimento":"Procedimento de Teste",
+         "ValorProcedimento":1.0,
+         "Exigencias":"AAAAAA",
+         "Anotacoes":"AAAAAA"
+      }
+   ],
+   "Status":1
+}
