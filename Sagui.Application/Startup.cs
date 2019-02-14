@@ -26,6 +26,7 @@ namespace Sagui.Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
 
             services.AddDbContext<Sagui.DB.Sagui>(options =>
                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -34,7 +35,7 @@ namespace Sagui.Application
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -44,6 +45,11 @@ namespace Sagui.Application
             {
                 app.UseHsts();
             }
+
+            app.UseCors(builder => builder
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
 
             app.UseHttpsRedirection();
             app.UseMvcWithDefaultRoute();
