@@ -6,7 +6,7 @@ before_script:
 stages:
   - build
   - publish
-#  - deploy
+  - database
 
 build:
   stage: build
@@ -25,10 +25,14 @@ publish:
   script:
     - dotnet publish Sagui.Application.csproj /noconlog /nologo
     # - dotnet Sagui.Application/bin/Sagui.Application.dll
+  only:
+    - master
 
-  artifacts:
-    paths:
-      - Sagui.Application
-
+database:
+  stage: database
+  script:
+    - " until dotnet ef database update; do >&2 ;echo ""SQL Server is starting up""; sleep 1; done"
+    
+    
   only:
     - master
