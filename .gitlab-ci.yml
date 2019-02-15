@@ -6,7 +6,7 @@ before_script:
 stages:
   - build
   - publish
-  - database
+  # - database
 
 build:
   stage: build
@@ -28,11 +28,9 @@ publish:
   only:
     - master
 
-database:
-  stage: database
-  script:
-    - until dotnet ef database update; do >&2 ;echo 'SQL Server is starting up'; sleep 1; done
-    
-    
-  only:
-    - master
+# database:
+#   stage: database
+#   script:
+#     - dotnet ef database update /noconlog /nologo
+#   only:
+#     - master
