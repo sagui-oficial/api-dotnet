@@ -28,9 +28,9 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Numero = Convert.ToString(reader["Numero"]);
                         _GTO.Status = Convert.ToInt32(reader["Status"]);
                         _GTO.PlanoOperadora = new Model.PlanoOperadora();
-                        _GTO.PlanoOperadora.Id= Convert.ToInt32(reader["PlanoOperadora_Id"]);
+                        _GTO.PlanoOperadora.Id= Convert.ToInt32(reader["PlanoOperadoraId"]);
                         _GTO.Paciente = new Model.Paciente();
-                        _GTO.Paciente.Id = Convert.ToInt32(reader["Paciente_Id"]);
+                        _GTO.Paciente.Id = Convert.ToInt32(reader["PacienteId"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         ListGTO.Add(_GTO);
