@@ -3,11 +3,27 @@ image: microsoft/dotnet:latest
 before_script:
   - cd Sagui.Application
 
-deploy:
-  stage: deploy
+stages:
+  - build
+  - publish
+#  - deploy
+
+build:
+  stage: build
   script:
-    - dotnet build Sagui.Application.csproj
-    - dotnet publish Sagui.Application.csproj
+    - dotnet dotnet build  Sagui.Application.csproj /noconlog /nologo
+    
+  artifacts:
+    paths:
+      - Sagui.Application
+
+  only:
+    - master
+
+publish:
+  stage: publish
+  script:
+    - dotnet publish Sagui.Application.csproj /noconlog /nologo
     # - dotnet Sagui.Application/bin/Sagui.Application.dll
 
   artifacts:
