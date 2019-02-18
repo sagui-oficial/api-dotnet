@@ -12,7 +12,7 @@ build:
   stage: build
   script:
     - dotnet build  Sagui.Application.csproj /noconlog /nologo
-    
+
   artifacts:
     paths:
       - Sagui.Application
