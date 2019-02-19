@@ -45,5 +45,15 @@ namespace Sagui.Service.GTO
                 return _return;
             }
         }
+
+        public Model.GTO Obter(Model.GTO GTO)
+        {
+            using (var GTOBusiness = new Business.GTO.GTOBusiness())
+            {
+                var _return = GTOBusiness.ObterGTO(GTO);
+                GTOBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

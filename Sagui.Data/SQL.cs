@@ -80,6 +80,18 @@ namespace Sagui.Data
                                   ,PublicID
                              FROM sagui.dbo.GTO";
 
+        public static string ObterGTObyPublicID = @"
+                                     SELECT Id
+                                  ,Numero
+                                  ,Status
+                                  ,PlanoOperadoraId
+                                  ,PacienteId
+                                  ,Solicitacao
+                                  ,Vencimento
+                                  ,PublicID
+                             FROM sagui.dbo.GTO
+                            WHERE PublicID = @PublicID";
+
         #endregion
 
         #region procedimento

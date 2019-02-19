@@ -112,6 +112,14 @@ namespace Sagui.Business.GTO
 
         }
 
+        public Model.GTO ObterGTO(Model.GTO GTO)
+        {
+            GTOLookup gtoLookup = new GTOLookup();
+            var listGTO = gtoLookup.ObterGTO(GTO);
+
+            return listGTO;
+        }
+
 
     }
 }

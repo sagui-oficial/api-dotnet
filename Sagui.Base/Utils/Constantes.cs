@@ -24,6 +24,8 @@ namespace Sagui.Base.Utils
         public static string MensagemGTONaoInserida = "GTO não inserida!";
         public static string MensagemGTODeletada = "GTO deletada!";
         public static string MensagemGTONaoDeletada = "GTO não deletada!";
+        public static string MensagemGTOObtidacomSucesso = "GTOs obtida com sucesso!";
+        public static string MensagemGTONaoObtidacomSucesso = "GTOs n]ao obtida com sucesso!";
 
         #endregion
 

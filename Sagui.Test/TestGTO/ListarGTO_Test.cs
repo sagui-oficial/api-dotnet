@@ -50,11 +50,11 @@ namespace Sagui.Test.TestGTO
         {
             GTOService gTOService = new GTOService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService);
 
             RequestGTO requestGTO = default(RequestGTO);
 
-            var response = await listarGTORequestHandler.Handle(requestGTO);
+            var response = await ObterGTORequestHandler.Handle(requestGTO);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Info);
             Assert.IsTrue(response.GTOs.Count == 0);

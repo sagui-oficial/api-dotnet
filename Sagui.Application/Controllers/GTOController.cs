@@ -29,9 +29,9 @@ namespace Sagui.Application.Controllers
 
             GTOService gTOService = new GTOService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService);
 
-            return await this.HandleRequest(listarGTORequestHandler, requestGTO);
+            return await this.HandleRequest(ObterGTORequestHandler, requestGTO);
 
         }
 
