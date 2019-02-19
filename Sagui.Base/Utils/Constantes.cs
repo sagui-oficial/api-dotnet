@@ -13,6 +13,8 @@ namespace Sagui.Base.Utils
         public static string ProblemaAoInserir = "Ocorreu um problema ao inserir!";
         public static string ListadoComSucesso = "Listado com sucesso!";
         public static string ProblemaAoListar = "Ocorreu um problema ao listar!";
+        public static string GTODeletada = "GTO deletada!";
+        public static string GTONaoDeletada = "GTO não deletada!";
         #endregion
 
         #region GTO
@@ -20,6 +22,9 @@ namespace Sagui.Base.Utils
         public static string MensagemGTOListadaComSucesso = "GTOs listadas com sucesso!";
         public static string MensagemGTOInseridaComSucesso = "GTO inserida com sucesso!";
         public static string MensagemGTONaoInserida = "GTO não inserida!";
+        public static string MensagemGTODeletada = "GTO deletada!";
+        public static string MensagemGTONaoDeletada = "GTO não deletada!";
+
         #endregion
 
         #region Procedimentos

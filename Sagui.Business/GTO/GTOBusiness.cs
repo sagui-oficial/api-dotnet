@@ -101,7 +101,7 @@ namespace Sagui.Business.GTO
         {
 
             GTOPersister gtoPersister = new GTOPersister();
-            gtoPersister.AtualizarGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            gtoPersister.DeleteGTO(gto, out Data.DataInfrastructure dataInfrastructure);
 
             Model.GTO responseGTO = new Model.GTO();
             responseGTO = gto;

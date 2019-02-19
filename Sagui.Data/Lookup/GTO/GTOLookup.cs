@@ -33,6 +33,7 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Paciente.Id = Convert.ToInt32(reader["PacienteId"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
+                        _GTO.PublicID = (Guid)reader["PublicID"];
                         ListGTO.Add(_GTO);
                     }
                 }

@@ -44,5 +44,21 @@ namespace Sagui.Test.TestGTO
             Assert.IsTrue(response.ResponseType == ResponseType.Info);
             Assert.IsTrue(response.GTOs.Count == 0);
         }
+
+        [TestMethod]
+        public async Task ObterGTO()
+        {
+            GTOService gTOService = new GTOService();
+
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+
+            RequestGTO requestGTO = default(RequestGTO);
+
+            var response = await listarGTORequestHandler.Handle(requestGTO);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Info);
+            Assert.IsTrue(response.GTOs.Count == 0);
+        }
+
     }
 }

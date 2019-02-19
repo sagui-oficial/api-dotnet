@@ -28,34 +28,34 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseGTO> Handle(RequestGTO GTO)
         {
-            var errors = validadorGTO.Validate(GTO);
+            var errors = new object(); //validadorGTO.Validate(GTO);
 
-            if (errors.Count() == 0)
-            {
+            //if (errors.Count() == 0)
+            //{
                 var _GTO = GTOService.Deletar(GTO);
 
                 if (_GTO.Id > 0)
                 {
                     responseGTO.ExecutionDate = DateTime.Now;
                     responseGTO.ResponseType = ResponseType.Success;
-                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, nameof(GTO), Constantes.MensagemGTOInseridaComSucesso));
+                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.GTODeletada, nameof(GTO), Constantes.MensagemGTODeletada));
                     return responseGTO;
                 }
                 else
                 {
                     responseGTO.ExecutionDate = DateTime.Now;
                     responseGTO.ResponseType = ResponseType.Error;
-                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir, nameof(GTO), Constantes.MensagemGTONaoInserida));
+                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.GTONaoDeletada, nameof(GTO), Constantes.MensagemGTONaoDeletada));
                     return responseGTO;
                 }
-            }
-            else
-            {
-                responseGTO.ExecutionDate = DateTime.Now;
-                responseGTO.ResponseType = ResponseType.Info;
-                responseGTO.Message = errors;
-                return responseGTO;
-            }
+            //}
+            //else
+            //{
+            //    responseGTO.ExecutionDate = DateTime.Now;
+            //    responseGTO.ResponseType = ResponseType.Info;
+            //    responseGTO.Message = errors;
+            //    return responseGTO;
+            //}
         }
     }
 }

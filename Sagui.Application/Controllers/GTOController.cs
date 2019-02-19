@@ -19,10 +19,13 @@ namespace Sagui.Application.Controllers
     {
         // GET: api/GTO
         [HttpGet("/{gtopublicid}/ObterGTO", Name = "ObterGTO")]
-        public async Task<IActionResult> ObterGTO()
+        public async Task<IActionResult> ObterGTO(Guid gtopublicid)
         {
-            RequestGTO requestGTO = default(RequestGTO);
 
+            RequestGTO requestGTO = new RequestGTO
+            {
+                PublicID = gtopublicid
+            };
 
             GTOService gTOService = new GTOService();
 
@@ -50,9 +53,9 @@ namespace Sagui.Application.Controllers
         {
             GTOService gTOService = new GTOService();
 
-            CriarGTORequestHandler criarGTORequestHandler = new CriarGTORequestHandler(gTOService);
+            CriarGTORequestHandler GTORequestHandler = new CriarGTORequestHandler(gTOService);
 
-            return await this.HandleRequest(criarGTORequestHandler, requestGTO);
+            return await this.HandleRequest(GTORequestHandler, requestGTO);
 
         }
 
@@ -61,20 +64,21 @@ namespace Sagui.Application.Controllers
         {
             GTOService gTOService = new GTOService();
 
-            AtualizarGTORequestHandler criarGTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+            AtualizarGTORequestHandler GTORequestHandler = new AtualizarGTORequestHandler(gTOService);
 
-            return await this.HandleRequest(criarGTORequestHandler, requestGTO);
+            return await this.HandleRequest(GTORequestHandler, requestGTO);
 
         }
 
-        [HttpPut("DeletarGTO", Name = "DeletarGTO")]
+        [HttpDelete("DeletarGTO", Name = "DeletarGTO")]
         public async Task<IActionResult> DeletarGTO([FromBody]  RequestGTO requestGTO)
         {
+
             GTOService gTOService = new GTOService();
 
-            AtualizarGTORequestHandler criarGTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+            DeletarGTORequestHandler GTORequestHandler = new DeletarGTORequestHandler(gTOService);
 
-            return await this.HandleRequest(criarGTORequestHandler, requestGTO);
+            return await this.HandleRequest(GTORequestHandler, requestGTO);
 
         }
 

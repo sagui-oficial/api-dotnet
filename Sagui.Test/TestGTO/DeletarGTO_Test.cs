@@ -23,9 +23,9 @@ namespace Sagui.Test.TestGTO
 
             GTOService gTOService = new GTOService();
 
-            AtualizarGTORequestHandler AtualizarGTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+            DeletarGTORequestHandler DeletarGTORequestHandler = new DeletarGTORequestHandler(gTOService);
 
-            var response = await AtualizarGTORequestHandler.Handle(requestGTO);
+            var response = await DeletarGTORequestHandler.Handle(requestGTO);
 
             Assert.IsNotNull(response.GTO);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

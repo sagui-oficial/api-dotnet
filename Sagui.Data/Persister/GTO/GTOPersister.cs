@@ -1,4 +1,5 @@
 ﻿using Sagui.Data.Base;
+using Sagui.Model;
 using System;
 using System.Collections.Generic;
 
@@ -43,8 +44,8 @@ namespace Sagui.Data.Persister.GTO
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
-            DbParams.Add(nameof(GTO.Id), GTO.Id.ToString());
-            DbParams.Add(nameof(GTO.Status), GTO.Status);
+            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
+            DbParams.Add(nameof(GTO.Status), StatusGTO.Status.Deletada);
            
             DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteGTO, DbParams);
 

@@ -23,7 +23,7 @@ namespace Sagui.Data
 
         #endregion
 
-        #region GTR
+        #region GTO
 
         public static string CreateProcedimentoGTO = @"
                     INSERT INTO dbo.Procedimento_GTO
@@ -39,7 +39,7 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE dbo.GTO
                                        SET Status = @Status
-                                       WHERE Id = @Id   ";
+                                       WHERE publicID = @publicID   ";
 
         public static string UpdateGTO = @"
                    UPDATE dbo.GTO
@@ -77,6 +77,7 @@ namespace Sagui.Data
                                   ,PacienteId
                                   ,Solicitacao
                                   ,Vencimento
+                                  ,PublicID
                              FROM sagui.dbo.GTO";
 
         #endregion
