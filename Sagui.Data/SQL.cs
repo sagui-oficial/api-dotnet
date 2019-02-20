@@ -86,21 +86,21 @@ namespace Sagui.Data
 			                                INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id";
 
         public static string ObterGTObyPublicID = @"
-                                     SELECT Id
-                                    ,a.Numero
-                                    ,a.Status
-                                    ,a.PlanoOperadoraId
-		                            ,b.NomeFantasia
-		                            ,b.RazaoSocial
-                                    ,a.PacienteId
-		                            ,c.Nome
-                                    ,a.Solicitacao
-                                    ,a.Vencimento
-                                    ,a.PublicID
-                                FROM sagui.dbo.GTO a (NOLOCK) 
-			                            INNER JOIN  PlanoOperadora b (NOLOCK)  ON  a.PlanoOperadoraId = b.Id
-			                            INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id
-                            WHERE PublicID = @PublicID";
+                                     SELECT  a.Id
+                                        ,a.Numero
+                                        ,a.Status
+                                        ,a.PlanoOperadoraId
+		                                ,b.NomeFantasia
+		                                ,b.RazaoSocial
+                                        ,a.PacienteId
+		                                ,c.Nome
+                                        ,a.Solicitacao
+                                        ,a.Vencimento
+                                        ,a.PublicID
+                                    FROM sagui.dbo.GTO a (NOLOCK) 
+			                                INNER JOIN  PlanoOperadora b (NOLOCK)  ON  a.PlanoOperadoraId = b.Id
+			                                INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id
+                            WHERE a.PublicID = @PublicID";
 
         #endregion
 
