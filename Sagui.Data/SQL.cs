@@ -70,26 +70,36 @@ namespace Sagui.Data
                 SELECT SCOPE_IDENTITY()";
 
         public static string ListGTO = @"
-                                     SELECT Id
-                                  ,Numero
-                                  ,Status
-                                  ,PlanoOperadoraId
-                                  ,PacienteId
-                                  ,Solicitacao
-                                  ,Vencimento
-                                  ,PublicID
-                             FROM sagui.dbo.GTO";
+                                    SELECT  a.Id
+                                        ,a.Numero
+                                        ,a.Status
+                                        ,a.PlanoOperadoraId
+		                                ,b.NomeFantasia
+		                                ,b.RazaoSocial
+                                        ,a.PacienteId
+		                                ,c.Nome
+                                        ,a.Solicitacao
+                                        ,a.Vencimento
+                                        ,a.PublicID
+                                    FROM sagui.dbo.GTO a (NOLOCK) 
+			                                INNER JOIN  PlanoOperadora b (NOLOCK)  ON  a.PlanoOperadoraId = b.Id
+			                                INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id";
 
         public static string ObterGTObyPublicID = @"
                                      SELECT Id
-                                  ,Numero
-                                  ,Status
-                                  ,PlanoOperadoraId
-                                  ,PacienteId
-                                  ,Solicitacao
-                                  ,Vencimento
-                                  ,PublicID
-                             FROM sagui.dbo.GTO
+                                    ,a.Numero
+                                    ,a.Status
+                                    ,a.PlanoOperadoraId
+		                            ,b.NomeFantasia
+		                            ,b.RazaoSocial
+                                    ,a.PacienteId
+		                            ,c.Nome
+                                    ,a.Solicitacao
+                                    ,a.Vencimento
+                                    ,a.PublicID
+                                FROM sagui.dbo.GTO a (NOLOCK) 
+			                            INNER JOIN  PlanoOperadora b (NOLOCK)  ON  a.PlanoOperadoraId = b.Id
+			                            INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id
                             WHERE PublicID = @PublicID";
 
         #endregion

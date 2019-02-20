@@ -29,9 +29,12 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Numero = Convert.ToString(reader["Numero"]);
                         _GTO.Status = Convert.ToInt32(reader["Status"]);
                         _GTO.PlanoOperadora = new Model.PlanoOperadora();
-                        _GTO.PlanoOperadora.Id= Convert.ToInt32(reader["PlanoOperadoraId"]);
+                        _GTO.PlanoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
+                        _GTO.PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                        _GTO.PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
                         _GTO.Paciente = new Model.Paciente();
                         _GTO.Paciente.Id = Convert.ToInt32(reader["PacienteId"]);
+                        _GTO.Paciente.Nome = Convert.ToString(reader["Nome"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
@@ -72,8 +75,11 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Status = Convert.ToInt32(reader["Status"]);
                         _GTO.PlanoOperadora = new Model.PlanoOperadora();
                         _GTO.PlanoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
+                        _GTO.PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                        _GTO.PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
                         _GTO.Paciente = new Model.Paciente();
                         _GTO.Paciente.Id = Convert.ToInt32(reader["PacienteId"]);
+                        _GTO.Paciente.Nome = Convert.ToString(reader["Nome"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
