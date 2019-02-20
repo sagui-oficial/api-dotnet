@@ -34,7 +34,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             //{
                 var _GTO = GTOService.Deletar(GTO);
 
-                if (_GTO.Id > 0)
+                if (_GTO.PublicID != null)
                 {
                     responseGTO.ExecutionDate = DateTime.Now;
                     responseGTO.ResponseType = ResponseType.Success;

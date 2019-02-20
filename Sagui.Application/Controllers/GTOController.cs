@@ -70,10 +70,13 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpDelete("DeletarGTO", Name = "DeletarGTO")]
-        public async Task<IActionResult> DeletarGTO([FromBody]  RequestGTO requestGTO)
+        [HttpDelete("/{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
+        public async Task<IActionResult> DeletarGTO(Guid gtopublicid)
         {
-
+            RequestGTO requestGTO = new RequestGTO
+            {
+                PublicID = gtopublicid
+            };
             GTOService gTOService = new GTOService();
 
             DeletarGTORequestHandler GTORequestHandler = new DeletarGTORequestHandler(gTOService);
