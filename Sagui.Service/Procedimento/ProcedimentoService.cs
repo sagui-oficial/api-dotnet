@@ -46,5 +46,15 @@ namespace Sagui.Service.Procedimento
                 return _return;
             }
         }
+
+        public Procedimentos Obter(Model.Procedimentos Procedimento)
+        {
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.Obter(Procedimento);
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

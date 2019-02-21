@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
 using Sagui.Service.Procedimento;
@@ -12,8 +13,27 @@ namespace Sagui.Application.Controllers
     [ApiController]
     public class ProcedimentoController : Controller
     {
-      //  GET: api/Procedimento
-       [HttpGet]
+
+        //GET: api/Procedimento/5
+        [HttpGet("/{gtopublicid}/ObterProcedimento", Name = "ObterProcedimento")]
+        public async Task<IActionResult> ObterGTO(Guid gtopublicid)
+        {
+
+            RequestProcedimento requestProcedimento = new RequestProcedimento
+            {
+                PublicID = gtopublicid
+            };
+
+            ProcedimentoService procedimentoService = new ProcedimentoService();
+
+            ObterProcedimentoRequestHandler ObterProcedimentoRequestHandler = new ObterProcedimentoRequestHandler(procedimentoService);
+
+              return await this.HandleRequest(ObterProcedimentoRequestHandler, requestProcedimento);
+
+        }
+
+        
+        [HttpGet("ListarProcedimento", Name = "ListarProcedimento")]
         public async Task<IActionResult> GetAsync()
         {
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
@@ -26,20 +46,8 @@ namespace Sagui.Application.Controllers
             
         }
 
-        // GET: api/Procedimento/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Procedimento
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-
+       
+       
         [HttpPost("CriarProcedimento", Name = "CriarProcedimento")]
         public async Task<IActionResult> CriarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
@@ -62,9 +70,14 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("DeletarProcedimento", Name = "DeletarProcedimento")]
-        public async Task<IActionResult> DeletarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
+        [HttpPost("/{gtopublicid}/DeletarProcedimento", Name = "DeletarProcedimento")]
+        public async Task<IActionResult> DeletarProcedimento(Guid gtopublicid)
         {
+
+            RequestProcedimento requestProcedimento = new RequestProcedimento
+            {
+                PublicID = gtopublicid
+            };
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
 
             AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);

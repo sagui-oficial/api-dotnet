@@ -55,5 +55,13 @@ namespace Sagui.Business.Procedimento
 
             return responseProcedimento;
         }
+
+        public Model.Procedimentos Obter(Model.Procedimentos procedimento)
+        {
+            ProcedimentoLookup procedimentoLookup = new ProcedimentoLookup();
+            var listProcedimento = procedimentoLookup.ObterProcedimento(procedimento);
+
+            return listProcedimento;
+        }
     }
 }

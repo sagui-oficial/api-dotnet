@@ -153,7 +153,19 @@ namespace Sagui.Data
                                   ,ValorProcedimento
                                   ,Exigencias
                                   ,Anotacoes
+                                  ,PublicID
                              FROM sagui.dbo.Procedimento";
+
+        public static string ObterProcedimento = @"
+                            SELECT IdProcedimento
+                                  ,Codigo
+                                  ,NomeProcedimento
+                                  ,ValorProcedimento
+                                  ,Exigencias
+                                  ,Anotacoes
+                                  ,PublicID
+                             FROM sagui.dbo.Procedimento
+                            WHERE PublicID = @PublicID";
 
         public static string DeleteProcedimento = @"
                             DELETE FROM sagui.dbo.Procedimentos
