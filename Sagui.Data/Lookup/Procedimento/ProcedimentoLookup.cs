@@ -29,6 +29,7 @@ namespace Sagui.Data.Lookup.Procedimento
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
                         _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+                        _Procedimento.PublicID = (Guid)reader["PublicID"];
                         ListProcedimento.Add(_Procedimento);
 
                         

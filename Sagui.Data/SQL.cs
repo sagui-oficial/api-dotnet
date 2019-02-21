@@ -35,7 +35,32 @@ namespace Sagui.Data
 
                         SELECT SCOPE_IDENTITY();";
 
-             
+        public static string ListarProcedimentoGTO = @"
+                    SELECT  
+	                       b.[IdProcedimento]
+                          ,b.[Codigo]
+                          ,b.[NomeProcedimento]
+                          ,b.[ValorProcedimento]
+                          ,b.[Exigencias]
+                          ,b.[Anotacoes]
+                          ,b.[PublicID]
+                    FROM 
+                    Procedimento_GTO a (NOLOCK)
+		                    inner join Procedimento b ON a.idProcedimento = b.IdProcedimento
+                    where idGTO = @idGTO";
+
+        public static string ListarArquivoGTO = @"
+                    SELECT  
+	                       b.[Id]
+                          ,b.[Nome]
+                          ,b.[Stream]
+                          ,b.[DataCriacao]
+                          ,b.[PathArquivo]
+                    FROM Arquivo_GTO a (NOLOCK)
+		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+                    WHERE idGTO = @idGTO";
+
+
 
         public static string DeleteGTO = @" UPDATE dbo.GTO
                                        SET Status = @Status
