@@ -46,9 +46,8 @@ namespace Sagui.Data.Persister.GTO
                 throw new ArgumentNullException(nameof(Procedimentos));
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(Procedimentos.IdProcedimento), Procedimentos.IdProcedimento);
-
-           
+            DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
+                       
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteProcedimento, DbParams))
             {
                 try

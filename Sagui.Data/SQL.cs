@@ -169,7 +169,7 @@ namespace Sagui.Data
 
         public static string DeleteProcedimento = @"
                             DELETE FROM sagui.dbo.Procedimentos
-                            WHERE IdProcedimento = @IdProcedimento";
+                            WHERE PublicID = @PublicID";
 
         public static string UpdateProcedimento = @"
                             UPDATE  sagui.dbo.Procedimento
