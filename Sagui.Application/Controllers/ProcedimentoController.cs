@@ -15,7 +15,7 @@ namespace Sagui.Application.Controllers
     {
 
         //GET: api/Procedimento/5
-        [HttpGet("/{gtopublicid}/ObterProcedimento", Name = "ObterProcedimento")]
+        [HttpGet("{gtopublicid}/ObterProcedimento", Name = "ObterProcedimento")]
         public async Task<IActionResult> ObterGTO(Guid gtopublicid)
         {
 
@@ -70,7 +70,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("/{gtopublicid}/DeletarProcedimento", Name = "DeletarProcedimento")]
+        [HttpPut("{gtopublicid}/DeletarProcedimento", Name = "DeletarProcedimento")]
         public async Task<IActionResult> DeletarProcedimento(Guid gtopublicid)
         {
 

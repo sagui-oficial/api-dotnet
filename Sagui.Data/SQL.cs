@@ -168,7 +168,8 @@ namespace Sagui.Data
                             WHERE PublicID = @PublicID";
 
         public static string DeleteProcedimento = @"
-                            DELETE FROM sagui.dbo.Procedimentos
+                            UPDATE sagui.dbo.Procedimentos
+                                    SET Status = @Status
                             WHERE PublicID = @PublicID";
 
         public static string UpdateProcedimento = @"
@@ -178,7 +179,7 @@ namespace Sagui.Data
                                       ,ValorProcedimento = @ValorProcedimento
                                       ,Exigencias = @Exigencias
                                       ,Anotacoes = @Anotacoes
-                            WHERE IdProcedimento = @IdProcedimento";
+                            WHERE PublicID = @PublicID";
         #endregion
 
         #region usuario

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(Procedimentos.Exigencias), Procedimentos.Exigencias);
             DbParams.Add(nameof(Procedimentos.NomeProcedimento), Procedimentos.NomeProcedimento);
             DbParams.Add(nameof(Procedimentos.ValorProcedimento), Procedimentos.ValorProcedimento);
+            DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
+            DbParams.Add(nameof(Procedimentos.Status), Procedimentos.Status);
 
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateProcedimento, DbParams))
             {
@@ -47,7 +50,8 @@ namespace Sagui.Data.Persister.GTO
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
-                       
+            DbParams.Add(nameof(Procedimentos.Status), StatusProcedimento.Status.Deletada);
+
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteProcedimento, DbParams))
             {
                 try

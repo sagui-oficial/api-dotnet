@@ -15,7 +15,7 @@ namespace Sagui.DB.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -160,9 +160,7 @@ namespace Sagui.DB.Migrations
 
             modelBuilder.Entity("Sagui.Model.Procedimentos", b =>
                 {
-                    b.Property<int>("IdProcedimento")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("IdProcedimento");
 
                     b.Property<Guid>("PublicID")
                         .ValueGeneratedOnAdd()
@@ -183,6 +181,8 @@ namespace Sagui.DB.Migrations
                     b.Property<int?>("PlanoOperadoraId");
 
                     b.Property<Guid?>("PlanoOperadoraPublicID");
+
+                    b.Property<int>("Status");
 
                     b.Property<double>("ValorProcedimento");
 

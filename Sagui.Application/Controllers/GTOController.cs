@@ -18,7 +18,7 @@ namespace Sagui.Application.Controllers
     public class GTOController : Controller
     {
         // GET: api/GTO
-        [HttpGet("/{gtopublicid}/ObterGTO", Name = "ObterGTO")]
+        [HttpGet("{gtopublicid}/ObterGTO", Name = "ObterGTO")]
         public async Task<IActionResult> ObterGTO(Guid gtopublicid)
         {
 
@@ -70,7 +70,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpDelete("/{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
+        [HttpPut("{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
         public async Task<IActionResult> DeletarGTO(Guid gtopublicid)
         {
             RequestGTO requestGTO = new RequestGTO
