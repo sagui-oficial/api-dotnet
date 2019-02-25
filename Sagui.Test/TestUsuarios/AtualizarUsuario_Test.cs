@@ -14,7 +14,7 @@ namespace Sagui.Test.TestUsuarios
     public class AtualizarUsuario_Test
     {
         [TestMethod]
-        public async Task CadastrarFuncionario()
+        public async Task AtualizarFuncionario()
         {
             RequestUsuarioFuncionario requestUsuarioFuncionario = new RequestUsuarioFuncionario();
             MockUsuario mock = new MockUsuario();
@@ -23,9 +23,9 @@ namespace Sagui.Test.TestUsuarios
 
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-            CriarUsuarioFuncionarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioFuncionarioRequestHandler(usuarioService);
+            AtualizarUsuarioFuncionarioRequestHandler atualizarUsuarioRequestHandler = new AtualizarUsuarioFuncionarioRequestHandler(usuarioService);
 
-            var response = await criarUsuarioRequestHandler.Handle(requestUsuarioFuncionario);
+            var response = await atualizarUsuarioRequestHandler.Handle(requestUsuarioFuncionario);
 
             Assert.IsNotNull(response.Funcionario);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
@@ -33,7 +33,7 @@ namespace Sagui.Test.TestUsuarios
 
 
         [TestMethod]
-        public async Task CadastrarDentista()
+        public async Task AtualizarDentista()
         {
             RequestUsuarioDentista requestUsuario = new RequestUsuarioDentista();
             MockUsuario mock = new MockUsuario();

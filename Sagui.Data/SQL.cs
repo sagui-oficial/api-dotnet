@@ -194,11 +194,12 @@ namespace Sagui.Data
                                   ,Telefone
                                   ,CRO
                                   ,Discriminator
+                                  ,PublicId
                               FROM dbo.UsuarioBase 
                             WHERE TipoUsuario = @TipoUsuario";
 
 
-        public static string CreateUsuario = @"
+        public static string CreateUsuarioPaciente = @"
                 INSERT INTO dbo.UsuarioBase
                                (Funcao
                                ,Nome
@@ -217,6 +218,17 @@ namespace Sagui.Data
                                ,@TipoUsuario);
                 
                 SELECT SCOPE_IDENTITY()";
+
+        public static string UpdateUsuarioPaciente = @"
+                UPDATE dbo.UsuarioBase
+                       SET Funcao = @Funcao
+                          ,Nome = @Nome
+                          ,Anotacoes = @Anotacoes
+                          ,CPF = @CPF
+                          ,Email = @Email
+                          ,Telefone = @Telefone
+                          ,Discriminator = @Discriminator
+                     WHERE PublicId = @PublicId";
 
 
 
@@ -240,6 +252,17 @@ namespace Sagui.Data
                 
                 SELECT SCOPE_IDENTITY()";
 
+        public static string UpdateUsuarioFuncionario = @"
+                UPDATE dbo.UsuarioBase
+                       SET Funcao = @Funcao
+                          ,Nome = @Nome
+                          ,Anotacoes = @Anotacoes
+                          ,CPF = @CPF
+                          ,Email = @Email
+                          ,Telefone = @Telefone
+                          ,Discriminator = @Discriminator
+                     WHERE PublicId = @PublicId";
+
         public static string CreateUsuarioDentista = @"
                 INSERT INTO dbo.UsuarioBase
                                (Funcao
@@ -262,7 +285,7 @@ namespace Sagui.Data
                 
                 SELECT SCOPE_IDENTITY()";
 
-        public static string UpdateUsuario = @"
+        public static string UpdateUsuarioDentista = @"
                 UPDATE dbo.UsuarioBase
                        SET Funcao = @Funcao
                           ,Nome = @Nome
@@ -272,10 +295,12 @@ namespace Sagui.Data
                           ,Telefone = @Telefone
                           ,CRO = @CRO
                           ,Discriminator = @Discriminator
-                     WHERE Id = @Id";
+                     WHERE PublicId = @PublicId";
 
 
-        public static string DeleteUsuario = @"";
+        public static string DeleteUsuario = @"
+                            DELETE FROM sagui.dbo.UsuarioBase
+                            WHERE PublicID = @PublicID";
 
         #endregion
 

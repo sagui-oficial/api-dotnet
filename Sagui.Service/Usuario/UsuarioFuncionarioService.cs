@@ -5,9 +5,14 @@ namespace Sagui.Service.Usuario
 {
     public class UsuarioFuncionarioService : IUsuarioService<Model.Funcionario, Model.Funcionario>
     {
-        public Model.Funcionario Atualizar(Model.Funcionario model)
+        public Model.Funcionario Atualizar(Model.Funcionario Usuario)
         {
-            throw new System.NotImplementedException();
+            using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
+            {
+                var _return = usuarioBusiness.Cadastrar(Usuario);
+                usuarioBusiness.Dispose();
+                return _return;
+            }
         }
 
         public Model.Funcionario Cadastrar(Model.Funcionario Usuario)
@@ -20,9 +25,14 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public Model.Funcionario Deletar(Model.Funcionario model)
+        public Model.Funcionario Deletar(Model.Funcionario Usuario)
         {
-            throw new System.NotImplementedException();
+            using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
+            {
+                var _return = usuarioBusiness.Deletar(Usuario);
+                usuarioBusiness.Dispose();
+                return _return;
+            }
         }
 
         public List<Model.Funcionario> Listar()

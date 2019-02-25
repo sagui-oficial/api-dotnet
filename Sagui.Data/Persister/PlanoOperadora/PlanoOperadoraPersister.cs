@@ -14,7 +14,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
             
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuario, DbParams);
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioDentista, DbParams);
 
             try
             {

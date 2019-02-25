@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sagui.Service.Procedimento;
+using Sagui.Service.Usuario;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
@@ -18,19 +18,19 @@ namespace Sagui.Test.TestProcedimentos
         [TestMethod]
         public async Task DeletarUsuario()
         {
-            RequestUsuarioDentista requestusuario = new RequestUsuarioDentista();
+            RequestUsuarioFuncionario requestusuario = new RequestUsuarioFuncionario();
             MockUsuario mock = new MockUsuario();
 
-            requestusuario = mock.CriarMockUsuarioDentista();
+            requestusuario = mock.CriarMockUsuarioFuncionario();
 
-            //ProcedimentoService procedimentoService = new ProcedimentoService();
+            UsuarioFuncionarioService UsuarioService = new UsuarioFuncionarioService();
 
-            //DeletarProcedimentoRequestHandler deletarProcedimentoRequestHandler = new DeletarProcedimentoRequestHandler(procedimentoService);
+            DeletarUsuarioRequestHandler deletarUsuarioRequestHandler = new DeletarUsuarioRequestHandler(UsuarioService);
 
-            //var response = await deletarProcedimentoRequestHandler.Handle(requestusuario);
+            var response = await deletarUsuarioRequestHandler.Handle(requestusuario);
 
-            //Assert.IsNotNull(response.Procedimento);
-            //Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsNotNull(response.Funcionario);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
 
         }
     }

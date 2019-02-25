@@ -35,5 +35,41 @@ namespace Sagui.Business.Usuario
 
             return responseUsuario;
         }
+
+        public Model.Funcionario Atualizar(Model.Funcionario usuarioFuncionario)
+        {
+            UsuarioPersister usuarioPersister = new UsuarioPersister();
+            usuarioPersister.AtualizarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+
+            Model.Funcionario responseUsuario = default(Model.Funcionario);
+
+            if (usuarioFuncionario.Id > 0)
+            {
+                dataInfrastructure.transaction.Commit();
+                responseUsuario = usuarioFuncionario;
+            }
+
+            dataInfrastructure.Dispose();
+
+            return responseUsuario;
+        }
+
+        public Model.Funcionario Deletar(Model.Funcionario usuarioFuncionario)
+        {
+            UsuarioPersister usuarioPersister = new UsuarioPersister();
+            usuarioPersister.DeletarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+
+            Model.Funcionario responseUsuario = default(Model.Funcionario);
+
+            if (usuarioFuncionario.PublicID != null)
+            {
+                dataInfrastructure.transaction.Commit();
+                responseUsuario = usuarioFuncionario;
+            }
+
+            dataInfrastructure.Dispose();
+
+            return responseUsuario;
+        }
     }
 }
