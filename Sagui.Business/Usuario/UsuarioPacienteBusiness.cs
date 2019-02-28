@@ -50,5 +50,14 @@ namespace Sagui.Business.Usuario
 
             return responseUsuario;
         }
+
+
+        public Model.Paciente ObterPaciente(Model.Paciente Paciente)
+        {
+            UsuarioPacienteLookup pacienteLookup = new UsuarioPacienteLookup();
+            var paciente = pacienteLookup.ObterUsuarioPaciente(Paciente);
+
+            return paciente;
+        }
     }
 }

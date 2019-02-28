@@ -41,6 +41,9 @@ namespace Sagui.Base.Utils
         public static string MensagemUsuarioNaoInserido = "Usuario(s) não inserido(s)!";
         public static string MensagemUsuarioListadaComSucesso = "Usuarios listados com sucesso!";
         public static string MensagemUsuarioNaoListado = "Usuarios não listados!";
+
+        public static string MensagemPacienteObtidoComSucesso = "Paciente obtido com sucesso!";
+        public static string MensagemPacienteNaoEncontrado= "Paciente não encontrado!";
         #endregion
 
         #region ErrorTypes

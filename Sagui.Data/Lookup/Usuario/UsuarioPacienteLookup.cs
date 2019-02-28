@@ -45,5 +45,41 @@ namespace Sagui.Data.Lookup.GTO
             }
             return ListUsuario;
         }
+
+        public Paciente ObterUsuarioPaciente(Paciente paciente)
+        {
+            Paciente usuarioPaciente = new Paciente();
+
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add(nameof(Paciente.PublicID), paciente.PublicID.ToString());
+
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
+            {
+                try
+                {
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Model.Paciente _Usuario = new Model.Paciente();
+                        _Usuario.Id = Convert.ToInt32(reader["Id"]);
+                        _Usuario.Nome = Convert.ToString(reader["Nome"]);
+                        _Usuario.Funcao = Convert.ToString(reader["Funcao"]);
+                        _Usuario.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+
+                        usuarioPaciente = _Usuario;
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+                finally
+                {
+                    dataInfrastructure.Dispose();
+                }
+            }
+            return usuarioPaciente;
+        }
     }
 }
