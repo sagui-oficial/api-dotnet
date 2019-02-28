@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class DeletarUsuarioRequestHandler : IBaseRequestHandler<RequestUsuarioFuncionario, ResponseUsuarioFuncionario>
+    public class DeletarUsuarioFuncionarioRequestHandler : IBaseRequestHandler<RequestUsuarioFuncionario, ResponseUsuarioFuncionario>
     {
         UsuarioFuncionarioService usuarioService;
         private Business.Validador.Usuario.ValidatorUsuarioBase validatorUsuario { get; set; }
 
         ResponseUsuarioFuncionario responseUsuario;
 
-        public DeletarUsuarioRequestHandler(UsuarioFuncionarioService _usuarioService)
+        public DeletarUsuarioFuncionarioRequestHandler(UsuarioFuncionarioService _usuarioService)
         {
             usuarioService = _usuarioService;
             validatorUsuario = new Business.Validador.Usuario.ValidatorUsuarioBase();
