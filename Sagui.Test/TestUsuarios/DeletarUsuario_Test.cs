@@ -16,7 +16,7 @@ namespace Sagui.Test.TestProcedimentos
     public class DeletarUsuario_Test
     {
         [TestMethod]
-        public async Task DeletarUsuario()
+        public async Task DeletarUsuarioFuncionario()
         {
             RequestUsuarioFuncionario requestusuario = new RequestUsuarioFuncionario();
             MockUsuario mock = new MockUsuario();
@@ -25,11 +25,49 @@ namespace Sagui.Test.TestProcedimentos
 
             UsuarioFuncionarioService UsuarioService = new UsuarioFuncionarioService();
 
-            DeletarUsuarioRequestHandler deletarUsuarioRequestHandler = new DeletarUsuarioRequestHandler(UsuarioService);
+            DeletarUsuarioFuncionarioRequestHandler deletarUsuarioRequestHandler = new DeletarUsuarioFuncionarioRequestHandler(UsuarioService);
 
             var response = await deletarUsuarioRequestHandler.Handle(requestusuario);
 
             Assert.IsNotNull(response.Funcionario);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+
+        }
+
+        [TestMethod]
+        public async Task DeletarUsuarioDentista()
+        {
+            RequestUsuarioDentista requestusuario = new RequestUsuarioDentista();
+            MockUsuario mock = new MockUsuario();
+
+            requestusuario = mock.CriarMockUsuarioDentista();
+
+            UsuarioDentistaService UsuarioService = new UsuarioDentistaService();
+
+            DeletarUsuarioDentistaRequestHandler deletarUsuarioRequestHandler = new DeletarUsuarioDentistaRequestHandler(UsuarioService);
+
+            var response = await deletarUsuarioRequestHandler.Handle(requestusuario);
+
+            Assert.IsNotNull(response.Dentinsta);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+
+        }
+
+        [TestMethod]
+        public async Task DeletarUsuarioPaciente()
+        {
+            RequestUsuarioPaciente requestusuario = new RequestUsuarioPaciente();
+            MockUsuario mock = new MockUsuario();
+
+            requestusuario = mock.CriarMockUsuarioPaciente();
+
+            UsuarioPacienteService UsuarioService = new UsuarioPacienteService();
+
+            DeletarUsuarioPacienteRequestHandler deletarUsuarioRequestHandler = new DeletarUsuarioPacienteRequestHandler(UsuarioService);
+
+            var response = await deletarUsuarioRequestHandler.Handle(requestusuario);
+
+            Assert.IsNotNull(response.Paciente);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
 
         }

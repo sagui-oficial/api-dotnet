@@ -5,9 +5,14 @@ namespace Sagui.Service.Usuario
 {
     public class UsuarioPacienteService : IUsuarioService<Model.Paciente, Model.Paciente>
     {
-        public Model.Paciente Atualizar(Model.Paciente model)
+        public Model.Paciente Atualizar(Model.Paciente Usuario)
         {
-            throw new System.NotImplementedException();
+            using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
+            {
+                var _return = usuarioBusiness.Cadastrar(Usuario);
+                usuarioBusiness.Dispose();
+                return _return;
+            }
         }
 
         public Model.Paciente Cadastrar(Model.Paciente Usuario)

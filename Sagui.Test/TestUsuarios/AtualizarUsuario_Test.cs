@@ -42,7 +42,7 @@ namespace Sagui.Test.TestUsuarios
 
             UsuarioDentistaService usuarioService = new UsuarioDentistaService();
 
-            CriarUsuarioDentistaRequestHandler criarUsuarioRequestHandler = new CriarUsuarioDentistaRequestHandler(usuarioService);
+            AtualizarUsuarioDentistaRequestHandler criarUsuarioRequestHandler = new AtualizarUsuarioDentistaRequestHandler(usuarioService);
 
             var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
 
@@ -61,7 +61,7 @@ namespace Sagui.Test.TestUsuarios
 
             UsuarioPacienteService usuarioService = new UsuarioPacienteService();
 
-            CriarUsuarioPacienteRequestHandler criarUsuarioRequestHandler = new CriarUsuarioPacienteRequestHandler(usuarioService);
+            AtualizarUsuarioPacienteRequestHandler criarUsuarioRequestHandler = new AtualizarUsuarioPacienteRequestHandler(usuarioService);
 
             var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
 
