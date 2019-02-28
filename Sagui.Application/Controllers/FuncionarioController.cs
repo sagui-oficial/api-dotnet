@@ -26,7 +26,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        //GET: api/Procedimento/5
+
         //[HttpGet("{publicid}/ObterUsuarioFuncionario", Name = "ObterUsuarioFuncionario")]
         //public async Task<IActionResult> ObterUsuarioFuncionario(Guid publicid)
         //{
@@ -40,47 +40,47 @@ namespace Sagui.Application.Controllers
 
         //    ObterUsuarioFuncionario ObterProcedimentoRequestHandler = new ObterUsuarioFuncionario(usuarioService);
 
-        //      return await this.HandleRequest(ObterProcedimentoRequestHandler, requestUsuaruio);
-
-        //}
-               
-        //[HttpPost("CriarUsuarioFuncionario", Name = "CriarUsuarioFuncionario")]
-        //public async Task<IActionResult> CriarUsuarioFuncionario([FromBody]  RequestProcedimento requestProcedimento)
-        //{
-        //    ProcedimentoService ProcedimentoService = new ProcedimentoService();
-
-        //    CriarProcedimentoRequestHandler criarProcedimentoRequestHandler = new CriarProcedimentoRequestHandler(ProcedimentoService);
-
-        //    return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+        //    return await this.HandleRequest(ObterProcedimentoRequestHandler, requestUsuaruio);
 
         //}
 
-        //[HttpPost("AtualizarUsuarioFuncionario", Name = "AtualizarUsuarioFuncionario")]
-        //public async Task<IActionResult> AtualizarUsuarioFuncionario([FromBody]  RequestProcedimento requestProcedimento)
-        //{
-        //    ProcedimentoService ProcedimentoService = new ProcedimentoService();
+        [HttpPost("CriarUsuarioFuncionario", Name = "CriarUsuarioFuncionario")]
+        public async Task<IActionResult> CriarUsuarioFuncionario([FromBody]  RequestUsuarioFuncionario requestUsuario)
+        {
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //    AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);
+            CriarUsuarioFuncionarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioFuncionarioRequestHandler(usuarioService);
 
-        //    return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+            return await this.HandleRequest(criarUsuarioRequestHandler, requestUsuario);
 
-        //}
+        }
 
-        //[HttpPut("{publicid}/DeletarUsuarioFuncionario", Name = "DeletarUsuarioFuncionario")]
-        //public async Task<IActionResult> DeletarUsuarioFuncionario(Guid publicid)
-        //{
+        [HttpPost("AtualizarUsuarioFuncionario", Name = "AtualizarUsuarioFuncionario")]
+        public async Task<IActionResult> AtualizarUsuarioFuncionario([FromBody]   RequestUsuarioFuncionario requestUsuario)
+        {
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //    RequestProcedimento requestProcedimento = new RequestProcedimento
-        //    {
-        //        PublicID = gtopublicid
-        //    };
-        //    ProcedimentoService ProcedimentoService = new ProcedimentoService();
+            AtualizarUsuarioFuncionarioRequestHandler atualizarProcedimentoRequestHandler = new AtualizarUsuarioFuncionarioRequestHandler(usuarioService);
 
-        //    AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);
+            return await this.HandleRequest(atualizarProcedimentoRequestHandler, requestUsuario);
 
-        //    return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+        }
 
-        //}
+        [HttpPut("{publicid}/DeletarUsuarioFuncionario", Name = "DeletarUsuarioFuncionario")]
+        public async Task<IActionResult> DeletarUsuarioFuncionario(Guid publicid)
+        {
+
+            RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
+            {
+                PublicID = publicid
+            };
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
+
+            DeletarUsuarioFuncionarioRequestHandler deletarProcedimentoRequestHandler = new DeletarUsuarioFuncionarioRequestHandler(usuarioService);
+
+            return await this.HandleRequest(deletarProcedimentoRequestHandler, requestUsuaruio);
+
+        }
 
     }
 }

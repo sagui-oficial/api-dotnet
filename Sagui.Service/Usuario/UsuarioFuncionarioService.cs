@@ -44,5 +44,15 @@ namespace Sagui.Service.Usuario
                 return _return;
             }
         }
+
+        public Model.Funcionario Obter(Model.Funcionario Usuario)
+        {
+            using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
+            {
+                var _return = usuarioBusiness.Obter(Usuario);
+                usuarioBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }
