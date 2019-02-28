@@ -27,22 +27,22 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseUsuarioFuncionario> Handle(RequestUsuarioFuncionario request)
         {
-            var procedimento = UsuarioFuncionarioService.(request);
+            var usuario = UsuarioFuncionarioService.Obter(request);
 
-            if (procedimento.IdProcedimento > 0)
+            if (usuario != null)
             {
-                responseProcedimento.Procedimento = procedimento;
-                responseProcedimento.ExecutionDate = DateTime.Now;
-                responseProcedimento.ResponseType = ResponseType.Success;
-                responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOObtidacomSucesso));
-                return responseProcedimento;
+                responseUsuarioFuncionario.Funcionario = usuario;
+                responseUsuarioFuncionario.ExecutionDate = DateTime.Now;
+                responseUsuarioFuncionario.ResponseType = ResponseType.Success;
+                responseUsuarioFuncionario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOObtidacomSucesso));
+                return responseUsuarioFuncionario;
             }
             else
             {
-                responseProcedimento.ExecutionDate = DateTime.Now;
-                responseProcedimento.ResponseType = ResponseType.Error;
-                responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
-                return responseProcedimento;
+                responseUsuarioFuncionario.ExecutionDate = DateTime.Now;
+                responseUsuarioFuncionario.ResponseType = ResponseType.Error;
+                responseUsuarioFuncionario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
+                return responseUsuarioFuncionario;
             }
         }
     }

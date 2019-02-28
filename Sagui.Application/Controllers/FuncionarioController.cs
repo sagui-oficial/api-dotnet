@@ -11,9 +11,9 @@ namespace Sagui.Application.Controllers
     [Route("backoffice/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class UsuarioController : Controller
+    public class FuncionarioController : Controller
     {
-        [HttpGet("ListarUsuario", Name = "ListarUsuario")]
+        [HttpGet("ListarFuncionario", Name = "ListarFuncionario")]
         public async Task<IActionResult> GetAsync()
         {
             RequestUsuarioFuncionario requestUsuaruio = default(RequestUsuarioFuncionario);
@@ -27,24 +27,24 @@ namespace Sagui.Application.Controllers
         }
 
 
-        //[HttpGet("{publicid}/ObterUsuarioFuncionario", Name = "ObterUsuarioFuncionario")]
-        //public async Task<IActionResult> ObterUsuarioFuncionario(Guid publicid)
-        //{
+        [HttpGet("{userPublicId}/ObterFuncionario", Name = "ObterFuncionario")]
+        public async Task<IActionResult> ObterUsuarioFuncionario(Guid userPublicId)
+        {
 
-        //    RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
-        //    {
-        //        PublicID = publicid
-        //    };
+            RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
+            {
+                PublicID = userPublicId
+            };
 
-        //    UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //    ObterUsuarioFuncionario ObterProcedimentoRequestHandler = new ObterUsuarioFuncionario(usuarioService);
+            ObterUsuarioFuncionarioRequestHandler ObterProcedimentoRequestHandler = new ObterUsuarioFuncionarioRequestHandler(usuarioService);
 
-        //    return await this.HandleRequest(ObterProcedimentoRequestHandler, requestUsuaruio);
+            return await this.HandleRequest(ObterProcedimentoRequestHandler, requestUsuaruio);
 
-        //}
+        }
 
-        [HttpPost("CriarUsuarioFuncionario", Name = "CriarUsuarioFuncionario")]
+        [HttpPost("CriarFuncionario", Name = "CriarFuncionario")]
         public async Task<IActionResult> CriarUsuarioFuncionario([FromBody]  RequestUsuarioFuncionario requestUsuario)
         {
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
@@ -55,7 +55,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("AtualizarUsuarioFuncionario", Name = "AtualizarUsuarioFuncionario")]
+        [HttpPost("AtualizarFuncionario", Name = "AtualizarFuncionario")]
         public async Task<IActionResult> AtualizarUsuarioFuncionario([FromBody]   RequestUsuarioFuncionario requestUsuario)
         {
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
@@ -66,13 +66,13 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("{publicid}/DeletarUsuarioFuncionario", Name = "DeletarUsuarioFuncionario")]
-        public async Task<IActionResult> DeletarUsuarioFuncionario(Guid publicid)
+        [HttpPut("{userPublicId}/DeletarFuncionario", Name = "DeletarFuncionario")]
+        public async Task<IActionResult> DeletarUsuarioFuncionario(Guid userPublicId)
         {
 
             RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
             {
-                PublicID = publicid
+                PublicID = userPublicId
             };
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 

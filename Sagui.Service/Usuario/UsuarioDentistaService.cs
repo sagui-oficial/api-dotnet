@@ -45,5 +45,15 @@ namespace Sagui.Service.Usuario
                 return _return;
             }
         }
+
+        public Dentinsta Obter(Dentinsta Usuario)
+        {
+            using (var usuarioBusiness = new Business.Usuario.UsuarioDentistaBusiness())
+            {
+                var _return = usuarioBusiness.Obter(Usuario);
+                usuarioBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

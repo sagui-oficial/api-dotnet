@@ -9,7 +9,7 @@ namespace Sagui.Service.Usuario
         {
             using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
             {
-                var _return = usuarioBusiness.Cadastrar(Usuario);
+                var _return = usuarioBusiness.Atualizar(Usuario);
                 usuarioBusiness.Dispose();
                 return _return;
             }
@@ -25,9 +25,14 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public Model.Paciente Deletar(Model.Paciente model)
+        public Model.Paciente Deletar(Model.Paciente Usuario)
         {
-            throw new System.NotImplementedException();
+            using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
+            {
+                var _return = usuarioBusiness.Deletar(Usuario);
+                usuarioBusiness.Dispose();
+                return _return;
+            }
         }
 
         public List<Model.Paciente> Listar()

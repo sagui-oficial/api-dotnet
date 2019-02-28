@@ -17,6 +17,14 @@ namespace Sagui.Business.Usuario
             return listUsuarios;
         }
 
+        public Model.Dentinsta Obter(Model.Dentinsta usuario)
+        {
+            UsuarioDentistaLookup pacienteLookup = new UsuarioDentistaLookup();
+            var paciente = pacienteLookup.ObterUsuarioDentista(usuario);
+
+            return paciente;
+        }
+        
         public Model.Dentinsta Cadastrar(Model.Dentinsta usuario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
@@ -70,5 +78,7 @@ namespace Sagui.Business.Usuario
 
             return responseUsuario;
         }
+    
+
     }
 }

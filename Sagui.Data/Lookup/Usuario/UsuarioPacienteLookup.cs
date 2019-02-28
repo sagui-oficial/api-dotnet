@@ -1,9 +1,6 @@
 ﻿using Sagui.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.GTO
 {
@@ -51,7 +48,7 @@ namespace Sagui.Data.Lookup.GTO
             Paciente usuarioPaciente = new Paciente();
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Paciente);
+            DbParams.Add(nameof(Paciente.TipoUsuario), TipoUsuario.Tipo.Paciente);
             DbParams.Add(nameof(Paciente.PublicID), paciente.PublicID.ToString());
 
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
