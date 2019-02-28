@@ -64,24 +64,25 @@ namespace Sagui.Application.Controllers
         {
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
 
-            AtualizarGTORequestHandler GTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+            AtualizarUsuarioPacienteRequestHandler AtualizarUsuarioPacienteRequestHandler = new AtualizarUsuarioPacienteRequestHandler(pacienteService);
 
-            return await this.HandleRequest(GTORequestHandler, requestGTO);
+            return await this.HandleRequest(AtualizarUsuarioPacienteRequestHandler, requestUsuarioPaciente);
 
         }
 
-        [HttpPut("{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
-        public async Task<IActionResult> DeletarGTO(Guid gtopublicid)
+        [HttpPut("{userPublicId}/DeletarPaciente", Name = "DeletarPaciente")]
+        public async Task<IActionResult> DeletarPaciente(Guid userPublicId)
         {
-            RequestGTO requestGTO = new RequestGTO
+            RequestUsuarioPaciente requestUsuarioPaciente = new RequestUsuarioPaciente
             {
-                PublicID = gtopublicid
+                PublicID = userPublicId
             };
-            GTOService gTOService = new GTOService();
 
-            DeletarGTORequestHandler GTORequestHandler = new DeletarGTORequestHandler(gTOService);
+            UsuarioPacienteService pacienteService = new UsuarioPacienteService();
 
-            return await this.HandleRequest(GTORequestHandler, requestGTO);
+            DeletarUsuarioPacienteRequestHandler DeletarUsuarioPacienteRequestHandler = new DeletarUsuarioPacienteRequestHandler(pacienteService);
+
+            return await this.HandleRequest(DeletarUsuarioPacienteRequestHandler, requestUsuarioPaciente);
 
         }
 

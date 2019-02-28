@@ -51,6 +51,7 @@ namespace Sagui.Data.Lookup.GTO
             Paciente usuarioPaciente = new Paciente();
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Paciente);
             DbParams.Add(nameof(Paciente.PublicID), paciente.PublicID.ToString());
 
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
@@ -66,6 +67,10 @@ namespace Sagui.Data.Lookup.GTO
                         _Usuario.Nome = Convert.ToString(reader["Nome"]);
                         _Usuario.Funcao = Convert.ToString(reader["Funcao"]);
                         _Usuario.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+                        _Usuario.CPF = Convert.ToString(reader["CPF"]);
+                        _Usuario.Email = Convert.ToString(reader["Email"]);
+                        _Usuario.Telefone = Convert.ToString(reader["Telefone"]);
+                        _Usuario.PublicID = (Guid)(reader["PublicID"]);
 
                         usuarioPaciente = _Usuario;
                     }

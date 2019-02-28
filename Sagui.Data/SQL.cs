@@ -184,7 +184,23 @@ namespace Sagui.Data
 
         #region usuario
 
-        
+
+        public static string ObterUsuario = @"
+                            SELECT Id
+                                  ,Funcao
+                                  ,Nome
+                                  ,Anotacoes
+                                  ,CPF
+                                  ,Email
+                                  ,Telefone
+                                  ,CRO
+                                  ,Discriminator
+                                  ,PublicId
+                              FROM dbo.UsuarioBase 
+                            WHERE TipoUsuario = @TipoUsuario
+                              AND PublicID = @PublicID";
+
+
         public static string ListUsuario = @"
                             SELECT Id
                                   ,Funcao
