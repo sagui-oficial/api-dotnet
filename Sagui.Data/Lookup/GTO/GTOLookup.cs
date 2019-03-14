@@ -38,8 +38,8 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
-                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO);
-                        _GTO.Arquivos = ObterArquivoGTO(_GTO);
+                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO.Id);
+                        _GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
                         ListGTO.Add(_GTO);
                     }
                 }
@@ -85,8 +85,8 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
-                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO);
-                        _GTO.Arquivos = ObterArquivoGTO(_GTO);
+                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO.Id);
+                        _GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
 
                         
                         GTO = _GTO;
@@ -106,14 +106,14 @@ namespace Sagui.Data.Lookup.GTO
             return GTO;
         }
 
-        public List<Model.Procedimentos> ObterProcedimentoGTO(Model.GTO GTO)
+        public List<Model.Procedimentos> ObterProcedimentoGTO(int IdGTO)
         {
 
 
             List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
 
             DbParams.Clear();
-            DbParams.Add("idGTO", GTO.Id.ToString());
+            DbParams.Add("idGTO", IdGTO);
 
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarProcedimentoGTO, DbParams))
             {
@@ -130,6 +130,7 @@ namespace Sagui.Data.Lookup.GTO
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
                         _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+                        _Procedimento.PublicID = (Guid)(reader["PublicID"]);
                         ListProcedimento.Add(_Procedimento);
                     }
                 }
@@ -146,12 +147,12 @@ namespace Sagui.Data.Lookup.GTO
             return ListProcedimento;
         }
 
-        public List<Model.Arquivos> ObterArquivoGTO(Model.GTO GTO)
+        public List<Model.Arquivos> ObterArquivoGTO(int IdGTO)
         {
             List<Model.Arquivos> ListArquivo = new List<Model.Arquivos>();
 
             DbParams.Clear();
-            DbParams.Add("idGTO", GTO.Id.ToString());
+            DbParams.Add("idGTO", IdGTO);
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarArquivoGTO, DbParams))
             {
                 try
@@ -163,9 +164,9 @@ namespace Sagui.Data.Lookup.GTO
                         Model.Arquivos _Arquivo = new Model.Arquivos();
                         _Arquivo.Id = Convert.ToInt32(reader["Id"]);
                         _Arquivo.Nome = Convert.ToString(reader["Nome"]);
-                        _Arquivo.Stream = (byte[])(reader["Stream"]);
                         _Arquivo.DataCriacao = Convert.ToDateTime(reader["DataCriacao"]);
                         _Arquivo.PathArquivo = Convert.ToString(reader["PathArquivo"]);
+                        _Arquivo.PublicID = (Guid)reader["PublicID"];
                         ListArquivo.Add(_Arquivo);
                     }
                 }
