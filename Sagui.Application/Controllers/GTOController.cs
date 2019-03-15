@@ -59,7 +59,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("AtualizarGTO", Name = "AtualizarGTO")]
+        [HttpPatch("AtualizarGTO", Name = "AtualizarGTO")]
         public async Task<IActionResult> AtualizarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
@@ -70,7 +70,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
+        [HttpPatch("{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
         public async Task<IActionResult> DeletarGTO(Guid gtopublicid)
         {
             RequestGTO requestGTO = new RequestGTO
