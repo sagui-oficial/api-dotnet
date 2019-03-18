@@ -11,10 +11,18 @@ namespace Sagui.Data.Persister.PlanoOperadora
             if (PlanoOperadora == null)
                 throw new ArgumentNullException(nameof(PlanoOperadora));
 
+            DbParams.Add(nameof(PlanoOperadora.NomeFantasia), PlanoOperadora.NomeFantasia);
+            DbParams.Add(nameof(PlanoOperadora.RazaoSocial), PlanoOperadora.RazaoSocial);
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
+            DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
+            DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
             
-
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioDentista, DbParams);
+            //DbParams.Add(nameof(PlanoOperadora.Id), PlanoOperadora.Id);
+            //DbParams.Add(nameof(PlanoOperadora.ListaArquivos), PlanoOperadora.ListaArquivos);
+            //DbParams.Add(nameof(PlanoOperadora.ListaProcedimentos), PlanoOperadora.ListaProcedimentos);
+            //DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
+            
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreatePlanoOperadora, DbParams);
 
             try
             {

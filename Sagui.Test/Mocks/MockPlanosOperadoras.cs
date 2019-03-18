@@ -28,5 +28,24 @@ namespace Sagui.Test.Mocks
 
             return planoOperadora;
         }
+
+        public RequestPlanoOperadora AtualizarMockPlanoOperadora()
+        {
+            MockProcedimento mockProcedimento = new MockProcedimento();
+            MockArquivos mockArquivos = new MockArquivos();
+
+            RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
+            planoOperadora.Id = 1;
+            planoOperadora.NomeFantasia = "FANTA";
+            planoOperadora.RazaoSocial = "COCA";
+            planoOperadora.CNPJ = "27664821000189";
+            planoOperadora.DataEnvioLote = DateTime.Now;
+            planoOperadora.DataRecebimentoLote = DateTime.Now.AddDays(14);
+            planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
+            planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+
+            return planoOperadora;
+        }
+
     }
 }

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Sagui.Test.TestPlanoOperadora
 {
     [TestClass]
-    public class CadastrarOperadora_Test
+    public class CadastrarPlanoOperadora_Test
     {
         [TestMethod]
         public async Task CadastrarPlanoOperadora()
@@ -26,9 +26,9 @@ namespace Sagui.Test.TestPlanoOperadora
 
             PlanoOperadoraService planoOperadoraService = new PlanoOperadoraService();
 
-            CriarPlanoOperadoraRequestHandler criarProcedimentoRequestHandler = new CriarPlanoOperadoraRequestHandler(planoOperadoraService);
+            CriarPlanoOperadoraRequestHandler criarPlanoOperadoraRequestHandler = new CriarPlanoOperadoraRequestHandler(planoOperadoraService);
 
-            var response = await criarProcedimentoRequestHandler.Handle(requestPlanoOperadora);
+            var response = await criarPlanoOperadoraRequestHandler.Handle(requestPlanoOperadora);
 
             Assert.IsNotNull(response.PlanoOperadora);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

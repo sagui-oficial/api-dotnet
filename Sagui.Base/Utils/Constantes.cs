@@ -36,6 +36,21 @@ namespace Sagui.Base.Utils
         public static string MensagemProcedimentoNaoListado = "Procedimentos não listados!";
         #endregion
 
+        #region PlanoOperadora
+        public static string MensagemPlanoOperadorasInseridosComSucesso = "Plano(s) Operadora(s) inserido(s) com sucesso!";
+        public static string MensagemPlanoOperadoraNaoInserida = "Plano(s) Operadora(s) não inserido(s)!";
+        public static string MensagemPlanoOperadoraNaoListado = "Planos Operadoras não listados!";
+        #endregion
+
+        #region Lote
+        public static string MensagemLotesInseridosComSucesso = "Lote(s) inserido(s) com sucesso!";
+        public static string MensagemLoteNaoInserido = "Lote(s) não inserido(s)!";
+        public static string MensagemLoteListadoComSucesso = "GTOs listadas com sucesso!";
+        public static string MensagemLoteNaoListado = "Lotes não listados!";
+        public static string MensagemLoteDeletado = "Lote deletado!";
+        public static string MensagemLoteNaoDeletado = "Lote não deletado!";
+        #endregion
+
         #region Usuarios
         public static string MensagemUsuarioInseridosComSucesso = "Usuario(s) inserido(s) com sucesso!";
         public static string MensagemUsuarioNaoInserido = "Usuario(s) não inserido(s)!";
