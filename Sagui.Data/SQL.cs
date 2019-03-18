@@ -13,11 +13,13 @@ namespace Sagui.Data
                    INSERT INTO dbo.Arquivo
                                (Nome
                                ,DataCriacao
-                               ,Stream)
+                               ,Stream
+                               ,PathArquivo)
                          VALUES
                                (@Nome
                                ,@DataCriacao
-                               ,@Stream);
+                               ,@Stream
+                               ,@PathArquivo);
 
                 SELECT SCOPE_IDENTITY();";
 

@@ -1,21 +1,16 @@
 ﻿using Sagui.Data.Base;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Arquivo
 {
-    public class ArquivoPersister : PersisterBase
+    public class ArquivoGTOPersister : PersisterBase
     {
-        public Model.Arquivos SaveArquivo(int IdGTO, Model.Arquivos arquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public bool SaveArquivoGTO(int IdGTO, int IdArquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {
             DbParams.Add(nameof(IdGTO), IdGTO);
-            DbParams.Add(nameof(arquivo.Nome), arquivo.Nome);
-            DbParams.Add(nameof(arquivo.DataCriacao), arquivo.DataCriacao);
-            DbParams.Add(nameof(arquivo.PathArquivo), arquivo.PathArquivo);
-            DbParams.Add(nameof(arquivo.Stream), arquivo.Stream);
+            DbParams.Add(nameof(IdArquivo), IdArquivo);
 
             _dataInfrastructure = new DataInfrastructure(SQL.CreateArquivo, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
 
@@ -25,16 +20,13 @@ namespace Sagui.Data.Persister.Arquivo
                 newId = _dataInfrastructure.command.ExecuteScalar();
                 if (Convert.ToInt32(newId) > 0)
                 {
-                    arquivo.Id = Convert.ToInt32(newId);
-
+                    return true;
                 }
             }
             catch (Exception e)
             {
                 throw e;
             }
-
-            return arquivo;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Sagui.Base.Utils;
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.Arquivo;
@@ -47,18 +48,10 @@ namespace Sagui.Business.GTO
 
                 foreach (Arquivos arquivo in gto.Arquivos)
                 {
-
-                    //using (var stream = new FileStream(arquivo.PathArquivo, FileMode.Open, FileAccess.Read))
-                    //{
-                    //    using (var reader = new BinaryReader(stream))
-                    //    {
-                    //        arquivo.Stream = reader.ReadBytes((int)stream.Length);
-                    //    }
-                    //}
-
-                    arquivo.Stream = new byte[0];
+                    arquivo.Stream = ManipulaArquivo.GerarStreamArquivo(arquivo.PathArquivo);
 
                     ArquivoPersister arquivoPersister = new ArquivoPersister();
+
                     var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo, _dataInfrastructure, out dataInfrastructure);
                     if (_arquivo.Id == 0)
                     {
@@ -68,6 +61,10 @@ namespace Sagui.Business.GTO
                     else
                     {
                         arquivo.Id = _arquivo.Id;
+
+
+
+
                     }
                 }
 
