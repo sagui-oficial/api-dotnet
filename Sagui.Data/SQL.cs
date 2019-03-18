@@ -23,6 +23,67 @@ namespace Sagui.Data
 
                 SELECT SCOPE_IDENTITY();";
 
+        public static string CreateArquivoGTO = @"
+                   INSERT INTO dbo.Arquivo
+                               (Nome
+                               ,DataCriacao
+                               ,Stream
+                               ,PathArquivo)
+                         VALUES
+                               (@Nome
+                               ,@DataCriacao
+                               ,@Stream
+                               ,@PathArquivo);
+
+                SELECT SCOPE_IDENTITY();";
+
+        public static string CreateArquivoPlanoOperadora = @"
+                   INSERT INTO dbo.Arquivo
+                               (Nome
+                               ,DataCriacao
+                               ,Stream
+                               ,PathArquivo)
+                         VALUES
+                               (@Nome
+                               ,@DataCriacao
+                               ,@Stream
+                               ,@PathArquivo);
+
+                SELECT SCOPE_IDENTITY();";
+
+
+        public static string ObterArquivoGTO = @"
+                    SELECT  
+	                       b.[Id]
+                          ,b.[Nome]
+                          ,b.[Stream]
+                          ,b.[DataCriacao]
+                          ,b.[PathArquivo]
+                    FROM Arquivo_GTO a (NOLOCK)
+		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+                    WHERE idGTO = @idGTO";
+
+        public static string ObterArquivoPlanoOperadora = @"
+                    SELECT  
+	                       b.[Id]
+                          ,b.[Nome]
+                          ,b.[Stream]
+                          ,b.[DataCriacao]
+                          ,b.[PathArquivo]
+                    FROM Arquivo_GTO a (NOLOCK)
+		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+                    WHERE idGTO = @idGTO";
+
+        public static string ListarArquivos = @"
+                    SELECT  
+	                       b.[Id]
+                          ,b.[Nome]
+                          ,b.[Stream]
+                          ,b.[DataCriacao]
+                          ,b.[PathArquivo]
+                    FROM Arquivo_GTO a (NOLOCK)
+		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+                    WHERE idGTO = @idGTO";
         #endregion
 
         #region GTO
@@ -51,16 +112,7 @@ namespace Sagui.Data
 		                    inner join Procedimento b ON a.idProcedimento = b.IdProcedimento
                     where idGTO = @idGTO";
 
-        public static string ListarArquivoGTO = @"
-                    SELECT  
-	                       b.[Id]
-                          ,b.[Nome]
-                          ,b.[Stream]
-                          ,b.[DataCriacao]
-                          ,b.[PathArquivo]
-                    FROM Arquivo_GTO a (NOLOCK)
-		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
-                    WHERE idGTO = @idGTO";
+
 
 
 

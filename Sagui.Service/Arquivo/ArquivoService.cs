@@ -9,7 +9,7 @@ namespace Sagui.Service.Arquivo
 
         public List<Model.Arquivos> Listar()
         {
-            using (var ArquivoBusiness = new Business.GTO.GTOBusiness())
+            using (var ArquivoBusiness = new Business.Arquivo.ArquivoBusiness())
             {
                 var _return = ArquivoBusiness.ListArquivos();
                 ArquivoBusiness.Dispose();
@@ -19,9 +19,9 @@ namespace Sagui.Service.Arquivo
 
         public Model.Arquivos Obter(Model.Arquivos Arquivo)
         {
-            using (var ArquivoBusiness = new Business.GTO.GTOBusiness())
+            using (var ArquivoBusiness = new Business.Arquivo.ArquivoBusiness())
             {
-                var _return = ArquivoBusiness.ObterGTO(Arquivo);
+                var _return = ArquivoBusiness.ObterArquivo(Arquivo);
                 ArquivoBusiness.Dispose();
                 return _return;
             }

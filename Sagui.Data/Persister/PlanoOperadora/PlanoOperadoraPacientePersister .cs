@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.PlanoOperadora
 {
-    public class PlanoOperadoraPacientePersister : PersisterBase
+    public class PlanoOperadoraPacientePersister : DBParams
     {
         public bool SavePlanoOperadoraPaciente(int PlanoOperadora_Id, int Paciente_Id, string NumeroPlano, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {

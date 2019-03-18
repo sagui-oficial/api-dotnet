@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sagui.Data.Persister.Arquivo
 {
-    public class ArquivoGTOPersister : PersisterBase
+    public class ArquivoGTOPersister : DBParams
     {
         public bool SaveArquivoGTO(int IdGTO, int IdArquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {

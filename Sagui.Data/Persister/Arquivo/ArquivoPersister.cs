@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Arquivo
 {
-    public class ArquivoPersister : PersisterBase
+    public class ArquivoPersister : DBParams
     {
         public Model.Arquivos SaveArquivo(int IdGTO, Model.Arquivos arquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {

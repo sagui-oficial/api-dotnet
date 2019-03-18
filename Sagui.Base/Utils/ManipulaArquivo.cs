@@ -28,7 +28,7 @@ namespace Sagui.Base.Utils
         {
             using (Stream file = File.OpenWrite(@"c:\path\to\your\file\here.txt"))
             {
-                file.Write(fileBytes, 0, fileBytes.Length);
+                //file.Write(fileBytes, 0, fileBytes.Length);
             }
         }
     }

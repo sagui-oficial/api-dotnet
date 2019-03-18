@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Procedimento
 {
-    public class ProcedimentoGTOPersister: PersisterBase
+    public class ProcedimentoGTOPersister: DBParams
     {
         public bool SaveProcedimentoGTO(int IdGTO, int IdProcedimento, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.Procedimento
 {
-    public class ProcedimentoLookup: PersisterBase
+    public class ProcedimentoLookup: DBParams
     {
         public List<Model.Procedimentos> ListProcedimento()
         {

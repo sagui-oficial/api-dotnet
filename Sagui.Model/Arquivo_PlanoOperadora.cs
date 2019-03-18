@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Sagui.Model
 {
-   public class Arquivo_GTO : Arquivos
+   public class Arquivo_PlanoOperadora : Arquivos
     {
         [Key, Column(Order = 1)]
-        public int idArquivo_GTO { get; set; }
-        public int idGTO { get; set; }
+        public int idArquivo_PlanoOperadora { get; set; }
+        public int idPlanoOperadora { get; set; }
         public int idArquivo { get; set; }
     }
 }

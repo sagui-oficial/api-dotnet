@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.Arquivo
 {
-    public class ArquivoLookup : PersisterBase
+    public class ArquivoLookup : DBParams
     {
         public List<Model.Arquivos> ListArquivos()
         {

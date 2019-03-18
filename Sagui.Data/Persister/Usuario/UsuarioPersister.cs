@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.Usuario
 {
-    public class UsuarioPersister: PersisterBase
+    public class UsuarioPersister: DBParams
     {
         public Model.Paciente SaveUsuario(Model.Paciente Usuario, out DataInfrastructure _dataInfrastructure)
         {

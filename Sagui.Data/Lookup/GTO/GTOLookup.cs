@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.GTO
 {
-    public class GTOLookup : PersisterBase
+    public class GTOLookup : DBParams
     {
         //todo: refazer a query para trazer Operadora e Paciente
         //todo: refazer a query para trazer Procedimento da GTO e Arquivo da GTO

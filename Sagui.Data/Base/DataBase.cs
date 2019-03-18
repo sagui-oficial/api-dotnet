@@ -22,9 +22,16 @@ namespace Sagui.Data.Base
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams)
         {
-            connection = dataBase.CreateOpenConnection();
+            if(connection == null)
+            {
+                connection = dataBase.CreateOpenConnection();
+            }
 
-            transaction = (SqlTransaction)connection.BeginTransaction();
+            if(transaction == null)
+            {
+                transaction = (SqlTransaction)connection.BeginTransaction();
+            }
+
             command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
         }
 

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Base
 {
-    public class PersisterBase
+    public class DBParams
     {
         public Dictionary<string, object> DbParams;
-        public PersisterBase()
+        public DBParams()
         {
             DbParams = new Dictionary<string, object>();
         }

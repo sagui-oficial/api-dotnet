@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.GTO
 {
-    public class GTOPersister: PersisterBase
+    public class GTOPersister: DBParams
     {
         public Model.GTO AtualizarGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
         {

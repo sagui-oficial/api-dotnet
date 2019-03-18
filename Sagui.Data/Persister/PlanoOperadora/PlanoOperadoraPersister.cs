@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.PlanoOperadora
 {
-    public class PlanoOperadoraPersister : PersisterBase
+    public class PlanoOperadoraPersister : DBParams
     {
         public Model.PlanoOperadora SavePlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
         {

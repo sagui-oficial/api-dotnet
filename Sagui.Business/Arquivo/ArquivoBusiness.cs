@@ -3,31 +3,32 @@ using System.IO;
 using System.Linq;
 using Sagui.Base.Utils;
 using Sagui.Business.Base;
+using Sagui.Data.Lookup.Arquivo;
 using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Persister.Arquivo;
 using Sagui.Data.Persister.GTO;
 using Sagui.Data.Persister.Procedimento;
 using Sagui.Model;
 
-namespace Sagui.Business.GTO
+namespace Sagui.Business.Arquivo
 {
 
     public class ArquivoBusiness : BusinessBase
     {
         public List<Model.Arquivos> ListArquivos()
         {
-            GTOLookup gtoLookup = new GTOLookup();
-            var listGTO = gtoLookup.ListGTO();
+            ArquivoLookup arquivoLookup = new ArquivoLookup();
+            var listArquivos = arquivoLookup.ListArquivos();
 
-            return listGTO;
+            return listArquivos;
         }
 
-        public Model.Arquivos ObterArquivo(Model.Arquivos arquivos)
+        public Model.Arquivos ObterArquivo(Model.Arquivos arquivo)
         {
-            GTOLookup gtoLookup = new GTOLookup();
-            var listGTO = gtoLookup.ObterGTO(GTO);
+            ArquivoLookup arquivoLookup = new ArquivoLookup();
+            var _arquivo = arquivoLookup.ObterArquivo(arquivo);
 
-            return listGTO;
+            return _arquivo;
         }
     }
 }

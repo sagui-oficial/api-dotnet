@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sagui.Service.Arquivo;
 using Sagui.Service.RequestResponse;
+using Sagui.Service.RequestResponse.Handlers;
+using Sagui.Service.RequestResponse.ValueObject;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,26 +18,26 @@ namespace Sagui.Test.Arquivo
         {
             ArquivoService arquivoService = new ArquivoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(arquivoService);
+            ListarArquivoRequestHandler listarArquivoRequestHandler = new ListarArquivoRequestHandler(arquivoService);
 
-            RequestGTO requestGTO = default(RequestGTO);
+            RequestArquivo requestArquivo = default(RequestArquivo);
 
-            var response = await listarGTORequestHandler.Handle(requestGTO);
+            var response = await listarArquivoRequestHandler.Handle(requestArquivo);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.GTOs.Count > 0);
+            Assert.IsTrue(response.Arquivos.Count > 0);
         }
 
         [TestMethod]
         public async Task ObterGTO()
         {
-            GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
 
-            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService);
+            ObterArquivoRequestHandler obterArquivoRequestHandler = new ObterArquivoRequestHandler(arquivoService);
 
-            RequestGTO requestGTO = default(RequestGTO);
+            RequestArquivo requestArquivo = default(RequestArquivo);
 
-            var response = await ObterGTORequestHandler.Handle(requestGTO);
+            var response = await obterArquivoRequestHandler.Handle(requestArquivo);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Info);
             Assert.IsTrue(response.GTOs.Count == 0);
