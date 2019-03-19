@@ -11,9 +11,9 @@ namespace Sagui.Application.Controllers
     [Route("backoffice/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class UsuarioController : Controller
+    public class FuncionarioController : Controller
     {
-        [HttpGet("ListarUsuario", Name = "ListarUsuario")]
+        [HttpGet("ListarFuncionario", Name = "ListarFuncionario")]
         public async Task<IActionResult> GetAsync()
         {
             RequestUsuarioFuncionario requestUsuaruio = default(RequestUsuarioFuncionario);
@@ -26,61 +26,61 @@ namespace Sagui.Application.Controllers
 
         }
 
-        //GET: api/Procedimento/5
-        //[HttpGet("{publicid}/ObterUsuarioFuncionario", Name = "ObterUsuarioFuncionario")]
-        //public async Task<IActionResult> ObterUsuarioFuncionario(Guid publicid)
-        //{
 
-        //    RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
-        //    {
-        //        PublicID = publicid
-        //    };
+        [HttpGet("{userPublicId}/ObterFuncionario", Name = "ObterFuncionario")]
+        public async Task<IActionResult> ObterUsuarioFuncionario(Guid userPublicId)
+        {
 
-        //    UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
+            RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
+            {
+                PublicID = userPublicId
+            };
 
-        //    ObterUsuarioFuncionario ObterProcedimentoRequestHandler = new ObterUsuarioFuncionario(usuarioService);
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //      return await this.HandleRequest(ObterProcedimentoRequestHandler, requestUsuaruio);
+            ObterUsuarioFuncionarioRequestHandler ObterProcedimentoRequestHandler = new ObterUsuarioFuncionarioRequestHandler(usuarioService);
 
-        //}
-               
-        //[HttpPost("CriarUsuarioFuncionario", Name = "CriarUsuarioFuncionario")]
-        //public async Task<IActionResult> CriarUsuarioFuncionario([FromBody]  RequestProcedimento requestProcedimento)
-        //{
-        //    ProcedimentoService ProcedimentoService = new ProcedimentoService();
+            return await this.HandleRequest(ObterProcedimentoRequestHandler, requestUsuaruio);
 
-        //    CriarProcedimentoRequestHandler criarProcedimentoRequestHandler = new CriarProcedimentoRequestHandler(ProcedimentoService);
+        }
 
-        //    return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+        [HttpPost("CriarFuncionario", Name = "CriarFuncionario")]
+        public async Task<IActionResult> CriarUsuarioFuncionario([FromBody]  RequestUsuarioFuncionario requestUsuario)
+        {
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //}
+            CriarUsuarioFuncionarioRequestHandler criarUsuarioRequestHandler = new CriarUsuarioFuncionarioRequestHandler(usuarioService);
 
-        //[HttpPost("AtualizarUsuarioFuncionario", Name = "AtualizarUsuarioFuncionario")]
-        //public async Task<IActionResult> AtualizarUsuarioFuncionario([FromBody]  RequestProcedimento requestProcedimento)
-        //{
-        //    ProcedimentoService ProcedimentoService = new ProcedimentoService();
+            return await this.HandleRequest(criarUsuarioRequestHandler, requestUsuario);
 
-        //    AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);
+        }
 
-        //    return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+        [HttpPost("AtualizarFuncionario", Name = "AtualizarFuncionario")]
+        public async Task<IActionResult> AtualizarUsuarioFuncionario([FromBody]   RequestUsuarioFuncionario requestUsuario)
+        {
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //}
+            AtualizarUsuarioFuncionarioRequestHandler atualizarProcedimentoRequestHandler = new AtualizarUsuarioFuncionarioRequestHandler(usuarioService);
 
-        //[HttpPut("{publicid}/DeletarUsuarioFuncionario", Name = "DeletarUsuarioFuncionario")]
-        //public async Task<IActionResult> DeletarUsuarioFuncionario(Guid publicid)
-        //{
+            return await this.HandleRequest(atualizarProcedimentoRequestHandler, requestUsuario);
 
-        //    RequestProcedimento requestProcedimento = new RequestProcedimento
-        //    {
-        //        PublicID = gtopublicid
-        //    };
-        //    ProcedimentoService ProcedimentoService = new ProcedimentoService();
+        }
 
-        //    AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);
+        [HttpPatch("{userPublicId}/DeletarFuncionario", Name = "DeletarFuncionario")]
+        public async Task<IActionResult> DeletarUsuarioFuncionario(Guid userPublicId)
+        {
 
-        //    return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+            RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
+            {
+                PublicID = userPublicId
+            };
+            UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
-        //}
+            DeletarUsuarioFuncionarioRequestHandler deletarProcedimentoRequestHandler = new DeletarUsuarioFuncionarioRequestHandler(usuarioService);
+
+            return await this.HandleRequest(deletarProcedimentoRequestHandler, requestUsuaruio);
+
+        }
 
     }
 }

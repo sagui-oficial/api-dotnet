@@ -59,7 +59,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("AtualizarPaciente", Name = "AtualizarPaciente")]
+        [HttpPatch("AtualizarPaciente", Name = "AtualizarPaciente")]
         public async Task<IActionResult> AtualizarPaciente([FromBody]  RequestUsuarioPaciente requestUsuarioPaciente)
         {
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
@@ -70,7 +70,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("{userPublicId}/DeletarPaciente", Name = "DeletarPaciente")]
+        [HttpPatch("{userPublicId}/DeletarPaciente", Name = "DeletarPaciente")]
         public async Task<IActionResult> DeletarPaciente(Guid userPublicId)
         {
             RequestUsuarioPaciente requestUsuarioPaciente = new RequestUsuarioPaciente

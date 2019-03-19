@@ -71,5 +71,13 @@ namespace Sagui.Business.Usuario
 
             return responseUsuario;
         }
+
+        public Model.Funcionario Obter(Model.Funcionario usuarioFuncionario)
+        {
+            UsuarioFuncionarioLookup usuarioLookup = new UsuarioFuncionarioLookup();
+            var listUsuarios = usuarioLookup.Obter(usuarioFuncionario);
+
+            return listUsuarios;
+        }
     }
 }

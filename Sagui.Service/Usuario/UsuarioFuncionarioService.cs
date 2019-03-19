@@ -9,7 +9,7 @@ namespace Sagui.Service.Usuario
         {
             using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
             {
-                var _return = usuarioBusiness.Cadastrar(Usuario);
+                var _return = usuarioBusiness.Atualizar(Usuario);
                 usuarioBusiness.Dispose();
                 return _return;
             }
@@ -40,6 +40,16 @@ namespace Sagui.Service.Usuario
             using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
             {
                 var _return = usuarioBusiness.ListUsuariosFuncionario();
+                usuarioBusiness.Dispose();
+                return _return;
+            }
+        }
+
+        public Model.Funcionario Obter(Model.Funcionario Usuario)
+        {
+            using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
+            {
+                var _return = usuarioBusiness.Obter(Usuario);
                 usuarioBusiness.Dispose();
                 return _return;
             }

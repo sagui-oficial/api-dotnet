@@ -38,6 +38,8 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
+                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO.Id);
+                        _GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
                         ListGTO.Add(_GTO);
                     }
                 }
@@ -55,12 +57,12 @@ namespace Sagui.Data.Lookup.GTO
 
         public Model.GTO ObterGTO(Model.GTO GTO)
         {
-          
+
 
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
             DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
-           
+
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ObterGTObyPublicID, DbParams))
             {
                 try
@@ -83,10 +85,10 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
+                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO.Id);
+                        _GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
 
-                      
-                       
-
+                        
                         GTO = _GTO;
                     }
                 }
@@ -100,8 +102,19 @@ namespace Sagui.Data.Lookup.GTO
                 }
             }
 
+            
+            return GTO;
+        }
+
+        public List<Model.Procedimentos> ObterProcedimentoGTO(int IdGTO)
+        {
+
+
+            List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
+
             DbParams.Clear();
-            DbParams.Add("idGTO", GTO.Id.ToString());
+            DbParams.Add("idGTO", IdGTO);
+
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarProcedimentoGTO, DbParams))
             {
                 try
@@ -117,7 +130,8 @@ namespace Sagui.Data.Lookup.GTO
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
                         _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
-                        GTO.Procedimentos.Add(_Procedimento);
+                        _Procedimento.PublicID = (Guid)(reader["PublicID"]);
+                        ListProcedimento.Add(_Procedimento);
                     }
                 }
                 catch (Exception e)
@@ -130,8 +144,15 @@ namespace Sagui.Data.Lookup.GTO
                 }
             }
 
+            return ListProcedimento;
+        }
+
+        public List<Model.Arquivos> ObterArquivoGTO(int IdGTO)
+        {
+            List<Model.Arquivos> ListArquivo = new List<Model.Arquivos>();
+
             DbParams.Clear();
-            DbParams.Add("idGTO", GTO.Id.ToString());
+            DbParams.Add("idGTO", IdGTO);
             using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarArquivoGTO, DbParams))
             {
                 try
@@ -143,10 +164,10 @@ namespace Sagui.Data.Lookup.GTO
                         Model.Arquivos _Arquivo = new Model.Arquivos();
                         _Arquivo.Id = Convert.ToInt32(reader["Id"]);
                         _Arquivo.Nome = Convert.ToString(reader["Nome"]);
-                        _Arquivo.Stream = (byte[])(reader["Stream"]);
                         _Arquivo.DataCriacao = Convert.ToDateTime(reader["DataCriacao"]);
                         _Arquivo.PathArquivo = Convert.ToString(reader["PathArquivo"]);
-                        GTO.Arquivos.Add(_Arquivo);
+                        _Arquivo.PublicID = (Guid)reader["PublicID"];
+                        ListArquivo.Add(_Arquivo);
                     }
                 }
                 catch (Exception e)
@@ -157,9 +178,10 @@ namespace Sagui.Data.Lookup.GTO
                 {
                     dataInfrastructure.Dispose();
                 }
+
+                return ListArquivo;
             }
 
-            return GTO;
         }
     }
 }

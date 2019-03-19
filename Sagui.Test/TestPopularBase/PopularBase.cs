@@ -7,6 +7,7 @@ using Sagui.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -44,6 +45,32 @@ namespace Sagui.Test.TestPopularBase
                         new SqlParameter("ValorProcedimento", p.ValorProcedimento),
                         new SqlParameter("Exigencias", p.Exigencias),
                         new SqlParameter("Anotacoes", p.Anotacoes));
+                    }
+
+
+                }
+
+                if (!context.Arquivo.Any())
+                {
+                    var sevenItems = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 };
+                    var arquivo = new List<Arquivos>
+                    {
+                     
+                    new Arquivos{Id= 1, Nome= "Arquivo 01", Stream = sevenItems, PathArquivo = "C:\\teste01.jpg", DataCriacao = DateTime.Parse("2019-09-01") },
+                    new Arquivos{Id= 2, Nome= "Arquivo 02", Stream = sevenItems, PathArquivo = "C:\\teste02.jpg", DataCriacao = DateTime.Parse("2019-09-01") },
+                
+                    };
+
+                    
+
+                    foreach (Arquivos p in arquivo)
+                    {
+                        context.Database.ExecuteSqlCommand(SQL.CreateArquivo,
+                        new SqlParameter("Id", p.Id),
+                        new SqlParameter("Nome", p.Nome),
+                        new SqlParameter("Stream", p.Stream),
+                        new SqlParameter("PathArquivo", p.PathArquivo),
+                        new SqlParameter("DataCriacao", p.DataCriacao));
                     }
 
 

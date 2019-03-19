@@ -70,7 +70,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("{gtopublicid}/DeletarProcedimento", Name = "DeletarProcedimento")]
+        [HttpPatch("{gtopublicid}/DeletarProcedimento", Name = "DeletarProcedimento")]
         public async Task<IActionResult> DeletarProcedimento(Guid gtopublicid)
         {
 
