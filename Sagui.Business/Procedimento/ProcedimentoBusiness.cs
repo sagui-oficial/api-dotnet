@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.Procedimento;
@@ -60,6 +61,14 @@ namespace Sagui.Business.Procedimento
         {
             ProcedimentoLookup procedimentoLookup = new ProcedimentoLookup();
             var listProcedimento = procedimentoLookup.ObterProcedimento(procedimento);
+
+            return listProcedimento;
+        }
+
+        public List<Model.Procedimentos> ListarProcedimentoGTO(int idGTO)
+        {
+            ProcedimentoLookup procedimentoLookup = new ProcedimentoLookup();
+            var listProcedimento = procedimentoLookup.ListarProcedimentoGTO(idGTO);
 
             return listProcedimento;
         }

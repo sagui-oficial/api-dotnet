@@ -1,6 +1,7 @@
 ﻿using Sagui.Base.Utils;
 using Sagui.Service.Contracts;
 using Sagui.Service.GTO;
+using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse.Base;
 using Sagui.Service.RequestResponse.ValueObject;
 using System;
@@ -14,6 +15,8 @@ namespace Sagui.Service.RequestResponse.Handlers
     public class ListarGTORequestHandler : IBaseRequestHandler<RequestGTO, ResponseGTO>
     {
         GTOService GTOService;
+        ProcedimentoService procedimentoService;
+
         private Business.Validador.GTO.ValidadorGTO validadorGTO { get; set; }
 
         ResponseGTO responseGTO;
@@ -23,11 +26,19 @@ namespace Sagui.Service.RequestResponse.Handlers
             GTOService = _GTOService;
             validadorGTO = new Business.Validador.GTO.ValidadorGTO();
             responseGTO = new ResponseGTO();
+            procedimentoService = new ProcedimentoService();
         }
 
         public async Task<ResponseGTO> Handle(RequestGTO request)
         {
             var ListGTO = GTOService.Listar();
+
+            foreach(var GTO in ListGTO)
+            {
+                GTO.Procedimentos =  procedimentoService.ListarProcedimentoGTO(GTO.Id);
+                //_GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
+            }
+
 
             if (ListGTO.Count > 0)
             {
