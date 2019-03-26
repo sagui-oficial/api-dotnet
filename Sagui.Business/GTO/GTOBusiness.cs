@@ -49,6 +49,7 @@ namespace Sagui.Business.GTO
                 foreach (Arquivos arquivo in gto.Arquivos)
                 {
                     arquivo.Stream = ManipulaArquivo.GerarStreamArquivo(arquivo.PathArquivo);
+                    arquivo.Extensao = Path.GetExtension(arquivo.PathArquivo);
 
                     ArquivoPersister arquivoPersister = new ArquivoPersister();
 
@@ -61,10 +62,6 @@ namespace Sagui.Business.GTO
                     else
                     {
                         arquivo.Id = _arquivo.Id;
-
-
-
-
                     }
                 }
 

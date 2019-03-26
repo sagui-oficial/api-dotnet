@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
+using Sagui.Service.Arquivo;
 using Sagui.Service.Contracts;
 using Sagui.Service.GTO;
+using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
 
@@ -41,8 +43,10 @@ namespace Sagui.Application.Controllers
             RequestGTO requestGTO = default(RequestGTO);
 
             GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             return await this.HandleRequest(listarGTORequestHandler, requestGTO);
 

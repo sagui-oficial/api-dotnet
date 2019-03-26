@@ -25,7 +25,7 @@ namespace Sagui.Test.Mocks
             arquivo.DataCriacao = DateTime.Now;
             arquivo.Nome = "ArquivoTeste";
             arquivo.PathArquivo = @"D:\Sagui\Imagens\LandingPage_Base.jpg";
-            arquivo.Stream
+            arquivo.Stream = null;
 
             return arquivo;
         }

@@ -30,5 +30,21 @@ namespace Sagui.Business.Arquivo
 
             return _arquivo;
         }
+
+        public List<Model.Arquivos> ListarArquivoPorGto(Model.GTO gto)
+        {
+            ArquivoLookup arquivoLookup = new ArquivoLookup();
+            var _arquivo = arquivoLookup.ListarArquivoPorGTO(gto);
+
+            return _arquivo;
+        }
+
+        public Model.Arquivos ObterArquivoPorPlanoOperadora(Model.Arquivos arquivo)
+        {
+            ArquivoLookup arquivoLookup = new ArquivoLookup();
+            var _arquivo = arquivoLookup.ObterArquivo(arquivo);
+
+            return _arquivo;
+        }
     }
 }

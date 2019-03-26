@@ -81,9 +81,7 @@ namespace Sagui.Data
                           ,b.[Stream]
                           ,b.[DataCriacao]
                           ,b.[PathArquivo]
-                    FROM Arquivo_GTO a (NOLOCK)
-		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
-                    WHERE idGTO = @idGTO";
+                    FROM Arquivo b (NOLOCK)";
         #endregion
 
         #region GTO

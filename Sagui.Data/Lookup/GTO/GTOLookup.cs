@@ -38,8 +38,8 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
-                        _GTO.Procedimentos = ObterProcedimentoGTO(_GTO.Id);
-                        _GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
+                        //_GTO.Procedimentos = ObterProcedimentoGTO(_GTO.Id);
+                        //_GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
                         ListGTO.Add(_GTO);
                     }
                 }

@@ -26,5 +26,15 @@ namespace Sagui.Service.Arquivo
                 return _return;
             }
         }
+
+        public List<Model.Arquivos> ListarArquivoPorGTO(Model.GTO gto)
+        {
+            using (var ArquivoBusiness = new Business.Arquivo.ArquivoBusiness())
+            {
+                var _return = ArquivoBusiness.ListarArquivoPorGto(gto);
+                ArquivoBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace Sagui.Data.Persister.Arquivo
                 {
                     return true;
                 }
+                return false;
             }
             catch (Exception e)
             {
