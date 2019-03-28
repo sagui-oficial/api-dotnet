@@ -38,8 +38,7 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var GTO = GTOService.Obter(request);
 
-            var ListGTO = GTOService.Listar();
-
+            
             if(GTO != null)
             {
                 GTO.Arquivos = arquivoService.ListarArquivoPorGTO(GTO);
