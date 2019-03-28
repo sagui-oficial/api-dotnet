@@ -9,9 +9,9 @@ namespace Sagui.Test.Mocks
 {
     public class MockArquivos
     {
-        public RequestArquivo CriarMockArquivo()
+        public RequestArquivoGTO CriarMockArquivo()
         {
-            RequestArquivo arquivo = new RequestArquivo();
+            RequestArquivoGTO arquivo = new RequestArquivoGTO();
             arquivo.DataCriacao = DateTime.Now;
             arquivo.Nome = "ArquivoTeste";
             arquivo.PathArquivo = @"D:\Sagui\Imagens\LandingPage.jpg";
@@ -19,9 +19,9 @@ namespace Sagui.Test.Mocks
             return arquivo;
         }
 
-        public RequestArquivo CriarMockArquivoNaBase()
+        public RequestArquivoGTO CriarMockArquivoNaBase()
         {
-            RequestArquivo arquivo = new RequestArquivo();
+            RequestArquivoGTO arquivo = new RequestArquivoGTO();
             arquivo.DataCriacao = DateTime.Now;
             arquivo.Nome = "ArquivoTeste";
             arquivo.PathArquivo = @"D:\Sagui\Imagens\LandingPage_Base.jpg";

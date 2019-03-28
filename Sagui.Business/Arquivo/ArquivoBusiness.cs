@@ -1,13 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Sagui.Base.Utils;
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.Arquivo;
-using Sagui.Data.Lookup.GTO;
-using Sagui.Data.Persister.Arquivo;
-using Sagui.Data.Persister.GTO;
-using Sagui.Data.Persister.Procedimento;
 using Sagui.Model;
 
 namespace Sagui.Business.Arquivo
@@ -15,23 +8,19 @@ namespace Sagui.Business.Arquivo
 
     public class ArquivoBusiness : BusinessBase
     {
-        public List<Model.Arquivos> ListArquivos()
+        #region GTO
+
+       
+        public Model.Arquivo_GTO ObterArquivoGTOPorPublicId(Arquivo_GTO arquivo)
         {
             ArquivoLookup arquivoLookup = new ArquivoLookup();
-            var listArquivos = arquivoLookup.ListArquivos();
-
-            return listArquivos;
-        }
-
-        public Model.Arquivos ObterArquivo(Model.Arquivos arquivo)
-        {
-            ArquivoLookup arquivoLookup = new ArquivoLookup();
-            var _arquivo = arquivoLookup.ObterArquivo(arquivo);
+            var _arquivo = arquivoLookup.ObterArquivoGTOPorPublicId(arquivo);
 
             return _arquivo;
         }
 
-        public List<Model.Arquivos> ListarArquivoPorGto(Model.GTO gto)
+
+        public List<Model.Arquivo_GTO> ListarArquivoPorGto(Model.GTO gto)
         {
             ArquivoLookup arquivoLookup = new ArquivoLookup();
             var _arquivo = arquivoLookup.ListarArquivoPorGTO(gto);
@@ -39,12 +28,31 @@ namespace Sagui.Business.Arquivo
             return _arquivo;
         }
 
-        public Model.Arquivos ObterArquivoPorPlanoOperadora(Model.Arquivos arquivo)
+        #endregion
+
+
+
+
+
+
+        #region PlanoOperadora
+        public Model.Arquivo_PlanoOperadora ObterArquivoPlanoOperadoraPorPublicId(Arquivo_PlanoOperadora arquivo)
         {
             ArquivoLookup arquivoLookup = new ArquivoLookup();
-            var _arquivo = arquivoLookup.ObterArquivo(arquivo);
+            var _arquivo = arquivoLookup.ObterArquivoPlanoOperadoraPorPublicId(arquivo);
 
             return _arquivo;
         }
+
+
+        public List<Model.Arquivo_PlanoOperadora> ListarArquivoPorPlanoOperadora(Model.PlanoOperadora planoOperadora)
+        {
+            ArquivoLookup arquivoLookup = new ArquivoLookup();
+            var _arquivo = arquivoLookup.ListarArquivoPorPlanoOperadora(planoOperadora);
+
+            return _arquivo;
+        }
+
+        #endregion
     }
 }

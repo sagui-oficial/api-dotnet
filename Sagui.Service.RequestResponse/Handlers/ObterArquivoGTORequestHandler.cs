@@ -1,32 +1,29 @@
 ﻿using Sagui.Base.Utils;
 using Sagui.Service.Arquivo;
-using Sagui.Service.Contracts;
-using Sagui.Service.GTO;
 using Sagui.Service.RequestResponse.Base;
 using Sagui.Service.RequestResponse.ValueObject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse.Handlers
 {
-    public class ObterArquivoRequestHandler : IBaseRequestHandler<RequestArquivo, ResponseArquivo>
+    public class ObterArquivoGTORequestHandler : IBaseRequestHandler<RequestArquivoGTO, ResponseArquivoGTO>
     {
         ArquivoService ArquivoService;
 
-        ResponseArquivo responseArquivo;
+        ResponseArquivoGTO responseArquivo;
 
-        public ObterArquivoRequestHandler(ArquivoService _ArquivoService)
+        public ObterArquivoGTORequestHandler(ArquivoService _ArquivoService)
         {
             ArquivoService = _ArquivoService;
-            responseArquivo = new ResponseArquivo();
+            responseArquivo = new ResponseArquivoGTO();
         }
 
-        public async Task<ResponseArquivo> Handle(RequestArquivo request)
+        public async Task<ResponseArquivoGTO> Handle(RequestArquivoGTO request)
         {
-            var Arquivo = ArquivoService.Obter(request);
+            var Arquivo = ArquivoService.ObterArquivoGTOPorPublicId(request);
+
+
 
             if (Arquivo.Id > 0)
             {

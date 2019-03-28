@@ -13,34 +13,37 @@ namespace Sagui.Test.Arquivo
     [TestClass]
     public class ListarArquivos_Test
     {
+
+
         [TestMethod]
-        public async Task ListarTodosArquivos()
+        public async Task ObterArquivoGTOPorPublicId()
         {
             ArquivoService arquivoService = new ArquivoService();
 
-            ListarArquivoRequestHandler listarArquivoRequestHandler = new ListarArquivoRequestHandler(arquivoService);
+            ObterArquivoGTORequestHandler obterArquivoRequestHandler = new ObterArquivoGTORequestHandler(arquivoService);
 
-            RequestArquivo requestArquivo = default(RequestArquivo);
-
-            var response = await listarArquivoRequestHandler.Handle(requestArquivo);
-
-            Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.Arquivos.Count > 0);
-        }
-
-        [TestMethod]
-        public async Task ObterGTO()
-        {
-            ArquivoService arquivoService = new ArquivoService();
-
-            ObterArquivoRequestHandler obterArquivoRequestHandler = new ObterArquivoRequestHandler(arquivoService);
-
-            RequestArquivo requestArquivo = default(RequestArquivo);
+            RequestArquivoGTO requestArquivo = default(RequestArquivoGTO);
 
             var response = await obterArquivoRequestHandler.Handle(requestArquivo);
 
-            Assert.IsTrue(response.ResponseType == ResponseType.Info);
-            //Assert.IsTrue(response.GTOs.Count == 0);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.Arquivo != null);
+        }
+
+
+        [TestMethod]
+        public async Task ObterArquivoPlanoOperadoraPorPublicId()
+        {
+            ArquivoService arquivoService = new ArquivoService();
+
+            ObterArquivoPlanoOperadoraRequestHandler obterArquivoRequestHandler = new ObterArquivoPlanoOperadoraRequestHandler(arquivoService);
+
+            RequestArquivoPlanoOperadora requestArquivo = default(RequestArquivoPlanoOperadora);
+
+            var response = await obterArquivoRequestHandler.Handle(requestArquivo);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.Arquivo != null);
         }
     }
 }

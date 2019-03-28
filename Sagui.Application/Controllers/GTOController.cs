@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
 using Sagui.Service.Arquivo;
-using Sagui.Service.Contracts;
 using Sagui.Service.GTO;
 using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse;
