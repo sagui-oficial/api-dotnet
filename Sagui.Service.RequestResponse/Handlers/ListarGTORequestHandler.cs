@@ -31,6 +31,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             procedimentoService = _procedimentoService;
             validadorGTO = new Business.Validador.GTO.ValidadorGTO();
             responseGTO = new ResponseGTO();
+            procedimentoService = new ProcedimentoService();
         }
 
         public async Task<ResponseGTO> Handle(RequestGTO request)

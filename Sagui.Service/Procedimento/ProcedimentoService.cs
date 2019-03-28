@@ -66,5 +66,15 @@ namespace Sagui.Service.Procedimento
                 return _return;
             }
         }
+
+        public List<Procedimentos> ListarProcedimentoGTO(int IdGTO)
+        {
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.ListarProcedimentoGTO(IdGTO);
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

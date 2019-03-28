@@ -36,11 +36,11 @@ namespace Sagui.Test.TestGTO
         {
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
+            ObterProcedimentoRequestHandler obterProcedimentoRequestHandler = new ObterProcedimentoRequestHandler(procedimentoService);
 
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
 
-            var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
+            var response = await obterProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
             Assert.IsTrue(response.Procedimentos.Count > 0);
