@@ -26,8 +26,10 @@ namespace Sagui.Application.Controllers
             };
 
             GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService);
+            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             return await this.HandleRequest(ObterGTORequestHandler, requestGTO);
 
