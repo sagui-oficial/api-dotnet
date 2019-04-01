@@ -56,8 +56,9 @@ namespace Sagui.Data
                           ,b.[Stream]
                           ,b.[DataCriacao]
                           ,b.[PathArquivo]
+                          ,b.PublicID
                     FROM Arquivo_GTO a (NOLOCK)
-		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+		                    INNER join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
                     WHERE idGTO = @idGTO";
 
 

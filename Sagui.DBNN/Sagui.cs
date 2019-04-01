@@ -48,7 +48,10 @@ namespace Sagui.DB
 
             modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
             modelBuilder.Entity<Procedimentos>(b =>{b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()");});
-            
+
+            modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });
+            modelBuilder.Entity<Arquivos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+
 
             // exemplo para remover os plurais das tabelas.
             //modelBuilder.Entity<Course>().ToTable("Course");

@@ -66,7 +66,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("{userPublicId}/DeletarFuncionario", Name = "DeletarFuncionario")]
+        [HttpPatch("{userPublicId}/DeletarFuncionario", Name = "DeletarFuncionario")]
         public async Task<IActionResult> DeletarUsuarioFuncionario(Guid userPublicId)
         {
 
