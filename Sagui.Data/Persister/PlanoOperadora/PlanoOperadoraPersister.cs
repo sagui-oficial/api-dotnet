@@ -32,6 +32,8 @@ namespace Sagui.Data.Persister.PlanoOperadora
                 {
                     PlanoOperadora.Id = Convert.ToInt32(newId);
                 }
+
+                dataInfrastructure.transaction.Commit();
             }
             catch (Exception e)
             {
@@ -44,5 +46,68 @@ namespace Sagui.Data.Persister.PlanoOperadora
 
             return PlanoOperadora;
         }
+
+        public Model.PlanoOperadora AtualizarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        {
+            if (PlanoOperadora == null)
+                throw new ArgumentNullException(nameof(PlanoOperadora));
+
+            DbParams.Add(nameof(PlanoOperadora.NomeFantasia), PlanoOperadora.NomeFantasia);
+            DbParams.Add(nameof(PlanoOperadora.RazaoSocial), PlanoOperadora.RazaoSocial);
+            DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
+            DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
+            DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
+
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdatePlanoOperadora, DbParams);
+
+            try
+            {
+                var newId = dataInfrastructure.command.ExecuteScalar();
+
+                if (Convert.ToInt32(newId) > 0)
+                {
+                    PlanoOperadora.Id = Convert.ToInt32(newId);
+                }
+            }
+            catch (Exception e)
+            {
+                dataInfrastructure.transaction.Rollback();
+            }
+
+
+            _dataInfrastructure = dataInfrastructure;
+
+
+            return PlanoOperadora;
+        }
+
+        public Model.PlanoOperadora DeletarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        {
+            if (PlanoOperadora == null)
+                throw new ArgumentNullException(nameof(PlanoOperadora));
+
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
+
+            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeletePlanoOperadora, DbParams))
+            {
+                try
+                {
+                    dataInfrastructure.command.ExecuteNonQuery();
+                    dataInfrastructure.transaction.Commit();
+
+                }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+
+
+                _dataInfrastructure = dataInfrastructure;
+            }
+
+            return PlanoOperadora;
+        }
+
     }
 }

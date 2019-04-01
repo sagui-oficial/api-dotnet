@@ -27,6 +27,7 @@ namespace Sagui.Business.PlanoOperadora
             responsePlanoOperadora = planoOperadora;
 
             dataInfrastructure.Dispose();
+            dataInfrastructure.transaction.Commit();
 
             return responsePlanoOperadora;
         }

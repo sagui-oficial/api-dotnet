@@ -46,25 +46,25 @@ namespace Sagui.Application.Controllers
         {
             PlanoOperadoraService PlanoOperadoraService = new PlanoOperadoraService();
 
-            AtualizarPlanoOperadoraRequestHandler criarPlanoOperadoraRequestHandler = new AtualizarPlanoOperadoraRequestHandler(PlanoOperadoraService);
+            AtualizarPlanoOperadoraRequestHandler atualizarPlanoOperadoraRequestHandler = new AtualizarPlanoOperadoraRequestHandler(PlanoOperadoraService);
 
-            return await this.HandleRequest(criarPlanoOperadoraRequestHandler, requestPlanoOperadora);
+            return await this.HandleRequest(atualizarPlanoOperadoraRequestHandler, requestPlanoOperadora);
 
         }
 
-        [HttpPut("{gtopublicid}/DeletarPlanoOperadora", Name = "DeletarPlanoOperadora")]
-        public async Task<IActionResult> DeletarPlanoOperadora(Guid gtopublicid)
+        [HttpPut("{planopublicid}/DeletarPlanoOperadora", Name = "DeletarPlanoOperadora")]
+        public async Task<IActionResult> DeletarPlanoOperadora(Guid planopublicid)
         {
 
             RequestPlanoOperadora requestPlanoOperadora = new RequestPlanoOperadora
             {
-                PublicID = gtopublicid
+                PublicID = planopublicid
             };
             PlanoOperadoraService PlanoOperadoraService = new PlanoOperadoraService();
 
-            AtualizarPlanoOperadoraRequestHandler criarPlanoOperadoraRequestHandler = new AtualizarPlanoOperadoraRequestHandler(PlanoOperadoraService);
+            DeletarPlanoOperadoraRequestHandler deletarPlanoOperadoraRequestHandler = new DeletarPlanoOperadoraRequestHandler(PlanoOperadoraService);
 
-            return await this.HandleRequest(criarPlanoOperadoraRequestHandler, requestPlanoOperadora);
+            return await this.HandleRequest(deletarPlanoOperadoraRequestHandler, requestPlanoOperadora);
 
         }
 

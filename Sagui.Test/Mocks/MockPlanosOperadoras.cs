@@ -17,12 +17,12 @@ namespace Sagui.Test.Mocks
             MockArquivos mockArquivos = new MockArquivos();
 
             RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
-            planoOperadora.Id = 1;
+            planoOperadora.Id = 3;
             planoOperadora.NomeFantasia = "AMIL";
             planoOperadora.RazaoSocial = "AMIL";
             planoOperadora.CNPJ = "0000000000191";
-            planoOperadora.DataEnvioLote = new DateTime();
-            planoOperadora.DataRecebimentoLote = new DateTime();
+            planoOperadora.DataEnvioLote = DateTime.Now;
+            planoOperadora.DataRecebimentoLote = DateTime.Now;
             planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
             planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
 
@@ -35,7 +35,7 @@ namespace Sagui.Test.Mocks
             MockArquivos mockArquivos = new MockArquivos();
 
             RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
-            planoOperadora.Id = 1;
+            planoOperadora.Id = 8;
             planoOperadora.NomeFantasia = "FANTA";
             planoOperadora.RazaoSocial = "COCA";
             planoOperadora.CNPJ = "27664821000189";
