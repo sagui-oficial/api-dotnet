@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sagui.DB;
 
 namespace Sagui.DB.Migrations
 {
     [DbContext(typeof(Sagui))]
-    partial class SaguiModelSnapshot : ModelSnapshot
+    [Migration("20190402000506_cro")]
+    partial class cro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,10 +77,6 @@ namespace Sagui.DB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("newsequentialid()");
 
-                    b.Property<int?>("LoteIdLote");
-
-                    b.Property<Guid?>("LotePublicID");
-
                     b.Property<string>("Numero");
 
                     b.Property<int?>("PacienteId");
@@ -97,48 +95,11 @@ namespace Sagui.DB.Migrations
 
                     b.HasKey("Id", "PublicID");
 
-                    b.HasIndex("LoteIdLote", "LotePublicID");
-
                     b.HasIndex("PacienteId", "PacientePublicID");
 
                     b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
 
                     b.ToTable("GTO");
-                });
-
-            modelBuilder.Entity("Sagui.Model.Lote", b =>
-                {
-                    b.Property<int>("IdLote");
-
-                    b.Property<Guid>("PublicID")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
-
-                    b.Property<DateTime>("DataEnvioCorreio");
-
-                    b.Property<DateTime>("DataPrevistaRecebimento");
-
-                    b.Property<int?>("FuncionarioId");
-
-                    b.Property<Guid?>("FuncionarioPublicID");
-
-                    b.Property<int?>("PlanoOperadoraId");
-
-                    b.Property<Guid?>("PlanoOperadoraPublicID");
-
-                    b.Property<int>("StatusLote");
-
-                    b.Property<int>("TotalGTOLote");
-
-                    b.Property<decimal>("ValorTotalLote");
-
-                    b.HasKey("IdLote", "PublicID");
-
-                    b.HasIndex("FuncionarioId", "FuncionarioPublicID");
-
-                    b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
-
-                    b.ToTable("Lote");
                 });
 
             modelBuilder.Entity("Sagui.Model.PlanoOperadora", b =>
@@ -291,16 +252,6 @@ namespace Sagui.DB.Migrations
                     b.HasDiscriminator().HasValue("Funcionario");
                 });
 
-            modelBuilder.Entity("Sagui.Model.Funcionario", b =>
-                {
-                    b.HasBaseType("Sagui.Model.UsuarioBase");
-
-
-                    b.ToTable("Funcionario");
-
-                    b.HasDiscriminator().HasValue("Funcionario");
-                });
-
             modelBuilder.Entity("Sagui.Model.Paciente", b =>
                 {
                     b.HasBaseType("Sagui.Model.UsuarioBase");
@@ -324,24 +275,9 @@ namespace Sagui.DB.Migrations
 
             modelBuilder.Entity("Sagui.Model.GTO", b =>
                 {
-                    b.HasOne("Sagui.Model.Lote")
-                        .WithMany("ListaGTO")
-                        .HasForeignKey("LoteIdLote", "LotePublicID");
-
                     b.HasOne("Sagui.Model.Paciente", "Paciente")
                         .WithMany()
                         .HasForeignKey("PacienteId", "PacientePublicID");
-
-                    b.HasOne("Sagui.Model.PlanoOperadora", "PlanoOperadora")
-                        .WithMany()
-                        .HasForeignKey("PlanoOperadoraId", "PlanoOperadoraPublicID");
-                });
-
-            modelBuilder.Entity("Sagui.Model.Lote", b =>
-                {
-                    b.HasOne("Sagui.Model.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId", "FuncionarioPublicID");
 
                     b.HasOne("Sagui.Model.PlanoOperadora", "PlanoOperadora")
                         .WithMany()

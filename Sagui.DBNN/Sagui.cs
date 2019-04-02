@@ -21,6 +21,8 @@ namespace Sagui.DB
         public DbSet<Procedimento_GTO> Procedimento_GTO { get; set; }
         public DbSet<Procedimentos> Procedimento { get; set; }
         public DbSet<UsuarioBase> UsuarioBase { get; set; }
+        public DbSet<Dentinsta> Dentinsta { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
         public DbSet<Lote> Lote { get; set; }
 
