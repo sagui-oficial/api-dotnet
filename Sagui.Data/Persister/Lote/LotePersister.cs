@@ -11,18 +11,17 @@ namespace Sagui.Data.Persister.Lote
             if (Lote == null)
                 throw new ArgumentNullException(nameof(Lote));
 
-            DbParams.Add(nameof(Lote.IdLote), Lote.IdLote);
+            //DbParams.Add(nameof(Lote.IdLote), Lote.IdLote);
             DbParams.Add(nameof(Lote.DataEnvioCorreio), Lote.DataEnvioCorreio);
             DbParams.Add(nameof(Lote.DataPrevistaRecebimento), Lote.DataPrevistaRecebimento);
-            DbParams.Add(nameof(Lote.Funcionario), Lote.Funcionario);
-            DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
-            DbParams.Add(nameof(Lote.PlanoOperadora), Lote.PlanoOperadora);
-            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID);
+            DbParams.Add(nameof(Lote.PlanoOperadora), Lote.PlanoOperadora.Id);
+            DbParams.Add(nameof(Lote.Funcionario), Lote.Funcionario.Id);
             DbParams.Add(nameof(Lote.StatusLote), Lote.StatusLote);
             DbParams.Add(nameof(Lote.TotalGTOLote), Lote.TotalGTOLote);
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
+            //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioDentista, DbParams);
+            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateLote, DbParams);
 
             try
             {

@@ -392,31 +392,23 @@ namespace Sagui.Data
         #region Lote
         public static string CreateLote = @"
                     INSERT INTO dbo.Lote
-                       (NomeFantasia
-                       ,RazaoSocial
-                       ,CNPJ
-                       ,DataEnvioLote
-                       ,DataRecebimentoLote)
+                       (PlanoOperadoraId
+                       ,TotalGTOLote
+                       ,ValorTotalLote
+                       ,DataEnvioCorreio
+                       ,DataPrevistaRecebimento
+                       ,StatusLote
+                       ,FuncionarioId)
                  VALUES
-                       (@NomeFantasia
-                       ,@RazaoSocial
-                       ,@CNPJ
-                       ,@DataEnvioLote
-                       ,@DataRecebimentoLote);
+                       (@PlanoOperadora
+                       ,@TotalGTOLote
+                       ,@ValorTotalLote
+                       ,@DataEnvioCorreio
+                       ,@DataPrevistaRecebimento
+                       ,@StatusLote
+                       ,@Funcionario);
 
                 SELECT SCOPE_IDENTITY();";
-
-        public static string ObterLote = @"
-                            SELECT Id
-                                ,NomeFantasia
-                                ,RazaoSocial
-                                ,CNPJ
-                                ,DataEnvioLote
-                                ,DataRecebimentoLote
-                                ,PublicId
-                              FROM dbo.PlanoOperadora 
-                            WHERE PublicID = @PublicID";
-
 
         public static string ListLote = @"
                             SELECT Id
@@ -439,7 +431,7 @@ namespace Sagui.Data
 
 
         public static string DeleteLote = @"
-                            DELETE FROM dbo.PlanoOperadora
+                            DELETE FROM dbo.Lote
                             WHERE PublicID = @PublicID";
 
         #endregion

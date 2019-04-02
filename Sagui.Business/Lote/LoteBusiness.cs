@@ -26,6 +26,7 @@ namespace Sagui.Business.Lote
             Model.Lote responseLote = new Model.Lote();
             responseLote = Lote;
 
+            dataInfrastructure.transaction.Commit();
             dataInfrastructure.Dispose();
 
             return responseLote;
