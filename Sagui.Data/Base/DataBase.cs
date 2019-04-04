@@ -9,9 +9,9 @@ namespace Sagui.Data.Base
 {
     public class DataBase : DALWorker
     {
-        public SqlCommand command;
-        public IDbTransaction transaction;
-        public IDbConnection connection;
+        protected SqlCommand command;
+        protected IDbTransaction transaction;
+        protected IDbConnection connection;
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams, IDbConnection _connection, IDbTransaction _transaction)
         {

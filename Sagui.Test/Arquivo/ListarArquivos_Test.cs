@@ -24,6 +24,8 @@ namespace Sagui.Test.Arquivo
 
             RequestArquivoGTO requestArquivo = default(RequestArquivoGTO);
 
+
+
             var response = await obterArquivoRequestHandler.Handle(requestArquivo);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

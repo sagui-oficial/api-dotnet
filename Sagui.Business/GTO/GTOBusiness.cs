@@ -26,22 +26,20 @@ namespace Sagui.Business.GTO
         {
             GTOPersister gtoPersister = new GTOPersister();
 
-            var _gto = gtoPersister.SaveGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            var _gto = gtoPersister.SaveGTO(gto);
 
             if (_gto != null)
             {
                 gto.Id = _gto.Id;
 
-                Data.DataInfrastructure _dataInfrastructure = dataInfrastructure;
-
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
                     ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
-                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento, _dataInfrastructure, out dataInfrastructure);
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento);
 
                     if (!_persisted)
                     {
-                        dataInfrastructure.transaction.Rollback();
+                        procedimentoGTOPersister.DataInfrastructureControl(false);
                         return null;
                     }
                 }
@@ -53,10 +51,10 @@ namespace Sagui.Business.GTO
 
                     ArquivoPersister arquivoPersister = new ArquivoPersister();
 
-                    var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo, _dataInfrastructure, out dataInfrastructure);
+                    var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo);
                     if (_arquivo.Id == 0)
                     {
-                        dataInfrastructure.transaction.Rollback();
+                        arquivoPersister.DataInfrastructureControl(false);
                         return null;
                     }
                     else
@@ -65,8 +63,7 @@ namespace Sagui.Business.GTO
                     }
                 }
 
-                dataInfrastructure.transaction.Commit();
-                dataInfrastructure.Dispose();
+                gtoPersister.DataInfrastructureControl(true);
             }
             else
             {
