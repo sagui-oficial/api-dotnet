@@ -1,4 +1,5 @@
-﻿using Sagui.Model;
+﻿using Sagui.Data.Base;
+using Sagui.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sagui.Data.Persister.GTO
+namespace Sagui.Data.Persister.Procedimento
 {
-    public class ProcedimentoPersister
+    public class ProcedimentoPersister : DBParams, IDataInfrastructure
     {
-        public Model.Procedimentos AtualizarProcedimento(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
+        public Model.Procedimentos AtualizarProcedimento(Model.Procedimentos Procedimentos)
         {
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Procedimentos.IdProcedimento), Procedimentos.IdProcedimento);
@@ -22,28 +29,24 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
             DbParams.Add(nameof(Procedimentos.Status), Procedimentos.Status);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateProcedimento, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateProcedimento, DbParams))
             {
                 try
                 {
                     dataInfrastructure.command.ExecuteNonQuery();
-
-                    dataInfrastructure.transaction.Commit();
-
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                    Procedimentos = null;
                 }
-
-                _dataInfrastructure = dataInfrastructure;
             }
 
             return Procedimentos;
         }
 
 
-        public Model.Procedimentos DeletarProcedimento(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
+
+        public Model.Procedimentos DeletarProcedimento(Model.Procedimentos Procedimentos)
         {
             if (Procedimentos == null)
                 throw new ArgumentNullException(nameof(Procedimentos));
@@ -52,27 +55,22 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
             DbParams.Add(nameof(Procedimentos.Status), StatusProcedimento.Status.Deletada);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteProcedimento, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimento, DbParams))
             {
                 try
                 {
-                    dataInfrastructure.command.ExecuteNonQuery();
-                    dataInfrastructure.transaction.Commit();
-                    
+                    dataInfrastructure.command.ExecuteNonQuery();                    
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                    Procedimentos = null;
                 }
-
-
-                _dataInfrastructure = dataInfrastructure;
             }
 
             return Procedimentos;
         }
 
-        public Model.Procedimentos SaveProcedimento(Model.Procedimentos Procedimentos, out DataInfrastructure _dataInfrastructure)
+        public Model.Procedimentos SaveProcedimento(Model.Procedimentos Procedimentos)
         {
             if (Procedimentos == null)
                 throw new ArgumentNullException(nameof(Procedimentos));
@@ -84,7 +82,7 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(Procedimentos.NomeProcedimento), Procedimentos.NomeProcedimento);
             DbParams.Add(nameof(Procedimentos.ValorProcedimento), Procedimentos.ValorProcedimento);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateProcedimento, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimento, DbParams))
             {
                 try
                 {
@@ -98,11 +96,8 @@ namespace Sagui.Data.Persister.GTO
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                    Procedimentos = null;
                 }
-
-
-                _dataInfrastructure = dataInfrastructure;
             }
 
             return Procedimentos;

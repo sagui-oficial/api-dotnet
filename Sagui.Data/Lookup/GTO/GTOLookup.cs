@@ -16,7 +16,7 @@ namespace Sagui.Data.Lookup.GTO
         {
             List<Model.GTO> ListGTO = new List<Model.GTO>();
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListGTO))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListGTO))
             {
                 try
                 {
@@ -59,7 +59,7 @@ namespace Sagui.Data.Lookup.GTO
                 throw new ArgumentNullException(nameof(GTO));
             DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ObterGTObyPublicID, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterGTObyPublicID, DbParams))
             {
                 try
                 {

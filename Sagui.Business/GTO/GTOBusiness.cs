@@ -39,7 +39,7 @@ namespace Sagui.Business.GTO
 
                     if (!_persisted)
                     {
-                        procedimentoGTOPersister.DataInfrastructureControl(false);
+                        procedimentoGTOPersister.CommitCommand(false);
                         return null;
                     }
                 }
@@ -54,7 +54,7 @@ namespace Sagui.Business.GTO
                     var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo);
                     if (_arquivo.Id == 0)
                     {
-                        arquivoPersister.DataInfrastructureControl(false);
+                        arquivoPersister.CommitCommand(false);
                         return null;
                     }
                     else
@@ -63,7 +63,7 @@ namespace Sagui.Business.GTO
                     }
                 }
 
-                gtoPersister.DataInfrastructureControl(true);
+                gtoPersister.CommitCommand(true);
             }
             else
             {
@@ -77,30 +77,36 @@ namespace Sagui.Business.GTO
         {
 
             GTOPersister gtoPersister = new GTOPersister();
-            gtoPersister.AtualizarGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);
 
-            Model.GTO responseGTO = new Model.GTO();
-            responseGTO = gto;
-
-            dataInfrastructure.Dispose();
+            if (responseGTO == null)
+            {
+                gtoPersister.CommitCommand(false);
+            }
+            else
+            {
+                gtoPersister.CommitCommand(true);
+            }
 
             return responseGTO;
-
         }
 
         public Model.GTO Deletar(Model.GTO gto)
         {
 
             GTOPersister gtoPersister = new GTOPersister();
-            gtoPersister.DeleteGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            Model.GTO responseGTO = gtoPersister.DeleteGTO(gto);
 
-            Model.GTO responseGTO = new Model.GTO();
-            responseGTO = gto;
-
-            dataInfrastructure.Dispose();
+            if (responseGTO == null)
+            {
+                gtoPersister.CommitCommand(false);
+            }
+            else
+            {
+                gtoPersister.CommitCommand(true);
+            }
 
             return responseGTO;
-
         }
 
         public Model.GTO ObterGTO(Model.GTO GTO)

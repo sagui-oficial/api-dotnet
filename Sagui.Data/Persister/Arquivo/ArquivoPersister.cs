@@ -9,7 +9,7 @@ namespace Sagui.Data.Persister.Arquivo
 {
     public class ArquivoPersister : DBParams, IDataInfrastructure
     {
-        public void DataInfrastructureControl(bool commit)
+        public void CommitCommand(bool commit)
         {
             DataInfrastructure.ConnTranControl(commit);
             DataInfrastructure.dataInfrastructure.Dispose();

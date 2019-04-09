@@ -6,6 +6,6 @@ namespace Sagui.Data.Base
 {
     public interface IDataInfrastructure
     {
-        void DataInfrastructureControl(bool commit);
+        void CommitCommand(bool commit);
     }
 }

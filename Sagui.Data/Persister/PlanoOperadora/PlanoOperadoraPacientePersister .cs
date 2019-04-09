@@ -6,13 +6,13 @@ namespace Sagui.Data.Persister.PlanoOperadora
 {
     public class PlanoOperadoraPacientePersister : DBParams
     {
-        public bool SavePlanoOperadoraPaciente(int PlanoOperadora_Id, int Paciente_Id, string NumeroPlano, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public bool SavePlanoOperadoraPaciente(int PlanoOperadora_Id, int Paciente_Id, string NumeroPlano)
         {
             DbParams.Add(nameof(NumeroPlano), NumeroPlano);
             DbParams.Add(nameof(PlanoOperadora_Id), PlanoOperadora_Id);
             DbParams.Add(nameof(Paciente_Id), Paciente_Id);
 
-            _dataInfrastructure = new DataInfrastructure(SQL.CreatePlanoOperadoraPaciente, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreatePlanoOperadoraPaciente, DbParams);
 
             dynamic newId = 0;
             try

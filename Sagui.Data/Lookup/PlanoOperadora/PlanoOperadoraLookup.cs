@@ -12,7 +12,7 @@ namespace Sagui.Data.Lookup.Usuario
         {
             List<Model.PlanoOperadora> ListPlanoOperadora = new List<Model.PlanoOperadora>();
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListGTO))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListGTO))
             {
                 try
                 {
@@ -22,19 +22,15 @@ namespace Sagui.Data.Lookup.Usuario
                     {
                         Model.PlanoOperadora _PlanoOperadora = new Model.PlanoOperadora();
 
-
                         ListPlanoOperadora.Add(_PlanoOperadora);
                     }
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListPlanoOperadora = null;
                 }
             }
+
             return ListPlanoOperadora;
         }
     }

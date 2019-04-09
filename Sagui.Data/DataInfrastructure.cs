@@ -13,6 +13,24 @@ namespace Sagui.Data
         public static DataInfrastructure dataInfrastructure;
         private static readonly object lockObject = new object();
 
+        public static DataInfrastructure GetInstanceDb(string queryCommand)
+        {
+            lock (lockObject)
+            {
+                if (dataInfrastructure == null)
+                {
+                    dataInfrastructure = new DataInfrastructure(queryCommand);
+                }
+                else
+                {
+                    dataInfrastructure = new DataInfrastructure(queryCommand, dataInfrastructure.connection, dataInfrastructure.transaction);
+                }
+            }
+
+            return dataInfrastructure;
+        }
+
+
         public static DataInfrastructure GetInstanceDb(string queryCommand, Dictionary<string, object> DbParams)
         {
             lock (lockObject)
@@ -43,6 +61,11 @@ namespace Sagui.Data
             }
         }
 
+
+        private DataInfrastructure(string queryCommand, IDbConnection dbConnection, IDbTransaction dbTransaction)
+            : base(queryCommand, dbConnection, dbTransaction)
+        {
+        }
 
         private DataInfrastructure(string queryCommand, Dictionary<string, object> DbParams, IDbConnection dbConnection, IDbTransaction dbTransaction) 
             : base(queryCommand, DbParams, dbConnection, dbTransaction)

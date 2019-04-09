@@ -14,7 +14,7 @@ namespace Sagui.Data.Lookup.GTO
             DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Paciente);
                         
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {
                 try
                 {
@@ -33,7 +33,7 @@ namespace Sagui.Data.Lookup.GTO
                 }
                 catch (Exception e)
                 {
-
+                    ListUsuario = null;
                 }
                 finally
                 {
@@ -45,13 +45,13 @@ namespace Sagui.Data.Lookup.GTO
 
         public Paciente ObterUsuarioPaciente(Paciente paciente)
         {
-            Paciente usuarioPaciente = new Paciente();
+            Paciente usuarioPaciente = default(Paciente);
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Paciente.TipoUsuario), TipoUsuario.Tipo.Paciente);
             DbParams.Add(nameof(Paciente.PublicID), paciente.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {
                 try
                 {
@@ -59,26 +59,20 @@ namespace Sagui.Data.Lookup.GTO
 
                     while (reader.Read())
                     {
-                        Model.Paciente _Usuario = new Model.Paciente();
-                        _Usuario.Id = Convert.ToInt32(reader["Id"]);
-                        _Usuario.Nome = Convert.ToString(reader["Nome"]);
-                        _Usuario.Funcao = Convert.ToString(reader["Funcao"]);
-                        _Usuario.Anotacoes = Convert.ToString(reader["Anotacoes"]);
-                        _Usuario.CPF = Convert.ToString(reader["CPF"]);
-                        _Usuario.Email = Convert.ToString(reader["Email"]);
-                        _Usuario.Telefone = Convert.ToString(reader["Telefone"]);
-                        _Usuario.PublicID = (Guid)(reader["PublicID"]);
-
-                        usuarioPaciente = _Usuario;
+                        usuarioPaciente = new Model.Paciente();
+                        usuarioPaciente.Id = Convert.ToInt32(reader["Id"]);
+                        usuarioPaciente.Nome = Convert.ToString(reader["Nome"]);
+                        usuarioPaciente.Funcao = Convert.ToString(reader["Funcao"]);
+                        usuarioPaciente.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+                        usuarioPaciente.CPF = Convert.ToString(reader["CPF"]);
+                        usuarioPaciente.Email = Convert.ToString(reader["Email"]);
+                        usuarioPaciente.Telefone = Convert.ToString(reader["Telefone"]);
+                        usuarioPaciente.PublicID = (Guid)(reader["PublicID"]);
                     }
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    usuarioPaciente = null;
                 }
             }
             return usuarioPaciente;

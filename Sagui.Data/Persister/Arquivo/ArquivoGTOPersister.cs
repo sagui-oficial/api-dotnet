@@ -7,12 +7,12 @@ namespace Sagui.Data.Persister.Arquivo
 {
     public class ArquivoGTOPersister : DBParams
     {
-        public bool SaveArquivoGTO(int IdGTO, int IdArquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public bool SaveArquivoGTO(int IdGTO, int IdArquivo)
         {
             DbParams.Add(nameof(IdGTO), IdGTO);
             DbParams.Add(nameof(IdArquivo), IdArquivo);
 
-            _dataInfrastructure = new DataInfrastructure(SQL.CreateArquivo, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateArquivo, DbParams);
 
             dynamic newId = 0;
             try
