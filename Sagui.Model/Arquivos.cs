@@ -11,7 +11,7 @@ namespace Sagui.Model
 {
     public class Arquivos: BaseModel
     {
-        [Key, Column(Order = 1)]
+      //  [Key, Column(Order = 1)]
         public int Id { get; set; }
         public string Nome { get; set; }
         public byte[] Stream { get; set; }

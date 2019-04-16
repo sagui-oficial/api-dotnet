@@ -29,8 +29,11 @@ namespace Sagui.Application
         {
             services.AddCors();
 
-            services.AddDbContext<Sagui.DB.Sagui>(options =>
-                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<Sagui.DB.Sagui>(options =>
+            //     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddEntityFrameworkNpgsql()
+             .AddDbContext<Sagui.Postgres.Sagui>(options => options.UseNpgsql(Configuration.GetConnectionString("SaguiPostgres")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

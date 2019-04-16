@@ -261,12 +261,12 @@ namespace Sagui.Data
         #region procedimento
 
         public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimento
-                               (Codigo
-                               ,NomeProcedimento
-                               ,ValorProcedimento
-                               ,Exigencias
-                               ,Anotacoes)
+                    INSERT INTO public.""Procedimento""
+                               (""Codigo""
+                               ,""NomeProcedimento""
+                               ,""ValorProcedimento""
+                               ,""Exigencias""
+                               ,""Anotacoes"")
                          VALUES
                                (@Codigo
                                ,@NomeProcedimento
