@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.PlanoOperadora
 {
-    public class PlanoOperadoraPacientePersister : DBParams
+    public class PlanoOperadoraPacientePersister : DBParams, IDataInfrastructure
     {
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
         public bool SavePlanoOperadoraPaciente(int PlanoOperadora_Id, int Paciente_Id, string NumeroPlano)
         {
             DbParams.Add(nameof(NumeroPlano), NumeroPlano);

@@ -61,6 +61,13 @@ namespace Sagui.Business.GTO
                     {
                         arquivo.Id = _arquivo.Id;
                     }
+
+                    ArquivoGTOPersister arquivoGTOPersister = new ArquivoGTOPersister();
+
+                    if (!arquivoGTOPersister.SaveArquivoGTO(gto.Id, arquivo.Id))
+                    {
+                        arquivoGTOPersister.CommitCommand(false);
+                    }
                 }
 
                 gtoPersister.CommitCommand(true);

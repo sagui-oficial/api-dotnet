@@ -5,8 +5,14 @@ using System.Text;
 
 namespace Sagui.Data.Persister.Arquivo
 {
-    public class ArquivoGTOPersister : DBParams
+    public class ArquivoGTOPersister : DBParams, IDataInfrastructure
     {
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
         public bool SaveArquivoGTO(int IdGTO, int IdArquivo)
         {
             DbParams.Add(nameof(IdGTO), IdGTO);
