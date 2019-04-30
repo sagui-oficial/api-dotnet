@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sagui.Service.Arquivo;
 using Sagui.Service.GTO;
+using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
@@ -19,8 +21,10 @@ namespace Sagui.Test.TestGTO
         public async Task ListarTodasGTO()
         {
             GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             RequestGTO requestGTO = default(RequestGTO);
 
@@ -34,8 +38,10 @@ namespace Sagui.Test.TestGTO
         public async Task ListarNenhumsGTO()
         {
             GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService);
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             RequestGTO requestGTO = default(RequestGTO);
 
@@ -49,8 +55,10 @@ namespace Sagui.Test.TestGTO
         public async Task ObterGTO()
         {
             GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService);
+            ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             RequestGTO requestGTO = default(RequestGTO);
 

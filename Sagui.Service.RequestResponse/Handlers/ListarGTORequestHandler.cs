@@ -1,4 +1,5 @@
 ﻿using Sagui.Base.Utils;
+using Sagui.Service.Arquivo;
 using Sagui.Service.Contracts;
 using Sagui.Service.GTO;
 using Sagui.Service.Procedimento;
@@ -15,15 +16,19 @@ namespace Sagui.Service.RequestResponse.Handlers
     public class ListarGTORequestHandler : IBaseRequestHandler<RequestGTO, ResponseGTO>
     {
         GTOService GTOService;
+        ArquivoService arquivoService;
         ProcedimentoService procedimentoService;
-
         private Business.Validador.GTO.ValidadorGTO validadorGTO { get; set; }
 
         ResponseGTO responseGTO;
 
-        public ListarGTORequestHandler(GTOService _GTOService)
+        public ListarGTORequestHandler(GTOService _GTOService, 
+                                       ArquivoService _arquivoService, 
+                                       ProcedimentoService _procedimentoService)
         {
             GTOService = _GTOService;
+            arquivoService = _arquivoService;
+            procedimentoService = _procedimentoService;
             validadorGTO = new Business.Validador.GTO.ValidadorGTO();
             responseGTO = new ResponseGTO();
             procedimentoService = new ProcedimentoService();
@@ -33,12 +38,11 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var ListGTO = GTOService.Listar();
 
-            foreach(var GTO in ListGTO)
+            foreach(var gto in ListGTO)
             {
-                GTO.Procedimentos =  procedimentoService.ListarProcedimentoGTO(GTO.Id);
-                //_GTO.Arquivos = ObterArquivoGTO(_GTO.Id);
+                gto.Arquivos = arquivoService.ListarArquivoPorGTO(gto);
+                gto.Procedimentos = procedimentoService.ListarProcedimentoPorGTO(gto);
             }
-
 
             if (ListGTO.Count > 0)
             {

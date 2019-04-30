@@ -10,7 +10,7 @@ namespace Sagui.Service.Usuario
         {
             using (var usuarioBusiness = new Business.Usuario.UsuarioDentistaBusiness())
             {
-                var _return = usuarioBusiness.Cadastrar(Usuario);
+                var _return = usuarioBusiness.Atualizar(Usuario);
                 usuarioBusiness.Dispose();
                 return _return;
             }

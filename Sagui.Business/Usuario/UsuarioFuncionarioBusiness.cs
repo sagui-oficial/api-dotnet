@@ -21,17 +21,16 @@ namespace Sagui.Business.Usuario
         public Model.Funcionario Cadastrar(Model.Funcionario usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.SaveUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.Funcionario responseUsuario = usuarioPersister.SaveUsuario(usuarioFuncionario);
 
-            Model.Funcionario responseUsuario = default(Model.Funcionario);
-
-            if(usuarioFuncionario.Id > 0)
+            if(responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
             }
-
-            dataInfrastructure.Dispose();
+            else
+            {
+                usuarioPersister.CommitCommand(false);
+            }
 
             return responseUsuario;
         }
@@ -39,17 +38,16 @@ namespace Sagui.Business.Usuario
         public Model.Funcionario Atualizar(Model.Funcionario usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.AtualizarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.Funcionario responseUsuario = usuarioPersister.AtualizarUsuario(usuarioFuncionario);
 
-            Model.Funcionario responseUsuario = default(Model.Funcionario);
-
-            if (usuarioFuncionario.Id > 0)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
             }
-
-            dataInfrastructure.Dispose();
+            else
+            {
+                usuarioPersister.CommitCommand(false);
+            }
 
             return responseUsuario;
         }
@@ -57,19 +55,18 @@ namespace Sagui.Business.Usuario
         public Model.Funcionario Deletar(Model.Funcionario usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.DeletarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.UsuarioBase responseUsuario = usuarioPersister.DeletarUsuario(usuarioFuncionario);
 
-            Model.Funcionario responseUsuario = default(Model.Funcionario);
-
-            if (usuarioFuncionario.PublicID != null)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
+            }
+            else
+            {
+                usuarioPersister.CommitCommand(false);
             }
 
-            dataInfrastructure.Dispose();
-
-            return responseUsuario;
+            return (Model.Funcionario)responseUsuario;
         }
 
         public Model.Funcionario Obter(Model.Funcionario usuarioFuncionario)

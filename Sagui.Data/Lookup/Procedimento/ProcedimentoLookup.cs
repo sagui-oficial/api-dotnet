@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.Procedimento
 {
-    public class ProcedimentoLookup: PersisterBase
+    public class ProcedimentoLookup: DBParams
     {
         public List<Model.Procedimentos> ListProcedimento()
         {
             List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
 
-
-           using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListProcedimento))
+           using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListProcedimento))
             {
                 try
                 {
@@ -32,32 +31,24 @@ namespace Sagui.Data.Lookup.Procedimento
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
                         _Procedimento.PublicID = (Guid)reader["PublicID"];
                         ListProcedimento.Add(_Procedimento);
-
-                        
                     }
-
-
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListProcedimento = null;
                 }
             }
+
             return ListProcedimento;
         }
 
         public Model.Procedimentos ObterProcedimento(Model.Procedimentos procedimentos)
         {
-            
-
             if (procedimentos == null)
-                throw new ArgumentNullException(nameof(GTO));
+                throw new ArgumentNullException(nameof(procedimentos));
+
             DbParams.Add(nameof(procedimentos.PublicID), procedimentos.PublicID.ToString());
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ObterProcedimento, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterProcedimento, DbParams))
             {
                 try
                 {
@@ -74,21 +65,14 @@ namespace Sagui.Data.Lookup.Procedimento
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
                         _Procedimento.PublicID = (Guid)reader["PublicID"];
                         procedimentos =_Procedimento;
-
-
                     }
-
-
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    procedimentos = null;
                 }
             }
+
             return procedimentos;
         }
 
@@ -99,7 +83,7 @@ namespace Sagui.Data.Lookup.Procedimento
             DbParams.Clear();
             DbParams.Add("idGTO", idGTO);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarProcedimentoGTO, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarProcedimentoGTO, DbParams))
             {
                 try
                 {
@@ -120,11 +104,7 @@ namespace Sagui.Data.Lookup.Procedimento
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListProcedimento = null;
                 }
             }
 

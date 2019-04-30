@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse
 {
-    public class RequestArquivo : Model.Arquivos
+    public class RequestArquivoPlanoOperadora : Model.Arquivo_PlanoOperadora
     {
 
     }

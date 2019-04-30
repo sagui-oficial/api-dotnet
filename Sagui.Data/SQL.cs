@@ -9,17 +9,155 @@ namespace Sagui.Data
     public static class SQL
     {
         #region arquivos
+
         public static string CreateArquivo = @"
                    INSERT INTO dbo.Arquivo
                                (Nome
                                ,DataCriacao
-                               ,Stream)
+                               ,Stream
+                               ,PathArquivo)
                          VALUES
                                (@Nome
                                ,@DataCriacao
-                               ,@Stream);
+                               ,@Stream
+                               ,@PathArquivo);
 
                 SELECT SCOPE_IDENTITY();";
+
+
+        #region ArquivoGTO
+
+        public static string CreateArquivoGTO = @"
+                   INSERT INTO dbo.Arquivo
+                               (Nome
+                               ,DataCriacao
+                               ,Stream
+                               ,PathArquivo)
+                         VALUES
+                               (@Nome
+                               ,@DataCriacao
+                               ,@Stream
+                               ,@PathArquivo);
+
+                SELECT SCOPE_IDENTITY();";
+
+        public static string ListarArquivosGTO = @"
+                    SELECT arq.Id
+                          ,arq.Nome
+                          ,arq.Stream
+                          ,arq.DataCriacao
+                          ,arq.PathArquivo
+                          ,arq.Extensao
+	                      ,agto.idArquivo_GTO
+                          ,agto.PublicID
+                          FROM dbo.Arquivo (NOLOCK) arq
+                    INNER JOIN dbo.Arquivo_GTO (NOLOCK) agto
+                       ON arq.Id = agto.idGTO";
+
+
+        public static string ListarArquivoGTO = @"
+                    SELECT arq.Id
+                          ,arq.Nome
+                          ,arq.Stream
+                          ,arq.DataCriacao
+                          ,arq.PathArquivo
+                          ,arq.Extensao
+	                      ,agto.idArquivo_GTO
+                          ,agto.PublicID
+                          FROM dbo.Arquivo arq
+                    INNER JOIN dbo.Arquivo_GTO agto
+                       ON arq.Id = agto.idGTO
+                    WHERE agto.idGTO = @idGTO";
+
+
+        public static string ObterArquivoGTOPorPublicId = @"
+                    SELECT arq.Id
+                          ,arq.Nome
+                          ,arq.Stream
+                          ,arq.DataCriacao
+                          ,arq.PathArquivo
+                          ,arq.Extensao
+	                      ,agto.idArquivo_GTO
+                          ,agto.PublicID
+                          FROM dbo.Arquivo arq
+                    INNER JOIN dbo.Arquivo_GTO agto
+                       ON arq.Id = agto.idGTO
+                    WHERE agto.PublicID = @PublicID";
+
+
+
+        public static string ObterArquivoGTO = @"
+                    SELECT  
+	                       b.[Id]
+                          ,b.[Nome]
+                          ,b.[Stream]
+                          ,b.[DataCriacao]
+                          ,b.[PathArquivo]
+                    FROM Arquivo_GTO a (NOLOCK)
+		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+                    WHERE idGTO = @idGTO";
+
+        #endregion
+
+        #region ArquivoPlanoOperadora
+
+        public static string ObterArquivoPlanoOperadoraPorPublicId = @"
+                    SELECT arq.Id
+                          ,arq.Nome
+                          ,arq.Stream
+                          ,arq.DataCriacao
+                          ,arq.PathArquivo
+                          ,arq.Extensao
+	                      ,apo.idArquivo_GTO
+                          ,apo.PublicID
+                          FROM dbo.Arquivo arq
+                    INNER JOIN dbo.Arquivo_PlanoOperadora apo
+                       ON arq.Id = apo.idPlanoOperadora
+                    WHERE apo.PublicID = @PublicID";
+
+
+        public static string ListarArquivoPlanoOperadora = @"
+                    SELECT arq.Id
+                          ,arq.Nome
+                          ,arq.Stream
+                          ,arq.DataCriacao
+                          ,arq.PathArquivo
+                          ,arq.Extensao
+	                      ,apo.idArquivo_GTO
+                          ,apo.PublicID
+                          FROM dbo.Arquivo arq
+                    INNER JOIN dbo.Arquivo_PlanoOperadora apo
+                       ON arq.Id = apo.idPlanoOperadora
+                    WHERE apo.idPlanoOperadora = @idPlanoOperadora";
+
+
+        public static string CreateArquivoPlanoOperadora = @"
+                   INSERT INTO dbo.Arquivo
+                               (Nome
+                               ,DataCriacao
+                               ,Stream
+                               ,PathArquivo)
+                         VALUES
+                               (@Nome
+                               ,@DataCriacao
+                               ,@Stream
+                               ,@PathArquivo);
+
+                SELECT SCOPE_IDENTITY();";
+
+
+        public static string ObterArquivoPlanoOperadora = @"
+                    SELECT  
+	                       b.[Id]
+                          ,b.[Nome]
+                          ,b.[Stream]
+                          ,b.[DataCriacao]
+                          ,b.[PathArquivo]
+                    FROM Arquivo_GTO a (NOLOCK)
+		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
+                    WHERE idGTO = @idGTO";
+
+        #endregion
 
         #endregion
 
@@ -49,17 +187,7 @@ namespace Sagui.Data
 		                    inner join Procedimento b ON a.idProcedimento = b.IdProcedimento
                     where idGTO = @idGTO";
 
-        public static string ListarArquivoGTO = @"
-                    SELECT  
-	                       b.[Id]
-                          ,b.[Nome]
-                          ,b.[Stream]
-                          ,b.[DataCriacao]
-                          ,b.[PathArquivo]
-                          ,b.PublicID
-                    FROM Arquivo_GTO a (NOLOCK)
-		                    INNER join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
-                    WHERE idGTO = @idGTO";
+      
 
 
 
@@ -349,6 +477,7 @@ namespace Sagui.Data
                        ,@DataRecebimentoLote);
 
                 SELECT SCOPE_IDENTITY();";
+
 
     }
 }

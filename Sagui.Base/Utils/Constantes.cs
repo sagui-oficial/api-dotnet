@@ -16,6 +16,19 @@ namespace Sagui.Base.Utils
 
         #endregion
 
+        #region Arquivos
+
+        public static string MensagemArquivoNaoListado = "Arquivos não listados!";
+        public static string MensagemArquivoListadoComSucesso = "Arquivos listados com sucesso!";
+        public static string MensagemArquivoInseridoComSucesso = "Arquivo inserido com sucesso!";
+        public static string MensagemArquivoNaoInserido = "Arquivo não inserido!";
+        public static string MensagemArquivoDeletado = "Arquivo deletado!";
+        public static string MensagemArquivoNaoDeletado = "Arquivo não deletado!";
+        public static string MensagemArquivoObtidocomSucesso = "Arquivo obtido com sucesso!";
+        public static string MensagemArquivoNaoObtidocomSucesso = "Arquivo não obtida com sucesso!";
+
+        #endregion
+
         #region GTO
         public static string GTODeletada = "GTO deletada!";
         public static string GTONaoDeletada = "GTO não deletada!";

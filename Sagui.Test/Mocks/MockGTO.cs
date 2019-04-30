@@ -27,7 +27,7 @@ namespace Sagui.Test.Mocks
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
             Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
-            Guia.Arquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+            Guia.Arquivos = new List<Model.Arquivo_GTO>() { mockArquivos.CriarMockArquivo() };
             Guia.Status = 1;
 
             return Guia;
@@ -50,7 +50,7 @@ namespace Sagui.Test.Mocks
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
             Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
-            Guia.Arquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+            Guia.Arquivos = new List<Arquivo_GTO>() { mockArquivos.CriarMockArquivo() };
             Guia.Status = 10;
 
             return Guia;
@@ -73,7 +73,7 @@ namespace Sagui.Test.Mocks
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
             Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
-            Guia.Arquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+            Guia.Arquivos = new List<Arquivo_GTO>() { mockArquivos.CriarMockArquivo() };
             Guia.Status = 99;
 
             return Guia;
