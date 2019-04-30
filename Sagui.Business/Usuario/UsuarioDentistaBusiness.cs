@@ -25,38 +25,36 @@ namespace Sagui.Business.Usuario
             return paciente;
         }
         
-        public Model.Dentinsta Cadastrar(Model.Dentinsta usuario)
+        public Model.Dentinsta Cadastrar(Model.Dentinsta usuarioDentista)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.AtualizarUsuario(usuario, out Data.DataInfrastructure dataInfrastructure);
+            Model.Dentinsta responseUsuario = usuarioPersister.SaveUsuario(usuarioDentista);
 
-            Model.Dentinsta responseUsuario = default(Model.Dentinsta);
-
-            if (usuario.Id > 0)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuario;
+                usuarioPersister.CommitCommand(true);
             }
-
-            dataInfrastructure.Dispose();
+            else
+            {
+                usuarioPersister.CommitCommand(false);
+            }
 
             return responseUsuario;
         }
 
-        public Model.Dentinsta Atualizar(Model.Dentinsta usuarioFuncionario)
+        public Model.Dentinsta Atualizar(Model.Dentinsta usuarioDentista)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.AtualizarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.Dentinsta responseUsuario = usuarioPersister.AtualizarUsuario(usuarioDentista);
 
-            Model.Dentinsta responseUsuario = default(Model.Dentinsta);
-
-            if (usuarioFuncionario.Id > 0)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
             }
-
-            dataInfrastructure.Dispose();
+            else
+            {
+                usuarioPersister.CommitCommand(false);
+            }
 
             return responseUsuario;
         }
@@ -64,21 +62,18 @@ namespace Sagui.Business.Usuario
         public Model.Dentinsta Deletar(Model.Dentinsta usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.DeletarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.UsuarioBase responseUsuario = usuarioPersister.DeletarUsuario(usuarioFuncionario);
 
-            Model.Dentinsta responseUsuario = default(Model.Dentinsta);
-
-            if (usuarioFuncionario.PublicID != null)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
+            }
+            else
+            {
+                usuarioPersister.CommitCommand(false);
             }
 
-            dataInfrastructure.Dispose();
-
-            return responseUsuario;
+            return (Model.Dentinsta)responseUsuario;
         }
-    
-
     }
 }

@@ -33,10 +33,14 @@ namespace Sagui.Application.Controllers
         }
 
         
-        [HttpGet("ListarProcedimento", Name = "ListarProcedimento")]
-        public async Task<IActionResult> GetAsync()
+        [HttpGet("ListarProcedimento/{status?}", Name = "ListarProcedimento")]
+        public async Task<IActionResult> GetAsync(int status)
         {
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
+            //if (status != 0)
+            //{
+            //    requestProcedimento.Status = status;
+            //}
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

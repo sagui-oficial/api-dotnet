@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sagui.Base.Utils;
 using Sagui.Model;
 using Sagui.Service.GTO;
 using Sagui.Service.RequestResponse;
@@ -30,7 +31,6 @@ namespace Sagui.Test.TestGTO
             Assert.IsNotNull(response.GTO);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
-
 
         //     [TestMethod]
         //     public void CadastrarGTO_SemDataSolicitacao()

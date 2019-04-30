@@ -21,13 +21,16 @@ namespace Sagui.Business.PlanoOperadora
         public Model.PlanoOperadora Cadastrar(Model.PlanoOperadora planoOperadora)
         {
             PlanoOperadoraPersister planoOperadoraPersister = new PlanoOperadoraPersister();
-            planoOperadoraPersister.SavePlanoOperadora(planoOperadora, out Data.DataInfrastructure dataInfrastructure);
+            Model.PlanoOperadora responsePlanoOperadora = planoOperadoraPersister.SavePlanoOperadora(planoOperadora);
 
-            Model.PlanoOperadora responsePlanoOperadora = new Model.PlanoOperadora();
-            responsePlanoOperadora = planoOperadora;
-
-            dataInfrastructure.Dispose();
-            dataInfrastructure.transaction.Commit();
+            if(responsePlanoOperadora != null)
+            {
+                planoOperadoraPersister.CommitCommand(true);
+            }
+            else
+            {
+                planoOperadoraPersister.CommitCommand(false);
+            }
 
             return responsePlanoOperadora;
         }

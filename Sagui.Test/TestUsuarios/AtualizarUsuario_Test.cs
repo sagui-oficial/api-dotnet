@@ -42,9 +42,9 @@ namespace Sagui.Test.TestUsuarios
 
             UsuarioDentistaService usuarioService = new UsuarioDentistaService();
 
-            AtualizarUsuarioDentistaRequestHandler criarUsuarioRequestHandler = new AtualizarUsuarioDentistaRequestHandler(usuarioService);
+            AtualizarUsuarioDentistaRequestHandler atualizarUsuarioRequestHandler = new AtualizarUsuarioDentistaRequestHandler(usuarioService);
 
-            var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
+            var response = await atualizarUsuarioRequestHandler.Handle(requestUsuario);
 
             Assert.IsNotNull(response.Dentinstas);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
@@ -52,7 +52,7 @@ namespace Sagui.Test.TestUsuarios
 
 
         [TestMethod]
-        public async Task CadastrarPaciente()
+        public async Task AtualizarPaciente()
         {
             RequestUsuarioPaciente requestUsuario = new RequestUsuarioPaciente();
             MockUsuario mock = new MockUsuario();
@@ -61,9 +61,9 @@ namespace Sagui.Test.TestUsuarios
 
             UsuarioPacienteService usuarioService = new UsuarioPacienteService();
 
-            AtualizarUsuarioPacienteRequestHandler criarUsuarioRequestHandler = new AtualizarUsuarioPacienteRequestHandler(usuarioService);
+            AtualizarUsuarioPacienteRequestHandler atualizarUsuarioRequestHandler = new AtualizarUsuarioPacienteRequestHandler(usuarioService);
 
-            var response = await criarUsuarioRequestHandler.Handle(requestUsuario);
+            var response = await atualizarUsuarioRequestHandler.Handle(requestUsuario);
 
             Assert.IsNotNull(response.Paciente);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);

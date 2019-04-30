@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Sagui.Service.Procedimento
 {
-    public class ProcedimentoService : IProcedimentoService<Model.Procedimentos, Model.Procedimentos>
+    public class ProcedimentoService : IProcedimentoService<Procedimentos, Procedimentos>
     {
         public Procedimentos Atualizar(Procedimentos Procedimento)
         {
@@ -38,6 +38,16 @@ namespace Sagui.Service.Procedimento
         }
 
         public List<Procedimentos> Listar()
+        {
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.ListProcedimentos();
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
+        }
+
+        public List<Procedimentos> ListarProcedimentoPorGTO(Model.GTO gto)
         {
             using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
             {

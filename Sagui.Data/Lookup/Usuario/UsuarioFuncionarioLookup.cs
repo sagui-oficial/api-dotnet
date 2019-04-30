@@ -13,7 +13,7 @@ namespace Sagui.Data.Lookup.Usuario
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Funcionario);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {
                 try
                 {
@@ -32,13 +32,10 @@ namespace Sagui.Data.Lookup.Usuario
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListUsuario = null;
                 }
             }
+
             return ListUsuario;
         }
 
@@ -50,7 +47,7 @@ namespace Sagui.Data.Lookup.Usuario
             DbParams.Add(nameof(usuario.TipoUsuario), TipoUsuario.Tipo.Funcionario);
             DbParams.Add(nameof(usuario.PublicID), funcionario.PublicID);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ObterUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterUsuario, DbParams))
             {
                 try
                 {
@@ -73,11 +70,7 @@ namespace Sagui.Data.Lookup.Usuario
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    usuario = null;
                 }
             }
             return usuario;

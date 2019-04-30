@@ -4,9 +4,15 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.PlanoOperadora
 {
-    public class PlanoOperadoraPersister : PersisterBase
+    public class PlanoOperadoraPersister : DBParams, IDataInfrastructure
     {
-        public Model.PlanoOperadora SavePlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
+        public Model.PlanoOperadora SavePlanoOperadora(Model.PlanoOperadora PlanoOperadora)
         {
             if (PlanoOperadora == null)
                 throw new ArgumentNullException(nameof(PlanoOperadora));
@@ -22,7 +28,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             //DbParams.Add(nameof(PlanoOperadora.ListaProcedimentos), PlanoOperadora.ListaProcedimentos);
             //DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
             
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreatePlanoOperadora, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
 
             try
             {
@@ -37,12 +43,8 @@ namespace Sagui.Data.Persister.PlanoOperadora
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                PlanoOperadora = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return PlanoOperadora;
         }

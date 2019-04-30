@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.Contracts.Base
 {
-    public interface ICRUDBase<TResponse, TModel> where TResponse: class where TModel: class
+    public interface ICRUDBase<TResponse, TModel> where TResponse : class where TModel : class
     {
         TResponse Cadastrar(TModel model);
 

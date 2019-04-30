@@ -16,7 +16,7 @@ namespace Sagui.Model
         public string Numero { get; set; }
         public PlanoOperadora PlanoOperadora { get; set; }
         public Paciente Paciente { get; set; }
-        public List<Arquivos> Arquivos { get; set; }
+        public List<Arquivo_GTO> Arquivos { get; set; }
         public DateTime Solicitacao { get; set; }
         public DateTime Vencimento { get; set; }
         public List<Procedimentos> Procedimentos { get; set; }
@@ -24,7 +24,7 @@ namespace Sagui.Model
 
         public GTO()
         {
-            Arquivos = new List<Arquivos>();
+            Arquivos = new List<Arquivo_GTO>();
             Procedimentos = new List<Procedimentos>();
         }
     }

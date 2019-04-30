@@ -4,6 +4,7 @@ using System.Linq;
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.Procedimento;
 using Sagui.Data.Persister.GTO;
+using Sagui.Data.Persister.Procedimento;
 
 namespace Sagui.Business.Procedimento
 {
@@ -21,12 +22,16 @@ namespace Sagui.Business.Procedimento
         public Model.Procedimentos Cadastrar(Model.Procedimentos procedimento)
         {
             ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
-            procedimentoPersister.SaveProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+            Model.Procedimentos responseProcedimento = procedimentoPersister.SaveProcedimento(procedimento);
 
-            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
-            responseProcedimento = procedimento;
-
-            dataInfrastructure.Dispose();
+            if(responseProcedimento == null)
+            {
+                procedimentoPersister.CommitCommand(false);
+            }
+            else
+            {
+                procedimentoPersister.CommitCommand(true);
+            }
 
             return responseProcedimento;
         }
@@ -34,12 +39,16 @@ namespace Sagui.Business.Procedimento
         public Model.Procedimentos Deletar(Model.Procedimentos procedimento)
         {
             ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
-            procedimentoPersister.DeletarProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+            Model.Procedimentos responseProcedimento = procedimentoPersister.DeletarProcedimento(procedimento);
 
-            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
-            responseProcedimento = procedimento;
-
-            dataInfrastructure.Dispose();
+            if (responseProcedimento == null)
+            {
+                procedimentoPersister.CommitCommand(false);
+            }
+            else
+            {
+                procedimentoPersister.CommitCommand(true);
+            }
 
             return responseProcedimento;
         }
@@ -47,12 +56,15 @@ namespace Sagui.Business.Procedimento
         public Model.Procedimentos Atualizar(Model.Procedimentos procedimento)
         {
             ProcedimentoPersister procedimentoPersister = new ProcedimentoPersister();
-            procedimentoPersister.AtualizarProcedimento(procedimento, out Data.DataInfrastructure dataInfrastructure);
+            Model.Procedimentos responseProcedimento = procedimentoPersister.AtualizarProcedimento(procedimento);
 
-            Model.Procedimentos responseProcedimento = new Model.Procedimentos();
-            responseProcedimento = procedimento;
-
-            dataInfrastructure.Dispose();
+            if(responseProcedimento == null)
+            {
+                procedimentoPersister.CommitCommand(false);
+            }
+            else{
+                procedimentoPersister.CommitCommand(true);
+            }
 
             return responseProcedimento;
         }

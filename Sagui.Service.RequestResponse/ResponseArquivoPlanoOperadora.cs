@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse
 {
-    public class ResponseArquivo : ResponseBase
+    public class ResponseArquivoPlanoOperadora : ResponseBase
     {
-        public List<Model.Arquivos> Arquivos { get; set; }
+        public List<Model.Arquivo_PlanoOperadora> Arquivos { get; set; }
+
+        public Model.Arquivo_PlanoOperadora Arquivo { get; set; }
     }
 }

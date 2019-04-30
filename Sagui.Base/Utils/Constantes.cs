@@ -17,6 +17,19 @@ namespace Sagui.Base.Utils
         public static string GTONaoDeletada = "GTO não deletada!";
         #endregion
 
+        #region Arquivos
+
+        public static string MensagemArquivoNaoListado = "Arquivos não listados!";
+        public static string MensagemArquivoListadoComSucesso = "Arquivos listados com sucesso!";
+        public static string MensagemArquivoInseridoComSucesso = "Arquivo inserido com sucesso!";
+        public static string MensagemArquivoNaoInserido = "Arquivo não inserido!";
+        public static string MensagemArquivoDeletado = "Arquivo deletado!";
+        public static string MensagemArquivoNaoDeletado = "Arquivo não deletado!";
+        public static string MensagemArquivoObtidocomSucesso = "Arquivo obtido com sucesso!";
+        public static string MensagemArquivoNaoObtidocomSucesso = "Arquivo não obtida com sucesso!";
+
+        #endregion
+
         #region GTO
         public static string MensagemGTONaoListada = "GTOs não listadas!";
         public static string MensagemGTOListadaComSucesso = "GTOs listadas com sucesso!";
@@ -25,7 +38,7 @@ namespace Sagui.Base.Utils
         public static string MensagemGTODeletada = "GTO deletada!";
         public static string MensagemGTONaoDeletada = "GTO não deletada!";
         public static string MensagemGTOObtidacomSucesso = "GTOs obtida com sucesso!";
-        public static string MensagemGTONaoObtidacomSucesso = "GTOs n]ao obtida com sucesso!";
+        public static string MensagemGTONaoObtidacomSucesso = "GTOs não obtida com sucesso!";
 
         #endregion
 

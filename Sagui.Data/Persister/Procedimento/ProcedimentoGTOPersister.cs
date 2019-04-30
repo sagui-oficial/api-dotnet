@@ -7,14 +7,20 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Procedimento
 {
-    public class ProcedimentoGTOPersister: PersisterBase
+    public class ProcedimentoGTOPersister: DBParams, IDataInfrastructure
     {
-        public bool SaveProcedimentoGTO(int IdGTO, int IdProcedimento, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
+        public bool SaveProcedimentoGTO(int IdGTO, int IdProcedimento)
         {
             DbParams.Add(nameof(IdGTO), IdGTO);
             DbParams.Add(nameof(IdProcedimento), IdProcedimento);
 
-            _dataInfrastructure = new DataInfrastructure(SQL.CreateProcedimentoGTO, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimentoGTO, DbParams);
 
             dynamic newId = 0;
             try
