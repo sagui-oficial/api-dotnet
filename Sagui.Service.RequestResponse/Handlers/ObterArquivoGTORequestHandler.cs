@@ -23,8 +23,6 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var Arquivo = ArquivoService.ObterArquivoGTOPorPublicId(request);
 
-
-
             if (Arquivo.Id > 0)
             {
                 responseArquivo.Arquivo = Arquivo;

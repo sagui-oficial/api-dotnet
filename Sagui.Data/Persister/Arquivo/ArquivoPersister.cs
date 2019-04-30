@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Arquivo
 {
-    public class ArquivoPersister : DBParams
+    public class ArquivoPersister : DBParams, IDataInfrastructure
     {
-        public Model.Arquivos SaveArquivo(int IdGTO, Model.Arquivos arquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
+        public Model.Arquivos SaveArquivo(int IdGTO, Model.Arquivos arquivo)
         {
             DbParams.Add(nameof(IdGTO), IdGTO);
             DbParams.Add(nameof(arquivo.Nome), arquivo.Nome);
@@ -17,7 +23,7 @@ namespace Sagui.Data.Persister.Arquivo
             DbParams.Add(nameof(arquivo.PathArquivo), arquivo.PathArquivo);
             DbParams.Add(nameof(arquivo.Stream), arquivo.Stream);
 
-            _dataInfrastructure = new DataInfrastructure(SQL.CreateArquivo, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
+            DataInfrastructure _dataInfrastructure =  DataInfrastructure.GetInstanceDb(SQL.CreateArquivo, DbParams);
 
             dynamic newId = 0;
             try

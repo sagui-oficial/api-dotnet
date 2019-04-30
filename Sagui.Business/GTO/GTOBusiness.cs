@@ -26,22 +26,20 @@ namespace Sagui.Business.GTO
         {
             GTOPersister gtoPersister = new GTOPersister();
 
-            var _gto = gtoPersister.SaveGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            var _gto = gtoPersister.SaveGTO(gto);
 
             if (_gto != null)
             {
                 gto.Id = _gto.Id;
 
-                Data.DataInfrastructure _dataInfrastructure = dataInfrastructure;
-
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
                     ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
-                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento, _dataInfrastructure, out dataInfrastructure);
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento);
 
                     if (!_persisted)
                     {
-                        dataInfrastructure.transaction.Rollback();
+                        procedimentoGTOPersister.CommitCommand(false);
                         return null;
                     }
                 }
@@ -53,20 +51,26 @@ namespace Sagui.Business.GTO
 
                     ArquivoPersister arquivoPersister = new ArquivoPersister();
 
-                    var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo, _dataInfrastructure, out dataInfrastructure);
+                    var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo);
                     if (_arquivo.Id == 0)
                     {
-                        dataInfrastructure.transaction.Rollback();
+                        arquivoPersister.CommitCommand(false);
                         return null;
                     }
                     else
                     {
                         arquivo.Id = _arquivo.Id;
                     }
+
+                    ArquivoGTOPersister arquivoGTOPersister = new ArquivoGTOPersister();
+
+                    if (!arquivoGTOPersister.SaveArquivoGTO(gto.Id, arquivo.Id))
+                    {
+                        arquivoGTOPersister.CommitCommand(false);
+                    }
                 }
 
-                dataInfrastructure.transaction.Commit();
-                dataInfrastructure.Dispose();
+                gtoPersister.CommitCommand(true);
             }
             else
             {
@@ -80,30 +84,36 @@ namespace Sagui.Business.GTO
         {
 
             GTOPersister gtoPersister = new GTOPersister();
-            gtoPersister.AtualizarGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);
 
-            Model.GTO responseGTO = new Model.GTO();
-            responseGTO = gto;
-
-            dataInfrastructure.Dispose();
+            if (responseGTO == null)
+            {
+                gtoPersister.CommitCommand(false);
+            }
+            else
+            {
+                gtoPersister.CommitCommand(true);
+            }
 
             return responseGTO;
-
         }
 
         public Model.GTO Deletar(Model.GTO gto)
         {
 
             GTOPersister gtoPersister = new GTOPersister();
-            gtoPersister.DeleteGTO(gto, out Data.DataInfrastructure dataInfrastructure);
+            Model.GTO responseGTO = gtoPersister.DeleteGTO(gto);
 
-            Model.GTO responseGTO = new Model.GTO();
-            responseGTO = gto;
-
-            dataInfrastructure.Dispose();
+            if (responseGTO == null)
+            {
+                gtoPersister.CommitCommand(false);
+            }
+            else
+            {
+                gtoPersister.CommitCommand(true);
+            }
 
             return responseGTO;
-
         }
 
         public Model.GTO ObterGTO(Model.GTO GTO)
