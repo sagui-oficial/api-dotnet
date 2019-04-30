@@ -39,8 +39,9 @@ namespace Sagui.Service.RequestResponse.Handlers
             }
             else
             {
+                responseGTO.GTO = GTO;
                 responseGTO.ExecutionDate = DateTime.Now;
-                responseGTO.ResponseType = ResponseType.Error;
+                responseGTO.ResponseType = ResponseType.Info;
                 responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
                 return responseGTO;
             }
