@@ -276,14 +276,14 @@ namespace Sagui.Data
 
                             SELECT SCOPE_IDENTITY();";
         public static string ListProcedimento = @"
-                            SELECT IdProcedimento
-                                  ,Codigo
-                                  ,NomeProcedimento
-                                  ,ValorProcedimento
-                                  ,Exigencias
-                                  ,Anotacoes
-                                  ,PublicID
-                             FROM sagui.dbo.Procedimento";
+                            SELECT ""IdProcedimento"", 
+                                   ""Codigo"", 
+                                   ""NomeProcedimento"", 
+                                   ""ValorProcedimento"", 
+                                   ""Exigencias"", 
+                                   ""Anotacoes"", 
+                                   ""PublicID""
+	                        FROM public.""Procedimento""";
 
         public static string ObterProcedimento = @"
                             SELECT IdProcedimento

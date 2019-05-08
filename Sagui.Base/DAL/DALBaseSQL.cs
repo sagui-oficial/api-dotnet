@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Npgsql;
+
 
 namespace Sagui.Base.DAL
 {
@@ -12,14 +11,14 @@ namespace Sagui.Base.DAL
     {
         public override IDbCommand CreateCommand()
         {
-            return new SqlCommand();
+            return new NpgsqlCommand();
         }
 
         public override IDbCommand CreateCommand(string commandText, IDbConnection connection)
         {
-            SqlCommand command = (SqlCommand)CreateCommand();
+            NpgsqlCommand command = (NpgsqlCommand)CreateCommand();
             command.CommandText = commandText;
-            command.Connection = (SqlConnection)connection;
+            command.Connection = (NpgsqlConnection)connection;
             command.CommandType = CommandType.Text;
             return command;
         }
@@ -62,12 +61,12 @@ namespace Sagui.Base.DAL
 
         public override IDbConnection CreateConnection()
         {
-            return new SqlConnection(connectionString);
+            return new NpgsqlConnection(connectionString);
         }
 
         public override IDbConnection CreateOpenConnection()
         {
-            SqlConnection connection = (SqlConnection)CreateConnection();
+            NpgsqlConnection connection = (NpgsqlConnection)CreateConnection();
             connection.Open();
             return connection;
         }

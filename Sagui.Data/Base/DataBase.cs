@@ -1,4 +1,5 @@
 ﻿
+using Npgsql;
 using Sagui.Base;
 using Sagui.Base.DAL;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Sagui.Data.Base
 {
     public class DataBase : DALWorker
     {
-        protected internal SqlCommand command;
+        protected internal NpgsqlCommand command;
         protected internal IDbTransaction transaction;
         protected internal IDbConnection connection;
 
@@ -18,14 +19,14 @@ namespace Sagui.Data.Base
         {
             transaction = _transaction;
             connection = _connection;
-            command = (SqlCommand)dataBase.CreateCommand(queryCommand, _connection, _transaction);
+     //       command = (SqlCommand)dataBase.CreateCommand(queryCommand, _connection, _transaction);
         }
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams, IDbConnection _connection, IDbTransaction _transaction)
         {
             transaction = _transaction;
             connection = _connection;
-            command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, _connection, _transaction);
+    //        command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, _connection, _transaction);
         }
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams)
@@ -40,14 +41,14 @@ namespace Sagui.Data.Base
                 transaction = (SqlTransaction)connection.BeginTransaction();
             }
 
-            command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
+       //     command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
         }
 
         public DataBase(string queryCommand)
         {
             connection = dataBase.CreateOpenConnection();
 
-            command = (SqlCommand)dataBase.CreateCommand(queryCommand, connection);
+            command = (NpgsqlCommand)dataBase.CreateCommand(queryCommand, connection);
         }
     }
 }
