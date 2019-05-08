@@ -37,13 +37,13 @@ namespace Sagui.Base.DAL
 
         public override IDbCommand CreateCommand(string commandText, IEnumerable<KeyValuePair<string, object>> dbParams, IDbConnection connection, IDbTransaction transaction)
         {
-            SqlCommand command = (SqlCommand)CreateCommand();
+            NpgsqlCommand command = (NpgsqlCommand)CreateCommand();
             command.CommandText = commandText;
-            command.Connection = (SqlConnection)connection;
+            command.Connection = (NpgsqlConnection)connection;
             command.CommandType = CommandType.Text;
             IDataParameter[] parameters = this.CreateParameter(dbParams);
             command.Parameters.AddRange(parameters);
-            command.Transaction = (SqlTransaction)transaction;
+            command.Transaction = (NpgsqlTransaction)transaction;
 
             return command;
         }
@@ -78,10 +78,10 @@ namespace Sagui.Base.DAL
 
         public override IDataParameter[] CreateParameter(IEnumerable<KeyValuePair<string, object>> dbParams)
         {
-            SqlParameter[] sqlParameters = new SqlParameter[dbParams.Count()];
+            NpgsqlParameter[] sqlParameters = new NpgsqlParameter[dbParams.Count()];
             for(int i =0; i<dbParams.Count(); i++)
             {
-                sqlParameters[i] = new SqlParameter(dbParams.ElementAt(i).Key, dbParams.ElementAt(i).Value);
+                sqlParameters[i] = new NpgsqlParameter(dbParams.ElementAt(i).Key, dbParams.ElementAt(i).Value);
             }
 
             return sqlParameters;

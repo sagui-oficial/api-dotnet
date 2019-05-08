@@ -36,12 +36,22 @@ namespace Sagui.Test.TestPopularBase
 
                     foreach (Procedimentos p in procedimentos)
                     {
-                        context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
+                        try
+                        {
+                            context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
                         new NpgsqlParameter("Codigo", p.Codigo),
                         new NpgsqlParameter("NomeProcedimento", p.NomeProcedimento),
                         new NpgsqlParameter("ValorProcedimento", p.ValorProcedimento),
                         new NpgsqlParameter("Exigencias", p.Exigencias),
                         new NpgsqlParameter("Anotacoes", p.Anotacoes));
+                        }
+                        catch (Exception e)
+                        {
+
+                            throw;
+                        }
+
+                        
                     }
 
 

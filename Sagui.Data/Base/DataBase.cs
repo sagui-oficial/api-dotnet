@@ -19,14 +19,14 @@ namespace Sagui.Data.Base
         {
             transaction = _transaction;
             connection = _connection;
-     //       command = (SqlCommand)dataBase.CreateCommand(queryCommand, _connection, _transaction);
+            command = (NpgsqlCommand)dataBase.CreateCommand(queryCommand, _connection, _transaction);
         }
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams, IDbConnection _connection, IDbTransaction _transaction)
         {
             transaction = _transaction;
             connection = _connection;
-    //        command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, _connection, _transaction);
+            command = (NpgsqlCommand)dataBase.CreateCommand(queryCommand, DbParams, _connection, _transaction);
         }
 
         public DataBase(string queryCommand, Dictionary<string, object> DbParams)
@@ -38,10 +38,10 @@ namespace Sagui.Data.Base
 
             if(transaction == null)
             {
-                transaction = (SqlTransaction)connection.BeginTransaction();
+                transaction = (NpgsqlTransaction)connection.BeginTransaction();
             }
 
-       //     command = (SqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
+            command = (NpgsqlCommand)dataBase.CreateCommand(queryCommand, DbParams, connection, transaction);
         }
 
         public DataBase(string queryCommand)

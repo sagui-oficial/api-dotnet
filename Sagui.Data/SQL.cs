@@ -272,9 +272,8 @@ namespace Sagui.Data
                                ,@NomeProcedimento
                                ,@ValorProcedimento
                                ,@Exigencias
-                               ,@Anotacoes);
-
-                            SELECT SCOPE_IDENTITY();";
+                               ,@Anotacoes)
+                            RETURNING ""IdProcedimento"";";
         public static string ListProcedimento = @"
                             SELECT ""IdProcedimento"", 
                                    ""Codigo"", 
