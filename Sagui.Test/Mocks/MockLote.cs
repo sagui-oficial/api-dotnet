@@ -65,7 +65,7 @@ namespace Sagui.Test.Mocks
             Lote.Solicitacao = DateTime.Now;
             Lote.Vencimento = DateTime.Now.AddMonths(1);
             Lote.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
-            Lote.Arquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+            Lote.Arquivos = new List<Arquivo_GTO>() { mockArquivos.CriarMockArquivo() };
             Lote.Status = 99;
 
             return Lote;

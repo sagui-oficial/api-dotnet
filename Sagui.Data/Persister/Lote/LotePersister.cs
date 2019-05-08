@@ -12,7 +12,7 @@ namespace Sagui.Data.Persister.Lote
             DataInfrastructure.dataInfrastructure.Dispose();
         }
 
-        public Model.Lote SaveLote(Model.Lote Lote, out DataInfrastructure _dataInfrastructure)
+        public Model.Lote SaveLote(Model.Lote Lote)
         {
             if (Lote == null)
                 throw new ArgumentNullException(nameof(Lote));
@@ -27,24 +27,24 @@ namespace Sagui.Data.Persister.Lote
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
             //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
 
-            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams);
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams)) {
 
-            try
-            {
-                var newId = dataInfrastructure.command.ExecuteScalar();
 
-                if (Convert.ToInt32(newId) > 0)
+                try
                 {
-                    Lote.IdLote = Convert.ToInt32(newId);
+                    var newId = dataInfrastructure.command.ExecuteScalar();
+
+                    if (Convert.ToInt32(newId) > 0)
+                    {
+                        Lote.IdLote = Convert.ToInt32(newId);
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                dataInfrastructure.transaction.Rollback();
-            }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
 
-
-            _dataInfrastructure = dataInfrastructure;
+            }
 
 
             return Lote;

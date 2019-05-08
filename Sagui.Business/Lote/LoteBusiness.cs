@@ -21,13 +21,18 @@ namespace Sagui.Business.Lote
         public Model.Lote Cadastrar(Model.Lote Lote)
         {
             LotePersister LotePersister = new LotePersister();
-            LotePersister.SaveLote(Lote, out Data.DataInfrastructure dataInfrastructure);
+            LotePersister.SaveLote(Lote);
+                        
+            Model.Lote responseLote = LotePersister.SaveLote(Lote);
 
-            Model.Lote responseLote = new Model.Lote();
-            responseLote = Lote;
-
-            dataInfrastructure.transaction.Commit();
-            dataInfrastructure.Dispose();
+            if (responseLote == null)
+            {
+                LotePersister.CommitCommand(false);
+            }
+            else
+            {
+                LotePersister.CommitCommand(true);
+            }
 
             return responseLote;
         }

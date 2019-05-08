@@ -60,25 +60,29 @@ namespace Sagui.Data.Persister.PlanoOperadora
             DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
             DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdatePlanoOperadora, DbParams);
-
-            try
+            
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdatePlanoOperadora, DbParams))
             {
-                var newId = dataInfrastructure.command.ExecuteScalar();
-
-                if (Convert.ToInt32(newId) > 0)
+                try
                 {
-                    PlanoOperadora.Id = Convert.ToInt32(newId);
+                    var newId = dataInfrastructure.command.ExecuteScalar();
+
+                    if (Convert.ToInt32(newId) > 0)
+                    {
+                        PlanoOperadora.Id = Convert.ToInt32(newId);
+                    }
                 }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+
+
+                _dataInfrastructure = dataInfrastructure;
             }
-            catch (Exception e)
-            {
-                dataInfrastructure.transaction.Rollback();
-            }
 
 
-            _dataInfrastructure = dataInfrastructure;
-
+           
 
             return PlanoOperadora;
         }
@@ -91,7 +95,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeletePlanoOperadora, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeletePlanoOperadora, DbParams))
             {
                 try
                 {
