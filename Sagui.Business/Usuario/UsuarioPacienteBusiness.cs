@@ -18,21 +18,20 @@ namespace Sagui.Business.Usuario
             return listUsuarios;
         }
 
-    
+
         public Model.Paciente Cadastrar(Model.Paciente usuarioPaciente)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.SaveUsuario(usuarioPaciente, out Data.DataInfrastructure dataInfrastructure);
+            Model.Paciente responseUsuario = usuarioPersister.SaveUsuario(usuarioPaciente);
 
-            Model.Paciente responseUsuario = default(Model.Paciente);
-
-            if (usuarioPaciente.Id > 0)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioPaciente;
+                usuarioPersister.CommitCommand(true);
             }
-
-            dataInfrastructure.Dispose();
+            else
+            {
+                usuarioPersister.CommitCommand(false);
+            }
 
             return responseUsuario;
         }
@@ -40,17 +39,16 @@ namespace Sagui.Business.Usuario
         public Model.Paciente Atualizar(Model.Paciente usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.AtualizarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.Paciente responseUsuario = usuarioPersister.AtualizarUsuario(usuarioFuncionario);
 
-            Model.Paciente responseUsuario = default(Model.Paciente);
-
-            if (usuarioFuncionario.Id > 0)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
             }
-
-            dataInfrastructure.Dispose();
+            else
+            {
+                usuarioPersister.CommitCommand(false);
+            }
 
             return responseUsuario;
         }
@@ -58,19 +56,18 @@ namespace Sagui.Business.Usuario
         public Model.Paciente Deletar(Model.Paciente usuarioFuncionario)
         {
             UsuarioPersister usuarioPersister = new UsuarioPersister();
-            usuarioPersister.DeletarUsuario(usuarioFuncionario, out Data.DataInfrastructure dataInfrastructure);
+            Model.UsuarioBase responseUsuario = usuarioPersister.DeletarUsuario(usuarioFuncionario);
 
-            Model.Paciente responseUsuario = default(Model.Paciente);
-
-            if (usuarioFuncionario.PublicID != null)
+            if (responseUsuario != null)
             {
-                dataInfrastructure.transaction.Commit();
-                responseUsuario = usuarioFuncionario;
+                usuarioPersister.CommitCommand(true);
+            }
+            else
+            {
+                usuarioPersister.CommitCommand(false);
             }
 
-            dataInfrastructure.Dispose();
-
-            return responseUsuario;
+            return (Model.Paciente)responseUsuario;
         }
 
 

@@ -15,7 +15,7 @@ namespace Sagui.Data.Lookup.Arquivo
         {
             List<Model.Arquivo_GTO> ListArquivos = new List<Model.Arquivo_GTO>();
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarArquivosGTO))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarArquivosGTO))
             {
                 try
                 {
@@ -38,13 +38,10 @@ namespace Sagui.Data.Lookup.Arquivo
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListArquivos = null;
                 }
             }
+
             return ListArquivos;
         }
 
@@ -52,9 +49,10 @@ namespace Sagui.Data.Lookup.Arquivo
         {
             if (Arquivo == null)
                 throw new ArgumentNullException(nameof(Arquivo));
+
             DbParams.Add(nameof(Arquivo.PublicID), Arquivo.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ObterArquivoGTOPorPublicId))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoGTOPorPublicId))
             {
                 try
                 {
@@ -77,13 +75,10 @@ namespace Sagui.Data.Lookup.Arquivo
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    Arquivo = null;
                 }
             }
+
             return Arquivo;
         }
 
@@ -93,7 +88,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
             DbParams.Clear();
             DbParams.Add("idGTO", gto.Id);
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarArquivoGTO, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarArquivoGTO, DbParams))
             {
                 try
                 {
@@ -115,7 +110,7 @@ namespace Sagui.Data.Lookup.Arquivo
                 }
                 catch (Exception e)
                 {
-
+                    ListArquivo = null;
                 }
                 finally
                 {
@@ -135,9 +130,10 @@ namespace Sagui.Data.Lookup.Arquivo
         {
             if (Arquivo == null)
                 throw new ArgumentNullException(nameof(Arquivo));
+
             DbParams.Add(nameof(Arquivo.PublicID), Arquivo.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ObterArquivoPlanoOperadoraPorPublicId))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoPlanoOperadoraPorPublicId))
             {
                 try
                 {
@@ -160,13 +156,10 @@ namespace Sagui.Data.Lookup.Arquivo
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    Arquivo = null;
                 }
             }
+
             return Arquivo;
         }
 
@@ -176,7 +169,8 @@ namespace Sagui.Data.Lookup.Arquivo
 
             DbParams.Clear();
             DbParams.Add("idPlanoOperadora", planoOperadora.Id);
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListarArquivoPlanoOperadora, DbParams))
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarArquivoPlanoOperadora, DbParams))
             {
                 try
                 {
@@ -198,11 +192,7 @@ namespace Sagui.Data.Lookup.Arquivo
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListArquivo = null;
                 }
 
                 return ListArquivo;

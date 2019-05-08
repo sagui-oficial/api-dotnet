@@ -5,14 +5,20 @@ using System.Text;
 
 namespace Sagui.Data.Persister.Arquivo
 {
-    public class ArquivoGTOPersister : DBParams
+    public class ArquivoGTOPersister : DBParams, IDataInfrastructure
     {
-        public bool SaveArquivoGTO(int IdGTO, int IdArquivo, DataInfrastructure dataInfrastructure, out DataInfrastructure _dataInfrastructure)
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
+        public bool SaveArquivoGTO(int IdGTO, int IdArquivo)
         {
             DbParams.Add(nameof(IdGTO), IdGTO);
             DbParams.Add(nameof(IdArquivo), IdArquivo);
 
-            _dataInfrastructure = new DataInfrastructure(SQL.CreateArquivo, DbParams, dataInfrastructure.connection, dataInfrastructure.transaction);
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateArquivo, DbParams);
 
             dynamic newId = 0;
             try

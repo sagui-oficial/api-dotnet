@@ -28,39 +28,39 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseUsuarioFuncionario> Handle(RequestUsuarioFuncionario Usuario)
         {
-            //var errors = ValidatorProcedimento.Validate(Procedimentos);
+            var errors = validatorUsuario.Validate(Usuario);
 
-            //if (errors.Count() == 0)
-            //{
-            var _Usuario = usuarioService.Deletar(Usuario);
-
-            if (_Usuario.PublicID != null)
+            if (errors.Count() == 0)
             {
-                responseUsuario.Funcionario = _Usuario;
-                responseUsuario.ExecutionDate = DateTime.Now;
-                responseUsuario.ResponseType = ResponseType.Success;
-                responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
-                                                                                      nameof(Usuario),
-                                                                                      Constantes.MensagemProcedimentosInseridosComSucesso));
-                return responseUsuario;
+                var _Usuario = usuarioService.Deletar(Usuario);
+
+                if (_Usuario.PublicID != null)
+                {
+                    responseUsuario.Funcionario = _Usuario;
+                    responseUsuario.ExecutionDate = DateTime.Now;
+                    responseUsuario.ResponseType = ResponseType.Success;
+                    responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
+                                                                                          nameof(Usuario),
+                                                                                          Constantes.MensagemProcedimentosInseridosComSucesso));
+                    return responseUsuario;
+                }
+                else
+                {
+                    responseUsuario.ExecutionDate = DateTime.Now;
+                    responseUsuario.ResponseType = ResponseType.Error;
+                    responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
+                                                                                nameof(Usuario),
+                                                                                Constantes.MensagemProcedimentoNaoInserida));
+                    return responseUsuario;
+                }
             }
             else
             {
                 responseUsuario.ExecutionDate = DateTime.Now;
                 responseUsuario.ResponseType = ResponseType.Error;
-                responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
-                                                                            nameof(Usuario),
-                                                                            Constantes.MensagemProcedimentoNaoInserida));
+                responseUsuario.Message = errors;
                 return responseUsuario;
             }
-            //}
-            //else
-            //{
-            //    responseProcedimento.ExecutionDate = DateTime.Now;
-            //    responseProcedimento.ResponseType = ResponseType.Error;
-            //    responseProcedimento.Message = errors;
-            //    return responseProcedimento;
-            //}
         }
     }
 }

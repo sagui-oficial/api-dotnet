@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.Usuario
 {
-    public class UsuarioPersister: DBParams
+    public class UsuarioPersister : DBParams, IDataInfrastructure
     {
-        public Model.Paciente SaveUsuario(Model.Paciente Usuario, out DataInfrastructure _dataInfrastructure)
+        #region PACIENTE
+
+        public Model.Paciente SaveUsuario(Model.Paciente Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -18,9 +20,9 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
-            
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioPaciente, DbParams);
+
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioPaciente, DbParams);
 
             try
             {
@@ -33,17 +35,13 @@ namespace Sagui.Data.Persister.Usuario
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                Usuario = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return Usuario;
         }
 
-        public Model.Paciente AtualizarUsuario(Model.Paciente Usuario, out DataInfrastructure _dataInfrastructure)
+        public Model.Paciente AtualizarUsuario(Model.Paciente Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -56,7 +54,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateUsuarioPaciente, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioPaciente, DbParams);
 
             try
             {
@@ -69,18 +67,17 @@ namespace Sagui.Data.Persister.Usuario
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                Usuario = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return Usuario;
         }
 
+        #endregion
 
-        public Model.Funcionario SaveUsuario(Model.Funcionario Usuario, out DataInfrastructure _dataInfrastructure)
+        #region FUNCIONARIO
+
+        public Model.Funcionario SaveUsuario(Model.Funcionario Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -93,7 +90,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioFuncionario, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioFuncionario, DbParams);
 
             try
             {
@@ -106,17 +103,13 @@ namespace Sagui.Data.Persister.Usuario
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                Usuario = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return Usuario;
         }
 
-        public Model.Funcionario AtualizarUsuario(Model.Funcionario Usuario, out DataInfrastructure _dataInfrastructure)
+        public Model.Funcionario AtualizarUsuario(Model.Funcionario Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -129,7 +122,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateUsuarioFuncionario, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioFuncionario, DbParams);
 
             try
             {
@@ -142,18 +135,17 @@ namespace Sagui.Data.Persister.Usuario
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                Usuario = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return Usuario;
         }
 
+        #endregion
 
-        public Model.Dentinsta SaveUsuario(Model.Dentinsta Usuario, out DataInfrastructure _dataInfrastructure)
+        #region DENTISTA
+
+        public Model.Dentinsta SaveUsuario(Model.Dentinsta Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -167,7 +159,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateUsuarioDentista, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
 
             try
             {
@@ -180,17 +172,13 @@ namespace Sagui.Data.Persister.Usuario
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                Usuario = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return Usuario;
         }
 
-        public Model.Dentinsta AtualizarUsuario(Model.Dentinsta Usuario, out DataInfrastructure _dataInfrastructure)
+        public Model.Dentinsta AtualizarUsuario(Model.Dentinsta Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -204,7 +192,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateUsuarioDentista, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioDentista, DbParams);
 
             try
             {
@@ -217,18 +205,15 @@ namespace Sagui.Data.Persister.Usuario
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                Usuario = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return Usuario;
         }
 
+        #endregion
 
-        public Model.UsuarioBase DeletarUsuario(Model.UsuarioBase Usuario, out DataInfrastructure _dataInfrastructure)
+        public Model.UsuarioBase DeletarUsuario(Model.UsuarioBase Usuario)
         {
             if (Usuario == null)
                 throw new ArgumentNullException(nameof(Usuario));
@@ -236,24 +221,25 @@ namespace Sagui.Data.Persister.Usuario
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteUsuario, DbParams))
             {
                 try
                 {
                     dataInfrastructure.command.ExecuteNonQuery();
-                    dataInfrastructure.transaction.Commit();
-
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                    Usuario = null;
                 }
-
-
-                _dataInfrastructure = dataInfrastructure;
             }
 
             return Usuario;
+        }
+
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
         }
     }
 }

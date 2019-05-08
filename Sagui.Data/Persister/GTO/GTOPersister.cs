@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.GTO
 {
-    public class GTOPersister: DBParams
+    public class GTOPersister : DBParams, IDataInfrastructure
     {
-        public Model.GTO AtualizarGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
+        public Model.GTO AtualizarGTO(Model.GTO GTO)
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
@@ -19,55 +19,42 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.UpdateGTO, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateGTO, DbParams);
 
             try
             {
                 dataInfrastructure.command.ExecuteNonQuery();
-                dataInfrastructure.transaction.Commit();
-                                
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                GTO = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
-
+            
             return GTO;
         }
 
-
-        public Model.GTO DeleteGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
+        public Model.GTO DeleteGTO(Model.GTO GTO)
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
             DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
             DbParams.Add(nameof(GTO.Status), StatusGTO.Status.Deletada);
-           
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.DeleteGTO, DbParams);
+
+            DataInfrastructure dataInfrastructure =  DataInfrastructure.GetInstanceDb(SQL.DeleteGTO, DbParams);
 
             try
             {
                 dataInfrastructure.command.ExecuteNonQuery();
-                dataInfrastructure.transaction.Commit();
-
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
+                GTO = null;
             }
-
-
-            _dataInfrastructure = dataInfrastructure;
-
 
             return GTO;
         }
 
-        public Model.GTO SaveGTO(Model.GTO GTO, out DataInfrastructure _dataInfrastructure)
+        public Model.GTO SaveGTO(Model.GTO GTO)
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
@@ -79,7 +66,7 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateGTO, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateGTO, DbParams);
 
             try
             {
@@ -92,13 +79,16 @@ namespace Sagui.Data.Persister.GTO
             }
             catch (Exception e)
             {
-                dataInfrastructure.transaction.Rollback();
                 GTO = null;
             }
-            
-            _dataInfrastructure = dataInfrastructure;
 
             return GTO;
+        }
+
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
         }
     }
 }

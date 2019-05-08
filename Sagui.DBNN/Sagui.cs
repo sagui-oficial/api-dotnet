@@ -21,7 +21,10 @@ namespace Sagui.DB
         public DbSet<Procedimento_GTO> Procedimento_GTO { get; set; }
         public DbSet<Procedimentos> Procedimento { get; set; }
         public DbSet<UsuarioBase> UsuarioBase { get; set; }
+        public DbSet<Dentinsta> Dentinsta { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
+        public DbSet<Lote> Lote { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -51,6 +54,9 @@ namespace Sagui.DB
 
             modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<Arquivos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+
+            modelBuilder.Entity<Lote>().HasKey(c => new { c.IdLote, c.PublicID });
+            modelBuilder.Entity<Lote>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
 
 
             // exemplo para remover os plurais das tabelas.

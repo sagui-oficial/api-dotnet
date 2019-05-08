@@ -1,4 +1,5 @@
-﻿using Sagui.Service.RequestResponse;
+﻿using Sagui.Model;
+using Sagui.Service.RequestResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,42 @@ namespace Sagui.Test.Mocks
 {
     public class MockPlanoOperadora
     {
+        
         public RequestPlanoOperadora CriarMockPlanoOperadora()
         {
+            MockProcedimento mockProcedimento = new MockProcedimento();
+            MockArquivos mockArquivos = new MockArquivos();
+
             RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
+            planoOperadora.Id = 3;
+            planoOperadora.NomeFantasia = "AMIL";
+            planoOperadora.RazaoSocial = "AMIL";
+            planoOperadora.CNPJ = "0000000000191";
+            planoOperadora.DataEnvioLote = DateTime.Now;
+            planoOperadora.DataRecebimentoLote = DateTime.Now;
+            planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
+            planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
 
             return planoOperadora;
         }
+
+        public RequestPlanoOperadora AtualizarMockPlanoOperadora()
+        {
+            MockProcedimento mockProcedimento = new MockProcedimento();
+            MockArquivos mockArquivos = new MockArquivos();
+
+            RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
+            planoOperadora.Id = 8;
+            planoOperadora.NomeFantasia = "FANTA";
+            planoOperadora.RazaoSocial = "COCA";
+            planoOperadora.CNPJ = "27664821000189";
+            planoOperadora.DataEnvioLote = DateTime.Now;
+            planoOperadora.DataRecebimentoLote = DateTime.Now.AddDays(14);
+            planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
+            planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+
+            return planoOperadora;
+        }
+
     }
 }

@@ -16,7 +16,7 @@ namespace Sagui.Data.Lookup.GTO
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Dentinsta.TipoUsuario), TipoUsuario.Tipo.Dentista);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {
                 try
                 {
@@ -39,15 +39,14 @@ namespace Sagui.Data.Lookup.GTO
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    ListUsuario = null;
                 }
             }
+
             return ListUsuario;
         }
+
+
         public Dentinsta ObterUsuarioDentista(Dentinsta dentinsta)
         {
             Dentinsta usuario = new Dentinsta();
@@ -55,7 +54,7 @@ namespace Sagui.Data.Lookup.GTO
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Dentista);
 
-            using (DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.ListUsuario, DbParams))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {
                 try
                 {
@@ -78,15 +77,10 @@ namespace Sagui.Data.Lookup.GTO
                 }
                 catch (Exception e)
                 {
-
-                }
-                finally
-                {
-                    dataInfrastructure.Dispose();
+                    usuario = null;
                 }
             }
             return usuario;
         }
-
     }
 }

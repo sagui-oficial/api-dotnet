@@ -49,6 +49,17 @@ namespace Sagui.Base.DAL
             return command;
         }
 
+        public override IDbCommand CreateCommand(string commandText, IDbConnection connection, IDbTransaction transaction)
+        {
+            SqlCommand command = (SqlCommand)CreateCommand();
+            command.CommandText = commandText;
+            command.Connection = (SqlConnection)connection;
+            command.CommandType = CommandType.Text;
+            command.Transaction = (SqlTransaction)transaction;
+
+            return command;
+        }
+
         public override IDbConnection CreateConnection()
         {
             return new SqlConnection(connectionString);
