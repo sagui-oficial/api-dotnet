@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 namespace Sagui.Data.Persister.Lote
 {
-    public class LotePersister : PersisterBase
+    public class LotePersister : DBParams, IDataInfrastructure
     {
+        public void CommitCommand(bool commit)
+        {
+            DataInfrastructure.ConnTranControl(commit);
+            DataInfrastructure.dataInfrastructure.Dispose();
+        }
+
         public Model.Lote SaveLote(Model.Lote Lote, out DataInfrastructure _dataInfrastructure)
         {
             if (Lote == null)
@@ -21,7 +27,7 @@ namespace Sagui.Data.Persister.Lote
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
             //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
 
-            DataInfrastructure dataInfrastructure = new DataInfrastructure(SQL.CreateLote, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams);
 
             try
             {
