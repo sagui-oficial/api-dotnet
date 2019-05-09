@@ -35,5 +35,19 @@ namespace Sagui.Test.Mocks
             return Procedimento;
         }
 
+        public RequestProcedimento ObterMockProcedimento()
+        {
+            RequestProcedimento Procedimento = new RequestProcedimento();
+            Procedimento.IdProcedimento = 1;
+            Procedimento.Codigo = 1;
+            Procedimento.Anotacoes = "AAAAAA";
+            Procedimento.Exigencias = "AAAAAA";
+            Procedimento.NomeProcedimento = "Procedimento de Teste";
+            Procedimento.ValorProcedimento = 1.00;
+            Procedimento.PublicID = new Guid("0e279474-71c9-11e9-956d-705a0f6970c5");
+
+            return Procedimento;
+        }
+
     }
 }

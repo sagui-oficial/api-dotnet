@@ -35,10 +35,14 @@ namespace Sagui.Test.TestGTO
         public async Task ObterProcedimentos()
         {
             ProcedimentoService procedimentoService = new ProcedimentoService();
+           
 
             ObterProcedimentoRequestHandler obterProcedimentoRequestHandler = new ObterProcedimentoRequestHandler(procedimentoService);
 
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
+            MockProcedimento mock = new MockProcedimento();
+
+            requestProcedimento = mock.ObterMockProcedimento();
 
             var response = await obterProcedimentoRequestHandler.Handle(requestProcedimento);
 

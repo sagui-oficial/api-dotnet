@@ -285,15 +285,15 @@ namespace Sagui.Data
 	                        FROM public.""Procedimento""";
 
         public static string ObterProcedimento = @"
-                            SELECT IdProcedimento
-                                  ,Codigo
-                                  ,NomeProcedimento
-                                  ,ValorProcedimento
-                                  ,Exigencias
-                                  ,Anotacoes
-                                  ,PublicID
-                             FROM sagui.dbo.Procedimento
-                            WHERE PublicID = @PublicID";
+                            SELECT ""IdProcedimento""
+                                  ,""Codigo""
+                                  ,""NomeProcedimento""
+                                  ,""ValorProcedimento""
+                                  ,""Exigencias""
+                                  ,""Anotacoes""
+                                  ,""PublicID""
+                             FROM public.""Procedimento""
+                            WHERE ""PublicID"" = @PublicID";
 
         public static string DeleteProcedimento = @"
                             UPDATE sagui.dbo.Procedimentos
