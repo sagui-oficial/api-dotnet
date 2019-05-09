@@ -30,7 +30,7 @@ namespace Sagui.Business.Procedimento
             }
             else
             {
-                procedimentoPersister.CommitCommand(true);
+              //  procedimentoPersister.CommitCommand(true);
             }
 
             return responseProcedimento;
