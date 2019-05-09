@@ -47,7 +47,7 @@ namespace Sagui.Test.TestGTO
             var response = await obterProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.Procedimentos.Count > 0);
+            Assert.IsTrue(response.Procedimento.IdProcedimento > 0);
         }
 
         [TestMethod]
