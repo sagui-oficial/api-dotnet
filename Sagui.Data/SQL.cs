@@ -285,29 +285,29 @@ namespace Sagui.Data
 	                        FROM public.""Procedimento""";
 
         public static string ObterProcedimento = @"
-                            SELECT IdProcedimento
-                                  ,Codigo
-                                  ,NomeProcedimento
-                                  ,ValorProcedimento
-                                  ,Exigencias
-                                  ,Anotacoes
-                                  ,PublicID
-                             FROM sagui.dbo.Procedimento
-                            WHERE PublicID = @PublicID";
+                            SELECT ""IdProcedimento""
+                                  ,""Codigo""
+                                  ,""NomeProcedimento""
+                                  ,""ValorProcedimento""
+                                  ,""Exigencias""
+                                  ,""Anotacoes""
+                                  ,""PublicID""
+                             FROM public.""Procedimento""
+                            WHERE ""PublicID"" = @PublicID";
 
         public static string DeleteProcedimento = @"
-                            UPDATE sagui.dbo.Procedimentos
-                                    SET Status = @Status
-                            WHERE PublicID = @PublicID";
+                            UPDATE public.""Procedimento""
+                                    SET ""Status"" = @Status
+                            WHERE ""PublicID"" = @PublicID";
 
         public static string UpdateProcedimento = @"
-                            UPDATE  sagui.dbo.Procedimento
-                                    SET Codigo = @Codigo
-                                      ,NomeProcedimento = @NomeProcedimento
-                                      ,ValorProcedimento = @ValorProcedimento
-                                      ,Exigencias = @Exigencias
-                                      ,Anotacoes = @Anotacoes
-                            WHERE PublicID = @PublicID";
+                            UPDATE  public.""Procedimento""
+                                    SET ""Codigo = @Codigo
+                                      ,""NomeProcedimento"" = @NomeProcedimento
+                                      ,""ValorProcedimento"" = @ValorProcedimento
+                                      ,""Exigencias"" = @Exigencias
+                                      ,""Anotacoes"" = @Anotacoes
+                            WHERE ""PublicID"" = @PublicID";
         #endregion
 
         #region usuario
