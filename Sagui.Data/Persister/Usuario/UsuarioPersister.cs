@@ -221,16 +221,15 @@ namespace Sagui.Data.Persister.Usuario
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteUsuario, DbParams))
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteUsuario, DbParams);
+
+            try
             {
-                try
-                {
-                    dataInfrastructure.command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Usuario = null;
-                }
+                dataInfrastructure.command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Usuario = null;
             }
 
             return Usuario;
