@@ -15,7 +15,7 @@ namespace Sagui.Postgres.Migrations
                 name: "Arquivo_GTO",
                 columns: table => new
                 {
-                    idArquivo_GTO = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    idArquivo_GTO = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     idGTO = table.Column<int>(nullable: false),
                     idArquivo = table.Column<int>(nullable: false)
                 },
@@ -28,7 +28,7 @@ namespace Sagui.Postgres.Migrations
                 name: "Procedimento_GTO",
                 columns: table => new
                 {
-                    idProcedimento_GTO = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    idProcedimento_GTO = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     idGTO = table.Column<int>(nullable: false),
                     idProcedimento = table.Column<int>(nullable: false)
                 },
@@ -42,7 +42,7 @@ namespace Sagui.Postgres.Migrations
                 columns: table => new
                 {
 
-                    Id = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Funcao = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
                     Anotacoes = table.Column<string>(nullable: true),
@@ -62,7 +62,7 @@ namespace Sagui.Postgres.Migrations
                 name: "PlanoOperadoraPaciente",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    id = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     NumeroPlano = table.Column<string>(nullable: true),
                     PacienteId = table.Column<int>(nullable: true),
                     PublicID = table.Column<Guid>(nullable: false, defaultValueSql: "uuid_generate_v1()")
@@ -82,7 +82,7 @@ namespace Sagui.Postgres.Migrations
                 name: "PlanoOperadora",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     NomeFantasia = table.Column<string>(nullable: true),
                     RazaoSocial = table.Column<string>(nullable: true),
                     CNPJ = table.Column<string>(nullable: true),
@@ -100,7 +100,7 @@ namespace Sagui.Postgres.Migrations
                 name: "GTO",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Numero = table.Column<string>(nullable: true),
                     PlanoOperadoraId = table.Column<int>(nullable: true),
                     PacienteId = table.Column<int>(nullable: true),
@@ -118,7 +118,7 @@ namespace Sagui.Postgres.Migrations
                 name: "Arquivo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false).Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Nome = table.Column<string>(nullable: true),
                     Stream = table.Column<byte[]>(nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false),
