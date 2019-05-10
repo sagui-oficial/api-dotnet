@@ -12,9 +12,9 @@ staging:
  variables:
   HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
  script:
- - curl -X POST https://api.heroku.com/apps \ 'H "Accept: application/vnd.heroku+json; version=3" \' 'H "Authorization: Bearer $HEROKU_STAGING_API_KEY"'
+ - 'curl -X POST https://api.heroku.com/apps \'
+ - 'H "Accept: application/vnd.heroku+json; version=3" \'
+ - 'H "Authorization: Bearer $HEROKU_STAGING_API_KEY"'
  - git push heroku master
  only:
  - master
-
-
