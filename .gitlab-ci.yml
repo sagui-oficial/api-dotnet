@@ -1,32 +1,23 @@
 image: microsoft/dotnet:latest
 
 before_script:
-  - cd Sagui.Application
+ - echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+ - wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+ - apt-get update
+ - apt-get install -y heroku-toolbelt
+ - gem install dpl
 
-stages:
-  - build
-  - publish
-  # - database
 
-build:
-  stage: build
-  script:
-    - dotnet build  Sagui.Application.csproj /noconlog /nologo
+staging:
+ stage: deploy
+ variables:
+  HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
+ script:
+ - dpl --provider=heroku --app=sagui-api --api-key=$HEROKU_API_KEY
+ - git push heroku master
+ only:
+ - master
 
-  artifacts:
-    paths:
-      - Sagui.Application
-
-  only:
-    - master
-
-publish:
-  stage: publish
-  script:
-    - dotnet publish Sagui.Application.csproj /noconlog /nologo
-    # - dotnet Sagui.Application/bin/Sagui.Application.dll
-  only:
-    - master
 
 # database:
 #   stage: database
