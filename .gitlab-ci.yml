@@ -19,6 +19,6 @@ staging:
  - touch readme
  - git add .
  - git commit -m "deploy"
- - git push https://heroku:$HEROKU_STAGING_API_KEY@git.heroku.com/sagui-api.git HEAD:master
+ - git push https://heroku:$HEROKU_STAGING_API_KEY@git.heroku.com/sagui-api.git master
  only:
  - master
