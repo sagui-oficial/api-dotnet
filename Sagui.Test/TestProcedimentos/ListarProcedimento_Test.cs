@@ -35,15 +35,19 @@ namespace Sagui.Test.TestGTO
         public async Task ObterProcedimentos()
         {
             ProcedimentoService procedimentoService = new ProcedimentoService();
+           
 
             ObterProcedimentoRequestHandler obterProcedimentoRequestHandler = new ObterProcedimentoRequestHandler(procedimentoService);
 
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
+            MockProcedimento mock = new MockProcedimento();
+
+            requestProcedimento = mock.ObterMockProcedimento();
 
             var response = await obterProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.Procedimentos.Count > 0);
+            Assert.IsTrue(response.Procedimento.IdProcedimento > 0);
         }
 
         [TestMethod]

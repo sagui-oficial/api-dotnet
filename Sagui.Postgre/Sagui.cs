@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Sagui.Data;
 using Sagui.Model;
 using System;
-using System.IO;
+using System.Collections.Generic;
 
-namespace Sagui.DB
+namespace Sagui.Postgres
 {
-    
     public class Sagui : DbContext
     {
         public Sagui(DbContextOptions<Sagui> options) : base(options)
@@ -24,7 +24,7 @@ namespace Sagui.DB
         public DbSet<Dentinsta> Dentinsta { get; set; }
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
-        public DbSet<Lote> Lote { get; set; }
+        //public DbSet<Lote> Lote { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,37 +33,53 @@ namespace Sagui.DB
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.Development.json")
                 .Build();
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
-                optionsBuilder.UseSqlServer(connectionString);
+                var connectionString = configuration.GetConnectionString("SaguiPostgres");
+                optionsBuilder.UseNpgsql(connectionString);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<GTO>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<GTO>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+            modelBuilder.Entity<GTO>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
             modelBuilder.Entity<PlanoOperadora>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<PlanoOperadora>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+            modelBuilder.Entity<PlanoOperadora>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
             modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+            modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
             modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
-            modelBuilder.Entity<Procedimentos>(b =>{b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()");});
+            modelBuilder.Entity<Procedimentos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
             modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<Arquivos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+            modelBuilder.Entity<Arquivos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
-            modelBuilder.Entity<Lote>().HasKey(c => new { c.IdLote, c.PublicID });
-            modelBuilder.Entity<Lote>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
+
+
+
+           // Seed(modelBuilder);
+
 
 
             // exemplo para remover os plurais das tabelas.
             //modelBuilder.Entity<Course>().ToTable("Course");
-            //modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
-            //modelBuilder.Entity<Student>().ToTable("Student");
+
+        }
+
+
+        public void Seed(ModelBuilder modelBuilder) {
+
+
+            var procedimentos = new List<Procedimentos>
+                        {
+                        new Procedimentos{Codigo=1,NomeProcedimento="Procedimento 1",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1, PublicID = new Guid() },
+                        new Procedimentos{Codigo=2,NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1, PublicID = new Guid() },
+                        };
+
+
+
+            //modelBuilder.Entity<Procedimentos>().HasData(procedimentos);
         }
     }
-    
 }

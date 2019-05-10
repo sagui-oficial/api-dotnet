@@ -17,9 +17,17 @@ namespace Sagui.Data.Persister.PlanoOperadora
             if (PlanoOperadora == null)
                 throw new ArgumentNullException(nameof(PlanoOperadora));
 
+            DbParams.Add(nameof(PlanoOperadora.NomeFantasia), PlanoOperadora.NomeFantasia);
+            DbParams.Add(nameof(PlanoOperadora.RazaoSocial), PlanoOperadora.RazaoSocial);
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
+            DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
+            DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
             
-
+            //DbParams.Add(nameof(PlanoOperadora.Id), PlanoOperadora.Id);
+            //DbParams.Add(nameof(PlanoOperadora.ListaArquivos), PlanoOperadora.ListaArquivos);
+            //DbParams.Add(nameof(PlanoOperadora.ListaProcedimentos), PlanoOperadora.ListaProcedimentos);
+            //DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
+            
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
 
             try
@@ -30,6 +38,8 @@ namespace Sagui.Data.Persister.PlanoOperadora
                 {
                     PlanoOperadora.Id = Convert.ToInt32(newId);
                 }
+
+                dataInfrastructure.transaction.Commit();
             }
             catch (Exception e)
             {
@@ -38,5 +48,72 @@ namespace Sagui.Data.Persister.PlanoOperadora
 
             return PlanoOperadora;
         }
+
+        public Model.PlanoOperadora AtualizarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        {
+            if (PlanoOperadora == null)
+                throw new ArgumentNullException(nameof(PlanoOperadora));
+
+            DbParams.Add(nameof(PlanoOperadora.NomeFantasia), PlanoOperadora.NomeFantasia);
+            DbParams.Add(nameof(PlanoOperadora.RazaoSocial), PlanoOperadora.RazaoSocial);
+            DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
+            DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
+            DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
+
+            
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdatePlanoOperadora, DbParams))
+            {
+                try
+                {
+                    var newId = dataInfrastructure.command.ExecuteScalar();
+
+                    if (Convert.ToInt32(newId) > 0)
+                    {
+                        PlanoOperadora.Id = Convert.ToInt32(newId);
+                    }
+                }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+
+
+                _dataInfrastructure = dataInfrastructure;
+            }
+
+
+           
+
+            return PlanoOperadora;
+        }
+
+        public Model.PlanoOperadora DeletarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        {
+            if (PlanoOperadora == null)
+                throw new ArgumentNullException(nameof(PlanoOperadora));
+
+            Dictionary<string, object> DbParams = new Dictionary<string, object>();
+            DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeletePlanoOperadora, DbParams))
+            {
+                try
+                {
+                    dataInfrastructure.command.ExecuteNonQuery();
+                    dataInfrastructure.transaction.Commit();
+
+                }
+                catch (Exception e)
+                {
+                    dataInfrastructure.transaction.Rollback();
+                }
+
+
+                _dataInfrastructure = dataInfrastructure;
+            }
+
+            return PlanoOperadora;
+        }
+
     }
 }

@@ -3,19 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sagui.DB;
 
 namespace Sagui.DB.Migrations
 {
     [DbContext(typeof(Sagui))]
-    partial class SaguiModelSnapshot : ModelSnapshot
+    [Migration("20190401235341_Lote")]
+    partial class Lote
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -268,27 +270,6 @@ namespace Sagui.DB.Migrations
                     b.ToTable("UsuarioBase");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("UsuarioBase");
-                });
-
-            modelBuilder.Entity("Sagui.Model.Dentinsta", b =>
-                {
-                    b.HasBaseType("Sagui.Model.UsuarioBase");
-
-                    b.Property<string>("CRO");
-
-                    b.ToTable("Dentinsta");
-
-                    b.HasDiscriminator().HasValue("Dentinsta");
-                });
-
-            modelBuilder.Entity("Sagui.Model.Funcionario", b =>
-                {
-                    b.HasBaseType("Sagui.Model.UsuarioBase");
-
-
-                    b.ToTable("Funcionario");
-
-                    b.HasDiscriminator().HasValue("Funcionario");
                 });
 
             modelBuilder.Entity("Sagui.Model.Funcionario", b =>

@@ -14,7 +14,7 @@ namespace Sagui.Data.Persister.Procedimento
         public void CommitCommand(bool commit)
         {
             DataInfrastructure.ConnTranControl(commit);
-            DataInfrastructure.dataInfrastructure.Dispose();
+          //  DataInfrastructure.dataInfrastructure.Dispose();
         }
 
         public Model.Procedimentos AtualizarProcedimento(Model.Procedimentos Procedimentos)

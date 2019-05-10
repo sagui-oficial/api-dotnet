@@ -1,15 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Npgsql;
 using Sagui.Data;
 using Sagui.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Sagui.Test.TestPopularBase
 {
@@ -24,27 +21,37 @@ namespace Sagui.Test.TestPopularBase
             {
 
            
-                 var optionsBuilder = new DbContextOptions<Sagui.DB.Sagui>();
-                 var context = new Sagui.DB.Sagui(optionsBuilder);
+                 var optionsBuilder = new DbContextOptions<Sagui.Postgres.Sagui>();
+                 var context = new Sagui.Postgres.Sagui(optionsBuilder);
 
 
                 if (!context.Procedimento.Any())
                 {
                     var procedimentos = new List<Procedimentos>
-                {
-                new Procedimentos{Codigo=1,NomeProcedimento="Procedimento 1",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
-                new Procedimentos{Codigo=2,NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
-                };
+                        {
+                        new Procedimentos{IdProcedimento = 1, Codigo=1,NomeProcedimento="Procedimento 1",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
+                        new Procedimentos{IdProcedimento = 2, Codigo=2,NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
+                        };
 
 
                     foreach (Procedimentos p in procedimentos)
                     {
-                        context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
-                        new SqlParameter("Codigo", p.Codigo),
-                        new SqlParameter("NomeProcedimento", p.NomeProcedimento),
-                        new SqlParameter("ValorProcedimento", p.ValorProcedimento),
-                        new SqlParameter("Exigencias", p.Exigencias),
-                        new SqlParameter("Anotacoes", p.Anotacoes));
+                        try
+                        {
+                            context.Database.ExecuteSqlCommand(SQL.CreateProcedimento,
+                        new NpgsqlParameter("Codigo", p.Codigo),
+                        new NpgsqlParameter("NomeProcedimento", p.NomeProcedimento),
+                        new NpgsqlParameter("ValorProcedimento", p.ValorProcedimento),
+                        new NpgsqlParameter("Exigencias", p.Exigencias),
+                        new NpgsqlParameter("Anotacoes", p.Anotacoes));
+                        }
+                        catch (Exception e)
+                        {
+
+                            throw;
+                        }
+
+                        
                     }
 
 

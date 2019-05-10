@@ -10,7 +10,7 @@ namespace Sagui.Model
 {
    public class Arquivo_GTO : Arquivos
     {
-        [Key, Column(Order = 1)]
+        //[Key, Column(Order = 1)]
         public int idArquivo_GTO { get; set; }
         public int idGTO { get; set; }
         public int idArquivo { get; set; }

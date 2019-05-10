@@ -261,40 +261,39 @@ namespace Sagui.Data
         #region procedimento
 
         public static string CreateProcedimento = @"
-                    INSERT INTO dbo.Procedimento
-                               (Codigo
-                               ,NomeProcedimento
-                               ,ValorProcedimento
-                               ,Exigencias
-                               ,Anotacoes)
+                    INSERT INTO public.""Procedimento""
+                               (""Codigo""
+                               ,""NomeProcedimento""
+                               ,""ValorProcedimento""
+                               ,""Exigencias""
+                               ,""Anotacoes"")
                          VALUES
                                (@Codigo
                                ,@NomeProcedimento
                                ,@ValorProcedimento
                                ,@Exigencias
-                               ,@Anotacoes);
-
-                            SELECT SCOPE_IDENTITY();";
+                               ,@Anotacoes)
+                            RETURNING ""IdProcedimento"";";
         public static string ListProcedimento = @"
-                            SELECT IdProcedimento
-                                  ,Codigo
-                                  ,NomeProcedimento
-                                  ,ValorProcedimento
-                                  ,Exigencias
-                                  ,Anotacoes
-                                  ,PublicID
-                             FROM sagui.dbo.Procedimento";
+                            SELECT ""IdProcedimento"", 
+                                   ""Codigo"", 
+                                   ""NomeProcedimento"", 
+                                   ""ValorProcedimento"", 
+                                   ""Exigencias"", 
+                                   ""Anotacoes"", 
+                                   ""PublicID""
+	                        FROM public.""Procedimento""";
 
         public static string ObterProcedimento = @"
-                            SELECT IdProcedimento
-                                  ,Codigo
-                                  ,NomeProcedimento
-                                  ,ValorProcedimento
-                                  ,Exigencias
-                                  ,Anotacoes
-                                  ,PublicID
-                             FROM sagui.dbo.Procedimento
-                            WHERE PublicID = @PublicID";
+                            SELECT ""IdProcedimento""
+                                  ,""Codigo""
+                                  ,""NomeProcedimento""
+                                  ,""ValorProcedimento""
+                                  ,""Exigencias""
+                                  ,""Anotacoes""
+                                  ,""PublicID""
+                             FROM public.""Procedimento""
+                            WHERE ""PublicID""::""text"" = @PublicID";
 
         public static string DeleteProcedimento = @"
                             UPDATE sagui.dbo.Procedimentos
@@ -450,6 +449,7 @@ namespace Sagui.Data
 
         #endregion
 
+        #region PlanoOperadora
         public static string CreatePlanoOperadoraPaciente = @"
                     INSERT INTO dbo.PlanoOperadoraPaciente
                        (NumeroPlano
@@ -479,5 +479,89 @@ namespace Sagui.Data
                 SELECT SCOPE_IDENTITY();";
 
 
+        public static string ObterPlanoOperadora = @"
+                            SELECT Id
+                                ,NomeFantasia
+                                ,RazaoSocial
+                                ,CNPJ
+                                ,DataEnvioLote
+                                ,DataRecebimentoLote
+                                ,PublicId
+                              FROM dbo.PlanoOperadora 
+                            WHERE PublicID = @PublicID";
+
+
+        public static string ListPlanoOperadora = @"
+                            SELECT Id
+                                ,NomeFantasia
+                                ,RazaoSocial
+                                ,CNPJ
+                                ,DataEnvioLote
+                                ,DataRecebimentoLote
+                                ,PublicId
+                              FROM dbo.PlanoOperadora";
+
+        public static string UpdatePlanoOperadora = @"
+                UPDATE dbo.PlanoOperadora
+                       SET NomeFantasia = @NomeFantasia
+                          ,RazaoSocial = @RazaoSocial
+                          ,CNPJ = @CNPJ
+                          ,DataEnvioLote = @DataEnvioLote
+                          ,DataRecebimentoLote = @DataRecebimentoLote
+                     WHERE PublicId = @PublicId";
+
+
+        public static string DeletePlanoOperadora = @"
+                            DELETE FROM dbo.PlanoOperadora
+                            WHERE PublicID = @PublicID";
+
+        #endregion
+
+        #region Lote
+        public static string CreateLote = @"
+                    INSERT INTO dbo.Lote
+                       (PlanoOperadoraId
+                       ,TotalGTOLote
+                       ,ValorTotalLote
+                       ,DataEnvioCorreio
+                       ,DataPrevistaRecebimento
+                       ,StatusLote
+                       ,FuncionarioId)
+                 VALUES
+                       (@PlanoOperadora
+                       ,@TotalGTOLote
+                       ,@ValorTotalLote
+                       ,@DataEnvioCorreio
+                       ,@DataPrevistaRecebimento
+                       ,@StatusLote
+                       ,@Funcionario);
+
+                SELECT SCOPE_IDENTITY();";
+
+        public static string ListLote = @"
+                            SELECT Id
+                                ,NomeFantasia
+                                ,RazaoSocial
+                                ,CNPJ
+                                ,DataEnvioLote
+                                ,DataRecebimentoLote
+                                ,PublicId
+                              FROM dbo.PlanoOperadora";
+
+        public static string UpdateLote = @"
+                UPDATE dbo.PlanoOperadora
+                       SET NomeFantasia = @NomeFantasia
+                          ,RazaoSocial = @RazaoSocial
+                          ,CNPJ = @CNPJ
+                          ,DataEnvioLote = @DataEnvioLote
+                          ,DataRecebimentoLote = @DataRecebimentoLote
+                     WHERE PublicId = @PublicId";
+
+
+        public static string DeleteLote = @"
+                            DELETE FROM dbo.Lote
+                            WHERE PublicID = @PublicID";
+
+        #endregion
     }
 }

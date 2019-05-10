@@ -2,11 +2,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Sagui.DB;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using Sagui.Postgres;
 
-namespace Sagui.DB.Migrations
+namespace Sagui.Postgres.Migrations
 {
     [DbContext(typeof(Sagui))]
     partial class SaguiModelSnapshot : ModelSnapshot
@@ -15,24 +15,9 @@ namespace Sagui.DB.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Sagui.Model.Arquivo_GTO", b =>
-                {
-                    b.Property<int>("idArquivo_GTO")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("idArquivo");
-
-                    b.Property<int>("idGTO");
-
-                    b.HasKey("idArquivo_GTO");
-
-                    b.ToTable("Arquivo_GTO");
-                });
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("Sagui.Model.Arquivos", b =>
                 {
@@ -44,9 +29,10 @@ namespace Sagui.DB.Migrations
 
                     b.Property<DateTime>("DataCriacao");
 
-                    b.Property<int?>("GTOId");
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
 
-                    b.Property<Guid?>("GTOPublicID");
+                    b.Property<string>("Extensao");
 
                     b.Property<string>("Nome");
 
@@ -60,11 +46,13 @@ namespace Sagui.DB.Migrations
 
                     b.HasKey("Id", "PublicID");
 
-                    b.HasIndex("GTOId", "GTOPublicID");
+                    b.HasAlternateKey("PublicID");
 
                     b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
 
                     b.ToTable("Arquivo");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Arquivos");
                 });
 
             modelBuilder.Entity("Sagui.Model.GTO", b =>
@@ -73,11 +61,7 @@ namespace Sagui.DB.Migrations
 
                     b.Property<Guid>("PublicID")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
-
-                    b.Property<int?>("LoteIdLote");
-
-                    b.Property<Guid?>("LotePublicID");
+                        .HasDefaultValueSql("uuid_generate_v1()");
 
                     b.Property<string>("Numero");
 
@@ -97,48 +81,11 @@ namespace Sagui.DB.Migrations
 
                     b.HasKey("Id", "PublicID");
 
-                    b.HasIndex("LoteIdLote", "LotePublicID");
-
                     b.HasIndex("PacienteId", "PacientePublicID");
 
                     b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
 
                     b.ToTable("GTO");
-                });
-
-            modelBuilder.Entity("Sagui.Model.Lote", b =>
-                {
-                    b.Property<int>("IdLote");
-
-                    b.Property<Guid>("PublicID")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
-
-                    b.Property<DateTime>("DataEnvioCorreio");
-
-                    b.Property<DateTime>("DataPrevistaRecebimento");
-
-                    b.Property<int?>("FuncionarioId");
-
-                    b.Property<Guid?>("FuncionarioPublicID");
-
-                    b.Property<int?>("PlanoOperadoraId");
-
-                    b.Property<Guid?>("PlanoOperadoraPublicID");
-
-                    b.Property<int>("StatusLote");
-
-                    b.Property<int>("TotalGTOLote");
-
-                    b.Property<decimal>("ValorTotalLote");
-
-                    b.HasKey("IdLote", "PublicID");
-
-                    b.HasIndex("FuncionarioId", "FuncionarioPublicID");
-
-                    b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
-
-                    b.ToTable("Lote");
                 });
 
             modelBuilder.Entity("Sagui.Model.PlanoOperadora", b =>
@@ -147,7 +94,7 @@ namespace Sagui.DB.Migrations
 
                     b.Property<Guid>("PublicID")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
+                        .HasDefaultValueSql("uuid_generate_v1()");
 
                     b.Property<string>("CNPJ");
 
@@ -170,8 +117,7 @@ namespace Sagui.DB.Migrations
             modelBuilder.Entity("Sagui.Model.PlanoOperadoraPaciente", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("NumeroPlano");
 
@@ -189,8 +135,7 @@ namespace Sagui.DB.Migrations
             modelBuilder.Entity("Sagui.Model.Procedimento_GTO", b =>
                 {
                     b.Property<int>("idProcedimento_GTO")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("idGTO");
 
@@ -207,7 +152,7 @@ namespace Sagui.DB.Migrations
 
                     b.Property<Guid>("PublicID")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
+                        .HasDefaultValueSql("uuid_generate_v1()");
 
                     b.Property<string>("Anotacoes");
 
@@ -244,7 +189,7 @@ namespace Sagui.DB.Migrations
 
                     b.Property<Guid>("PublicID")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
+                        .HasDefaultValueSql("uuid_generate_v1()");
 
                     b.Property<string>("Anotacoes");
 
@@ -270,35 +215,25 @@ namespace Sagui.DB.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("UsuarioBase");
                 });
 
-            modelBuilder.Entity("Sagui.Model.Dentinsta", b =>
+            modelBuilder.Entity("Sagui.Model.Arquivo_GTO", b =>
                 {
-                    b.HasBaseType("Sagui.Model.UsuarioBase");
+                    b.HasBaseType("Sagui.Model.Arquivos");
 
-                    b.Property<string>("CRO");
+                    b.Property<int?>("GTOId");
 
-                    b.ToTable("Dentinsta");
+                    b.Property<Guid?>("GTOPublicID");
 
-                    b.HasDiscriminator().HasValue("Dentinsta");
-                });
+                    b.Property<int>("idArquivo");
 
-            modelBuilder.Entity("Sagui.Model.Funcionario", b =>
-                {
-                    b.HasBaseType("Sagui.Model.UsuarioBase");
+                    b.Property<int>("idArquivo_GTO");
 
+                    b.Property<int>("idGTO");
 
-                    b.ToTable("Funcionario");
+                    b.HasIndex("GTOId", "GTOPublicID");
 
-                    b.HasDiscriminator().HasValue("Funcionario");
-                });
+                    b.ToTable("Arquivo_GTO");
 
-            modelBuilder.Entity("Sagui.Model.Funcionario", b =>
-                {
-                    b.HasBaseType("Sagui.Model.UsuarioBase");
-
-
-                    b.ToTable("Funcionario");
-
-                    b.HasDiscriminator().HasValue("Funcionario");
+                    b.HasDiscriminator().HasValue("Arquivo_GTO");
                 });
 
             modelBuilder.Entity("Sagui.Model.Paciente", b =>
@@ -313,10 +248,6 @@ namespace Sagui.DB.Migrations
 
             modelBuilder.Entity("Sagui.Model.Arquivos", b =>
                 {
-                    b.HasOne("Sagui.Model.GTO")
-                        .WithMany("Arquivos")
-                        .HasForeignKey("GTOId", "GTOPublicID");
-
                     b.HasOne("Sagui.Model.PlanoOperadora")
                         .WithMany("ListaArquivos")
                         .HasForeignKey("PlanoOperadoraId", "PlanoOperadoraPublicID");
@@ -324,24 +255,9 @@ namespace Sagui.DB.Migrations
 
             modelBuilder.Entity("Sagui.Model.GTO", b =>
                 {
-                    b.HasOne("Sagui.Model.Lote")
-                        .WithMany("ListaGTO")
-                        .HasForeignKey("LoteIdLote", "LotePublicID");
-
                     b.HasOne("Sagui.Model.Paciente", "Paciente")
                         .WithMany()
                         .HasForeignKey("PacienteId", "PacientePublicID");
-
-                    b.HasOne("Sagui.Model.PlanoOperadora", "PlanoOperadora")
-                        .WithMany()
-                        .HasForeignKey("PlanoOperadoraId", "PlanoOperadoraPublicID");
-                });
-
-            modelBuilder.Entity("Sagui.Model.Lote", b =>
-                {
-                    b.HasOne("Sagui.Model.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId", "FuncionarioPublicID");
 
                     b.HasOne("Sagui.Model.PlanoOperadora", "PlanoOperadora")
                         .WithMany()
@@ -372,6 +288,13 @@ namespace Sagui.DB.Migrations
                     b.HasOne("Sagui.Model.PlanoOperadora")
                         .WithMany("ListaProcedimentos")
                         .HasForeignKey("PlanoOperadoraId", "PlanoOperadoraPublicID");
+                });
+
+            modelBuilder.Entity("Sagui.Model.Arquivo_GTO", b =>
+                {
+                    b.HasOne("Sagui.Model.GTO")
+                        .WithMany("Arquivos")
+                        .HasForeignKey("GTOId", "GTOPublicID");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,8 +13,7 @@ namespace Sagui.Base.Utils
         public static string ProblemaAoInserir = "Ocorreu um problema ao inserir!";
         public static string ListadoComSucesso = "Listado com sucesso!";
         public static string ProblemaAoListar = "Ocorreu um problema ao listar!";
-        public static string GTODeletada = "GTO deletada!";
-        public static string GTONaoDeletada = "GTO não deletada!";
+
         #endregion
 
         #region Arquivos
@@ -31,14 +30,16 @@ namespace Sagui.Base.Utils
         #endregion
 
         #region GTO
-        public static string MensagemGTONaoListada = "GTOs não listadas!";
+        public static string GTODeletada = "GTO deletada!";
+        public static string GTONaoDeletada = "GTO não deletada!";
+        public static string MensagemGTONaoListada = "GTOs nao listadas!";
         public static string MensagemGTOListadaComSucesso = "GTOs listadas com sucesso!";
         public static string MensagemGTOInseridaComSucesso = "GTO inserida com sucesso!";
         public static string MensagemGTONaoInserida = "GTO não inserida!";
         public static string MensagemGTODeletada = "GTO deletada!";
         public static string MensagemGTONaoDeletada = "GTO não deletada!";
         public static string MensagemGTOObtidacomSucesso = "GTOs obtida com sucesso!";
-        public static string MensagemGTONaoObtidacomSucesso = "GTOs não obtida com sucesso!";
+        public static string MensagemGTONaoObtidacomSucesso = "GTOs não encontrada! Verifique as informações informadas para pesquisa.";
 
         #endregion
 
@@ -47,6 +48,21 @@ namespace Sagui.Base.Utils
         public static string MensagemProcedimentoNaoInserida = "Procedimento(s) não inserido(s)!";
         public static string MensagemProcedimentoListadaComSucesso = "Procedimentos listados com sucesso!";
         public static string MensagemProcedimentoNaoListado = "Procedimentos não listados!";
+        #endregion
+
+        #region PlanoOperadora
+        public static string MensagemPlanoOperadorasInseridosComSucesso = "Plano(s) Operadora(s) inserido(s) com sucesso!";
+        public static string MensagemPlanoOperadoraNaoInserida = "Plano(s) Operadora(s) não inserido(s)!";
+        public static string MensagemPlanoOperadoraNaoListado = "Planos Operadoras não listados!";
+        #endregion
+
+        #region Lote
+        public static string MensagemLotesInseridosComSucesso = "Lote(s) inserido(s) com sucesso!";
+        public static string MensagemLoteNaoInserido = "Lote(s) não inserido(s)!";
+        public static string MensagemLoteListadoComSucesso = "GTOs listadas com sucesso!";
+        public static string MensagemLoteNaoListado = "Lotes não listados!";
+        public static string MensagemLoteDeletado = "Lote deletado!";
+        public static string MensagemLoteNaoDeletado = "Lote não deletado!";
         #endregion
 
         #region Usuarios
