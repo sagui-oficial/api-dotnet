@@ -14,6 +14,6 @@ staging:
  script:
  - 'curl -X POST https://api.heroku.com/apps -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer $HEROKU_STAGING_API_KEY"'
  - heroku git:remote -a sagui-api
- - git push heroku master
+ - git push heroku HEAD:master
  only:
  - master
