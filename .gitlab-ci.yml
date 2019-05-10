@@ -1,4 +1,4 @@
-#image: microsoft/dotnet:latest
+image: microsoft/dotnet:latest
 
 before_script:
  - echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
