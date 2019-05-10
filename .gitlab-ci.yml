@@ -5,7 +5,7 @@ before_script:
  - wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
  - apt-get update
  - apt-get install -y heroku-toolbelt
- - gem install dpl
+# - gem install dpl
 
 
 staging:
@@ -13,7 +13,9 @@ staging:
  variables:
   HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
  script:
- - dpl --provider=heroku --app=sagui-api --api-key=$HEROKU_API_KEY
+ -curl -n https://api.heroku.com/apps/sagui-api/config-vars \
+ -H "Accept: application/vnd.heroku+json; version=3" \
+ -H "Authorization: Bearer $HEROKU_API_KEY
  - git push heroku master
  only:
  - master
