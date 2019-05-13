@@ -297,7 +297,7 @@ namespace Sagui.Data
         public static string DeleteProcedimento = @"
                             UPDATE public.""Procedimento""
                                     SET ""Status"" = @Status
-                            WHERE ""PublicID"" = @PublicID";
+                            WHERE ""PublicID""::""text"" = @PublicID";
 
         public static string UpdateProcedimento = @"
                             UPDATE  public.""Procedimento""
@@ -306,7 +306,7 @@ namespace Sagui.Data
                                       ,""ValorProcedimento"" = @ValorProcedimento
                                       ,""Exigencias"" = @Exigencias
                                       ,""Anotacoes"" = @Anotacoes
-                            WHERE ""PublicID"" = @PublicID";
+                            WHERE ""PublicID""::""text"" = @PublicID";
         #endregion
 
         #region usuario
