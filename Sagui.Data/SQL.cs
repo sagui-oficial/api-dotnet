@@ -293,8 +293,7 @@ namespace Sagui.Data
                                   ,""Anotacoes""
                                   ,""PublicID""
                              FROM public.""Procedimento""
-                            WHERE ""PublicID"" = @PublicID";
-
+                            WHERE ""PublicID""::""text"" = @PublicID";
         public static string DeleteProcedimento = @"
                             UPDATE public.""Procedimento""
                                     SET ""Status"" = @Status

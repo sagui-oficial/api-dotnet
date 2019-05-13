@@ -1,10 +1,8 @@
 ﻿
 using Npgsql;
-using Sagui.Base;
 using Sagui.Base.DAL;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace Sagui.Data.Base
 {

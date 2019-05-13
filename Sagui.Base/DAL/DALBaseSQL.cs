@@ -25,9 +25,9 @@ namespace Sagui.Base.DAL
 
         public override IDbCommand CreateCommand(string commandText, IEnumerable<KeyValuePair<string, object>> dbParams, IDbConnection connection)
         {
-            SqlCommand command = (SqlCommand)CreateCommand();
+            NpgsqlCommand command = (NpgsqlCommand)CreateCommand();
             command.CommandText = commandText;
-            command.Connection = (SqlConnection)connection;
+            command.Connection = (NpgsqlConnection)connection;
             command.CommandType = CommandType.Text;
             IDataParameter[] parameters = this.CreateParameter(dbParams);
             command.Parameters.AddRange(parameters);
@@ -50,11 +50,11 @@ namespace Sagui.Base.DAL
 
         public override IDbCommand CreateCommand(string commandText, IDbConnection connection, IDbTransaction transaction)
         {
-            SqlCommand command = (SqlCommand)CreateCommand();
+            NpgsqlCommand command = (NpgsqlCommand)CreateCommand();
             command.CommandText = commandText;
-            command.Connection = (SqlConnection)connection;
+            command.Connection = (NpgsqlConnection)connection;
             command.CommandType = CommandType.Text;
-            command.Transaction = (SqlTransaction)transaction;
+            command.Transaction = (NpgsqlTransaction)transaction;
 
             return command;
         }
@@ -89,9 +89,9 @@ namespace Sagui.Base.DAL
 
         public override IDbCommand CreateStoredProcCommand(string procName, IDbConnection connection)
         {
-            SqlCommand command = (SqlCommand)CreateCommand();
+            NpgsqlCommand command = (NpgsqlCommand)CreateCommand();
             command.CommandText = procName;
-            command.Connection = (SqlConnection)connection;
+            command.Connection = (NpgsqlConnection)connection;
             command.CommandType = CommandType.StoredProcedure;
             return command;
         }

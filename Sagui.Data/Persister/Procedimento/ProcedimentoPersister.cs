@@ -14,7 +14,7 @@ namespace Sagui.Data.Persister.Procedimento
         public void CommitCommand(bool commit)
         {
             DataInfrastructure.ConnTranControl(commit);
-            DataInfrastructure.dataInfrastructure.Dispose();
+          //  DataInfrastructure.dataInfrastructure.Dispose();
         }
 
         public Model.Procedimentos AtualizarProcedimento(Model.Procedimentos Procedimentos)
@@ -29,16 +29,15 @@ namespace Sagui.Data.Persister.Procedimento
             DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
             DbParams.Add(nameof(Procedimentos.Status), Procedimentos.Status);
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateProcedimento, DbParams))
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateProcedimento, DbParams);
+
+            try
             {
-                try
-                {
-                    dataInfrastructure.command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Procedimentos = null;
-                }
+                dataInfrastructure.command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Procedimentos = null;
             }
 
             return Procedimentos;
@@ -55,16 +54,15 @@ namespace Sagui.Data.Persister.Procedimento
             DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
             DbParams.Add(nameof(Procedimentos.Status), StatusProcedimento.Status.Deletada);
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimento, DbParams))
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimento, DbParams);
+
+            try
             {
-                try
-                {
-                    dataInfrastructure.command.ExecuteNonQuery();                    
-                }
-                catch (Exception e)
-                {
-                    Procedimentos = null;
-                }
+                dataInfrastructure.command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Procedimentos = null;
             }
 
             return Procedimentos;
@@ -82,22 +80,20 @@ namespace Sagui.Data.Persister.Procedimento
             DbParams.Add(nameof(Procedimentos.NomeProcedimento), Procedimentos.NomeProcedimento);
             DbParams.Add(nameof(Procedimentos.ValorProcedimento), Procedimentos.ValorProcedimento);
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimento, DbParams))
-            {
-                try
-                {
-                    var newId = dataInfrastructure.command.ExecuteScalar();
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimento, DbParams);
 
-                    if (Convert.ToInt32(newId) > 0)
-                    {
-                        Procedimentos.IdProcedimento = Convert.ToInt32(newId);
-                        dataInfrastructure.transaction.Commit();
-                    }
-                }
-                catch (Exception e)
+            try
+            {
+                var newId = dataInfrastructure.command.ExecuteScalar();
+
+                if (Convert.ToInt32(newId) > 0)
                 {
-                    Procedimentos = null;
+                    Procedimentos.IdProcedimento = Convert.ToInt32(newId);
                 }
+            }
+            catch (Exception e)
+            {
+                Procedimentos = null;
             }
 
             return Procedimentos;
