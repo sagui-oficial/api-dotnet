@@ -11,7 +11,7 @@ namespace Sagui.Data
         #region arquivos
 
         public static string CreateArquivo = @"
-                   INSERT INTO dbo.Arquivo
+                   INSERT INTO public.Arquivo
                                (Nome
                                ,DataCriacao
                                ,Stream
@@ -28,7 +28,7 @@ namespace Sagui.Data
         #region ArquivoGTO
 
         public static string CreateArquivoGTO = @"
-                   INSERT INTO dbo.Arquivo
+                   INSERT INTO public.Arquivo
                                (Nome
                                ,DataCriacao
                                ,Stream
@@ -50,8 +50,8 @@ namespace Sagui.Data
                           ,arq.Extensao
 	                      ,agto.idArquivo_GTO
                           ,agto.PublicID
-                          FROM dbo.Arquivo (NOLOCK) arq
-                    INNER JOIN dbo.Arquivo_GTO (NOLOCK) agto
+                          FROM public.Arquivo (NOLOCK) arq
+                    INNER JOIN public.Arquivo_GTO (NOLOCK) agto
                        ON arq.Id = agto.idGTO";
 
 
@@ -64,8 +64,8 @@ namespace Sagui.Data
                           ,arq.Extensao
 	                      ,agto.idArquivo_GTO
                           ,agto.PublicID
-                          FROM dbo.Arquivo arq
-                    INNER JOIN dbo.Arquivo_GTO agto
+                          FROM public.Arquivo arq
+                    INNER JOIN public.Arquivo_GTO agto
                        ON arq.Id = agto.idGTO
                     WHERE agto.idGTO = @idGTO";
 
@@ -79,20 +79,20 @@ namespace Sagui.Data
                           ,arq.Extensao
 	                      ,agto.idArquivo_GTO
                           ,agto.PublicID
-                          FROM dbo.Arquivo arq
-                    INNER JOIN dbo.Arquivo_GTO agto
+                          FROM public.Arquivo arq
+                    INNER JOIN public.Arquivo_GTO agto
                        ON arq.Id = agto.idGTO
-                    WHERE agto.PublicID = @PublicID";
+                    WHERE agto.""PublicID""::""text"" = @PublicID";
 
 
 
         public static string ObterArquivoGTO = @"
                     SELECT  
-	                       b.[Id]
-                          ,b.[Nome]
-                          ,b.[Stream]
-                          ,b.[DataCriacao]
-                          ,b.[PathArquivo]
+	                       b.""Id""
+                          ,b.""Nome""
+                          ,b.""Stream""
+                          ,b.""DataCriacao""
+                          ,b.""PathArquivo""
                     FROM Arquivo_GTO a (NOLOCK)
 		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
                     WHERE idGTO = @idGTO";
@@ -110,10 +110,10 @@ namespace Sagui.Data
                           ,arq.Extensao
 	                      ,apo.idArquivo_GTO
                           ,apo.PublicID
-                          FROM dbo.Arquivo arq
-                    INNER JOIN dbo.Arquivo_PlanoOperadora apo
+                          FROM public.Arquivo arq
+                    INNER JOIN public.Arquivo_PlanoOperadora apo
                        ON arq.Id = apo.idPlanoOperadora
-                    WHERE apo.PublicID = @PublicID";
+                    WHERE apo.""PublicID""::""text"" = @PublicID";
 
 
         public static string ListarArquivoPlanoOperadora = @"
@@ -125,14 +125,14 @@ namespace Sagui.Data
                           ,arq.Extensao
 	                      ,apo.idArquivo_GTO
                           ,apo.PublicID
-                          FROM dbo.Arquivo arq
-                    INNER JOIN dbo.Arquivo_PlanoOperadora apo
+                          FROM public.Arquivo arq
+                    INNER JOIN public.Arquivo_PlanoOperadora apo
                        ON arq.Id = apo.idPlanoOperadora
                     WHERE apo.idPlanoOperadora = @idPlanoOperadora";
 
 
         public static string CreateArquivoPlanoOperadora = @"
-                   INSERT INTO dbo.Arquivo
+                   INSERT INTO public.Arquivo
                                (Nome
                                ,DataCriacao
                                ,Stream
@@ -148,11 +148,11 @@ namespace Sagui.Data
 
         public static string ObterArquivoPlanoOperadora = @"
                     SELECT  
-	                       b.[Id]
-                          ,b.[Nome]
-                          ,b.[Stream]
-                          ,b.[DataCriacao]
-                          ,b.[PathArquivo]
+	                       b.""Id""
+                          ,b.""Nome""
+                          ,b.""Stream""
+                          ,b.""DataCriacao""
+                          ,b.""PathArquivo""
                     FROM Arquivo_GTO a (NOLOCK)
 		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
                     WHERE idGTO = @idGTO";
@@ -164,97 +164,96 @@ namespace Sagui.Data
         #region GTO
 
         public static string CreateProcedimentoGTO = @"
-                    INSERT INTO dbo.Procedimento_GTO
-                               (IdGTO
-                               ,IdProcedimento)
+                    INSERT INTO public.""Procedimento_GTO""
+                               (""IdGTO""
+                               ,""IdProcedimento"")
                          VALUES
                                (@IdGTO
-                               ,@IdProcedimento);
-
-                        SELECT SCOPE_IDENTITY();";
+                               ,@IdProcedimento)
+                            RETURNING ""IdGTO"";";
 
         public static string ListarProcedimentoGTO = @"
                     SELECT  
-	                       b.[IdProcedimento]
-                          ,b.[Codigo]
-                          ,b.[NomeProcedimento]
-                          ,b.[ValorProcedimento]
-                          ,b.[Exigencias]
-                          ,b.[Anotacoes]
-                          ,b.[PublicID]
+	                       b.""IdProcedimento""
+                          ,b.""Codigo""
+                          ,b.""NomeProcedimento""
+                          ,b.""ValorProcedimento""
+                          ,b.""Exigencias""
+                          ,b.""Anotacoes""
+                          ,b.""PublicID""
                     FROM 
-                    Procedimento_GTO a (NOLOCK)
-		                    inner join Procedimento b ON a.idProcedimento = b.IdProcedimento
+                    ""Procedimento_GTO"" a (NOLOCK)
+		                    inner join ""Procedimento"" b ON a.""idProcedimento"" = b.""IdProcedimento""
                     where idGTO = @idGTO";
 
       
 
 
 
-        public static string DeleteGTO = @" UPDATE dbo.GTO
-                                       SET Status = @Status
-                                       WHERE publicID = @publicID   ";
+        public static string DeleteGTO = @" UPDATE public.""GTO""
+                                       SET ""Status"" = @Status
+                                       WHERE ""PublicID""::""text"" = @publicID   ";
 
         public static string UpdateGTO = @"
-                   UPDATE dbo.GTO
-                       SET Numero = @Numero
-                          ,Solicitacao = @Solicitacao
-                          ,Vencimento = @Vencimento
-                          ,Status = @Status
-                          ,PacienteId = @Paciente
-                          ,PlanoOperadoraId = @PlanoOperadora
-                     WHERE Id = @Id   ";
+                   UPDATE public.GTO
+                       SET ""Numero"" = @Numero
+                          ,""Solicitacao"" = @Solicitacao
+                          ,""Vencimento"" = @Vencimento
+                          ,""Status"" = @Status
+                          ,""PacienteId"" = @Paciente
+                          ,""PlanoOperadoraId"" = @PlanoOperadora
+                      WHERE ""PublicID""::""text"" = @publicID   ";
 
         public static string CreateGTO = @"
-                INSERT INTO dbo.GTO
-                           (Numero
-                           , Status
-                           , PlanoOperadoraId
-                           , PacienteId
-                           , Solicitacao
-                           , Vencimento)
+                INSERT INTO public.""GTO""
+                           ( ""Numero""
+                           , ""Status""
+                           , ""PlanoOperadoraId""
+                           , ""PacienteId""
+                           , ""Solicitacao""
+                           , ""Vencimento"")
                      VALUES
                            (@Numero
                            , @Status
                            , @PlanoOperadora
                            , @Paciente
                            , @Solicitacao
-                           , @Vencimento);
+                           , @Vencimento)
                 
-                SELECT SCOPE_IDENTITY()";
+                 RETURNING ""Id""";
 
         public static string ListGTO = @"
                                     SELECT  a.Id
-                                        ,a.Numero
-                                        ,a.Status
-                                        ,a.PlanoOperadoraId
-		                                ,b.NomeFantasia
-		                                ,b.RazaoSocial
-                                        ,a.PacienteId
-		                                ,c.Nome
-                                        ,a.Solicitacao
-                                        ,a.Vencimento
-                                        ,a.PublicID
-                                    FROM sagui.dbo.GTO a (NOLOCK) 
-			                                INNER JOIN  PlanoOperadora b (NOLOCK)  ON  a.PlanoOperadoraId = b.Id
-			                                INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id";
+                                        ,a.""Numero""
+                                        ,a.""Status""
+                                        ,a.""PlanoOperadoraId""
+		                                ,b.""NomeFantasia""
+		                                ,b.""RazaoSocial""
+                                        ,a.""PacienteId""
+		                                ,c.""Nome""
+                                        ,a.""Solicitacao""
+                                        ,a.""Vencimento""
+                                        ,a.""PublicID""
+                                    FROM public.""GTO"" a (NOLOCK) 
+			                                INNER JOIN  ""PlanoOperadora"" b (NOLOCK)  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c (NOLOCK)  ON  a.""PacienteId"" = c.""Id";
 
         public static string ObterGTObyPublicID = @"
                                      SELECT  a.Id
-                                        ,a.Numero
-                                        ,a.Status
-                                        ,a.PlanoOperadoraId
-		                                ,b.NomeFantasia
-		                                ,b.RazaoSocial
-                                        ,a.PacienteId
-		                                ,c.Nome
-                                        ,a.Solicitacao
-                                        ,a.Vencimento
-                                        ,a.PublicID
-                                    FROM sagui.dbo.GTO a (NOLOCK) 
-			                                INNER JOIN  PlanoOperadora b (NOLOCK)  ON  a.PlanoOperadoraId = b.Id
-			                                INNER JOIN  UsuarioBase c (NOLOCK)  ON  a.PacienteId = c.Id
-                            WHERE a.PublicID = @PublicID";
+                                        ,a.""Numero""
+                                        ,a.""Status""
+                                        ,a.""PlanoOperadoraId""
+		                                ,b.""NomeFantasia""
+		                                ,b.""RazaoSocial""
+                                        ,a.""PacienteId""
+		                                ,c.""Nome""
+                                        ,a.""Solicitacao""
+                                        ,a.""Vencimento""
+                                        ,a.""PublicID""
+                                    FROM public.""GTO"" a (NOLOCK) 
+			                                INNER JOIN  ""PlanoOperadora"" b (NOLOCK)  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c (NOLOCK)  ON  a.""PacienteId"" = c.""Id
+                            WHERE a.""PublicID""::""text"" = @PublicID";
 
         #endregion
 
@@ -313,45 +312,45 @@ namespace Sagui.Data
 
 
         public static string ObterUsuario = @"
-                            SELECT Id
-                                  ,Funcao
-                                  ,Nome
-                                  ,Anotacoes
-                                  ,CPF
-                                  ,Email
-                                  ,Telefone
-                                  ,CRO
-                                  ,Discriminator
-                                  ,PublicId
-                              FROM dbo.UsuarioBase 
-                            WHERE TipoUsuario = @TipoUsuario
-                              AND PublicID = @PublicID";
+                            SELECT ""Id""
+                                  ,""Funcao""
+                                  ,""Nome""
+                                  ,""Anotacoes""
+                                  ,""CPF""
+                                  ,""Email""
+                                  ,""Telefone""
+                                  ,""CRO""
+                                  ,""Discriminator""
+                                  ,""PublicId""
+                              FROM public.""UsuarioBase""
+                            WHERE ""TipoUsuario"" = @TipoUsuario
+                              AND ""PublicID""::""text"" = @PublicID";
 
 
         public static string ListUsuario = @"
-                            SELECT Id
-                                  ,Funcao
-                                  ,Nome
-                                  ,Anotacoes
-                                  ,CPF
-                                  ,Email
-                                  ,Telefone
-                                  ,CRO
-                                  ,Discriminator
-                                  ,PublicId
-                              FROM dbo.UsuarioBase 
-                            WHERE TipoUsuario = @TipoUsuario";
+                             SELECT ""Id""
+                                  ,""Funcao""
+                                  ,""Nome""
+                                  ,""Anotacoes""
+                                  ,""CPF""
+                                  ,""Email""
+                                  ,""Telefone""
+                                  ,""CRO""
+                                  ,""Discriminator""
+                                  ,""PublicId""
+                              FROM public.""UsuarioBase""
+                            WHERE ""TipoUsuario"" = @TipoUsuario";
 
 
         public static string CreateUsuarioPaciente = @"
-                INSERT INTO dbo.UsuarioBase
-                               (Funcao
-                               ,Nome
-                               ,Anotacoes
-                               ,CPF
-                               ,Email
-                               ,Telefone
-                               ,TipoUsuario)
+                INSERT INTO public.""UsuarioBase""
+                               (""Funcao""
+                               ,""Nome""
+                               ,""Anotacoes""
+                               ,""CPF""
+                               ,""Email""
+                               ,""Telefone""
+                               ,""TipoUsuario"")
                          VALUES
                                (@Funcao
                                ,@Nome
@@ -359,32 +358,31 @@ namespace Sagui.Data
                                ,@CPF
                                ,@Email
                                ,@Telefone
-                               ,@TipoUsuario);
-                
-                SELECT SCOPE_IDENTITY()";
+                               ,@TipoUsuario) 
+                        RETURNING ""Id"";";
 
         public static string UpdateUsuarioPaciente = @"
-                UPDATE dbo.UsuarioBase
-                       SET Funcao = @Funcao
-                          ,Nome = @Nome
-                          ,Anotacoes = @Anotacoes
-                          ,CPF = @CPF
-                          ,Email = @Email
-                          ,Telefone = @Telefone
-                          ,Discriminator = @Discriminator
-                     WHERE PublicId = @PublicId";
+                UPDATE public.""UsuarioBase""""
+                       SET ""Funcao"" = @Funcao
+                          ,""Nome"" = @Nome
+                          ,""Anotacoes"" = @Anotacoes
+                          ,""CPF"" = @CPF
+                          ,""Email"" = @Email
+                          ,""Telefone"" = @Telefone
+                          ,""Discriminator"" = @Discriminator
+                     WHERE ""PublicID""::""text"" = @PublicId";
 
 
 
         public static string CreateUsuarioFuncionario = @"
-                INSERT INTO dbo.UsuarioBase
-                               (Funcao
-                               ,Nome
-                               ,Anotacoes
-                               ,CPF
-                               ,Email
-                               ,Telefone
-                               ,TipoUsuario)
+                INSERT INTO public.""UsuarioBase""
+                               (""Funcao""
+                               ,""Nome""
+                               ,""Anotacoes""
+                               ,""CPF""
+                               ,""Email""
+                               ,""Telefone""
+                               ,""TipoUsuario"")
                          VALUES
                                (@Funcao
                                ,@Nome
@@ -392,31 +390,30 @@ namespace Sagui.Data
                                ,@CPF
                                ,@Email
                                ,@Telefone
-                               ,@TipoUsuario);
-                
-                SELECT SCOPE_IDENTITY()";
+                               ,@TipoUsuario) 
+                        RETURNING ""Id"";";
 
         public static string UpdateUsuarioFuncionario = @"
-                UPDATE dbo.UsuarioBase
-                       SET Funcao = @Funcao
-                          ,Nome = @Nome
-                          ,Anotacoes = @Anotacoes
-                          ,CPF = @CPF
-                          ,Email = @Email
-                          ,Telefone = @Telefone
-                          ,Discriminator = @Discriminator
-                     WHERE PublicId = @PublicId";
+                UPDATE public.""UsuarioBase""""
+                       SET ""Funcao"" = @Funcao
+                          ,""Nome"" = @Nome
+                          ,""Anotacoes"" = @Anotacoes
+                          ,""CPF"" = @CPF
+                          ,""Email"" = @Email
+                          ,""Telefone"" = @Telefone
+                          ,""Discriminator"" = @Discriminator
+                     WHERE ""PublicID""::""text"" = @PublicId";
 
         public static string CreateUsuarioDentista = @"
-                INSERT INTO dbo.UsuarioBase
-                               (Funcao
-                               ,Nome
-                               ,Anotacoes
-                               ,CPF
-                               ,Email
-                               ,Telefone
-                               ,TipoUsuario
-                               ,CRO)
+                INSERT INTO public.""UsuarioBase""
+                               (""Funcao""
+                               ,""Nome""
+                               ,""Anotacoes""
+                               ,""CPF""
+                               ,""Email""
+                               ,""Telefone""
+                               ,""TipoUsuario""
+                               ,""CRO"")
                          VALUES
                                (@Funcao
                                ,@Nome
@@ -425,107 +422,106 @@ namespace Sagui.Data
                                ,@Email
                                ,@Telefone
                                ,@TipoUsuario
-                               ,@CRO);
-                
-                SELECT SCOPE_IDENTITY()";
+                               ,@CRO)
+                        RETURNING ""Id""";
 
         public static string UpdateUsuarioDentista = @"
-                UPDATE dbo.UsuarioBase
-                       SET Funcao = @Funcao
-                          ,Nome = @Nome
-                          ,Anotacoes = @Anotacoes
-                          ,CPF = @CPF
-                          ,Email = @Email
-                          ,Telefone = @Telefone
-                          ,CRO = @CRO
-                          ,Discriminator = @Discriminator
-                     WHERE PublicId = @PublicId";
+                UPDATE public.""UsuarioBase""
+                       SET ""Funcao"" = @Funcao
+                          ,""Nome"" = @Nome
+                          ,""Anotacoes"" = @Anotacoes
+                          ,""CPF"" = @CPF
+                          ,""Email"" = @Email
+                          ,""Telefone"" = @Telefone
+                          ,""CRO"" = @CRO
+                          ,""Discriminator"" = @Discriminator
+                     WHERE ""PublicID""::""text"" = @PublicId";
 
 
         public static string DeleteUsuario = @"
-                            DELETE FROM sagui.dbo.UsuarioBase
-                            WHERE PublicID = @PublicID";
+                            DELETE FROM public.""UsuarioBase""
+                            WHERE ""PublicID""::""text"" = @PublicID";
 
         #endregion
 
         #region PlanoOperadora
         public static string CreatePlanoOperadoraPaciente = @"
-                    INSERT INTO dbo.PlanoOperadoraPaciente
-                       (NumeroPlano
-                       ,PlanoOperadora_Id
-                       ,Paciente_Id)
+                    INSERT INTO public.""PlanoOperadoraPaciente""
+                       (""NumeroPlano""
+                       ,""PlanoOperadora_Id""
+                       ,""Paciente_Id"")
                  VALUES
                        (@NumeroPlano
                        ,@PlanoOperadora_Id
-                       ,@Paciente_Id);
-
-                SELECT SCOPE_IDENTITY();";
+                       ,@Paciente_Id)
+                        RETURNING ""Id"";";
 
         public static string CreatePlanoOperadora = @"
-                    INSERT INTO dbo.PlanoOperadora
-                       (NomeFantasia
-                       ,RazaoSocial
-                       ,CNPJ
-                       ,DataEnvioLote
-                       ,DataRecebimentoLote)
+                    INSERT INTO public.""PlanoOperadora""
+                       (""NomeFantasia""
+                       ,""RazaoSocial""
+                       ,""CNPJ""
+                       ,""DataEnvioLote""
+                       ,""DataRecebimentoLote"")
                  VALUES
                        (@NomeFantasia
                        ,@RazaoSocial
                        ,@CNPJ
                        ,@DataEnvioLote
-                       ,@DataRecebimentoLote);
-
-                SELECT SCOPE_IDENTITY();";
+                       ,@DataRecebimentoLote)
+                        RETURNING ""Id"";";
 
 
         public static string ObterPlanoOperadora = @"
-                            SELECT Id
-                                ,NomeFantasia
-                                ,RazaoSocial
-                                ,CNPJ
-                                ,DataEnvioLote
-                                ,DataRecebimentoLote
-                                ,PublicId
-                              FROM dbo.PlanoOperadora 
-                            WHERE PublicID = @PublicID";
+                            SELECT 
+                                 ""Id""
+                                ,""NomeFantasia""
+                                ,""RazaoSocial""
+                                ,""CNPJ""
+                                ,""DataEnvioLote""
+                                ,""DataRecebimentoLote""
+                                ,""PublicId""
+                              FROM public.""PlanoOperadora"" 
+                            WHERE ""PublicID""::""text"" = @PublicID";
 
 
         public static string ListPlanoOperadora = @"
-                            SELECT Id
-                                ,NomeFantasia
-                                ,RazaoSocial
-                                ,CNPJ
-                                ,DataEnvioLote
-                                ,DataRecebimentoLote
-                                ,PublicId
-                              FROM dbo.PlanoOperadora";
+                             SELECT 
+                                 ""Id""
+                                ,""NomeFantasia""
+                                ,""RazaoSocial""
+                                ,""CNPJ""
+                                ,""DataEnvioLote""
+                                ,""DataRecebimentoLote""
+                                ,""PublicId""
+                              FROM public.""PlanoOperadora""";
 
         public static string UpdatePlanoOperadora = @"
-                UPDATE dbo.PlanoOperadora
-                       SET NomeFantasia = @NomeFantasia
-                          ,RazaoSocial = @RazaoSocial
-                          ,CNPJ = @CNPJ
-                          ,DataEnvioLote = @DataEnvioLote
-                          ,DataRecebimentoLote = @DataRecebimentoLote
-                     WHERE PublicId = @PublicId";
+                UPDATE public.""PlanoOperadora""
+                       SET ""NomeFantasia"" = @NomeFantasia
+                          ,""RazaoSocial"" = @RazaoSocial
+                          ,""CNPJ"" = @CNPJ
+                          ,""DataEnvioLote"" = @DataEnvioLote
+                          ,""DataRecebimentoLote"" = @DataRecebimentoLote
+                     WHERE ""PublicID""::""text"" = @PublicId";
 
 
         public static string DeletePlanoOperadora = @"
-                            DELETE FROM dbo.PlanoOperadora
-                            WHERE PublicID = @PublicID";
+                            DELETE FROM public.""PlanoOperadora""
+                            WHERE ""PublicID""::""text"" = @PublicID";
 
         #endregion
 
         #region Lote
         public static string CreateLote = @"
-                    INSERT INTO dbo.Lote
-                       (PlanoOperadoraId
-                       ,TotalGTOLote
-                       ,ValorTotalLote
-                       ,DataEnvioCorreio
-                       ,DataPrevistaRecebimento
-                       ,StatusLote
-                       ,FuncionarioId)
+                    INSERT INTO public.""Lote""
+                       (""PlanoOperadoraId""
+                       ,""TotalGTOLote""
+                       ,""ValorTotalLote""
+                       ,""DataEnvioCorreio""
+                       ,""DataPrevistaRecebimento""
+                       ,""StatusLote""
+                       ,""FuncionarioId"")
                  VALUES
                        (@PlanoOperadora
                        ,@TotalGTOLote
@@ -533,33 +529,33 @@ namespace Sagui.Data
                        ,@DataEnvioCorreio
                        ,@DataPrevistaRecebimento
                        ,@StatusLote
-                       ,@Funcionario);
-
-                SELECT SCOPE_IDENTITY();";
+                       ,@Funcionario)
+                        RETURNING ""Id"";";
 
         public static string ListLote = @"
-                            SELECT Id
-                                ,NomeFantasia
-                                ,RazaoSocial
-                                ,CNPJ
-                                ,DataEnvioLote
-                                ,DataRecebimentoLote
-                                ,PublicId
-                              FROM dbo.PlanoOperadora";
+                            SELECT 
+                                 ""Id""
+                                ,""NomeFantasia""
+                                ,""RazaoSocial""
+                                ,""CNPJ""
+                                ,""DataEnvioLote""
+                                ,""DataRecebimentoLote""
+                                ,""PublicId""
+                              FROM public.""PlanoOperadora""";
 
         public static string UpdateLote = @"
-                UPDATE dbo.PlanoOperadora
-                       SET NomeFantasia = @NomeFantasia
-                          ,RazaoSocial = @RazaoSocial
-                          ,CNPJ = @CNPJ
-                          ,DataEnvioLote = @DataEnvioLote
-                          ,DataRecebimentoLote = @DataRecebimentoLote
-                     WHERE PublicId = @PublicId";
+                UPDATE public.""PlanoOperadora""
+                       SET ""NomeFantasia"" = @NomeFantasia
+                          ,""RazaoSocial"" = @RazaoSocial
+                          ,""CNPJ"" = @CNPJ
+                          ,""DataEnvioLote"" = @DataEnvioLote
+                          ,""DataRecebimentoLote"" = @DataRecebimentoLote
+                     WHERE ""PublicID""::""text"" = @PublicId";
 
 
         public static string DeleteLote = @"
-                            DELETE FROM dbo.Lote
-                            WHERE PublicID = @PublicID";
+                            DELETE FROM public.""Lote""
+                            WHERE ""PublicID""::""text"" = @PublicID";
 
         #endregion
     }
