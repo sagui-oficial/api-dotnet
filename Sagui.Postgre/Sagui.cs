@@ -34,7 +34,7 @@ namespace Sagui.Postgres
             if (!optionsBuilder.IsConfigured)
             {
                 IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.Development.json")
                 .Build();
                 var connectionString = configuration.GetConnectionString("SaguiPostgres");
                 optionsBuilder.UseNpgsql(connectionString);

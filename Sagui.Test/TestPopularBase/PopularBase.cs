@@ -73,11 +73,11 @@ namespace Sagui.Test.TestPopularBase
                     foreach (Arquivos p in arquivo)
                     {
                         context.Database.ExecuteSqlCommand(SQL.CreateArquivo,
-                        new SqlParameter("Id", p.Id),
-                        new SqlParameter("Nome", p.Nome),
-                        new SqlParameter("Stream", p.Stream),
-                        new SqlParameter("PathArquivo", p.PathArquivo),
-                        new SqlParameter("DataCriacao", p.DataCriacao));
+                        new NpgsqlParameter("Id", p.Id),
+                        new NpgsqlParameter("Nome", p.Nome),
+                        new NpgsqlParameter("Stream", p.Stream),
+                        new NpgsqlParameter("PathArquivo", p.PathArquivo),
+                        new NpgsqlParameter("DataCriacao", p.DataCriacao));
                     }
 
 
@@ -95,11 +95,11 @@ namespace Sagui.Test.TestPopularBase
                     foreach (PlanoOperadora p in planoOperadora)
                     {
                         context.Database.ExecuteSqlCommand(SQL.CreatePlanoOperadora,
-                        new SqlParameter("NomeFantasia", p.NomeFantasia),
-                        new SqlParameter("RazaoSocial", p.RazaoSocial),
-                        new SqlParameter("CNPJ", p.CNPJ),
-                        new SqlParameter("DataEnvioLote", p.DataEnvioLote),
-                        new SqlParameter("DataRecebimentoLote", p.DataRecebimentoLote));
+                        new NpgsqlParameter("NomeFantasia", p.NomeFantasia),
+                        new NpgsqlParameter("RazaoSocial", p.RazaoSocial),
+                        new NpgsqlParameter("CNPJ", p.CNPJ),
+                        new NpgsqlParameter("DataEnvioLote", p.DataEnvioLote),
+                        new NpgsqlParameter("DataRecebimentoLote", p.DataRecebimentoLote));
                     }
 
                     if (!context.UsuarioBase.Any())
@@ -116,13 +116,13 @@ namespace Sagui.Test.TestPopularBase
                         foreach (Funcionario p in funcionarios)
                         {
                             context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
-                            new SqlParameter("Nome", p.Nome),
-                            new SqlParameter("Anotacoes", p.Anotacoes),
-                            new SqlParameter("CPF", p.CPF),
-                            new SqlParameter("Email", p.Email),
-                            new SqlParameter("Funcao", p.Funcao),
-                            new SqlParameter("Telefone", p.Telefone),
-                            new SqlParameter("TipoUsuario", p.TipoUsuario));
+                            new NpgsqlParameter("Nome", p.Nome),
+                            new NpgsqlParameter("Anotacoes", p.Anotacoes),
+                            new NpgsqlParameter("CPF", p.CPF),
+                            new NpgsqlParameter("Email", p.Email),
+                            new NpgsqlParameter("Funcao", p.Funcao),
+                            new NpgsqlParameter("Telefone", p.Telefone),
+                            new NpgsqlParameter("TipoUsuario", p.TipoUsuario));
                         }
 
 
@@ -136,14 +136,14 @@ namespace Sagui.Test.TestPopularBase
                         foreach (Dentinsta p in dentinstas)
                         {
                             context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
-                            new SqlParameter("Nome", p.Nome),
-                            new SqlParameter("Anotacoes", p.Anotacoes),
-                            new SqlParameter("CPF", p.CPF),
-                            new SqlParameter("Email", p.Email),
-                            new SqlParameter("Funcao", p.Funcao),
-                            new SqlParameter("Telefone", p.Telefone),
-                            new SqlParameter("TipoUsuario", p.TipoUsuario),
-                            new SqlParameter("CRO", p.CRO));
+                            new NpgsqlParameter("Nome", p.Nome),
+                            new NpgsqlParameter("Anotacoes", p.Anotacoes),
+                            new NpgsqlParameter("CPF", p.CPF),
+                            new NpgsqlParameter("Email", p.Email),
+                            new NpgsqlParameter("Funcao", p.Funcao),
+                            new NpgsqlParameter("Telefone", p.Telefone),
+                            new NpgsqlParameter("TipoUsuario", p.TipoUsuario),
+                            new NpgsqlParameter("CRO", p.CRO));
                         }
 
 
@@ -156,13 +156,13 @@ namespace Sagui.Test.TestPopularBase
                         foreach (Paciente p in pacientes)
                         {
                             context.Database.ExecuteSqlCommand(SQL.CreateUsuarioFuncionario,
-                            new SqlParameter("Nome", p.Nome),
-                            new SqlParameter("Anotacoes", p.Anotacoes),
-                            new SqlParameter("CPF", p.CPF),
-                            new SqlParameter("Email", p.Email),
-                            new SqlParameter("Funcao", p.Funcao),
-                            new SqlParameter("Telefone", p.Telefone),
-                            new SqlParameter("TipoUsuario", p.TipoUsuario));
+                            new NpgsqlParameter("Nome", p.Nome),
+                            new NpgsqlParameter("Anotacoes", p.Anotacoes),
+                            new NpgsqlParameter("CPF", p.CPF),
+                            new NpgsqlParameter("Email", p.Email),
+                            new NpgsqlParameter("Funcao", p.Funcao),
+                            new NpgsqlParameter("Telefone", p.Telefone),
+                            new NpgsqlParameter("TipoUsuario", p.TipoUsuario));
                         }
 
 
