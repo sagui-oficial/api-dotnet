@@ -4,6 +4,7 @@ staging:
  variables:
   HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
  script:
+ - cp Sagui.Application/appsettings.json Sagui.Application/bin/Debug/netcoreapp2.1/
  - dotnet ef database update -p Sagui.Postgre -s Sagui.Application
  - apt-get update -qy
  - apt-get install -y ruby-dev
