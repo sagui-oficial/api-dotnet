@@ -34,7 +34,7 @@ namespace Sagui.Application.Controllers
 
         
         [HttpGet("ListarProcedimento", Name = "ListarProcedimento")]
-        public async Task<IActionResult> GetAsync(int status)
+        public async Task<IActionResult> GetAsync()
         {
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
             //if (status != 0)
