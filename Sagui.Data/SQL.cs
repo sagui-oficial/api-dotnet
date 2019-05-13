@@ -11,77 +11,73 @@ namespace Sagui.Data
         #region arquivos
 
         public static string CreateArquivo = @"
-                   INSERT INTO public.Arquivo
-                               (Nome
-                               ,DataCriacao
-                               ,Stream
-                               ,PathArquivo)
+                   INSERT INTO public.""Arquivo""
+                               (""Nome""
+                               ,""DataCriacao""
+                               ,""Stream""
+                               ,""PathArquivo"")
                          VALUES
                                (@Nome
                                ,@DataCriacao
                                ,@Stream
-                               ,@PathArquivo);
-
-                SELECT SCOPE_IDENTITY();";
+                               ,@PathArquivo) RETURNING ""Id"";";
 
 
         #region ArquivoGTO
 
         public static string CreateArquivoGTO = @"
-                   INSERT INTO public.Arquivo
-                               (Nome
-                               ,DataCriacao
-                               ,Stream
-                               ,PathArquivo)
+                      INSERT INTO public.""Arquivo""
+                               (""Nome""
+                               ,""DataCriacao""
+                               ,""Stream""
+                               ,""PathArquivo"")
                          VALUES
                                (@Nome
                                ,@DataCriacao
                                ,@Stream
-                               ,@PathArquivo);
-
-                SELECT SCOPE_IDENTITY();";
+                               ,@PathArquivo) RETURNING ""Id"";";
 
         public static string ListarArquivosGTO = @"
-                    SELECT arq.Id
-                          ,arq.Nome
-                          ,arq.Stream
-                          ,arq.DataCriacao
-                          ,arq.PathArquivo
-                          ,arq.Extensao
-	                      ,agto.idArquivo_GTO
-                          ,agto.PublicID
-                          FROM public.Arquivo (NOLOCK) arq
-                    INNER JOIN public.Arquivo_GTO (NOLOCK) agto
-                       ON arq.Id = agto.idGTO";
+                    SELECT arq.""Id""
+                          ,arq.""Nome""
+                          ,arq.""Stream""
+                          ,arq.""DataCriacao""
+                          ,arq.""PathArquivo""
+                          ,arq.""Extensao""
+	                      ,agto.""idArquivo_GTO""
+                          ,agto.""PublicID""
+                          FROM public.""Arquivo"" (NOLOCK) arq
+                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
+                       ON arq.Id = agto.""idGTO""";
 
 
         public static string ListarArquivoGTO = @"
-                    SELECT arq.Id
-                          ,arq.Nome
-                          ,arq.Stream
-                          ,arq.DataCriacao
-                          ,arq.PathArquivo
-                          ,arq.Extensao
-	                      ,agto.idArquivo_GTO
-                          ,agto.PublicID
-                          FROM public.Arquivo arq
-                    INNER JOIN public.Arquivo_GTO agto
-                       ON arq.Id = agto.idGTO
+                      SELECT arq.""Id""
+                          ,arq.""Nome""
+                          ,arq.""Stream""
+                          ,arq.""DataCriacao""
+                          ,arq.""PathArquivo""
+                          ,arq.""Extensao""
+	                      ,agto.""idArquivo_GTO""
+                          ,agto.""PublicID""
+                          FROM public.""Arquivo"" (NOLOCK) arq
+                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
+                       ON arq.Id = agto.""idGTO""
                     WHERE agto.idGTO = @idGTO";
 
 
         public static string ObterArquivoGTOPorPublicId = @"
-                    SELECT arq.Id
-                          ,arq.Nome
-                          ,arq.Stream
-                          ,arq.DataCriacao
-                          ,arq.PathArquivo
-                          ,arq.Extensao
-	                      ,agto.idArquivo_GTO
-                          ,agto.PublicID
-                          FROM public.Arquivo arq
-                    INNER JOIN public.Arquivo_GTO agto
-                       ON arq.Id = agto.idGTO
+                    SELECT arq.""Id""
+                          ,arq.""Nome""
+                          ,arq.""Stream""
+                          ,arq.""DataCriacao""
+                          ,arq.""PathArquivo""
+                          ,arq.""Extensao""
+	                      ,agto.""idArquivo_GTO""
+                          ,agto.""PublicID""
+                          FROM public.""Arquivo"" (NOLOCK) arq
+                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
+                       ON arq.Id = agto.""idGTO""
                     WHERE agto.""PublicID""::""text"" = @PublicID";
 
 
@@ -93,57 +89,54 @@ namespace Sagui.Data
                           ,b.""Stream""
                           ,b.""DataCriacao""
                           ,b.""PathArquivo""
-                    FROM Arquivo_GTO a (NOLOCK)
-		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
-                    WHERE idGTO = @idGTO";
+                    FROM ""Arquivo_GTO"" a (NOLOCK)
+		                    inner join ""Arquivo"" b (NOLOCK) ON a.""idArquivo"" = b.""Id""
+                    WHERE ""idGTO"" = @idGTO";
 
         #endregion
 
         #region ArquivoPlanoOperadora
 
         public static string ObterArquivoPlanoOperadoraPorPublicId = @"
-                    SELECT arq.Id
-                          ,arq.Nome
-                          ,arq.Stream
-                          ,arq.DataCriacao
-                          ,arq.PathArquivo
-                          ,arq.Extensao
-	                      ,apo.idArquivo_GTO
-                          ,apo.PublicID
-                          FROM public.Arquivo arq
-                    INNER JOIN public.Arquivo_PlanoOperadora apo
-                       ON arq.Id = apo.idPlanoOperadora
+                    SELECT arq.""Id""
+                          ,arq.""Nome""
+                          ,arq.""Stream""
+                          ,arq.""DataCriacao""
+                          ,arq.""PathArquivo""
+                          ,arq.""Extensao""
+	                      ,apo.""idArquivo_GTO""
+                          ,apo.""PublicID""
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_PlanoOperadora"" apo
+                       ON arq.Id = apo.""idPlanoOperadora""
                     WHERE apo.""PublicID""::""text"" = @PublicID";
 
 
         public static string ListarArquivoPlanoOperadora = @"
-                    SELECT arq.Id
-                          ,arq.Nome
-                          ,arq.Stream
-                          ,arq.DataCriacao
-                          ,arq.PathArquivo
-                          ,arq.Extensao
-	                      ,apo.idArquivo_GTO
-                          ,apo.PublicID
-                          FROM public.Arquivo arq
-                    INNER JOIN public.Arquivo_PlanoOperadora apo
-                       ON arq.Id = apo.idPlanoOperadora
-                    WHERE apo.idPlanoOperadora = @idPlanoOperadora";
+                    SELECT arq.""Id""
+                          ,arq.""Nome""
+                          ,arq.""Stream""
+                          ,arq.""DataCriacao""
+                          ,arq.""PathArquivo""
+                          ,arq.""Extensao""
+	                      ,apo.""idArquivo_GTO""
+                          ,apo.""PublicID""
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_PlanoOperadora"" apo
+                       ON arq.Id = apo.""idPlanoOperadora""";
 
 
         public static string CreateArquivoPlanoOperadora = @"
-                   INSERT INTO public.Arquivo
-                               (Nome
-                               ,DataCriacao
-                               ,Stream
-                               ,PathArquivo)
+                   INSERT INTO public.""Arquivo""
+                               (""Nome""
+                               ,""DataCriacao""
+                               ,""Stream""
+                               ,""PathArquivo"")
                          VALUES
                                (@Nome
                                ,@DataCriacao
                                ,@Stream
-                               ,@PathArquivo);
-
-                SELECT SCOPE_IDENTITY();";
+                               ,@PathArquivo)RETURNING ""Id"";";
 
 
         public static string ObterArquivoPlanoOperadora = @"
@@ -153,9 +146,9 @@ namespace Sagui.Data
                           ,b.""Stream""
                           ,b.""DataCriacao""
                           ,b.""PathArquivo""
-                    FROM Arquivo_GTO a (NOLOCK)
-		                    inner join Arquivo b (NOLOCK) ON a.idArquivo = b.Id
-                    WHERE idGTO = @idGTO";
+                    FROM ""Arquivo_GTO"" a (NOLOCK)
+		                    inner join ""Arquivo"" b (NOLOCK) ON a.""idArquivo"" = b.""Id""
+                    WHERE ""idGTO"" = @idGTO";
 
         #endregion
 
@@ -220,7 +213,7 @@ namespace Sagui.Data
                            , @Solicitacao
                            , @Vencimento)
                 
-                 RETURNING ""Id""";
+                 RETURNING ""Id"";";
 
         public static string ListGTO = @"
                                     SELECT  a.Id
