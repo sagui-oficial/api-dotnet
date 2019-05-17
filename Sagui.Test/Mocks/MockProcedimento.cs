@@ -31,7 +31,7 @@ namespace Sagui.Test.Mocks
             Procedimento.Exigencias = "ZZZZZZZZ";
             Procedimento.NomeProcedimento = "Procedimento de Teste UPDATE";
             Procedimento.ValorProcedimento = 1.00;
-            Procedimento.PublicID = new Guid("18ecb2ec-78c0-11e9-9000-705a0f6970c5");
+            Procedimento.PublicID = new Guid("2f324660-78d5-11e9-be91-705a0f6970c5");
 
             return Procedimento;
         }
@@ -45,7 +45,7 @@ namespace Sagui.Test.Mocks
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";
             Procedimento.ValorProcedimento = 1.00;
-            Procedimento.PublicID = new Guid("18ecb2ec-78c0-11e9-9000-705a0f6970c5");
+            Procedimento.PublicID = new Guid("2f324660-78d5-11e9-be91-705a0f6970c5");
 
             return Procedimento;
         }
@@ -59,7 +59,7 @@ namespace Sagui.Test.Mocks
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";
             Procedimento.ValorProcedimento = 1.00;
-            Procedimento.PublicID = new Guid("18ecb2ec-78c0-11e9-9000-705a0f6970c5");
+            Procedimento.PublicID = new Guid("2f324660-78d5-11e9-be91-705a0f6970c5");
 
             return Procedimento;
         }
