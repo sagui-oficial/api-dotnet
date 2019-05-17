@@ -21,7 +21,7 @@ namespace Sagui.Test.TestProcedimentos
             RequestProcedimento requestProcedimento = new RequestProcedimento();
             MockProcedimento mock = new MockProcedimento();
 
-            requestProcedimento = mock.CriarMockProcedimento();
+            requestProcedimento = mock.DeletarMockProcedimento();
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

@@ -123,6 +123,7 @@ namespace Sagui.Postgres.Migrations
                     Stream = table.Column<byte[]>(nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false),
                     PathArquivo = table.Column<string>(nullable: true),
+                    PublicID = table.Column<Guid>(nullable: false, defaultValueSql: "uuid_generate_v1()")
 
                 },
                 constraints: table =>
@@ -141,6 +142,7 @@ namespace Sagui.Postgres.Migrations
                     ValorProcedimento = table.Column<double>(nullable: false),
                     Exigencias = table.Column<string>(nullable: true),
                     Anotacoes = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: true, defaultValueSql: "1"),
                     PublicID = table.Column<Guid>(nullable: false, defaultValueSql: "uuid_generate_v1()")
 
                 },

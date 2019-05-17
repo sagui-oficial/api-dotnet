@@ -25,7 +25,7 @@ namespace Sagui.Postgres.Migrations
 
                     b.Property<Guid>("PublicID")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("newsequentialid()");
+                        .HasDefaultValueSql("uuid_generate_v1()");
 
                     b.Property<DateTime>("DataCriacao");
 
@@ -45,8 +45,6 @@ namespace Sagui.Postgres.Migrations
                     b.Property<byte[]>("Stream");
 
                     b.HasKey("Id", "PublicID");
-
-                    b.HasAlternateKey("PublicID");
 
                     b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
 
@@ -234,6 +232,27 @@ namespace Sagui.Postgres.Migrations
                     b.ToTable("Arquivo_GTO");
 
                     b.HasDiscriminator().HasValue("Arquivo_GTO");
+                });
+
+            modelBuilder.Entity("Sagui.Model.Dentinsta", b =>
+                {
+                    b.HasBaseType("Sagui.Model.UsuarioBase");
+
+                    b.Property<string>("CRO");
+
+                    b.ToTable("Dentinsta");
+
+                    b.HasDiscriminator().HasValue("Dentinsta");
+                });
+
+            modelBuilder.Entity("Sagui.Model.Funcionario", b =>
+                {
+                    b.HasBaseType("Sagui.Model.UsuarioBase");
+
+
+                    b.ToTable("Funcionario");
+
+                    b.HasDiscriminator().HasValue("Funcionario");
                 });
 
             modelBuilder.Entity("Sagui.Model.Paciente", b =>
