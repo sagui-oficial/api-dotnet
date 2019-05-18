@@ -34,7 +34,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             //{
                 var _Procedimento = procedimentoService.Deletar(Procedimentos);
 
-                if (_Procedimento.IdProcedimento != 0)
+                if (_Procedimento.PublicID != null)
                 {
                     responseProcedimento.Procedimento = _Procedimento;
                     responseProcedimento.ExecutionDate = DateTime.Now;
