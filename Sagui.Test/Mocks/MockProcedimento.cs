@@ -13,7 +13,7 @@ namespace Sagui.Test.Mocks
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.IdProcedimento = 1;
-            Procedimento.Codigo = 1;
+            Procedimento.Codigo = "1";
             Procedimento.Anotacoes = "AAAAAA";
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";
@@ -26,7 +26,7 @@ namespace Sagui.Test.Mocks
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.IdProcedimento = 1;
-            Procedimento.Codigo = 1;
+            Procedimento.Codigo = "1";
             Procedimento.Anotacoes = "ZZZZZZZ";
             Procedimento.Exigencias = "ZZZZZZZZ";
             Procedimento.NomeProcedimento = "Procedimento de Teste UPDATE";
@@ -40,7 +40,7 @@ namespace Sagui.Test.Mocks
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.IdProcedimento = 1;
-            Procedimento.Codigo = 1;
+            Procedimento.Codigo = "1";
             Procedimento.Anotacoes = "AAAAAA";
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";
@@ -54,7 +54,7 @@ namespace Sagui.Test.Mocks
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.IdProcedimento = 1;
-            Procedimento.Codigo = 1;
+            Procedimento.Codigo = "1";
             Procedimento.Anotacoes = "AAAAAA";
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";

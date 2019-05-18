@@ -29,8 +29,8 @@ namespace Sagui.Test.TestPopularBase
                 {
                     var procedimentos = new List<Procedimentos>
                         {
-                        new Procedimentos{IdProcedimento = 1, Codigo=1,NomeProcedimento="Procedimento 1",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
-                        new Procedimentos{IdProcedimento = 2, Codigo=2,NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
+                        new Procedimentos{IdProcedimento = 1, Codigo="1",NomeProcedimento="Procedimento 1",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
+                        new Procedimentos{IdProcedimento = 2, Codigo="2",NomeProcedimento="Procedimento 2",Exigencias="AAAAAAAAAAAAA", Anotacoes="AAAAAAAAAAAAA", ValorProcedimento= 1.0, Status= 1},
                         };
 
 

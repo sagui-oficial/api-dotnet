@@ -25,7 +25,7 @@ namespace Sagui.Data.Lookup.Procedimento
                         Model.Procedimentos _Procedimento = new Model.Procedimentos();
                         _Procedimento.IdProcedimento = Convert.ToInt32(reader["IdProcedimento"]);
                         _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
-                        _Procedimento.Codigo = Convert.ToInt32(reader["Codigo"]);
+                        _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
                         _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
@@ -59,7 +59,7 @@ namespace Sagui.Data.Lookup.Procedimento
                         Model.Procedimentos _Procedimento = new Model.Procedimentos();
                         _Procedimento.IdProcedimento = Convert.ToInt32(reader["IdProcedimento"]);
                         _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
-                        _Procedimento.Codigo = Convert.ToInt32(reader["Codigo"]);
+                        _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
                         _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
@@ -94,7 +94,7 @@ namespace Sagui.Data.Lookup.Procedimento
                         Model.Procedimentos _Procedimento = new Model.Procedimentos();
                         _Procedimento.IdProcedimento = Convert.ToInt32(reader["IdProcedimento"]);
                         _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
-                        _Procedimento.Codigo = Convert.ToInt32(reader["Codigo"]);
+                        _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
                         _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
                         _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);

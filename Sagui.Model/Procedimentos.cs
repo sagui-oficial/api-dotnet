@@ -13,7 +13,7 @@ namespace Sagui.Model
     {
         [Key, Column(Order=1)]
         public int IdProcedimento { get; set; }
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public string NomeProcedimento { get; set; }
         public double ValorProcedimento { get; set; }
         public string Exigencias { get; set; }
