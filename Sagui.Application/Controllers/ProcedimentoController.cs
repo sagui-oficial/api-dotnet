@@ -84,9 +84,9 @@ namespace Sagui.Application.Controllers
             };
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
 
-            AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);
+            DeletarProcedimentoRequestHandler deletarProcedimentoRequestHandler = new DeletarProcedimentoRequestHandler(ProcedimentoService);
 
-            return await this.HandleRequest(criarProcedimentoRequestHandler, requestProcedimento);
+            return await this.HandleRequest(deletarProcedimentoRequestHandler, requestProcedimento);
 
         }
 
