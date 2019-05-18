@@ -63,7 +63,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("AtualizarProcedimento", Name = "AtualizarProcedimento")]
+        [HttpPatch("AtualizarProcedimento", Name = "AtualizarProcedimento")]
         public async Task<IActionResult> AtualizarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
