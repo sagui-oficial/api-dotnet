@@ -28,7 +28,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             //DbParams.Add(nameof(PlanoOperadora.ListaProcedimentos), PlanoOperadora.ListaProcedimentos);
             //DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
             
-            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreatePlanoOperadora, DbParams);
 
             try
             {
@@ -39,7 +39,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
                     PlanoOperadora.Id = Convert.ToInt32(newId);
                 }
 
-                dataInfrastructure.transaction.Commit();
+               
             }
             catch (Exception e)
             {
