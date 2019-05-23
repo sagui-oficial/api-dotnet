@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sagui.Model
+namespace Sagui.Model.ValueObject
 {
    
-    public static class StatusGTO
+    public static class StatusUsuario
     {
         public enum Status
         {
-            [Description("Criada")]
+            [Description("Ativo")]
             Criada = 1,
-            [Description("Concluida")]
+            [Description("Inativo")]
             Concluida = 2,
-            [Description("Deletada")]
+            [Description("Deletado")]
             Deletada = 99
         }
     }

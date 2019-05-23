@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sagui.Model
+namespace Sagui.Model.ValueObject
 {
    
-    public static class StatusUsuario
+    public static class StatusProcedimento
     {
         public enum Status
         {
