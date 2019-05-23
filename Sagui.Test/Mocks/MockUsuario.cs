@@ -1,4 +1,5 @@
 ﻿using Sagui.Model;
+using Sagui.Model.ValueObject;
 using Sagui.Service.RequestResponse;
 using System;
 using System.Collections.Generic;

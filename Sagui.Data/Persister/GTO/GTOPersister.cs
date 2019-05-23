@@ -1,5 +1,6 @@
 ﻿using Sagui.Data.Base;
 using Sagui.Model;
+using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
 

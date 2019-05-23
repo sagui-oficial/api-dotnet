@@ -83,7 +83,9 @@ namespace Sagui.Data
 
         public void Dispose()
         {
+            dataInfrastructure.connection.Close();
             dataInfrastructure = null;
+
         }
     }
 

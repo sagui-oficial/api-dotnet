@@ -293,11 +293,7 @@ namespace Sagui.Data
 
         public static string UpdateProcedimento = @"
                             UPDATE  public.""Procedimento""
-                                    SET ""Codigo"" = @Codigo
-                                      ,""NomeProcedimento"" = @NomeProcedimento
-                                      ,""ValorProcedimento"" = @ValorProcedimento
-                                      ,""Exigencias"" = @Exigencias
-                                      ,""Anotacoes"" = @Anotacoes
+                                    SET ""Status"" = @Status                                      
                             WHERE ""PublicID""::text = @PublicID";
         #endregion
 
