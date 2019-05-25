@@ -43,6 +43,7 @@ namespace Sagui.Test.Mocks
             planoOperadora.DataRecebimentoLote = DateTime.Now.AddDays(14);
             planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
             planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
+            planoOperadora.PublicID = new Guid("a99b558a-7e17-11e9-b2e1-705a0f6970c5");
 
             return planoOperadora;
         }

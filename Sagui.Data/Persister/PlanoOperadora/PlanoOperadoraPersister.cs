@@ -22,11 +22,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
             DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
             DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
-            
-            //DbParams.Add(nameof(PlanoOperadora.Id), PlanoOperadora.Id);
-            //DbParams.Add(nameof(PlanoOperadora.ListaArquivos), PlanoOperadora.ListaArquivos);
-            //DbParams.Add(nameof(PlanoOperadora.ListaProcedimentos), PlanoOperadora.ListaProcedimentos);
-            //DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
+                     
             
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreatePlanoOperadora, DbParams);
 
@@ -49,7 +45,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             return PlanoOperadora;
         }
 
-        public Model.PlanoOperadora AtualizarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        public Model.PlanoOperadora AtualizarPlanoOperadora(Model.PlanoOperadora PlanoOperadora)
         {
             if (PlanoOperadora == null)
                 throw new ArgumentNullException(nameof(PlanoOperadora));
@@ -59,27 +55,20 @@ namespace Sagui.Data.Persister.PlanoOperadora
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
             DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
             DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
+            DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
 
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdatePlanoOperadora, DbParams);
             
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdatePlanoOperadora, DbParams))
-            {
                 try
                 {
-                    var newId = dataInfrastructure.command.ExecuteScalar();
+                     dataInfrastructure.command.ExecuteScalar();
 
-                    if (Convert.ToInt32(newId) > 0)
-                    {
-                        PlanoOperadora.Id = Convert.ToInt32(newId);
-                    }
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                    PlanoOperadora = null;
                 }
-
-
-                _dataInfrastructure = dataInfrastructure;
-            }
+                     
 
 
            

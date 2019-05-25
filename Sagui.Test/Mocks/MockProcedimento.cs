@@ -31,7 +31,7 @@ namespace Sagui.Test.Mocks
             Procedimento.Exigencias = "ZZZZZZZZ";
             Procedimento.NomeProcedimento = "Procedimento de Teste UPDATE";
             Procedimento.ValorProcedimento = 1.00;
-            Procedimento.PublicID = new Guid("2f324660-78d5-11e9-be91-705a0f6970c5");
+            Procedimento.PublicID = new Guid("a9872e2a-7e17-11e9-b2e0-705a0f6970c5");
 
             return Procedimento;
         }
@@ -45,7 +45,7 @@ namespace Sagui.Test.Mocks
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";
             Procedimento.ValorProcedimento = 1.00;
-            Procedimento.PublicID = new Guid("2f324660-78d5-11e9-be91-705a0f6970c5");
+            Procedimento.PublicID = new Guid("a9872e2a-7e17-11e9-b2e0-705a0f6970c5");
 
             return Procedimento;
         }

@@ -285,7 +285,7 @@ namespace Sagui.Data
                                   ,""Anotacoes""
                                   ,""PublicID""
                              FROM public.""Procedimento""
-                            WHERE ""PublicID""::uuid = @PublicID";
+                            WHERE ""PublicID""::text = @PublicID";
         public static string DeleteProcedimento = @"
                             UPDATE public.""Procedimento""
                                     SET ""Status"" = @Status
@@ -294,7 +294,7 @@ namespace Sagui.Data
         public static string UpdateProcedimento = @"
                             UPDATE  public.""Procedimento""
                                     SET ""Status"" = @Status                                      
-                            WHERE ""PublicID""::uuid = @PublicID";
+                            WHERE ""PublicID""::text = @PublicID";
         #endregion
 
         #region usuario

@@ -7,9 +7,14 @@ namespace Sagui.Service.PlanoOperadora
 {
     public class PlanoOperadoraService : IPlanoOperadoraService<Model.PlanoOperadora, Model.PlanoOperadora>
     {
-        public Model.PlanoOperadora Atualizar(Model.PlanoOperadora model)
+        public Model.PlanoOperadora Atualizar(Model.PlanoOperadora PlanoOperadora)
         {
-            throw new NotImplementedException();
+            using (var PlanoOperadoraBusiness = new Business.PlanoOperadora.PlanoOperadoraBusiness())
+            {
+                var _return = PlanoOperadoraBusiness.Atualizar(PlanoOperadora);
+                PlanoOperadoraBusiness.Dispose();
+                return _return;
+            }
         }
 
         public Model.PlanoOperadora Cadastrar(Model.PlanoOperadora PlanoOperadora)
