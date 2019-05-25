@@ -51,6 +51,7 @@ namespace Sagui.Postgres.Migrations
                     Telefone = table.Column<string>(nullable: true),
                     TipoUsuario = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: true),
+                    CRO = table.Column<string>(nullable: true),
                     PublicID = table.Column<Guid>(nullable: false, defaultValueSql: "uuid_generate_v1()")
                 },
                 constraints: table =>

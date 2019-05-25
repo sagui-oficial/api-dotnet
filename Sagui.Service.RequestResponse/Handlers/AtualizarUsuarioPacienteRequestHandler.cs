@@ -34,7 +34,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             {
                 var _Usuario = usuarioService.Atualizar(Usuario);
 
-                if (_Usuario.Id != 0)
+                if (_Usuario != null)
                 {
                     responseUsuario.Paciente = _Usuario;
                     responseUsuario.ExecutionDate = DateTime.Now;
