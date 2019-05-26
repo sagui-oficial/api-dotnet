@@ -46,8 +46,8 @@ namespace Sagui.Data
                           ,arq.""Extensao""
 	                      ,agto.""idArquivo_GTO""
                           ,agto.""PublicID""
-                          FROM public.""Arquivo"" (NOLOCK) arq
-                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_GTO"" agto
                        ON arq.Id = agto.""idGTO""";
 
 
@@ -57,13 +57,12 @@ namespace Sagui.Data
                           ,arq.""Stream""
                           ,arq.""DataCriacao""
                           ,arq.""PathArquivo""
-                          ,arq.""Extensao""
-	                      ,agto.""idArquivo_GTO""
-                          ,agto.""PublicID""
-                          FROM public.""Arquivo"" (NOLOCK) arq
-                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
-                       ON arq.Id = agto.""idGTO""
-                    WHERE agto.idGTO = @idGTO";
+                          ,agto.""idArquivo_GTO""
+                          ,arq.""PublicID""
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_GTO"" agto
+                       ON arq.""Id"" = agto.""idGTO""
+                    WHERE agto.""idGTO"" = @idGTO";
 
 
         public static string ObterArquivoGTOPorPublicID = @"
@@ -75,9 +74,9 @@ namespace Sagui.Data
                           ,arq.""Extensao""
 	                      ,agto.""idArquivo_GTO""
                           ,agto.""PublicID""
-                          FROM public.""Arquivo"" (NOLOCK) arq
-                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
-                       ON arq.Id = agto.""idGTO""
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_GTO"" agto
+                       ON arq.""Id"" = agto.""idGTO""
                     WHERE agto.""PublicID""::uuid = @PublicID";
 
 
@@ -90,7 +89,7 @@ namespace Sagui.Data
                           ,b.""DataCriacao""
                           ,b.""PathArquivo""
                     FROM ""Arquivo_GTO"" a (NOLOCK)
-		                    inner join ""Arquivo"" b (NOLOCK) ON a.""idArquivo"" = b.""Id""
+		                    inner join ""Arquivo"" b ON a.""idArquivo"" = b.""Id""
                     WHERE ""idGTO"" = @idGTO";
 
         #endregion
@@ -147,7 +146,7 @@ namespace Sagui.Data
                           ,b.""DataCriacao""
                           ,b.""PathArquivo""
                     FROM ""Arquivo_GTO"" a (NOLOCK)
-		                    inner join ""Arquivo"" b (NOLOCK) ON a.""idArquivo"" = b.""Id""
+		                    inner join ""Arquivo"" b ON a.""idArquivo"" = b.""Id""
                     WHERE ""idGTO"" = @idGTO";
 
         #endregion
@@ -185,7 +184,7 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE public.""GTO""
                                        SET ""Status"" = @Status
-                                       WHERE ""PublicID""::uuid = @PublicID   ";
+                                       WHERE ""PublicID""::text = @PublicID   ";
 
         public static string UpdateGTO = @"
                    UPDATE public.""GTO""
@@ -195,7 +194,7 @@ namespace Sagui.Data
                           ,""Status"" = @Status
                           ,""PacienteId"" = @Paciente
                           ,""PlanoOperadoraId"" = @PlanoOperadora
-                      WHERE ""PublicID""::uuid = @PublicID   ";
+                      WHERE ""PublicID""::text = @PublicID   ";
 
         public static string CreateGTO = @"
                 INSERT INTO public.""GTO""
@@ -216,7 +215,7 @@ namespace Sagui.Data
                  RETURNING ""Id"";";
 
         public static string ListGTO = @"
-                                    SELECT  a.Id
+                                    SELECT  a.""Id""
                                         ,a.""Numero""
                                         ,a.""Status""
                                         ,a.""PlanoOperadoraId""
@@ -227,12 +226,12 @@ namespace Sagui.Data
                                         ,a.""Solicitacao""
                                         ,a.""Vencimento""
                                         ,a.""PublicID""
-                                    FROM public.""GTO"" a (NOLOCK) 
-			                                INNER JOIN  ""PlanoOperadora"" b (NOLOCK)  ON  a.""PlanoOperadoraId"" = b.""Id""
-			                                INNER JOIN  ""UsuarioBase"" c (NOLOCK)  ON  a.""PacienteId"" = c.""Id";
+                                    FROM public.""GTO"" a 
+			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""";
 
         public static string ObterGTObyPublicID = @"
-                                     SELECT  a.Id
+                                     SELECT  a.""Id""
                                         ,a.""Numero""
                                         ,a.""Status""
                                         ,a.""PlanoOperadoraId""
@@ -243,10 +242,10 @@ namespace Sagui.Data
                                         ,a.""Solicitacao""
                                         ,a.""Vencimento""
                                         ,a.""PublicID""
-                                    FROM public.""GTO"" a (NOLOCK) 
-			                                INNER JOIN  ""PlanoOperadora"" b (NOLOCK)  ON  a.""PlanoOperadoraId"" = b.""Id""
-			                                INNER JOIN  ""UsuarioBase"" c (NOLOCK)  ON  a.""PacienteId"" = c.""Id
-                            WHERE a.""PublicID""::uuid = @PublicID";
+                                    FROM public.""GTO"" a 
+			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
+                            WHERE a.""PublicID""::text = @PublicID";
 
         #endregion
 
