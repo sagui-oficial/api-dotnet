@@ -86,12 +86,9 @@ namespace Sagui.Data.Lookup.GTO
                 }
                 catch (Exception e)
                 {
-
+                    GTO = null;
                 }
-                finally
-                {
-                    dataInfrastructure.Dispose();
-                }
+                
             }
 
             

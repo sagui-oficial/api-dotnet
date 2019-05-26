@@ -188,7 +188,7 @@ namespace Sagui.Data
                                        WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string UpdateGTO = @"
-                   UPDATE public.GTO
+                   UPDATE public.""GTO""
                        SET ""Numero"" = @Numero
                           ,""Solicitacao"" = @Solicitacao
                           ,""Vencimento"" = @Vencimento

@@ -19,6 +19,7 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(GTO.Paciente), GTO.Paciente.Id);
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
+            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateGTO, DbParams);
 

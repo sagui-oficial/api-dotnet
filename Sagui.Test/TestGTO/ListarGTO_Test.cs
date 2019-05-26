@@ -61,6 +61,9 @@ namespace Sagui.Test.TestGTO
             ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             RequestGTO requestGTO = default(RequestGTO);
+            MockGTO mock = new MockGTO();
+
+            requestGTO = mock.AtualizarMockGTO();
 
             var response = await ObterGTORequestHandler.Handle(requestGTO);
 
