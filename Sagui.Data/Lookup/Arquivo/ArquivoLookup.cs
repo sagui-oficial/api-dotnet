@@ -52,7 +52,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
             DbParams.Add(nameof(Arquivo.PublicID), Arquivo.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoGTOPorPublicId))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoGTOPorPublicID))
             {
                 try
                 {
@@ -133,7 +133,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
             DbParams.Add(nameof(Arquivo.PublicID), Arquivo.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoPlanoOperadoraPorPublicId))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoPlanoOperadoraPorPublicID))
             {
                 try
                 {

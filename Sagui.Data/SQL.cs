@@ -66,7 +66,7 @@ namespace Sagui.Data
                     WHERE agto.idGTO = @idGTO";
 
 
-        public static string ObterArquivoGTOPorPublicId = @"
+        public static string ObterArquivoGTOPorPublicID = @"
                     SELECT arq.""Id""
                           ,arq.""Nome""
                           ,arq.""Stream""
@@ -97,7 +97,7 @@ namespace Sagui.Data
 
         #region ArquivoPlanoOperadora
 
-        public static string ObterArquivoPlanoOperadoraPorPublicId = @"
+        public static string ObterArquivoPlanoOperadoraPorPublicID = @"
                     SELECT arq.""Id""
                           ,arq.""Nome""
                           ,arq.""Stream""
@@ -185,7 +185,7 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE public.""GTO""
                                        SET ""Status"" = @Status
-                                       WHERE ""PublicID""::uuid = @publicID   ";
+                                       WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string UpdateGTO = @"
                    UPDATE public.GTO
@@ -195,7 +195,7 @@ namespace Sagui.Data
                           ,""Status"" = @Status
                           ,""PacienteId"" = @Paciente
                           ,""PlanoOperadoraId"" = @PlanoOperadora
-                      WHERE ""PublicID""::uuid = @publicID   ";
+                      WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string CreateGTO = @"
                 INSERT INTO public.""GTO""
@@ -289,11 +289,17 @@ namespace Sagui.Data
         public static string DeleteProcedimento = @"
                             UPDATE public.""Procedimento""
                                     SET ""Status"" = @Status
-                            WHERE ""PublicID""::uuid = @PublicID";
+                            WHERE ""PublicID""::text = @PublicID";
 
         public static string UpdateProcedimento = @"
                             UPDATE  public.""Procedimento""
-                                    SET ""Status"" = @Status                                      
+                                    SET ""Codigo"" = @Codigo
+                                  ,""NomeProcedimento""  = @NomeProcedimento
+                                  ,""ValorProcedimento"" = @ValorProcedimento
+                                  ,""Exigencias"" = @Exigencias
+                                  ,""Anotacoes"" = @Anotacoes
+                                  ,""Status"" = @Status
+            
                             WHERE ""PublicID""::text = @PublicID";
         #endregion
 
@@ -310,7 +316,7 @@ namespace Sagui.Data
                                   ,""Telefone""
                                   ,""CRO""
                                   ,""Discriminator""
-                                  ,""PublicId""
+                                  ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario
                               AND ""PublicID""::uuid = @PublicID";
@@ -326,7 +332,7 @@ namespace Sagui.Data
                                   ,""Telefone""
                                   ,""CRO""
                                   ,""Discriminator""
-                                  ,""PublicId""
+                                  ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario";
 
@@ -359,7 +365,7 @@ namespace Sagui.Data
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
                           
-                     WHERE ""PublicID""::uuid = @PublicId";
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
 
@@ -391,7 +397,7 @@ namespace Sagui.Data
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
                           
-                     WHERE ""PublicID""::uuid = @PublicId";
+                     WHERE ""PublicID""::uuid = @PublicID";
 
         public static string CreateUsuarioDentista = @"
                 INSERT INTO public.""UsuarioBase""
@@ -423,7 +429,7 @@ namespace Sagui.Data
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
                           ,""CRO"" = @CRO                        
-                     WHERE ""PublicID""::uuid = @PublicId";
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeleteUsuario = @"
@@ -468,7 +474,7 @@ namespace Sagui.Data
                                 ,""CNPJ""
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
-                                ,""PublicId""
+                                ,""PublicID""
                               FROM public.""PlanoOperadora"" 
                             WHERE ""PublicID""::uuid = @PublicID";
 
@@ -481,7 +487,7 @@ namespace Sagui.Data
                                 ,""CNPJ""
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
-                                ,""PublicId""
+                                ,""PublicID""
                               FROM public.""PlanoOperadora""";
 
         public static string UpdatePlanoOperadora = @"
@@ -491,12 +497,14 @@ namespace Sagui.Data
                           ,""CNPJ"" = @CNPJ
                           ,""DataEnvioLote"" = @DataEnvioLote
                           ,""DataRecebimentoLote"" = @DataRecebimentoLote
-                     WHERE ""PublicID""::uuid = @PublicId";
+                          ,""Status"" = @Status
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeletePlanoOperadora = @"
-                            DELETE FROM public.""PlanoOperadora""
-                            WHERE ""PublicID""::uuid = @PublicID";
+                           UPDATE public.""PlanoOperadora""
+                       SET ""Status"" = @Status
+                     WHERE ""PublicID""::uuid = @PublicID";
 
         #endregion
 
@@ -528,7 +536,7 @@ namespace Sagui.Data
                                 ,""CNPJ""
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
-                                ,""PublicId""
+                                ,""PublicID""
                               FROM public.""PlanoOperadora""";
 
         public static string UpdateLote = @"
@@ -538,7 +546,7 @@ namespace Sagui.Data
                           ,""CNPJ"" = @CNPJ
                           ,""DataEnvioLote"" = @DataEnvioLote
                           ,""DataRecebimentoLote"" = @DataRecebimentoLote
-                     WHERE ""PublicID""::uuid = @PublicId";
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeleteLote = @"

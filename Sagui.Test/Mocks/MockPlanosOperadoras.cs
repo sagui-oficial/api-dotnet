@@ -1,4 +1,5 @@
 ﻿using Sagui.Model;
+using Sagui.Model.ValueObject;
 using Sagui.Service.RequestResponse;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Sagui.Test.Mocks
             planoOperadora.DataRecebimentoLote = DateTime.Now;
             planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
             planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
-
+            planoOperadora.Status = StatusPlanoOperadora.Status.Criada.GetHashCode();
             return planoOperadora;
         }
 
@@ -44,6 +45,7 @@ namespace Sagui.Test.Mocks
             planoOperadora.ListaProcedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
             planoOperadora.ListaArquivos = new List<Arquivos>() { mockArquivos.CriarMockArquivo() };
             planoOperadora.PublicID = new Guid("a99b558a-7e17-11e9-b2e1-705a0f6970c5");
+            planoOperadora.Status = StatusPlanoOperadora.Status.Criada.GetHashCode();
 
             return planoOperadora;
         }

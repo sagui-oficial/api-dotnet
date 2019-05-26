@@ -11,7 +11,7 @@ namespace Sagui.Model.Base
     public class BaseModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key, Column(Order = 2)]
         public Guid PublicID { get; set; }
+        public int Status { get; set; }
     }
 }

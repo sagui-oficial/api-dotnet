@@ -27,9 +27,14 @@ namespace Sagui.Service.PlanoOperadora
             }
         }
 
-        public Model.PlanoOperadora Deletar(Model.PlanoOperadora model)
+        public Model.PlanoOperadora Deletar(Model.PlanoOperadora PlanoOperadora)
         {
-            throw new NotImplementedException();
+            using (var PlanoOperadoraBusiness = new Business.PlanoOperadora.PlanoOperadoraBusiness())
+            {
+                var _return = PlanoOperadoraBusiness.Deletar(PlanoOperadora);
+                PlanoOperadoraBusiness.Dispose();
+                return _return;
+            }
         }
 
         public List<Model.PlanoOperadora> Listar()

@@ -12,7 +12,7 @@ namespace Sagui.Data.Lookup.GTO
             List<Model.Paciente> ListUsuario = new List<Model.Paciente>();
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Paciente);
+            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Paciente.GetHashCode());
                         
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
@@ -36,10 +36,7 @@ namespace Sagui.Data.Lookup.GTO
                 {
                     ListUsuario = null;
                 }
-                finally
-                {
-                    dataInfrastructure.Dispose();
-                }
+              
             }
             return ListUsuario;
         }

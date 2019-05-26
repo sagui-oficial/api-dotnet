@@ -15,7 +15,7 @@ namespace Sagui.Data.Lookup.GTO
             List<Model.Dentinsta> ListUsuario = new List<Model.Dentinsta>();
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(Dentinsta.TipoUsuario), TipoUsuario.Tipo.Dentista);
+            DbParams.Add(nameof(Dentinsta.TipoUsuario), TipoUsuario.Tipo.Dentista.GetHashCode());
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {

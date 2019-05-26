@@ -18,7 +18,7 @@ namespace Sagui.Model
         public double ValorProcedimento { get; set; }
         public string Exigencias { get; set; }
         public string Anotacoes { get; set; }
-        public int Status { get; set; }
+        
 
 
     }

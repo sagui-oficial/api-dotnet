@@ -50,5 +50,22 @@ namespace Sagui.Business.PlanoOperadora
 
             return responsePlanoOperadora;
         }
+
+        public Model.PlanoOperadora Deletar(Model.PlanoOperadora planoOperadora)
+        {
+            PlanoOperadoraPersister planoOperadoraPersister = new PlanoOperadoraPersister();
+            Model.PlanoOperadora responsePlanoOperadora = planoOperadoraPersister.DeletarPlanoOperadora(planoOperadora);
+
+            if (responsePlanoOperadora != null)
+            {
+                planoOperadoraPersister.CommitCommand(true);
+            }
+            else
+            {
+                planoOperadoraPersister.CommitCommand(false);
+            }
+
+            return responsePlanoOperadora;
+        }
     }
 }
