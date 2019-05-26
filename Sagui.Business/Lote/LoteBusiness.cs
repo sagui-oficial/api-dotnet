@@ -21,8 +21,6 @@ namespace Sagui.Business.Lote
         public Model.Lote Cadastrar(Model.Lote Lote)
         {
             LotePersister LotePersister = new LotePersister();
-            LotePersister.SaveLote(Lote);
-                        
             Model.Lote responseLote = LotePersister.SaveLote(Lote);
 
             if (responseLote == null)

@@ -23,7 +23,7 @@ namespace Sagui.Postgres
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
-       // public DbSet<Lote> Lote { get; set; }
+        public DbSet<Lote> Lote { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

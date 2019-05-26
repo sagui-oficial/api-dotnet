@@ -18,7 +18,6 @@ namespace Sagui.Model
         public decimal ValorTotalLote { get; set; }
         public DateTime DataEnvioCorreio { get; set; }
         public DateTime DataPrevistaRecebimento { get; set; }
-        public int StatusLote { get; set; }
         public Funcionario Funcionario { get; set; }
     }
 }

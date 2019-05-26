@@ -184,7 +184,7 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE public.""GTO""
                                        SET ""Status"" = @Status
-                                       WHERE ""PublicID""::text = @PublicID   ";
+                                       WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string UpdateGTO = @"
                    UPDATE public.""GTO""
@@ -194,7 +194,7 @@ namespace Sagui.Data
                           ,""Status"" = @Status
                           ,""PacienteId"" = @Paciente
                           ,""PlanoOperadoraId"" = @PlanoOperadora
-                      WHERE ""PublicID""::text = @PublicID   ";
+                      WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string CreateGTO = @"
                 INSERT INTO public.""GTO""
@@ -515,7 +515,7 @@ namespace Sagui.Data
                        ,""ValorTotalLote""
                        ,""DataEnvioCorreio""
                        ,""DataPrevistaRecebimento""
-                       ,""StatusLote""
+                       ,""Status""
                        ,""FuncionarioId"")
                  VALUES
                        (@PlanoOperadora
@@ -523,7 +523,7 @@ namespace Sagui.Data
                        ,@ValorTotalLote
                        ,@DataEnvioCorreio
                        ,@DataPrevistaRecebimento
-                       ,@StatusLote
+                       ,@Status
                        ,@Funcionario)
                         RETURNING ""Id"";";
 
