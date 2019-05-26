@@ -13,7 +13,7 @@ namespace Sagui.Test.Mocks
         public RequestLote CriarMockLote()
         {
             RequestLote Lote = new RequestLote();
-            Lote.IdLote = 1;
+            Lote.Id = 1;
             Lote.PlanoOperadora = new PlanoOperadora();
             Lote.PlanoOperadora.Id = 1;
             Lote.PlanoOperadora.NomeFantasia = "Operadora 1";
@@ -32,7 +32,7 @@ namespace Sagui.Test.Mocks
          public RequestLote AtualizarMockGTO()
         {
             RequestLote Lote = new RequestLote();
-            Lote.IdLote = 1;
+            Lote.Id = 1;
             Lote.PlanoOperadora = new PlanoOperadora();
             Lote.PlanoOperadora.Id = 1;
             Lote.PlanoOperadora.NomeFantasia = "Operadora 1";

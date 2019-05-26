@@ -36,7 +36,7 @@ namespace Sagui.Data.Persister.Lote
 
                     if (Convert.ToInt32(newId) > 0)
                     {
-                        Lote.IdLote = Convert.ToInt32(newId);
+                        Lote.Id = Convert.ToInt32(newId);
                     }
                 }
                 catch (Exception e)
