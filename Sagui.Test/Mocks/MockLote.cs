@@ -25,6 +25,7 @@ namespace Sagui.Test.Mocks
             Lote.TotalGTOLote = 10;
             Lote.ValorTotalLote = 5000;
             Lote.StatusLote = 1;
+           // Lote.PublicID = new Guid("");
 
             return Lote;
         }
@@ -44,6 +45,7 @@ namespace Sagui.Test.Mocks
             Lote.TotalGTOLote = 12;
             Lote.ValorTotalLote = 7000;
             Lote.StatusLote = 2;
+            Lote.PublicID = new Guid("");
 
             return Lote;
         }
@@ -67,6 +69,7 @@ namespace Sagui.Test.Mocks
             Lote.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
             Lote.Arquivos = new List<Arquivo_GTO>() { mockArquivos.CriarMockArquivo() };
             Lote.Status = 99;
+            Lote.PublicID = new Guid("");
 
             return Lote;
         }

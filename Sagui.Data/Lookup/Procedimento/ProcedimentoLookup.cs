@@ -23,7 +23,7 @@ namespace Sagui.Data.Lookup.Procedimento
                     while (reader.Read())
                     {
                         Model.Procedimentos _Procedimento = new Model.Procedimentos();
-                        _Procedimento.IdProcedimento = Convert.ToInt32(reader["IdProcedimento"]);
+                        _Procedimento.Id = Convert.ToInt32(reader["Id"]);
                         _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
                         _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
@@ -57,7 +57,7 @@ namespace Sagui.Data.Lookup.Procedimento
                     while (reader.Read())
                     {
                         Model.Procedimentos _Procedimento = new Model.Procedimentos();
-                        _Procedimento.IdProcedimento = Convert.ToInt32(reader["IdProcedimento"]);
+                        _Procedimento.Id = Convert.ToInt32(reader["IdProcedimento"]);
                         _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
                         _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
@@ -92,7 +92,7 @@ namespace Sagui.Data.Lookup.Procedimento
                     while (reader.Read())
                     {
                         Model.Procedimentos _Procedimento = new Model.Procedimentos();
-                        _Procedimento.IdProcedimento = Convert.ToInt32(reader["IdProcedimento"]);
+                        _Procedimento.Id = Convert.ToInt32(reader["Id"]);
                         _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
                         _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
                         _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);

@@ -35,7 +35,7 @@ namespace Sagui.Business.GTO
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
                     ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
-                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento);
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.Id);
 
                     if (!_persisted)
                     {

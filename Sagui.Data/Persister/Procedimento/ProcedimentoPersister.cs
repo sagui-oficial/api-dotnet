@@ -21,7 +21,7 @@ namespace Sagui.Data.Persister.Procedimento
         public Model.Procedimentos AtualizarProcedimento(Model.Procedimentos Procedimentos)
         {
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(Procedimentos.IdProcedimento), Procedimentos.IdProcedimento);
+            DbParams.Add(nameof(Procedimentos.Id), Procedimentos.Id);
             DbParams.Add(nameof(Procedimentos.Anotacoes), Procedimentos.Anotacoes);
             DbParams.Add(nameof(Procedimentos.Codigo), Procedimentos.Codigo);
             DbParams.Add(nameof(Procedimentos.Exigencias), Procedimentos.Exigencias);
@@ -89,7 +89,7 @@ namespace Sagui.Data.Persister.Procedimento
 
                 if (Convert.ToInt32(newId) > 0)
                 {
-                    Procedimentos.IdProcedimento = Convert.ToInt32(newId);
+                    Procedimentos.Id = Convert.ToInt32(newId);
                 }
             }
             catch (Exception e)

@@ -27,7 +27,7 @@ namespace Sagui.Data.Persister.Lote
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
             //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams)) {
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams);
 
 
                 try
@@ -41,10 +41,10 @@ namespace Sagui.Data.Persister.Lote
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                Lote = null;
                 }
 
-            }
+            
 
 
             return Lote;

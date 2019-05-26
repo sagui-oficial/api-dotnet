@@ -49,7 +49,7 @@ namespace Sagui.DB
             modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()"); });
 
-            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
+            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<Procedimentos>(b =>{b.Property(u => u.PublicID).HasDefaultValueSql("newsequentialid()");});
 
             modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });

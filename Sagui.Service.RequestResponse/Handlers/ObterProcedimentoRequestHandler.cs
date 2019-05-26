@@ -29,7 +29,7 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var procedimento = ProcedimentoService.Obter(request);
 
-            if (procedimento.IdProcedimento > 0)
+            if (procedimento.Id > 0)
             {
                 responseProcedimento.Procedimento = procedimento;
                 responseProcedimento.ExecutionDate = DateTime.Now;

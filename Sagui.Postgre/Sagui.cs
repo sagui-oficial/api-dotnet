@@ -23,7 +23,7 @@ namespace Sagui.Postgres
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
-        //public DbSet<Lote> Lote { get; set; }
+       // public DbSet<Lote> Lote { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -48,7 +48,7 @@ namespace Sagui.Postgres
             modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
-            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
+            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<Procedimentos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
             modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });

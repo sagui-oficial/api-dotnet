@@ -11,8 +11,7 @@ namespace Sagui.Model
 {
     public class Lote : BaseModel
     {
-        [Key, Column(Order = 1)]
-        public int Id { get; set; }
+       
         public PlanoOperadora PlanoOperadora { get; set; }
         public List<GTO> ListaGTO { get; set; }
         public int TotalGTOLote { get; set; }
