@@ -264,7 +264,7 @@ namespace Sagui.Data
                                ,@ValorProcedimento
                                ,@Exigencias
                                ,@Anotacoes)
-                            RETURNING ""IdProcedimento"";";
+                            RETURNING ""Id"";";
         public static string ListProcedimento = @"
                             SELECT ""Id"", 
                                    ""Codigo"", 
