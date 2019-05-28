@@ -435,6 +435,17 @@ namespace Sagui.Data
                             DELETE FROM public.""UsuarioBase""
                             WHERE ""PublicID""::uuid = @PublicID";
 
+        public static string CreatePlanoOperadoPaciente = @"
+                    INSERT INTO public.""PlanoOperadoraPaciente""
+                               (""PacienteId""
+                               ,""PlanoOperadoraId""
+                               ,""NumeroPlano"")
+                         VALUES
+                               (@PacienteId
+                               ,@PlanoOperadoraId
+                               ,@NumeroPlano)
+                            RETURNING ""PacienteId"";";
+
         #endregion
 
         #region PlanoOperadora

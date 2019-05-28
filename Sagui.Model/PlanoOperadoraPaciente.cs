@@ -10,7 +10,11 @@ namespace Sagui.Model
 {
     public class PlanoOperadoraPaciente
     {
-        public int Id { get; set; }
+        //  public int Id { get; set; }
+        [Key, Column(Order = 1)]
+        public int PacienteId { get; set; }
+
+        [Key, Column(Order = 2)]
         public int PlanoOperadoraId { get; set; }
         public string NumeroPlano { get; set; }
 

@@ -58,6 +58,7 @@ namespace Sagui.Test.Mocks
             PlanoOperadoraPaciente planoOperadoraPaciente = new PlanoOperadoraPaciente();
             planoOperadoraPaciente.PlanoOperadoraId = 1;
             planoOperadoraPaciente.NumeroPlano = "123456789";
+            planoOperadoraPaciente.PacienteId = 1;
 
             UsuarioPaciente.ListaPlanoOperadoraPaciente = new List<PlanoOperadoraPaciente>();
             UsuarioPaciente.ListaPlanoOperadoraPaciente.Add(planoOperadoraPaciente);

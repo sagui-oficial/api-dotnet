@@ -54,6 +54,9 @@ namespace Sagui.Postgres
             modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<Arquivos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
+            modelBuilder.Entity<PlanoOperadoraPaciente>().HasKey(c => new { c.PacienteId, c.PlanoOperadoraId });
+            
+
         }
        
     }
