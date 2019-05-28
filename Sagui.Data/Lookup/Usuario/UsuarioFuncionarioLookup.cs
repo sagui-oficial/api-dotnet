@@ -1,4 +1,5 @@
 ﻿using Sagui.Model;
+using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace Sagui.Data.Lookup.Usuario
             List<Model.Funcionario> ListUsuario = new List<Model.Funcionario>();
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Funcionario);
+            DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Funcionario.GetHashCode());
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListUsuario, DbParams))
             {

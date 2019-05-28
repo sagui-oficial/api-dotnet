@@ -1,4 +1,5 @@
 ﻿using Sagui.Model;
+using Sagui.Model.ValueObject;
 using Sagui.Service.RequestResponse;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Sagui.Test.Mocks
             UsuarioFuncionario.Email = "aaa@aaa.com.br";
             UsuarioFuncionario.Telefone = "11912345678";
             UsuarioFuncionario.TipoUsuario = TipoUsuario.Tipo.Funcionario.GetHashCode();
+            UsuarioFuncionario.PublicID = new Guid("a97480cc-7e17-11e9-b2de-705a0f6970c5");
 
             return UsuarioFuncionario;
         }
@@ -35,6 +37,7 @@ namespace Sagui.Test.Mocks
             UsuarioDentista.CRO = "CRO0001111";
             UsuarioDentista.Telefone = "11912345678";
             UsuarioDentista.TipoUsuario = TipoUsuario.Tipo.Dentista.GetHashCode();
+            UsuarioDentista.PublicID = new Guid("a97480cc-7e17-11e9-b2de-705a0f6970c5");
 
             return UsuarioDentista;
         }
@@ -50,15 +53,10 @@ namespace Sagui.Test.Mocks
             UsuarioPaciente.Email = "aaa@aaa.com.br";
             UsuarioPaciente.Telefone = "11912345678";
             UsuarioPaciente.TipoUsuario = TipoUsuario.Tipo.Paciente.GetHashCode();
+            UsuarioPaciente.PublicID = new Guid("a97480cc-7e17-11e9-b2de-705a0f6970c5");
 
             PlanoOperadoraPaciente planoOperadoraPaciente = new PlanoOperadoraPaciente();
-            planoOperadoraPaciente.PlanoOperadora = new PlanoOperadora
-            {
-                CNPJ = "0000000000000",
-                NomeFantasia = "Plano",
-                Id = 1,
-                RazaoSocial = "Plano SA"
-            };
+            planoOperadoraPaciente.PlanoOperadoraId = 1;
             planoOperadoraPaciente.NumeroPlano = "123456789";
 
             UsuarioPaciente.ListaPlanoOperadoraPaciente = new List<PlanoOperadoraPaciente>();

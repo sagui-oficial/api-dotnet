@@ -35,7 +35,7 @@ namespace Sagui.Business.GTO
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
                     ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
-                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.IdProcedimento);
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.Id);
 
                     if (!_persisted)
                     {
@@ -44,31 +44,31 @@ namespace Sagui.Business.GTO
                     }
                 }
 
-                foreach (Arquivos arquivo in gto.Arquivos)
-                {
-                    arquivo.Stream = ManipulaArquivo.GerarStreamArquivo(arquivo.PathArquivo);
-                    arquivo.Extensao = Path.GetExtension(arquivo.PathArquivo);
+                //foreach (Arquivos arquivo in gto.Arquivos)
+                //{
+                //    arquivo.Stream = ManipulaArquivo.GerarStreamArquivo(arquivo.PathArquivo);
+                //    arquivo.Extensao = Path.GetExtension(arquivo.PathArquivo);
 
-                    ArquivoPersister arquivoPersister = new ArquivoPersister();
+                //    ArquivoPersister arquivoPersister = new ArquivoPersister();
 
-                    var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo);
-                    if (_arquivo.Id == 0)
-                    {
-                        arquivoPersister.CommitCommand(false);
-                        return null;
-                    }
-                    else
-                    {
-                        arquivo.Id = _arquivo.Id;
-                    }
+                //    var _arquivo = arquivoPersister.SaveArquivo(gto.Id, arquivo);
+                //    if (_arquivo.Id == 0)
+                //    {
+                //        arquivoPersister.CommitCommand(false);
+                //        return null;
+                //    }
+                //    else
+                //    {
+                //        arquivo.Id = _arquivo.Id;
+                //    }
 
-                    ArquivoGTOPersister arquivoGTOPersister = new ArquivoGTOPersister();
+                //    ArquivoGTOPersister arquivoGTOPersister = new ArquivoGTOPersister();
 
-                    if (!arquivoGTOPersister.SaveArquivoGTO(gto.Id, arquivo.Id))
-                    {
-                        arquivoGTOPersister.CommitCommand(false);
-                    }
-                }
+                //    if (!arquivoGTOPersister.SaveArquivoGTO(gto.Id, arquivo.Id))
+                //    {
+                //        arquivoGTOPersister.CommitCommand(false);
+                //    }
+                //}
 
                 gtoPersister.CommitCommand(true);
             }

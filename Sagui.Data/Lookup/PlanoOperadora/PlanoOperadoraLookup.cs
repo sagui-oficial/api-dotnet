@@ -12,7 +12,7 @@ namespace Sagui.Data.Lookup.Usuario
         {
             List<Model.PlanoOperadora> ListPlanoOperadora = new List<Model.PlanoOperadora>();
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListGTO))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListPlanoOperadora))
             {
                 try
                 {
@@ -21,6 +21,13 @@ namespace Sagui.Data.Lookup.Usuario
                     while (reader.Read())
                     {
                         Model.PlanoOperadora _PlanoOperadora = new Model.PlanoOperadora();
+                        _PlanoOperadora.Id = Convert.ToInt32(reader["Id"]);
+                        _PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                        _PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
+                        _PlanoOperadora.CNPJ = Convert.ToString(reader["CNPJ"]);
+                        _PlanoOperadora.DataEnvioLote = Convert.ToDateTime(reader["DataEnvioLote"]);
+                        _PlanoOperadora.DataRecebimentoLote = Convert.ToDateTime(reader["DataRecebimentoLote"]);
+                       
 
                         ListPlanoOperadora.Add(_PlanoOperadora);
                     }

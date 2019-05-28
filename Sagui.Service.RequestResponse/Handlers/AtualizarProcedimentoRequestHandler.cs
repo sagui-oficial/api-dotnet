@@ -34,7 +34,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             {
                 var _Procedimento = procedimentoService.Atualizar(Procedimentos);
 
-                if (_Procedimento.IdProcedimento != 0)
+                if (_Procedimento.Id != 0)
                 {
                     responseProcedimento.Procedimento = _Procedimento;
                     responseProcedimento.ExecutionDate = DateTime.Now;

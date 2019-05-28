@@ -46,7 +46,7 @@ namespace Sagui.Test.TestUsuarios
 
             var response = await atualizarUsuarioRequestHandler.Handle(requestUsuario);
 
-            Assert.IsNotNull(response.Dentinstas);
+            Assert.IsNotNull(response.Dentinsta);
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
 

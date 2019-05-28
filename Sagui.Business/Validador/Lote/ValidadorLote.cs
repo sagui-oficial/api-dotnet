@@ -24,7 +24,7 @@ namespace Sagui.Business.Validador.Lote
         {
             ErrorsResult = validarData.HandleValidation(Lote.DataEnvioCorreio, nameof(Lote.DataEnvioCorreio), ref ErrorsResult);
             ErrorsResult = validarData.HandleValidation(Lote.DataPrevistaRecebimento, nameof(Lote.DataPrevistaRecebimento), ref ErrorsResult);
-            ErrorsResult = validadorCampo.HandleValidation(Lote.StatusLote, nameof(Lote.StatusLote), ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(Lote.Status, nameof(Lote.Status), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(Lote.TotalGTOLote, nameof(Lote.TotalGTOLote), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(Lote.ValorTotalLote, nameof(Lote.ValorTotalLote), ref ErrorsResult);
 

@@ -1,14 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Sagui.Data;
 using Sagui.Model;
-using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Sagui.Postgres
-{    
+{
     public class Sagui : DbContext
     {
         public Sagui(DbContextOptions<Sagui> options) : base(options)
@@ -26,15 +21,16 @@ namespace Sagui.Postgres
         public DbSet<UsuarioBase> UsuarioBase { get; set; }
         public DbSet<Dentinsta> Dentinsta { get; set; }
         public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<Paciente> Paciente { get; set; }
         public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
-        //public DbSet<Lote> Lote { get; set; }
+        public DbSet<Lote> Lote { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.Development.json")
+                .AddJsonFile("appsettings.json")
                 .Build();
                 var connectionString = configuration.GetConnectionString("SaguiPostgres");
                 optionsBuilder.UseNpgsql(connectionString);
@@ -52,7 +48,7 @@ namespace Sagui.Postgres
             modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
-            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.IdProcedimento, c.PublicID });
+            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.Id, c.PublicID });
             modelBuilder.Entity<Procedimentos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
 
             modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });

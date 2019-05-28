@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sagui.Postgres;
@@ -9,9 +10,10 @@ using Sagui.Postgres;
 namespace Sagui.Postgres.Migrations
 {
     [DbContext(typeof(Sagui))]
-    partial class SaguiModelSnapshot : ModelSnapshot
+    [Migration("20190526203122_add-lote")]
+    partial class addlote
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,6 +118,8 @@ namespace Sagui.Postgres.Migrations
 
                     b.Property<int>("Status");
 
+                    b.Property<int>("StatusLote");
+
                     b.Property<int>("TotalGTOLote");
 
                     b.Property<decimal>("ValorTotalLote");
@@ -167,9 +171,7 @@ namespace Sagui.Postgres.Migrations
 
                     b.Property<Guid?>("PacientePublicID");
 
-                    b.Property<int>("PlanoOperadoraId");
-
-                    b.Property<int?>("PlanoOperadoraId1");
+                    b.Property<int?>("PlanoOperadoraId");
 
                     b.Property<Guid?>("PlanoOperadoraPublicID");
 
@@ -177,7 +179,7 @@ namespace Sagui.Postgres.Migrations
 
                     b.HasIndex("PacienteId", "PacientePublicID");
 
-                    b.HasIndex("PlanoOperadoraId1", "PlanoOperadoraPublicID");
+                    b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
 
                     b.ToTable("PlanoOperadoraPaciente");
                 });
@@ -364,7 +366,7 @@ namespace Sagui.Postgres.Migrations
 
                     b.HasOne("Sagui.Model.PlanoOperadora", "PlanoOperadora")
                         .WithMany()
-                        .HasForeignKey("PlanoOperadoraId1", "PlanoOperadoraPublicID");
+                        .HasForeignKey("PlanoOperadoraId", "PlanoOperadoraPublicID");
                 });
 
             modelBuilder.Entity("Sagui.Model.Procedimentos", b =>

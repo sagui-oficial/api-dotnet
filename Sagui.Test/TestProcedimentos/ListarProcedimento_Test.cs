@@ -47,22 +47,22 @@ namespace Sagui.Test.TestGTO
             var response = await obterProcedimentoRequestHandler.Handle(requestProcedimento);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.Procedimento.IdProcedimento > 0);
+            Assert.IsTrue(response.Procedimento.Id > 0);
         }
 
-        [TestMethod]
-        public async Task ListarNenhumProcedimento()
-        {
-            ProcedimentoService procedimentoService = new ProcedimentoService();
+        //[TestMethod]
+        //public async Task ListarNenhumProcedimento()
+        //{
+        //    ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
+        //    ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
 
-            RequestProcedimento requestProcedimento = default(RequestProcedimento);
+        //    RequestProcedimento requestProcedimento = default(RequestProcedimento);
 
-            var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
+        //    var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
 
-            Assert.IsTrue(response.ResponseType == ResponseType.Info);
-            Assert.IsTrue(response.Procedimentos.Count == 0);
-        }
+        //    Assert.IsTrue(response.ResponseType == ResponseType.Info);
+        //    Assert.IsTrue(response.Procedimentos.Count == 0);
+        //}
     }
 }

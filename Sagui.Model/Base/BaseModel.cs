@@ -10,8 +10,10 @@ namespace Sagui.Model.Base
 {
     public class BaseModel
     {
+        [Key, Column(Order = 1)]
+        public int Id { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key, Column(Order = 2)]
         public Guid PublicID { get; set; }
+        public int Status { get; set; }
     }
 }

@@ -34,22 +34,22 @@ namespace Sagui.Test.TestGTO
             Assert.IsTrue(response.GTOs.Count > 0 );
         }
 
-        [TestMethod]
-        public async Task ListarNenhumsGTO()
-        {
-            GTOService gTOService = new GTOService();
-            ArquivoService arquivoService = new ArquivoService();
-            ProcedimentoService procedimentoService = new ProcedimentoService();
+       // [TestMethod]
+        //public async Task ListarNenhumsGTO()
+        //{
+        //    GTOService gTOService = new GTOService();
+        //    ArquivoService arquivoService = new ArquivoService();
+        //    ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
+        //    ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
-            RequestGTO requestGTO = default(RequestGTO);
+        //    RequestGTO requestGTO = default(RequestGTO);
 
-            var response = await listarGTORequestHandler.Handle(requestGTO);
+        //    var response = await listarGTORequestHandler.Handle(requestGTO);
 
-            Assert.IsTrue(response.ResponseType == ResponseType.Info);
-            Assert.IsTrue(response.GTOs.Count == 0);
-        }
+        //    Assert.IsTrue(response.ResponseType == ResponseType.Info);
+        //    Assert.IsTrue(response.GTOs.Count == 0);
+        //}
 
         [TestMethod]
         public async Task ObterGTO()
@@ -61,11 +61,14 @@ namespace Sagui.Test.TestGTO
             ObterGTORequestHandler ObterGTORequestHandler = new ObterGTORequestHandler(gTOService, arquivoService, procedimentoService);
 
             RequestGTO requestGTO = default(RequestGTO);
+            MockGTO mock = new MockGTO();
+
+            requestGTO = mock.AtualizarMockGTO();
 
             var response = await ObterGTORequestHandler.Handle(requestGTO);
 
-            Assert.IsTrue(response.ResponseType == ResponseType.Info);
-            Assert.IsTrue(response.GTOs.Count == 0);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.GTO.Id > 0);
         }
 
     }

@@ -51,6 +51,7 @@ namespace Sagui.Postgres.Migrations
                     Telefone = table.Column<string>(nullable: true),
                     TipoUsuario = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: true),
+                    CRO = table.Column<string>(nullable: true),
                     PublicID = table.Column<Guid>(nullable: false, defaultValueSql: "uuid_generate_v1()")
                 },
                 constraints: table =>
@@ -65,17 +66,7 @@ namespace Sagui.Postgres.Migrations
                     id = table.Column<int>(nullable: false).Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     NumeroPlano = table.Column<string>(nullable: true),
                     PacienteId = table.Column<int>(nullable: true),
-                    PublicID = table.Column<Guid>(nullable: false, defaultValueSql: "uuid_generate_v1()")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlanoOperadoraPaciente", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_PlanoOperadoraPaciente_UsuarioBase_PacienteId_PacientePublicID",
-                        columns: x => new { x.PacienteId, x.PublicID },
-                        principalTable: "UsuarioBase",
-                        principalColumns: new[] { "Id", "PublicID" },
-                        onDelete: ReferentialAction.Restrict);
+                    
                 });
 
             migrationBuilder.CreateTable(

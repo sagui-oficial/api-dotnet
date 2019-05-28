@@ -1,5 +1,6 @@
 ﻿using Sagui.Data.Base;
 using Sagui.Model;
+using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
 
@@ -18,6 +19,7 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(GTO.Paciente), GTO.Paciente.Id);
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
+            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateGTO, DbParams);
 
@@ -38,7 +40,7 @@ namespace Sagui.Data.Persister.GTO
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
             DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
-            DbParams.Add(nameof(GTO.Status), StatusGTO.Status.Deletada);
+            DbParams.Add(nameof(GTO.Status), StatusGTO.Status.Deletada.GetHashCode());
 
             DataInfrastructure dataInfrastructure =  DataInfrastructure.GetInstanceDb(SQL.DeleteGTO, DbParams);
 

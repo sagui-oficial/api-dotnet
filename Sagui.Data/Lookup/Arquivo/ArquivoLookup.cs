@@ -52,7 +52,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
             DbParams.Add(nameof(Arquivo.PublicID), Arquivo.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoGTOPorPublicId))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoGTOPorPublicID))
             {
                 try
                 {
@@ -102,7 +102,6 @@ namespace Sagui.Data.Lookup.Arquivo
                         arquivos.Stream = (byte[])reader["Stream"];
                         arquivos.DataCriacao = Convert.ToDateTime(reader["DataCriacao"]);
                         arquivos.PathArquivo = Convert.ToString(reader["PathArquivo"]);
-                        arquivos.PathArquivo = Convert.ToString(reader["Extensao"]);
                         arquivos.Id = Convert.ToInt32(reader["idArquivo_GTO"]);
                         arquivos.PublicID = (Guid)reader["PublicID"];
                         ListArquivo.Add(arquivos);
@@ -112,10 +111,7 @@ namespace Sagui.Data.Lookup.Arquivo
                 {
                     ListArquivo = null;
                 }
-                finally
-                {
-                    dataInfrastructure.Dispose();
-                }
+                
 
                 return ListArquivo;
             }
@@ -133,7 +129,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
             DbParams.Add(nameof(Arquivo.PublicID), Arquivo.PublicID.ToString());
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoPlanoOperadoraPorPublicId))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterArquivoPlanoOperadoraPorPublicID))
             {
                 try
                 {

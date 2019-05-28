@@ -11,8 +11,7 @@ namespace Sagui.Model
 {
     public class UsuarioBase : BaseModel
     {
-        [Key, Column(Order = 1)]
-        public int Id { get; set; }
+        
         public string Funcao { get; set; }
         public string Nome { get; set; }
         public string Anotacoes { get; set; }

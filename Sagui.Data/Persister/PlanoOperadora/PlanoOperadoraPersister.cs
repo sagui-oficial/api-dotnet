@@ -1,4 +1,5 @@
 ﻿using Sagui.Data.Base;
+using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
 
@@ -22,13 +23,10 @@ namespace Sagui.Data.Persister.PlanoOperadora
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
             DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
             DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
-            
-            //DbParams.Add(nameof(PlanoOperadora.Id), PlanoOperadora.Id);
-            //DbParams.Add(nameof(PlanoOperadora.ListaArquivos), PlanoOperadora.ListaArquivos);
-            //DbParams.Add(nameof(PlanoOperadora.ListaProcedimentos), PlanoOperadora.ListaProcedimentos);
-            //DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
-            
-            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
+            DbParams.Add(nameof(PlanoOperadora.Status), PlanoOperadora.Status);
+
+
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreatePlanoOperadora, DbParams);
 
             try
             {
@@ -39,7 +37,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
                     PlanoOperadora.Id = Convert.ToInt32(newId);
                 }
 
-                dataInfrastructure.transaction.Commit();
+               
             }
             catch (Exception e)
             {
@@ -49,7 +47,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
             return PlanoOperadora;
         }
 
-        public Model.PlanoOperadora AtualizarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        public Model.PlanoOperadora AtualizarPlanoOperadora(Model.PlanoOperadora PlanoOperadora)
         {
             if (PlanoOperadora == null)
                 throw new ArgumentNullException(nameof(PlanoOperadora));
@@ -59,27 +57,21 @@ namespace Sagui.Data.Persister.PlanoOperadora
             DbParams.Add(nameof(PlanoOperadora.CNPJ), PlanoOperadora.CNPJ);
             DbParams.Add(nameof(PlanoOperadora.DataEnvioLote), PlanoOperadora.DataEnvioLote);
             DbParams.Add(nameof(PlanoOperadora.DataRecebimentoLote), PlanoOperadora.DataRecebimentoLote);
+            DbParams.Add(nameof(PlanoOperadora.Status), PlanoOperadora.Status);
+            DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
 
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdatePlanoOperadora, DbParams);
             
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdatePlanoOperadora, DbParams))
-            {
                 try
                 {
-                    var newId = dataInfrastructure.command.ExecuteScalar();
+                     dataInfrastructure.command.ExecuteScalar();
 
-                    if (Convert.ToInt32(newId) > 0)
-                    {
-                        PlanoOperadora.Id = Convert.ToInt32(newId);
-                    }
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                    PlanoOperadora = null;
                 }
-
-
-                _dataInfrastructure = dataInfrastructure;
-            }
+                     
 
 
            
@@ -87,30 +79,27 @@ namespace Sagui.Data.Persister.PlanoOperadora
             return PlanoOperadora;
         }
 
-        public Model.PlanoOperadora DeletarPlanoOperadora(Model.PlanoOperadora PlanoOperadora, out DataInfrastructure _dataInfrastructure)
+        public Model.PlanoOperadora DeletarPlanoOperadora(Model.PlanoOperadora PlanoOperadora)
         {
             if (PlanoOperadora == null)
                 throw new ArgumentNullException(nameof(PlanoOperadora));
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
+            DbParams.Add(nameof(PlanoOperadora.Status), StatusPlanoOperadora.Status.Deletada.GetHashCode());
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeletePlanoOperadora, DbParams))
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeletePlanoOperadora, DbParams);
+
+            try
             {
-                try
-                {
-                    dataInfrastructure.command.ExecuteNonQuery();
-                    dataInfrastructure.transaction.Commit();
+                dataInfrastructure.command.ExecuteScalar();
 
-                }
-                catch (Exception e)
-                {
-                    dataInfrastructure.transaction.Rollback();
-                }
-
-
-                _dataInfrastructure = dataInfrastructure;
             }
+            catch (Exception e)
+            {
+                PlanoOperadora = null;
+            }
+
 
             return PlanoOperadora;
         }

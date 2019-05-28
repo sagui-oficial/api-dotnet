@@ -43,12 +43,9 @@ namespace Sagui.Data.Lookup.GTO
                 }
                 catch (Exception e)
                 {
-
+                    ListGTO = null;
                 }
-                finally
-                {
-                    dataInfrastructure.Dispose();
-                }
+             
             }
             return ListGTO;
         }
@@ -86,12 +83,9 @@ namespace Sagui.Data.Lookup.GTO
                 }
                 catch (Exception e)
                 {
-
+                    GTO = null;
                 }
-                finally
-                {
-                    dataInfrastructure.Dispose();
-                }
+                
             }
 
             

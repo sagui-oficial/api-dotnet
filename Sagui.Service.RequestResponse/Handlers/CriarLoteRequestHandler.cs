@@ -33,7 +33,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             {
                 var _Lote = LoteService.Cadastrar(Lotes);
 
-                if (_Lote.IdLote != 0)
+                if (_Lote != null)
                 {
                     responseLote.Lote = _Lote;
                     responseLote.ExecutionDate = DateTime.Now;

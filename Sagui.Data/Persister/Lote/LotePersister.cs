@@ -22,12 +22,12 @@ namespace Sagui.Data.Persister.Lote
             DbParams.Add(nameof(Lote.DataPrevistaRecebimento), Lote.DataPrevistaRecebimento);
             DbParams.Add(nameof(Lote.PlanoOperadora), Lote.PlanoOperadora.Id);
             DbParams.Add(nameof(Lote.Funcionario), Lote.Funcionario.Id);
-            DbParams.Add(nameof(Lote.StatusLote), Lote.StatusLote);
+            DbParams.Add(nameof(Lote.Status), Lote.Status);
             DbParams.Add(nameof(Lote.TotalGTOLote), Lote.TotalGTOLote);
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
             //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams)) {
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams);
 
 
                 try
@@ -36,15 +36,15 @@ namespace Sagui.Data.Persister.Lote
 
                     if (Convert.ToInt32(newId) > 0)
                     {
-                        Lote.IdLote = Convert.ToInt32(newId);
+                        Lote.Id = Convert.ToInt32(newId);
                     }
                 }
                 catch (Exception e)
                 {
-                    dataInfrastructure.transaction.Rollback();
+                Lote = null;
                 }
 
-            }
+            
 
 
             return Lote;

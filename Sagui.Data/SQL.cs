@@ -46,8 +46,8 @@ namespace Sagui.Data
                           ,arq.""Extensao""
 	                      ,agto.""idArquivo_GTO""
                           ,agto.""PublicID""
-                          FROM public.""Arquivo"" (NOLOCK) arq
-                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_GTO"" agto
                        ON arq.Id = agto.""idGTO""";
 
 
@@ -57,16 +57,15 @@ namespace Sagui.Data
                           ,arq.""Stream""
                           ,arq.""DataCriacao""
                           ,arq.""PathArquivo""
-                          ,arq.""Extensao""
-	                      ,agto.""idArquivo_GTO""
-                          ,agto.""PublicID""
-                          FROM public.""Arquivo"" (NOLOCK) arq
-                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
-                       ON arq.Id = agto.""idGTO""
-                    WHERE agto.idGTO = @idGTO";
+                          ,agto.""idArquivo_GTO""
+                          ,arq.""PublicID""
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_GTO"" agto
+                       ON arq.""Id"" = agto.""idGTO""
+                    WHERE agto.""idGTO"" = @idGTO";
 
 
-        public static string ObterArquivoGTOPorPublicId = @"
+        public static string ObterArquivoGTOPorPublicID = @"
                     SELECT arq.""Id""
                           ,arq.""Nome""
                           ,arq.""Stream""
@@ -75,10 +74,10 @@ namespace Sagui.Data
                           ,arq.""Extensao""
 	                      ,agto.""idArquivo_GTO""
                           ,agto.""PublicID""
-                          FROM public.""Arquivo"" (NOLOCK) arq
-                    INNER JOIN public.""Arquivo_GTO"" (NOLOCK) agto
-                       ON arq.Id = agto.""idGTO""
-                    WHERE agto.""PublicID""::text = @PublicID";
+                          FROM public.""Arquivo"" arq
+                    INNER JOIN public.""Arquivo_GTO"" agto
+                       ON arq.""Id"" = agto.""idGTO""
+                    WHERE agto.""PublicID""::uuid = @PublicID";
 
 
 
@@ -90,14 +89,14 @@ namespace Sagui.Data
                           ,b.""DataCriacao""
                           ,b.""PathArquivo""
                     FROM ""Arquivo_GTO"" a (NOLOCK)
-		                    inner join ""Arquivo"" b (NOLOCK) ON a.""idArquivo"" = b.""Id""
+		                    inner join ""Arquivo"" b ON a.""idArquivo"" = b.""Id""
                     WHERE ""idGTO"" = @idGTO";
 
         #endregion
 
         #region ArquivoPlanoOperadora
 
-        public static string ObterArquivoPlanoOperadoraPorPublicId = @"
+        public static string ObterArquivoPlanoOperadoraPorPublicID = @"
                     SELECT arq.""Id""
                           ,arq.""Nome""
                           ,arq.""Stream""
@@ -109,7 +108,7 @@ namespace Sagui.Data
                           FROM public.""Arquivo"" arq
                     INNER JOIN public.""Arquivo_PlanoOperadora"" apo
                        ON arq.Id = apo.""idPlanoOperadora""
-                    WHERE apo.""PublicID""::text = @PublicID";
+                    WHERE apo.""PublicID""::uuid = @PublicID";
 
 
         public static string ListarArquivoPlanoOperadora = @"
@@ -147,7 +146,7 @@ namespace Sagui.Data
                           ,b.""DataCriacao""
                           ,b.""PathArquivo""
                     FROM ""Arquivo_GTO"" a (NOLOCK)
-		                    inner join ""Arquivo"" b (NOLOCK) ON a.""idArquivo"" = b.""Id""
+		                    inner join ""Arquivo"" b ON a.""idArquivo"" = b.""Id""
                     WHERE ""idGTO"" = @idGTO";
 
         #endregion
@@ -185,17 +184,17 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE public.""GTO""
                                        SET ""Status"" = @Status
-                                       WHERE ""PublicID""::text = @publicID   ";
+                                       WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string UpdateGTO = @"
-                   UPDATE public.GTO
+                   UPDATE public.""GTO""
                        SET ""Numero"" = @Numero
                           ,""Solicitacao"" = @Solicitacao
                           ,""Vencimento"" = @Vencimento
                           ,""Status"" = @Status
                           ,""PacienteId"" = @Paciente
                           ,""PlanoOperadoraId"" = @PlanoOperadora
-                      WHERE ""PublicID""::text = @publicID   ";
+                      WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string CreateGTO = @"
                 INSERT INTO public.""GTO""
@@ -216,7 +215,7 @@ namespace Sagui.Data
                  RETURNING ""Id"";";
 
         public static string ListGTO = @"
-                                    SELECT  a.Id
+                                    SELECT  a.""Id""
                                         ,a.""Numero""
                                         ,a.""Status""
                                         ,a.""PlanoOperadoraId""
@@ -227,12 +226,12 @@ namespace Sagui.Data
                                         ,a.""Solicitacao""
                                         ,a.""Vencimento""
                                         ,a.""PublicID""
-                                    FROM public.""GTO"" a (NOLOCK) 
-			                                INNER JOIN  ""PlanoOperadora"" b (NOLOCK)  ON  a.""PlanoOperadoraId"" = b.""Id""
-			                                INNER JOIN  ""UsuarioBase"" c (NOLOCK)  ON  a.""PacienteId"" = c.""Id";
+                                    FROM public.""GTO"" a 
+			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""";
 
         public static string ObterGTObyPublicID = @"
-                                     SELECT  a.Id
+                                     SELECT  a.""Id""
                                         ,a.""Numero""
                                         ,a.""Status""
                                         ,a.""PlanoOperadoraId""
@@ -243,9 +242,9 @@ namespace Sagui.Data
                                         ,a.""Solicitacao""
                                         ,a.""Vencimento""
                                         ,a.""PublicID""
-                                    FROM public.""GTO"" a (NOLOCK) 
-			                                INNER JOIN  ""PlanoOperadora"" b (NOLOCK)  ON  a.""PlanoOperadoraId"" = b.""Id""
-			                                INNER JOIN  ""UsuarioBase"" c (NOLOCK)  ON  a.""PacienteId"" = c.""Id
+                                    FROM public.""GTO"" a 
+			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
                             WHERE a.""PublicID""::text = @PublicID";
 
         #endregion
@@ -265,9 +264,9 @@ namespace Sagui.Data
                                ,@ValorProcedimento
                                ,@Exigencias
                                ,@Anotacoes)
-                            RETURNING ""IdProcedimento"";";
+                            RETURNING ""Id"";";
         public static string ListProcedimento = @"
-                            SELECT ""IdProcedimento"", 
+                            SELECT ""Id"", 
                                    ""Codigo"", 
                                    ""NomeProcedimento"", 
                                    ""ValorProcedimento"", 
@@ -277,7 +276,7 @@ namespace Sagui.Data
 	                        FROM public.""Procedimento""";
 
         public static string ObterProcedimento = @"
-                            SELECT ""IdProcedimento""
+                            SELECT ""Id""
                                   ,""Codigo""
                                   ,""NomeProcedimento""
                                   ,""ValorProcedimento""
@@ -293,7 +292,13 @@ namespace Sagui.Data
 
         public static string UpdateProcedimento = @"
                             UPDATE  public.""Procedimento""
-                                    SET ""Status"" = @Status                                      
+                                    SET ""Codigo"" = @Codigo
+                                  ,""NomeProcedimento""  = @NomeProcedimento
+                                  ,""ValorProcedimento"" = @ValorProcedimento
+                                  ,""Exigencias"" = @Exigencias
+                                  ,""Anotacoes"" = @Anotacoes
+                                  ,""Status"" = @Status
+            
                             WHERE ""PublicID""::text = @PublicID";
         #endregion
 
@@ -310,10 +315,10 @@ namespace Sagui.Data
                                   ,""Telefone""
                                   ,""CRO""
                                   ,""Discriminator""
-                                  ,""PublicId""
+                                  ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario
-                              AND ""PublicID""::text = @PublicID";
+                              AND ""PublicID""::uuid = @PublicID";
 
 
         public static string ListUsuario = @"
@@ -326,7 +331,7 @@ namespace Sagui.Data
                                   ,""Telefone""
                                   ,""CRO""
                                   ,""Discriminator""
-                                  ,""PublicId""
+                                  ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario";
 
@@ -351,15 +356,15 @@ namespace Sagui.Data
                         RETURNING ""Id"";";
 
         public static string UpdateUsuarioPaciente = @"
-                UPDATE public.""UsuarioBase""""
+                UPDATE public.""UsuarioBase""
                        SET ""Funcao"" = @Funcao
                           ,""Nome"" = @Nome
                           ,""Anotacoes"" = @Anotacoes
                           ,""CPF"" = @CPF
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
-                          ,""Discriminator"" = @Discriminator
-                     WHERE ""PublicID""::text = @PublicId";
+                          
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
 
@@ -383,15 +388,15 @@ namespace Sagui.Data
                         RETURNING ""Id"";";
 
         public static string UpdateUsuarioFuncionario = @"
-                UPDATE public.""UsuarioBase""""
+                UPDATE public.""UsuarioBase""
                        SET ""Funcao"" = @Funcao
                           ,""Nome"" = @Nome
                           ,""Anotacoes"" = @Anotacoes
                           ,""CPF"" = @CPF
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
-                          ,""Discriminator"" = @Discriminator
-                     WHERE ""PublicID""::text = @PublicId";
+                          
+                     WHERE ""PublicID""::uuid = @PublicID";
 
         public static string CreateUsuarioDentista = @"
                 INSERT INTO public.""UsuarioBase""
@@ -422,14 +427,13 @@ namespace Sagui.Data
                           ,""CPF"" = @CPF
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
-                          ,""CRO"" = @CRO
-                          ,""Discriminator"" = @Discriminator
-                     WHERE ""PublicID""::text = @PublicId";
+                          ,""CRO"" = @CRO                        
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeleteUsuario = @"
                             DELETE FROM public.""UsuarioBase""
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
 
         #endregion
 
@@ -469,9 +473,9 @@ namespace Sagui.Data
                                 ,""CNPJ""
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
-                                ,""PublicId""
+                                ,""PublicID""
                               FROM public.""PlanoOperadora"" 
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string ListPlanoOperadora = @"
@@ -482,7 +486,7 @@ namespace Sagui.Data
                                 ,""CNPJ""
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
-                                ,""PublicId""
+                                ,""PublicID""
                               FROM public.""PlanoOperadora""";
 
         public static string UpdatePlanoOperadora = @"
@@ -492,12 +496,14 @@ namespace Sagui.Data
                           ,""CNPJ"" = @CNPJ
                           ,""DataEnvioLote"" = @DataEnvioLote
                           ,""DataRecebimentoLote"" = @DataRecebimentoLote
-                     WHERE ""PublicID""::text = @PublicId";
+                          ,""Status"" = @Status
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeletePlanoOperadora = @"
-                            DELETE FROM public.""PlanoOperadora""
-                            WHERE ""PublicID""::text = @PublicID";
+                           UPDATE public.""PlanoOperadora""
+                       SET ""Status"" = @Status
+                     WHERE ""PublicID""::uuid = @PublicID";
 
         #endregion
 
@@ -509,7 +515,7 @@ namespace Sagui.Data
                        ,""ValorTotalLote""
                        ,""DataEnvioCorreio""
                        ,""DataPrevistaRecebimento""
-                       ,""StatusLote""
+                       ,""Status""
                        ,""FuncionarioId"")
                  VALUES
                        (@PlanoOperadora
@@ -517,7 +523,7 @@ namespace Sagui.Data
                        ,@ValorTotalLote
                        ,@DataEnvioCorreio
                        ,@DataPrevistaRecebimento
-                       ,@StatusLote
+                       ,@Status
                        ,@Funcionario)
                         RETURNING ""Id"";";
 
@@ -529,7 +535,7 @@ namespace Sagui.Data
                                 ,""CNPJ""
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
-                                ,""PublicId""
+                                ,""PublicID""
                               FROM public.""PlanoOperadora""";
 
         public static string UpdateLote = @"
@@ -539,12 +545,12 @@ namespace Sagui.Data
                           ,""CNPJ"" = @CNPJ
                           ,""DataEnvioLote"" = @DataEnvioLote
                           ,""DataRecebimentoLote"" = @DataRecebimentoLote
-                     WHERE ""PublicID""::text = @PublicId";
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeleteLote = @"
                             DELETE FROM public.""Lote""
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
 
         #endregion
     }

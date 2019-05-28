@@ -53,17 +53,14 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioPaciente, DbParams);
 
             try
             {
-                var newId = dataInfrastructure.command.ExecuteScalar();
-
-                if (Convert.ToInt32(newId) > 0)
-                {
-                    Usuario.Id = Convert.ToInt32(newId);
-                }
+                dataInfrastructure.command.ExecuteScalar();
+                               
             }
             catch (Exception e)
             {
@@ -121,17 +118,15 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioFuncionario, DbParams);
 
             try
             {
-                var newId = dataInfrastructure.command.ExecuteScalar();
-
-                if (Convert.ToInt32(newId) > 0)
-                {
-                    Usuario.Id = Convert.ToInt32(newId);
-                }
+               
+                dataInfrastructure.command.ExecuteNonQuery();
+                               
             }
             catch (Exception e)
             {
@@ -158,6 +153,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
 
@@ -191,17 +187,14 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioDentista, DbParams);
 
             try
             {
-                var newId = dataInfrastructure.command.ExecuteScalar();
-
-                if (Convert.ToInt32(newId) > 0)
-                {
-                    Usuario.Id = Convert.ToInt32(newId);
-                }
+                 dataInfrastructure.command.ExecuteScalar();
+                               
             }
             catch (Exception e)
             {

@@ -10,8 +10,7 @@ namespace Sagui.Model
 {
     public class PlanoOperadora : Base.BaseModel
     {
-        [Key, Column(Order = 1)]
-        public int Id { get; set; }
+     
         public string NomeFantasia { get; set; }
         public string RazaoSocial { get; set; }
         public string CNPJ { get; set; }
