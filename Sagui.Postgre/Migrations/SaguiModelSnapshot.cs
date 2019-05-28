@@ -116,8 +116,6 @@ namespace Sagui.Postgres.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<int>("StatusLote");
-
                     b.Property<int>("TotalGTOLote");
 
                     b.Property<decimal>("ValorTotalLote");
@@ -169,7 +167,9 @@ namespace Sagui.Postgres.Migrations
 
                     b.Property<Guid?>("PacientePublicID");
 
-                    b.Property<int?>("PlanoOperadoraId");
+                    b.Property<int>("PlanoOperadoraId");
+
+                    b.Property<int?>("PlanoOperadoraId1");
 
                     b.Property<Guid?>("PlanoOperadoraPublicID");
 
@@ -177,7 +177,7 @@ namespace Sagui.Postgres.Migrations
 
                     b.HasIndex("PacienteId", "PacientePublicID");
 
-                    b.HasIndex("PlanoOperadoraId", "PlanoOperadoraPublicID");
+                    b.HasIndex("PlanoOperadoraId1", "PlanoOperadoraPublicID");
 
                     b.ToTable("PlanoOperadoraPaciente");
                 });
@@ -364,7 +364,7 @@ namespace Sagui.Postgres.Migrations
 
                     b.HasOne("Sagui.Model.PlanoOperadora", "PlanoOperadora")
                         .WithMany()
-                        .HasForeignKey("PlanoOperadoraId", "PlanoOperadoraPublicID");
+                        .HasForeignKey("PlanoOperadoraId1", "PlanoOperadoraPublicID");
                 });
 
             modelBuilder.Entity("Sagui.Model.Procedimentos", b =>

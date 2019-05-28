@@ -56,13 +56,7 @@ namespace Sagui.Test.Mocks
             UsuarioPaciente.PublicID = new Guid("a97480cc-7e17-11e9-b2de-705a0f6970c5");
 
             PlanoOperadoraPaciente planoOperadoraPaciente = new PlanoOperadoraPaciente();
-            planoOperadoraPaciente.PlanoOperadora = new PlanoOperadora
-            {
-                CNPJ = "0000000000000",
-                NomeFantasia = "Plano",
-                Id = 1,
-                RazaoSocial = "Plano SA"
-            };
+            planoOperadoraPaciente.PlanoOperadoraId = 1;
             planoOperadoraPaciente.NumeroPlano = "123456789";
 
             UsuarioPaciente.ListaPlanoOperadoraPaciente = new List<PlanoOperadoraPaciente>();

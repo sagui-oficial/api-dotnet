@@ -24,10 +24,10 @@ namespace Sagui.Postgres.Migrations
                 table: "PlanoOperadoraPaciente",
                 nullable: true);
 
-            migrationBuilder.AddColumn<Guid>(
-                name: "PlanoOperadoraPublicID",
-                table: "PlanoOperadoraPaciente",
-                nullable: true);
+            //migrationBuilder.AddColumn<Guid>(
+            //    name: "PlanoOperadoraPublicID",
+            //    table: "PlanoOperadoraPaciente",
+            //    nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "Status",
@@ -69,14 +69,14 @@ namespace Sagui.Postgres.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_PlanoOperadoraPaciente_PlanoOperadoraId_PlanoOperadoraPubli~",
                 table: "PlanoOperadoraPaciente",
-                columns: new[] { "PlanoOperadoraId", "PlanoOperadoraPublicID" });
+                columns: new[] { "PlanoOperadoraId"});
 
             migrationBuilder.AddForeignKey(
                 name: "FK_PlanoOperadoraPaciente_PlanoOperadora_PlanoOperadoraId_Plan~",
                 table: "PlanoOperadoraPaciente",
-                columns: new[] { "PlanoOperadoraId", "PlanoOperadoraPublicID" },
+                columns: new[] { "PlanoOperadoraId" },
                 principalTable: "PlanoOperadora",
-                principalColumns: new[] { "Id", "PublicID" },
+                principalColumns: new[] { "Id"},
                 onDelete: ReferentialAction.Restrict);
         }
 
