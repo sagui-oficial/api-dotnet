@@ -1,4 +1,5 @@
-﻿using Sagui.Model;
+﻿using Sagui.Data.Base;
+using Sagui.Model;
 using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.GTO
 {
-    public class UsuarioDentistaLookup
+    public class UsuarioDentistaLookup : DBParams
     {
         public List<Model.Dentinsta> ListUsuarioDentista()
         {
@@ -83,5 +84,7 @@ namespace Sagui.Data.Lookup.GTO
             }
             return usuario;
         }
+
+        
     }
 }

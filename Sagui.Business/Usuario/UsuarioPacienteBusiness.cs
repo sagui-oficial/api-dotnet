@@ -78,5 +78,13 @@ namespace Sagui.Business.Usuario
 
             return paciente;
         }
+
+        public List<Model.PlanoOperadoraPaciente> ListarPlanoOperadoraPaciente(Model.Paciente Paciente)
+        {
+            UsuarioPacienteLookup usuarioLookup = new UsuarioPacienteLookup();
+            var listUsuarios = usuarioLookup.ListarPlanoOperadoraPaciente(Paciente);
+
+            return listUsuarios;
+        }
     }
 }

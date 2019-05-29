@@ -39,23 +39,9 @@ namespace Sagui.Postgres
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<GTO>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<GTO>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
-
-            modelBuilder.Entity<PlanoOperadora>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<PlanoOperadora>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
-
-            modelBuilder.Entity<UsuarioBase>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<UsuarioBase>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
-
-            modelBuilder.Entity<Procedimentos>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<Procedimentos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
-
-            modelBuilder.Entity<Arquivos>().HasKey(c => new { c.Id, c.PublicID });
-            modelBuilder.Entity<Arquivos>(b => { b.Property(u => u.PublicID).HasDefaultValueSql("uuid_generate_v1()"); });
-
+           
             modelBuilder.Entity<PlanoOperadoraPaciente>().HasKey(c => new { c.PacienteId, c.PlanoOperadoraId });
-            
+           
 
         }
        

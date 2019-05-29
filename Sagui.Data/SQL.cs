@@ -314,7 +314,6 @@ namespace Sagui.Data
                                   ,""Email""
                                   ,""Telefone""
                                   ,""CRO""
-                                  ,""Discriminator""
                                   ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario
@@ -330,7 +329,6 @@ namespace Sagui.Data
                                   ,""Email""
                                   ,""Telefone""
                                   ,""CRO""
-                                  ,""Discriminator""
                                   ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario";
@@ -445,6 +443,15 @@ namespace Sagui.Data
                                ,@PlanoOperadoraId
                                ,@NumeroPlano)
                             RETURNING ""PacienteId"";";
+
+        public static string ListarPlanoOperadoPaciente = @"
+                    SELECT  
+	                       a.""PacienteId""
+                          ,a.""PlanoOperadoraId""
+                          ,a.""NumeroPlano""
+                    FROM 
+                    ""PlanoOperadoraPaciente"" a 
+                    where ""PacienteId"" = @PacienteId";
 
         #endregion
 
