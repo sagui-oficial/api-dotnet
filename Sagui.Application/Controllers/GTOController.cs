@@ -16,13 +16,13 @@ namespace Sagui.Application.Controllers
     public class GTOController : Controller
     {
         // GET: api/GTO
-        [HttpGet("{gtopublicid}/ObterGTO", Name = "ObterGTO")]
-        public async Task<IActionResult> ObterGTO(Guid gtopublicid)
+        [HttpGet("{uuid}/ObterGTO", Name = "ObterGTO")]
+        public async Task<IActionResult> ObterGTO(Guid uuid)
         {
 
             RequestGTO requestGTO = new RequestGTO
             {
-                PublicID = gtopublicid
+                PublicID = uuid
             };
 
             GTOService gTOService = new GTOService();
@@ -72,12 +72,12 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
-        public async Task<IActionResult> DeletarGTO(Guid gtopublicid)
+        [HttpPatch("{uuid}/DeletarGTO", Name = "DeletarGTO")]
+        public async Task<IActionResult> DeletarGTO(Guid uuid)
         {
             RequestGTO requestGTO = new RequestGTO
             {
-                PublicID = gtopublicid
+                PublicID = uuid
             };
             GTOService gTOService = new GTOService();
 

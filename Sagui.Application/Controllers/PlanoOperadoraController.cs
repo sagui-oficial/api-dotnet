@@ -15,7 +15,7 @@ namespace Sagui.Application.Controllers
     {
 
         
-        [HttpGet("ListarPlanoOperadora", Name = "ListarPlanoOperadora")]
+        [HttpGet("", Name = "ListarPlanoOperadora")]
         public async Task<IActionResult> GetAsync()
         {
             RequestPlanoOperadora requestPlanoOperadora = default(RequestPlanoOperadora);
@@ -30,7 +30,7 @@ namespace Sagui.Application.Controllers
 
        
        
-        [HttpPost("CriarPlanoOperadora", Name = "CriarPlanoOperadora")]
+        [HttpPost("", Name = "CriarPlanoOperadora")]
         public async Task<IActionResult> CriarPlanoOperadora([FromBody]  RequestPlanoOperadora requestPlanoOperadora)
         {
             PlanoOperadoraService PlanoOperadoraService = new PlanoOperadoraService();
@@ -41,7 +41,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("AtualizarPlanoOperadora", Name = "AtualizarPlanoOperadora")]
+        [HttpPost("", Name = "AtualizarPlanoOperadora")]
         public async Task<IActionResult> AtualizarPlanoOperadora([FromBody]  RequestPlanoOperadora requestPlanoOperadora)
         {
             PlanoOperadoraService PlanoOperadoraService = new PlanoOperadoraService();
@@ -52,13 +52,13 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPut("{planopublicid}/DeletarPlanoOperadora", Name = "DeletarPlanoOperadora")]
-        public async Task<IActionResult> DeletarPlanoOperadora(Guid planopublicid)
+        [HttpPut("{uuid}", Name = "DeletarPlanoOperadora")]
+        public async Task<IActionResult> DeletarPlanoOperadora(Guid uuid)
         {
 
             RequestPlanoOperadora requestPlanoOperadora = new RequestPlanoOperadora
             {
-                PublicID = planopublicid
+                PublicID = uuid
             };
             PlanoOperadoraService PlanoOperadoraService = new PlanoOperadoraService();
 

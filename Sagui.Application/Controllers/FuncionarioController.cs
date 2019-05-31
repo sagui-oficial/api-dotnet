@@ -13,7 +13,7 @@ namespace Sagui.Application.Controllers
     [ApiController]
     public class FuncionarioController : Controller
     {
-        [HttpGet("ListarFuncionario", Name = "ListarFuncionario")]
+        [HttpGet("", Name = "ListarFuncionario")]
         public async Task<IActionResult> GetAsync()
         {
             RequestUsuarioFuncionario requestUsuaruio = default(RequestUsuarioFuncionario);
@@ -27,13 +27,13 @@ namespace Sagui.Application.Controllers
         }
 
 
-        [HttpGet("{userPublicId}/ObterFuncionario", Name = "ObterFuncionario")]
-        public async Task<IActionResult> ObterUsuarioFuncionario(Guid userPublicId)
+        [HttpGet("{uuid}", Name = "ObterFuncionario")]
+        public async Task<IActionResult> ObterUsuarioFuncionario(Guid uuid)
         {
 
             RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
             {
-                PublicID = userPublicId
+                PublicID = uuid
             };
 
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
@@ -44,7 +44,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("CriarFuncionario", Name = "CriarFuncionario")]
+        [HttpPost("", Name = "CriarFuncionario")]
         public async Task<IActionResult> CriarUsuarioFuncionario([FromBody]  RequestUsuarioFuncionario requestUsuario)
         {
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
@@ -55,7 +55,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("AtualizarFuncionario", Name = "AtualizarFuncionario")]
+        [HttpPost("", Name = "AtualizarFuncionario")]
         public async Task<IActionResult> AtualizarUsuarioFuncionario([FromBody]   RequestUsuarioFuncionario requestUsuario)
         {
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
@@ -66,13 +66,13 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{userPublicId}/DeletarFuncionario", Name = "DeletarFuncionario")]
-        public async Task<IActionResult> DeletarUsuarioFuncionario(Guid userPublicId)
+        [HttpPatch("{uuid}", Name = "DeletarFuncionario")]
+        public async Task<IActionResult> DeletarUsuarioFuncionario(Guid uuid)
         {
 
             RequestUsuarioFuncionario requestUsuaruio = new RequestUsuarioFuncionario
             {
-                PublicID = userPublicId
+                PublicID = uuid
             };
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 

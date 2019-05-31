@@ -25,18 +25,19 @@ namespace Sagui.Application.Controllers
 
         static string LoadLogo()
         {
-            var logo = System.IO.File.ReadAllText(@"wwwroot\logo.txt");
+            //var logo = System.IO.File.ReadAllText(@"wwwroot\logo.txt");
 
-            var subHeading = $"Welcome friend - SAGUI at your service";
+            //var subHeading = $"Welcome friend - SAGUI at your service";
 
-            var sb = new StringBuilder(logo);
+            //var sb = new StringBuilder(logo);
 
-            sb.AppendLine();
-            sb.AppendLine();
+            //sb.AppendLine();
+            //sb.AppendLine();
 
-            sb.Append(subHeading);
+            //sb.Append(subHeading);
 
-            return sb.ToString();
+            //return sb.ToString();
+            return "";
         }
 
         [AllowAnonymous]
