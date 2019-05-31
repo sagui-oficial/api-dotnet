@@ -228,7 +228,8 @@ namespace Sagui.Data
                                         ,a.""PublicID""
                                     FROM public.""GTO"" a 
 			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
-			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""";
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
+                                    WHERE a.""Status"" <>  99 ";
 
         public static string ObterGTObyPublicID = @"
                                      SELECT  a.""Id""
@@ -273,7 +274,8 @@ namespace Sagui.Data
                                    ""Exigencias"", 
                                    ""Anotacoes"", 
                                    ""PublicID""
-	                        FROM public.""Procedimento""";
+	                        FROM public.""Procedimento""
+                            WHERE ""Status"" <>  99 ";
 
         public static string ObterProcedimento = @"
                             SELECT ""Id""
@@ -331,7 +333,8 @@ namespace Sagui.Data
                                   ,""CRO""
                                   ,""PublicID""
                               FROM public.""UsuarioBase""
-                            WHERE ""TipoUsuario"" = @TipoUsuario";
+                            WHERE ""TipoUsuario"" = @TipoUsuario
+                            AND ""Status"" <>  99 ";
 
 
         public static string CreateUsuarioPaciente = @"
@@ -505,7 +508,8 @@ namespace Sagui.Data
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
                                 ,""PublicID""
-                              FROM public.""PlanoOperadora""";
+                              FROM public.""PlanoOperadora""
+                              WHERE ""Status"" <>  99 ";
 
         public static string UpdatePlanoOperadora = @"
                 UPDATE public.""PlanoOperadora""
@@ -554,7 +558,8 @@ namespace Sagui.Data
                                 ,""DataEnvioLote""
                                 ,""DataRecebimentoLote""
                                 ,""PublicID""
-                              FROM public.""PlanoOperadora""";
+                              FROM public.""PlanoOperadora""
+                              WHERE ""Status"" <>  99 ";
 
         public static string UpdateLote = @"
                 UPDATE public.""PlanoOperadora""

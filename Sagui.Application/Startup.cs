@@ -74,6 +74,7 @@ namespace Sagui.Application
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sagui API V1");
             });
 
+
         }
     }
 }
