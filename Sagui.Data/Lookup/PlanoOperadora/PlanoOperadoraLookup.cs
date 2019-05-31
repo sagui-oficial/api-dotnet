@@ -27,7 +27,8 @@ namespace Sagui.Data.Lookup.Usuario
                         _PlanoOperadora.CNPJ = Convert.ToString(reader["CNPJ"]);
                         _PlanoOperadora.DataEnvioLote = Convert.ToDateTime(reader["DataEnvioLote"]);
                         _PlanoOperadora.DataRecebimentoLote = Convert.ToDateTime(reader["DataRecebimentoLote"]);
-                       
+                        _PlanoOperadora.PublicID = (Guid)reader["PublicID"];
+
 
                         ListPlanoOperadora.Add(_PlanoOperadora);
                     }
