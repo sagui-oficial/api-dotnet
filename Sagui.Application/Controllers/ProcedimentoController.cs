@@ -15,13 +15,13 @@ namespace Sagui.Application.Controllers
     {
 
         //GET: api/Procedimento/5
-        [HttpGet("{gtopublicid}", Name = "ObterProcedimento")]
-        public async Task<IActionResult> ObterGTO(Guid gtopublicid)
+        [HttpGet("{uuid}", Name = "ObterProcedimento")]
+        public async Task<IActionResult> ObterGTO(Guid uuid)
         {
 
             RequestProcedimento requestProcedimento = new RequestProcedimento
             {
-                PublicID = gtopublicid
+                PublicID = uuid
             };
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
@@ -74,13 +74,13 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{gtopublicid}", Name = "DeletarProcedimento")]
-        public async Task<IActionResult> DeletarProcedimento(Guid gtopublicid)
+        [HttpPatch("{uuid}", Name = "DeletarProcedimento")]
+        public async Task<IActionResult> DeletarProcedimento(Guid uuid)
         {
 
             RequestProcedimento requestProcedimento = new RequestProcedimento
             {
-                PublicID = gtopublicid
+                PublicID = uuid
             };
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
 

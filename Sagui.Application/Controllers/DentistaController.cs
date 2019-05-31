@@ -18,13 +18,13 @@ namespace Sagui.Application.Controllers
     public class DentistaController : Controller
     {
         // GET: api/GTO
-        [HttpGet("{userPublicId}/ObterDentista", Name = "ObterDentista")]
-        public async Task<IActionResult> ObterDentista(Guid userPublicId)
+        [HttpGet("{uuid}", Name = "ObterDentista")]
+        public async Task<IActionResult> ObterDentista(Guid uuid)
         {
 
             RequestUsuarioDentista requestUsuarioDentista = new RequestUsuarioDentista
             {
-                PublicID = userPublicId
+                PublicID = uuid
             };
 
             UsuarioDentistaService DentistaService = new UsuarioDentistaService();
@@ -35,7 +35,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpGet("ListarDentista", Name = "ListarDentista")]
+        [HttpGet("", Name = "ListarDentista")]
         public async Task<IActionResult> ListarDentista()
         {
             RequestUsuarioDentista requestUsuarioDentista = default(RequestUsuarioDentista);
@@ -48,7 +48,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("CriarDentista", Name = "CriarDentista")]
+        [HttpPost("", Name = "CriarDentista")]
         public async Task<IActionResult> CriarDentista([FromBody]  RequestUsuarioDentista requestUsuarioDentista)
         {
             UsuarioDentistaService DentistaService = new UsuarioDentistaService();
@@ -59,7 +59,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("AtualizarDentista", Name = "AtualizarDentista")]
+        [HttpPatch("", Name = "AtualizarDentista")]
         public async Task<IActionResult> AtualizarDentista([FromBody]  RequestUsuarioDentista requestUsuarioDentista)
         {
             UsuarioDentistaService DentistaService = new UsuarioDentistaService();
@@ -70,12 +70,12 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{userPublicId}/DeletarDentista", Name = "DeletarDentista")]
-        public async Task<IActionResult> DeletarDentista(Guid userPublicId)
+        [HttpPatch("{uuid}", Name = "DeletarDentista")]
+        public async Task<IActionResult> DeletarDentista(Guid uuid)
         {
             RequestUsuarioDentista requestUsuarioDentista = new RequestUsuarioDentista
             {
-                PublicID = userPublicId
+                PublicID = uuid
             };
 
             UsuarioDentistaService DentistaService = new UsuarioDentistaService();

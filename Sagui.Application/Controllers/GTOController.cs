@@ -16,13 +16,13 @@ namespace Sagui.Application.Controllers
     public class GTOController : Controller
     {
         // GET: api/GTO
-        [HttpGet("{gtopublicid}/ObterGTO", Name = "ObterGTO")]
-        public async Task<IActionResult> ObterGTO(Guid gtopublicid)
+        [HttpGet("{uuid}", Name = "ObterGTO")]
+        public async Task<IActionResult> ObterGTO(Guid uuid)
         {
 
             RequestGTO requestGTO = new RequestGTO
             {
-                PublicID = gtopublicid
+                PublicID = uuid
             };
 
             GTOService gTOService = new GTOService();
@@ -35,7 +35,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpGet("ListarGTO", Name = "ListarGTO")]
+        [HttpGet("", Name = "ListarGTO")]
         public async Task<IActionResult> ListarGTO()
         {
             RequestGTO requestGTO = default(RequestGTO);
@@ -50,7 +50,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("CriarGTO", Name = "CriarGTO")]
+        [HttpPost("", Name = "CriarGTO")]
         public async Task<IActionResult> CriarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
@@ -61,7 +61,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("AtualizarGTO", Name = "AtualizarGTO")]
+        [HttpPatch("", Name = "AtualizarGTO")]
         public async Task<IActionResult> AtualizarGTO([FromBody]  RequestGTO requestGTO)
         {
             GTOService gTOService = new GTOService();
@@ -72,12 +72,12 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{gtopublicid}/DeletarGTO", Name = "DeletarGTO")]
-        public async Task<IActionResult> DeletarGTO(Guid gtopublicid)
+        [HttpPatch("{uuid}", Name = "DeletarGTO")]
+        public async Task<IActionResult> DeletarGTO(Guid uuid)
         {
             RequestGTO requestGTO = new RequestGTO
             {
-                PublicID = gtopublicid
+                PublicID = uuid
             };
             GTOService gTOService = new GTOService();
 

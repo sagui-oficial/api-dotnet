@@ -18,13 +18,13 @@ namespace Sagui.Application.Controllers
     public class PacienteController : Controller
     {
         // GET: api/GTO
-        [HttpGet("{userPublicId}/ObterPaciente", Name = "ObterPaciente")]
-        public async Task<IActionResult> ObterPaciente(Guid userPublicId)
+        [HttpGet("{uuid}", Name = "ObterPaciente")]
+        public async Task<IActionResult> ObterPaciente(Guid uuid)
         {
 
             RequestUsuarioPaciente requestUsuarioPaciente = new RequestUsuarioPaciente
             {
-                PublicID = userPublicId
+                PublicID = uuid
             };
 
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
@@ -35,7 +35,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpGet("ListarPaciente", Name = "ListarPaciente")]
+        [HttpGet("", Name = "ListarPaciente")]
         public async Task<IActionResult> ListarPaciente()
         {
             RequestUsuarioPaciente requestUsuarioPaciente = default(RequestUsuarioPaciente);
@@ -48,7 +48,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPost("CriarPaciente", Name = "CriarPaciente")]
+        [HttpPost("", Name = "CriarPaciente")]
         public async Task<IActionResult> CriarPaciente([FromBody]  RequestUsuarioPaciente requestUsuarioPaciente)
         {
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
@@ -59,7 +59,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("AtualizarPaciente", Name = "AtualizarPaciente")]
+        [HttpPatch("", Name = "AtualizarPaciente")]
         public async Task<IActionResult> AtualizarPaciente([FromBody]  RequestUsuarioPaciente requestUsuarioPaciente)
         {
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
@@ -70,12 +70,12 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{userPublicId}/DeletarPaciente", Name = "DeletarPaciente")]
-        public async Task<IActionResult> DeletarPaciente(Guid userPublicId)
+        [HttpPatch("{uuid}", Name = "DeletarPaciente")]
+        public async Task<IActionResult> DeletarPaciente(Guid uuid)
         {
             RequestUsuarioPaciente requestUsuarioPaciente = new RequestUsuarioPaciente
             {
-                PublicID = userPublicId
+                PublicID = uuid
             };
 
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
