@@ -15,7 +15,7 @@ namespace Sagui.Application.Controllers
     {
 
         //GET: api/Procedimento/5
-        [HttpGet("{gtopublicid}/ObterProcedimento", Name = "ObterProcedimento")]
+        [HttpGet("{gtopublicid}", Name = "ObterProcedimento")]
         public async Task<IActionResult> ObterGTO(Guid gtopublicid)
         {
 
@@ -33,7 +33,7 @@ namespace Sagui.Application.Controllers
         }
 
         
-        [HttpGet("ListarProcedimento", Name = "ListarProcedimento")]
+        [HttpGet("", Name = "ListarProcedimento")]
         public async Task<IActionResult> GetAsync()
         {
             RequestProcedimento requestProcedimento = default(RequestProcedimento);
@@ -52,7 +52,7 @@ namespace Sagui.Application.Controllers
 
        
        
-        [HttpPost("CriarProcedimento", Name = "CriarProcedimento")]
+        [HttpPost("", Name = "CriarProcedimento")]
         public async Task<IActionResult> CriarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
@@ -63,7 +63,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("AtualizarProcedimento", Name = "AtualizarProcedimento")]
+        [HttpPatch("", Name = "AtualizarProcedimento")]
         public async Task<IActionResult> AtualizarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
@@ -74,7 +74,7 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpPatch("{gtopublicid}/DeletarProcedimento", Name = "DeletarProcedimento")]
+        [HttpPatch("{gtopublicid}", Name = "DeletarProcedimento")]
         public async Task<IActionResult> DeletarProcedimento(Guid gtopublicid)
         {
 
