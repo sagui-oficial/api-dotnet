@@ -22,7 +22,7 @@ namespace Sagui.Postgres
         public DbSet<Dentinsta> Dentinsta { get; set; }
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
-        public DbSet<PlanoOperadoraPaciente> PlanoOperadoraPaciente { get; set; }
+        
         public DbSet<Lote> Lote { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -40,7 +40,7 @@ namespace Sagui.Postgres
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            
-            modelBuilder.Entity<PlanoOperadoraPaciente>().HasKey(c => new { c.PacienteId, c.PlanoOperadoraId });
+          
            
 
         }

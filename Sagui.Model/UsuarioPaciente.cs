@@ -8,6 +8,7 @@ namespace Sagui.Model
 {
     public class Paciente : UsuarioBase
     {
-        public List<PlanoOperadoraPaciente> ListaPlanoOperadoraPaciente { get; set; }
+        public int PlanoOperadoraId { get; set; }
+        public string NumeroPlano { get; set; }
     }
 }

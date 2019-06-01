@@ -56,14 +56,14 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public List<Model.PlanoOperadoraPaciente> ListarPlanoOperadoraPaciente(Model.Paciente Paciente)
-        {
-            using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
-            {
-                var _return = usuarioBusiness.ListarPlanoOperadoraPaciente(Paciente);
-                usuarioBusiness.Dispose();
-                return _return;
-            }
-        }
+        //public List<Model.PlanoOperadoraPaciente> ListarPlanoOperadoraPaciente(Model.Paciente Paciente)
+        //{
+        //    using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
+        //    {
+        //        var _return = usuarioBusiness.ListarPlanoOperadoraPaciente(Paciente);
+        //        usuarioBusiness.Dispose();
+        //        return _return;
+        //    }
+        //}
     }
 }

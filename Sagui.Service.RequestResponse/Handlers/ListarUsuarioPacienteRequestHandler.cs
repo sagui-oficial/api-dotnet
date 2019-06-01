@@ -30,11 +30,11 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var ListUsuarioPaciente = usuarioPacienteService.Listar();
 
-            foreach (var paciente in ListUsuarioPaciente)
-            {
-                paciente.ListaPlanoOperadoraPaciente = usuarioPacienteService.ListarPlanoOperadoraPaciente(paciente);
+            //foreach (var paciente in ListUsuarioPaciente)
+            //{
+            //    paciente.ListaPlanoOperadoraPaciente = usuarioPacienteService.ListarPlanoOperadoraPaciente(paciente);
                 
-            }
+            //}
 
             if (ListUsuarioPaciente.Count > 0)
             {

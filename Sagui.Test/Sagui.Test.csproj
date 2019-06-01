@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sagui.DBNN\Sagui.DB.csproj" />
     <ProjectReference Include="..\Sagui.Model\Sagui.Model.csproj" />
     <ProjectReference Include="..\Sagui.Postgre\Sagui.Postgres.csproj" />
     <ProjectReference Include="..\Sagui.Service.RequestResponse\Sagui.Service.RequestResponse.csproj" />

@@ -316,6 +316,8 @@ namespace Sagui.Data
                                   ,""Email""
                                   ,""Telefone""
                                   ,""CRO""
+                                  ,""NumeroPlano""
+                                  ,""PlanoOperadoraId""
                                   ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario
@@ -331,6 +333,8 @@ namespace Sagui.Data
                                   ,""Email""
                                   ,""Telefone""
                                   ,""CRO""
+                                  ,""NumeroPlano""
+                                  ,""PlanoOperadoraId""
                                   ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario
@@ -345,6 +349,8 @@ namespace Sagui.Data
                                ,""CPF""
                                ,""Email""
                                ,""Telefone""
+                                ,""PlanoOperadoraId""
+                                ,""NumeroPlano""
                                ,""TipoUsuario"")
                          VALUES
                                (@Funcao
@@ -353,7 +359,10 @@ namespace Sagui.Data
                                ,@CPF
                                ,@Email
                                ,@Telefone
-                               ,@TipoUsuario) 
+                               ,@PlanoOperadoraId
+                               ,@NumeroPlano
+                               ,@TipoUsuario
+                                ) 
                         RETURNING ""Id"";";
 
         public static string UpdateUsuarioPaciente = @"

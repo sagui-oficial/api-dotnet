@@ -30,7 +30,7 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var ObterUsuarioPaciente = usuarioPacienteService.Obter(request);
 
-            ObterUsuarioPaciente.ListaPlanoOperadoraPaciente = usuarioPacienteService.ListarPlanoOperadoraPaciente(request);
+          //  ObterUsuarioPaciente.ListaPlanoOperadoraPaciente = usuarioPacienteService.ListarPlanoOperadoraPaciente(request);
 
             if (ObterUsuarioPaciente != null)
             {

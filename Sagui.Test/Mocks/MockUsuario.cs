@@ -54,14 +54,17 @@ namespace Sagui.Test.Mocks
             UsuarioPaciente.Telefone = "11912345678";
             UsuarioPaciente.TipoUsuario = TipoUsuario.Tipo.Paciente.GetHashCode();
             UsuarioPaciente.PublicID = new Guid("a97480cc-7e17-11e9-b2de-705a0f6970c5");
+            UsuarioPaciente.PlanoOperadoraId = 1;
+            UsuarioPaciente.NumeroPlano = "123456789";
 
-            PlanoOperadoraPaciente planoOperadoraPaciente = new PlanoOperadoraPaciente();
-            planoOperadoraPaciente.PlanoOperadoraId = 1;
-            planoOperadoraPaciente.NumeroPlano = "123456789";
-            planoOperadoraPaciente.PacienteId = 1;
+            //PlanoOperadoraPaciente planoOperadoraPaciente = new PlanoOperadoraPaciente();
+            //planoOperadoraPaciente.PlanoOperadoraId = 1;
+            //planoOperadoraPaciente.NumeroPlano = "123456789";
+            //planoOperadoraPaciente.PacienteId = 1;
+            
 
-            UsuarioPaciente.ListaPlanoOperadoraPaciente = new List<PlanoOperadoraPaciente>();
-            UsuarioPaciente.ListaPlanoOperadoraPaciente.Add(planoOperadoraPaciente);
+            //UsuarioPaciente.ListaPlanoOperadoraPaciente = new List<PlanoOperadoraPaciente>();
+            //UsuarioPaciente.ListaPlanoOperadoraPaciente.Add(planoOperadoraPaciente);
 
             return UsuarioPaciente;
         }

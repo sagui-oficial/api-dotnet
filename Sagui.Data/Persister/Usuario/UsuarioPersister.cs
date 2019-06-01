@@ -20,6 +20,8 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.PlanoOperadoraId), Usuario.PlanoOperadoraId);
+            DbParams.Add(nameof(Usuario.NumeroPlano), Usuario.NumeroPlano);
 
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioPaciente, DbParams);
@@ -32,7 +34,7 @@ namespace Sagui.Data.Persister.Usuario
                 {
                     Usuario.Id = Convert.ToInt32(newId);
 
-                    SavePlanoOperadoraPaciente(Usuario,Usuario.ListaPlanoOperadoraPaciente);
+                   // SavePlanoOperadoraPaciente(Usuario,Usuario.ListaPlanoOperadoraPaciente);
 
                 }
             }
@@ -44,40 +46,40 @@ namespace Sagui.Data.Persister.Usuario
             return Usuario;
         }
 
-        public List<Model.PlanoOperadoraPaciente> SavePlanoOperadoraPaciente(Model.Paciente Usuario, List<Model.PlanoOperadoraPaciente> PlanoOperadoraPaciente)
-        {
-            if (PlanoOperadoraPaciente == null)
-                throw new ArgumentNullException(nameof(PlanoOperadoraPaciente));
+        //public List<Model.PlanoOperadoraPaciente> SavePlanoOperadoraPaciente(Model.Paciente Usuario, List<Model.PlanoOperadoraPaciente> PlanoOperadoraPaciente)
+        //{
+        //    if (PlanoOperadoraPaciente == null)
+        //        throw new ArgumentNullException(nameof(PlanoOperadoraPaciente));
 
-            List<Model.PlanoOperadoraPaciente> _PlanoOperadoraPaciente = new List<Model.PlanoOperadoraPaciente>();
-            foreach (var item in PlanoOperadoraPaciente)
-            {
-                DbParams.Clear();
-                DbParams.Add(nameof(item.NumeroPlano), item.NumeroPlano);
-                DbParams.Add(nameof(item.PacienteId), Usuario.Id);
-                DbParams.Add(nameof(item.PlanoOperadoraId), item.PlanoOperadoraId);
+        //    List<Model.PlanoOperadoraPaciente> _PlanoOperadoraPaciente = new List<Model.PlanoOperadoraPaciente>();
+        //    foreach (var item in PlanoOperadoraPaciente)
+        //    {
+        //        DbParams.Clear();
+        //        DbParams.Add(nameof(item.NumeroPlano), item.NumeroPlano);
+        //        DbParams.Add(nameof(item.PacienteId), Usuario.Id);
+        //        DbParams.Add(nameof(item.PlanoOperadoraId), item.PlanoOperadoraId);
 
-                DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreatePlanoOperadoPaciente, DbParams);
+        //        DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreatePlanoOperadoPaciente, DbParams);
 
-                try
-                {
-                    var newId = dataInfrastructure.command.ExecuteScalar();
+        //        try
+        //        {
+        //            var newId = dataInfrastructure.command.ExecuteScalar();
 
-                    if (Convert.ToInt32(newId) > 0)
-                    {   
-                        _PlanoOperadoraPaciente.Add(item);
-                    }
-                }
-                catch (Exception e)
-                {
-                    _PlanoOperadoraPaciente = null;
-                }
-            }
+        //            if (Convert.ToInt32(newId) > 0)
+        //            {   
+        //                _PlanoOperadoraPaciente.Add(item);
+        //            }
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            _PlanoOperadoraPaciente = null;
+        //        }
+        //    }
                     
 
 
-            return _PlanoOperadoraPaciente;
-        }
+        //    return _PlanoOperadoraPaciente;
+        //}
 
 
         public Model.Paciente AtualizarUsuario(Model.Paciente Usuario)
