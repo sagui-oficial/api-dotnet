@@ -22,7 +22,7 @@ namespace Sagui.Test.Mocks
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
             Guia.Paciente = new Paciente();
-            Guia.Paciente.Id = 2;
+            Guia.Paciente.Id = 4;
             Guia.Paciente.Nome = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
