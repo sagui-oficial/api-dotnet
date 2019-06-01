@@ -311,37 +311,41 @@ namespace Sagui.Data
 
 
         public static string ObterUsuario = @"
-                            SELECT ""Id""
-                                  ,""Funcao""
-                                  ,""Nome""
-                                  ,""Anotacoes""
-                                  ,""CPF""
-                                  ,""Email""
-                                  ,""Telefone""
-                                  ,""CRO""
-                                  ,""NumeroPlano""
-                                  ,""PlanoOperadoraId""
-                                  ,""PublicID""
-                              FROM public.""UsuarioBase""
-                            WHERE ""TipoUsuario"" = @TipoUsuario
-                              AND ""PublicID""::text = @PublicID";
+                            SELECT a.""Id""
+                                  ,a.""Funcao""
+                                  ,a.""Nome""
+                                  ,a.""Anotacoes""
+                                  ,a.""CPF""
+                                  ,a.""Email""
+                                  ,a.""Telefone""
+                                  ,a.""CRO""
+                                  ,a.""NumeroPlano""
+                                  ,a.""PlanoOperadoraId""
+                                  ,a.""PublicID""
+                                  ,b.""NomeFantasia""
+                              FROM public.""UsuarioBase"" a
+                                    LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
+                            WHERE a.""TipoUsuario"" = @TipoUsuario
+                              AND a.""PublicID""::text = @PublicID";
 
 
         public static string ListUsuario = @"
-                             SELECT ""Id""
-                                  ,""Funcao""
-                                  ,""Nome""
-                                  ,""Anotacoes""
-                                  ,""CPF""
-                                  ,""Email""
-                                  ,""Telefone""
-                                  ,""CRO""
-                                  ,""NumeroPlano""
-                                  ,""PlanoOperadoraId""
-                                  ,""PublicID""
-                              FROM public.""UsuarioBase""
-                            WHERE ""TipoUsuario"" = @TipoUsuario
-                            AND ""Status"" <>  99 ";
+                             SELECT a.""Id""
+                                  ,a.""Funcao""
+                                  ,a.""Nome""
+                                  ,a.""Anotacoes""
+                                  ,a.""CPF""
+                                  ,a.""Email""
+                                  ,a.""Telefone""
+                                  ,a.""CRO""
+                                  ,a.""NumeroPlano""
+                                  ,a.""PlanoOperadoraId""
+                                  ,a.""PublicID""
+                                 ,b.""NomeFantasia""
+                              FROM public.""UsuarioBase"" a
+                                    LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
+                            WHERE a.""TipoUsuario"" = @TipoUsuario
+                            AND a.""Status"" <>  99 ";
 
 
         public static string CreateUsuarioPaciente = @"

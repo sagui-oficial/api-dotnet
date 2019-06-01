@@ -34,6 +34,12 @@ namespace Sagui.Data.Lookup.GTO
                         _Usuario.PublicID = (Guid)(reader["PublicID"]);
                         _Usuario.NumeroPlano = Convert.ToString(reader["NumeroPlano"]);
                         _Usuario.PlanoOperadoraId = Convert.ToInt32(reader["PlanoOperadoraId"]);
+
+                        PlanoOperadora planoOperadora = new PlanoOperadora();
+                        planoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
+                        planoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                        _Usuario.PlanoOperadora = planoOperadora;
+                        
                         ListUsuario.Add(_Usuario);
                     }
                 }
@@ -73,6 +79,13 @@ namespace Sagui.Data.Lookup.GTO
                         usuarioPaciente.PublicID = (Guid)(reader["PublicID"]);
                         usuarioPaciente.NumeroPlano = Convert.ToString(reader["NumeroPlano"]);
                         usuarioPaciente.PlanoOperadoraId = Convert.ToInt32(reader["PlanoOperadoraId"]);
+
+                        PlanoOperadora planoOperadora = new PlanoOperadora();
+                        planoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
+                        planoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                        usuarioPaciente.PlanoOperadora = planoOperadora;
+
+                       
 
                     }
                 }

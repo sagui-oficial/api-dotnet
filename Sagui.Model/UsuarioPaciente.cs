@@ -11,6 +11,6 @@ namespace Sagui.Model
         public int PlanoOperadoraId { get; set; }
         public string NumeroPlano { get; set; }
 
-       // public virtual PlanoOperadora PlanoOperadora { get; set; }
+        public virtual PlanoOperadora PlanoOperadora { get; set; }
     }
 }
