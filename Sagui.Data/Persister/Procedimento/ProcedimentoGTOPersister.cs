@@ -17,6 +17,7 @@ namespace Sagui.Data.Persister.Procedimento
 
         public bool SaveProcedimentoGTO(int IdGTO, int IdProcedimento)
         {
+            DbParams.Clear();
             DbParams.Add(nameof(IdGTO), IdGTO);
             DbParams.Add(nameof(IdProcedimento), IdProcedimento);
 
@@ -40,6 +41,28 @@ namespace Sagui.Data.Persister.Procedimento
             {
                 return false;
             }
+
+        }
+
+        public bool DeletarProcedimentoGTO(int IdGTO)
+        {
+            DbParams.Add(nameof(IdGTO), IdGTO);
+            
+
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimentoGTO, DbParams);
+
+            try
+            {
+                _dataInfrastructure.command.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                
+                return false;
+            }
+                        
 
         }
     }

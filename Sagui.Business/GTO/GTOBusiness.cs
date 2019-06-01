@@ -86,14 +86,39 @@ namespace Sagui.Business.GTO
             GTOPersister gtoPersister = new GTOPersister();
             Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);
 
-            if (responseGTO == null)
+            if (responseGTO != null)
             {
-                gtoPersister.CommitCommand(false);
+                ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
+                var _persisted2 = procedimentoGTOPersister.DeletarProcedimentoGTO(gto.Id);
+
+                if (!_persisted2)
+                {
+                    procedimentoGTOPersister.CommitCommand(false);
+                    return null;
+                }
+
+                foreach (Procedimentos procedimento in gto.Procedimentos)
+                {
+                    
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.Id);
+
+
+                    if (!_persisted)
+                    {
+                        procedimentoGTOPersister.CommitCommand(false);
+                        return null;
+                    }
+                }
+
+                gtoPersister.CommitCommand(true);
             }
             else
             {
-                gtoPersister.CommitCommand(true);
+                gtoPersister.CommitCommand(false);
             }
+
+
+
 
             return responseGTO;
         }

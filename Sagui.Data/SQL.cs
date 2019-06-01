@@ -164,6 +164,10 @@ namespace Sagui.Data
                                ,@IdProcedimento)
                             RETURNING ""IdGTO"";";
 
+        public static string DeleteProcedimentoGTO = @"
+                    DELETE FROM  public.""Procedimento_GTO""
+                          WHERE ""IdGTO"" = @IdGTO";
+
         public static string ListarProcedimentoGTO = @"
                      SELECT  
 	                       b.""Id""
@@ -183,7 +187,7 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE public.""GTO""
                                        SET ""Status"" = @Status
-                                       WHERE ""PublicID""::uuid = @PublicID   ";
+                                       WHERE ""PublicID""::text = @PublicID   ";
 
         public static string UpdateGTO = @"
                    UPDATE public.""GTO""
