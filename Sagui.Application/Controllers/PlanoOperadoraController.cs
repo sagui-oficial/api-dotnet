@@ -14,7 +14,25 @@ namespace Sagui.Application.Controllers
     public class PlanoOperadoraController : Controller
     {
 
-        
+
+        //GET: api/Procedimento/5
+        [HttpGet("{uuid}", Name = "ObterPlanoOperadora")]
+        public async Task<IActionResult> ObterGTO(Guid uuid)
+        {
+
+            RequestPlanoOperadora requestPlanoOperadora = new RequestPlanoOperadora
+            {
+                PublicID = uuid
+            };
+
+           PlanoOperadoraService planoOperadoraService = new PlanoOperadoraService();
+
+            ObterPlanoOperadoraRequestHandler ObterProcedimentoRequestHandler = new ObterPlanoOperadoraRequestHandler(planoOperadoraService);
+
+            return await this.HandleRequest(ObterProcedimentoRequestHandler, requestPlanoOperadora);
+
+        }
+
         [HttpGet("", Name = "ListarPlanoOperadora")]
         public async Task<IActionResult> GetAsync()
         {

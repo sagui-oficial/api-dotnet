@@ -18,6 +18,14 @@ namespace Sagui.Business.PlanoOperadora
             return listPlanoOperadora;
         }
 
+        public Model.PlanoOperadora Obter(Model.PlanoOperadora planoOperadora)
+        {
+            PlanoOperadoraLookup planoOperadoraLookup = new PlanoOperadoraLookup();
+            var listPlanoOperadora = planoOperadoraLookup.ObterPlanoOperadora(planoOperadora);
+
+            return listPlanoOperadora;
+        }
+
         public Model.PlanoOperadora Cadastrar(Model.PlanoOperadora planoOperadora)
         {
             PlanoOperadoraPersister planoOperadoraPersister = new PlanoOperadoraPersister();

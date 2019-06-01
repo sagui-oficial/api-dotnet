@@ -46,5 +46,15 @@ namespace Sagui.Service.PlanoOperadora
                 return _return;
             }
         }
+
+        public Model.PlanoOperadora Obter(Model.PlanoOperadora PlanoOperadora)
+        {
+            using (var PlanoOperadoraBusiness = new Business.PlanoOperadora.PlanoOperadoraBusiness())
+            {
+                var _return = PlanoOperadoraBusiness.Obter(PlanoOperadora);
+                PlanoOperadoraBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.Usuario
 {
-    public class PlanoOperadoraLookup
+    public class PlanoOperadoraLookup: DBParams
     {
         public List<Model.PlanoOperadora> ListPlanoOperadora()
         {
@@ -40,6 +41,45 @@ namespace Sagui.Data.Lookup.Usuario
             }
 
             return ListPlanoOperadora;
+        }
+
+        public Model.PlanoOperadora ObterPlanoOperadora(Model.PlanoOperadora planoOperadora)
+        {
+            if (planoOperadora == null)
+                throw new ArgumentNullException(nameof(planoOperadora));
+
+            DbParams.Add(nameof(planoOperadora.PublicID), planoOperadora.PublicID.ToString());
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterPlanoOperadora, DbParams))
+            {
+                try
+                {
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    
+
+                    while (reader.Read())
+                    {
+                        Model.PlanoOperadora _PlanoOperadora = new Model.PlanoOperadora();
+                        _PlanoOperadora.Id = Convert.ToInt32(reader["Id"]);
+                        _PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                        _PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
+                        _PlanoOperadora.CNPJ = Convert.ToString(reader["CNPJ"]);
+                        _PlanoOperadora.DataEnvioLote = Convert.ToDateTime(reader["DataEnvioLote"]);
+                        _PlanoOperadora.DataRecebimentoLote = Convert.ToDateTime(reader["DataRecebimentoLote"]);
+                        _PlanoOperadora.PublicID = (Guid)reader["PublicID"];
+
+                        planoOperadora = _PlanoOperadora;
+
+                        
+                    }
+                }
+                catch (Exception e)
+                {
+                    planoOperadora = null;
+                }
+            }
+
+            return planoOperadora;
         }
     }
 }
