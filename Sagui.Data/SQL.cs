@@ -373,6 +373,8 @@ namespace Sagui.Data
                           ,""CPF"" = @CPF
                           ,""Email"" = @Email
                           ,""Telefone"" = @Telefone
+                        ,""PlanoOperadoraId"" = @PlanoOperadoraId
+                        ,""NumeroPlano"" = @NumeroPlano
                           
                      WHERE ""PublicID""::uuid = @PublicID";
 

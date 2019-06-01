@@ -96,6 +96,8 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
             DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
+            DbParams.Add(nameof(Usuario.PlanoOperadoraId), Usuario.PlanoOperadoraId);
+            DbParams.Add(nameof(Usuario.NumeroPlano), Usuario.NumeroPlano);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioPaciente, DbParams);
 
