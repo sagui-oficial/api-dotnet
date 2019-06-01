@@ -165,18 +165,17 @@ namespace Sagui.Data
                             RETURNING ""IdGTO"";";
 
         public static string ListarProcedimentoGTO = @"
-                    SELECT  
-	                       b.""IdProcedimento""
+                     SELECT  
+	                       b.""Id""
                           ,b.""Codigo""
                           ,b.""NomeProcedimento""
                           ,b.""ValorProcedimento""
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
-                    FROM 
-                    ""Procedimento_GTO"" a (NOLOCK)
-		                    inner join ""Procedimento"" b ON a.""idProcedimento"" = b.""IdProcedimento""
-                    where idGTO = @idGTO";
+                    FROM ""Procedimento_GTO"" a 
+		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
+                    where a.""IdGTO"" = @idGTO";
 
       
 

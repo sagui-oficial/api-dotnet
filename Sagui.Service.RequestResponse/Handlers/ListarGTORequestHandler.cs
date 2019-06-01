@@ -40,7 +40,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
             foreach(var gto in ListGTO)
             {
-                gto.Arquivos = arquivoService.ListarArquivoPorGTO(gto);
+             //   gto.Arquivos = arquivoService.ListarArquivoPorGTO(gto);
                 gto.Procedimentos = procedimentoService.ListarProcedimentoPorGTO(gto);
             }
 

@@ -41,7 +41,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             
             if(GTO != null)
             {
-                GTO.Arquivos = arquivoService.ListarArquivoPorGTO(GTO);
+               // GTO.Arquivos = arquivoService.ListarArquivoPorGTO(GTO);
                 GTO.Procedimentos = procedimentoService.ListarProcedimentoPorGTO(GTO);
             }
 

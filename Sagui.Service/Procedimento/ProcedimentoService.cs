@@ -51,7 +51,7 @@ namespace Sagui.Service.Procedimento
         {
             using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
             {
-                var _return = ProcedimentoBusiness.ListProcedimentos();
+                var _return = ProcedimentoBusiness.ListarProcedimentoGTO(gto.Id);
                 ProcedimentoBusiness.Dispose();
                 return _return;
             }
