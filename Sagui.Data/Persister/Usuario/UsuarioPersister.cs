@@ -15,9 +15,9 @@ namespace Sagui.Data.Persister.Usuario
                 throw new ArgumentNullException(nameof(Usuario));
 
             DbParams.Add(nameof(Usuario.Anotacoes), Usuario.Anotacoes);
-            DbParams.Add(nameof(Usuario.CPF), Usuario.Funcao);
-            DbParams.Add(nameof(Usuario.Email), Usuario.Nome);
-            DbParams.Add(nameof(Usuario.Funcao), Usuario.Nome);
+            DbParams.Add(nameof(Usuario.CPF), Usuario.CPF);
+            DbParams.Add(nameof(Usuario.Email), Usuario.Email);
+            DbParams.Add(nameof(Usuario.Funcao), Usuario.Funcao);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
             DbParams.Add(nameof(Usuario.TipoUsuario), TipoUsuario.Tipo.Paciente.GetHashCode());
@@ -196,7 +196,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Funcao), Usuario.Funcao);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
-            DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.TipoUsuario), TipoUsuario.Tipo.Dentista.GetHashCode());
             DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateUsuarioDentista, DbParams);
@@ -230,7 +230,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Funcao), Usuario.Funcao);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
-            DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.TipoUsuario), TipoUsuario.Tipo.Dentista.GetHashCode());
             DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateUsuarioDentista, DbParams);
