@@ -496,7 +496,7 @@ namespace Sagui.Data
                                 ,""DataRecebimentoLote""
                                 ,""PublicID""
                               FROM public.""PlanoOperadora"" 
-                            WHERE ""PublicID""::uuid = @PublicID";
+                            WHERE ""PublicID""::text = @PublicID";
 
 
         public static string ListPlanoOperadora = @"
