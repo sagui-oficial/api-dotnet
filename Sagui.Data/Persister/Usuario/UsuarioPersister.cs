@@ -1,4 +1,5 @@
 ﻿using Sagui.Data.Base;
+using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace Sagui.Data.Persister.Usuario
             DbParams.Add(nameof(Usuario.Funcao), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Nome), Usuario.Nome);
             DbParams.Add(nameof(Usuario.Telefone), Usuario.Telefone);
-            DbParams.Add(nameof(Usuario.TipoUsuario), Usuario.TipoUsuario);
+            DbParams.Add(nameof(Usuario.TipoUsuario), TipoUsuario.Tipo.Paciente.GetHashCode());
             DbParams.Add(nameof(Usuario.PlanoOperadoraId), Usuario.PlanoOperadoraId);
             DbParams.Add(nameof(Usuario.NumeroPlano), Usuario.NumeroPlano);
 

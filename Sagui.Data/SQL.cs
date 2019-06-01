@@ -321,7 +321,7 @@ namespace Sagui.Data
                                   ,""PublicID""
                               FROM public.""UsuarioBase""
                             WHERE ""TipoUsuario"" = @TipoUsuario
-                              AND ""PublicID""::uuid = @PublicID";
+                              AND ""PublicID""::text = @PublicID";
 
 
         public static string ListUsuario = @"

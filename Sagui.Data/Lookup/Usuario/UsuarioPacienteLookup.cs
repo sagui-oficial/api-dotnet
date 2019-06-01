@@ -51,7 +51,7 @@ namespace Sagui.Data.Lookup.GTO
             Paciente usuarioPaciente = default(Paciente);
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(Paciente.TipoUsuario), TipoUsuario.Tipo.Paciente);
+            DbParams.Add(nameof(Paciente.TipoUsuario), TipoUsuario.Tipo.Paciente.GetHashCode());
             DbParams.Add(nameof(Paciente.PublicID), paciente.PublicID.ToString());
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterUsuario, DbParams))
