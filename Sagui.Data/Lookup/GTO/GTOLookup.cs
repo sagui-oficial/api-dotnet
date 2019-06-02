@@ -37,6 +37,8 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Paciente.Nome = Convert.ToString(reader["Nome"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
+                        _GTO.TotalProcedimentos = Convert.ToDouble(reader["TotalProcedimentos"]);
+                        _GTO.ValorTotalProcedimentos = Convert.ToDouble(reader["ValorTotalProcedimentos"]);
                         _GTO.PublicID = (Guid)reader["PublicID"];
                         ListGTO.Add(_GTO);
                     }
@@ -77,7 +79,9 @@ namespace Sagui.Data.Lookup.GTO
                         _GTO.Paciente.Nome = Convert.ToString(reader["Nome"]);
                         _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
                         _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
-                        _GTO.PublicID = (Guid)reader["PublicID"];                        
+                        _GTO.PublicID = (Guid)reader["PublicID"];
+                        _GTO.TotalProcedimentos = Convert.ToDouble(reader["TotalProcedimentos"]);
+                        _GTO.ValorTotalProcedimentos = Convert.ToDouble(reader["ValorTotalProcedimentos"]);
                         GTO = _GTO;
                     }
                 }

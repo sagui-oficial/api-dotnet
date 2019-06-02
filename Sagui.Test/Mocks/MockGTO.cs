@@ -59,9 +59,9 @@ namespace Sagui.Test.Mocks
 
             List<Procedimentos> procedimentos = new List<Procedimentos>();
 
-            procedimentos.Add(new Procedimentos { Id = 5 });
-            procedimentos.Add(new Procedimentos { Id = 3 });
-            procedimentos.Add(new Procedimentos { Id = 4 });
+            procedimentos.Add(new Procedimentos { Id = 5, ValorProcedimento = 10 });
+            procedimentos.Add(new Procedimentos { Id = 3, ValorProcedimento = 50 });
+            procedimentos.Add(new Procedimentos { Id = 4, ValorProcedimento = 10 });
 
             Guia.Procedimentos = procedimentos;
 

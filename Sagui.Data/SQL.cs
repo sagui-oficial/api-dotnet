@@ -235,6 +235,8 @@ namespace Sagui.Data
                                         ,a.""Solicitacao""
                                         ,a.""Vencimento""
                                         ,a.""PublicID""
+                                        ,a.""TotalProcedimentos""
+                                        ,a.""ValorTotalProcedimentos""
                                     FROM public.""GTO"" a 
 			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
@@ -252,6 +254,8 @@ namespace Sagui.Data
                                         ,a.""Solicitacao""
                                         ,a.""Vencimento""
                                         ,a.""PublicID""
+                                        ,a.""TotalProcedimentos""
+                                        ,a.""ValorTotalProcedimentos""
                                     FROM public.""GTO"" a 
 			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
