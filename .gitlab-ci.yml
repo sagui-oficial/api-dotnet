@@ -1,6 +1,6 @@
 staging:
  stage: deploy
- image: microsoft/dotnet:2.2-sdk
+ #image: microsoft/dotnet:2.2-sdk
  variables:
   HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
  script:

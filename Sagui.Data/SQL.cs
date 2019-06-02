@@ -461,8 +461,9 @@ namespace Sagui.Data
 
 
         public static string DeleteUsuario = @"
-                            DELETE FROM public.""UsuarioBase""
-                            WHERE ""PublicID""::text = @PublicID";
+                            UPDATE public.""UsuarioBase""
+                       SET ""Status"" = @Status
+                     WHERE ""PublicID""::uuid = @PublicID";
 
         public static string CreatePlanoOperadoPaciente = @"
                     INSERT INTO public.""PlanoOperadoraPaciente""
