@@ -28,10 +28,10 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseGTO> Handle(RequestGTO GTO)
         {
-            var errors = validadorGTO.Validate(GTO);
+          //  var errors = validadorGTO.Validate(GTO);
 
-            if (errors.Count() == 0)
-            {
+            //if (errors.Count() == 0)
+            //{
                 var _GTO = GTOService.Deletar(GTO);
 
                 if (_GTO.PublicID != null)
@@ -49,14 +49,14 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.GTONaoDeletada, nameof(GTO), Constantes.MensagemGTONaoDeletada));
                     return responseGTO;
                 }
-            }
-            else
-            {
-                responseGTO.ExecutionDate = DateTime.Now;
-                responseGTO.ResponseType = ResponseType.Info;
-                responseGTO.Message = errors;
-                return responseGTO;
-            }
+            //}
+            //else
+            //{
+            //    responseGTO.ExecutionDate = DateTime.Now;
+            //    responseGTO.ResponseType = ResponseType.Info;
+            //    responseGTO.Message = errors;
+            //    return responseGTO;
+            //}
         }
     }
 }

@@ -25,7 +25,6 @@ namespace Sagui.Business.GTO
         public Model.GTO Cadastrar(Model.GTO gto)
         {
             gto.TotalProcedimentos = gto.Procedimentos.Count();
-
             gto.ValorTotalProcedimentos = gto.Procedimentos.Sum(p => p.ValorProcedimento);
 
             GTOPersister gtoPersister = new GTOPersister();
@@ -86,6 +85,9 @@ namespace Sagui.Business.GTO
 
         public Model.GTO Atualizar(Model.GTO gto)
         {
+            gto.TotalProcedimentos = gto.Procedimentos.Count();
+            gto.ValorTotalProcedimentos = gto.Procedimentos.Sum(p => p.ValorProcedimento);
+
 
             GTOPersister gtoPersister = new GTOPersister();
             Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);

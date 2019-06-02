@@ -43,34 +43,36 @@ namespace Sagui.Business.Validador.GTO
             else
             {
                 ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Id, nameof(gto.Paciente.Id), ref ErrorsResult);
-                ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Nome, nameof(gto.Paciente.Nome), ref ErrorsResult);
+                //ErrorsResult = validadorCampo.HandleValidation(gto.Paciente.Nome, nameof(gto.Paciente.Nome), ref ErrorsResult);
             }
 
-            if (gto.Procedimentos.Count == 0)
-            {
-                ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProcedimentosNaoInformados, nameof(gto.Procedimentos), Constantes.MensagemProcedimentosNaoInformados));
-            }
-            else
-            {
-                foreach (Model.Procedimentos procedimento in gto.Procedimentos)
-                {
-                    ErrorsResult = validatorProcedimento.Validate(procedimento);
-                }
-            }
+            //if (gto.Procedimentos.Count == 0)
+            //{
+            //    ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProcedimentosNaoInformados, nameof(gto.Procedimentos), Constantes.MensagemProcedimentosNaoInformados));
+            //}
+            //else
+            //{
+            //    foreach (Model.Procedimentos procedimento in gto.Procedimentos)
+            //    {
+            //        ErrorsResult = validatorProcedimento.Validate(procedimento);
+            //    }
+            //}
 
-            if (gto.Arquivos.Count == 0)
-            {
-                ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.MensagemArquivosNaoAnexados, nameof(gto.Arquivos), Constantes.MensagemArquivosNaoAnexados));
-            }
-            else
-            {
-                foreach (Model.Arquivos arquivo in gto.Arquivos)
-                {
-                    ErrorsResult = validadorArquivo.Validate(arquivo);
-                }
-            }
+            //if (gto.Arquivos.Count == 0)
+            //{
+            //    ErrorsResult.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.MensagemArquivosNaoAnexados, nameof(gto.Arquivos), Constantes.MensagemArquivosNaoAnexados));
+            //}
+            //else
+            //{
+            //    foreach (Model.Arquivos arquivo in gto.Arquivos)
+            //    {
+            //        ErrorsResult = validadorArquivo.Validate(arquivo);
+            //    }
+            //}
 
             return ErrorsResult;
         }
+
+        
     }
 }

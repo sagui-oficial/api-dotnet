@@ -197,6 +197,8 @@ namespace Sagui.Data
                           ,""Status"" = @Status
                           ,""PacienteId"" = @Paciente
                           ,""PlanoOperadoraId"" = @PlanoOperadora
+                          ,""TotalProcedimentos"" = @TotalProcedimentos
+                          ,""ValorTotalProcedimentos"" = @ValorTotalProcedimentos
                       WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string CreateGTO = @"

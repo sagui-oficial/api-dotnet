@@ -20,6 +20,8 @@ namespace Sagui.Data.Persister.GTO
             DbParams.Add(nameof(GTO.Solicitacao), GTO.Solicitacao);
             DbParams.Add(nameof(GTO.Vencimento), GTO.Vencimento);
             DbParams.Add(nameof(GTO.PublicID), GTO.PublicID);
+            DbParams.Add(nameof(GTO.TotalProcedimentos), GTO.TotalProcedimentos);
+            DbParams.Add(nameof(GTO.ValorTotalProcedimentos), GTO.ValorTotalProcedimentos);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateGTO, DbParams);
 
