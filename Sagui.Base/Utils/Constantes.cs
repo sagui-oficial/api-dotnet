@@ -13,7 +13,10 @@ namespace Sagui.Base.Utils
         public static string ProblemaAoInserir = "Ocorreu um problema ao inserir!";
         public static string ListadoComSucesso = "Listado com sucesso!";
         public static string ProblemaAoListar = "Ocorreu um problema ao listar!";
-
+        public static string MensagemTamanhoCPFIncorreto = "O CPF informado tem menos que 11 digítos.";
+        public static string MensagemCPFIncorreto = "O CPF informado está incorreto.";
+        public static string MensagemTamanhoCNPJIncorreto = "O CNPJ informado tem menos que 11 digítos.";
+        public static string MensagemCNPJIncorreto = "O CNPJ informado está incorreto.";
         #endregion
 
         #region Arquivos
@@ -84,6 +87,7 @@ namespace Sagui.Base.Utils
         public static string OperadoraNaoinformada = "OperadoraNaoinformada";
         public static string PacienteNaoinformado = "PacienteNaoinformado";
         public static string ProcedimentosNaoInformados = "ProcedimentosNaoInformados";
+        public static string CampoIncorreto = "CampoIncorreto";
         #endregion
 
         #region Error Messages

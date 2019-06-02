@@ -17,7 +17,20 @@ namespace Sagui.Test.Mocks
             Procedimento.Anotacoes = "AAAAAA";
             Procedimento.Exigencias = "AAAAAA";
             Procedimento.NomeProcedimento = "Procedimento de Teste";
-            Procedimento.ValorProcedimento = 1.00;
+            Procedimento.ValorProcedimento = 150.00;
+
+            return Procedimento;
+        }
+
+        public RequestProcedimento CriarMockProcedimentoB()
+        {
+            RequestProcedimento Procedimento = new RequestProcedimento();
+            Procedimento.Id = 2;
+            Procedimento.Codigo = "1";
+            Procedimento.Anotacoes = "AAAAAA";
+            Procedimento.Exigencias = "AAAAAA";
+            Procedimento.NomeProcedimento = "Procedimento de Teste";
+            Procedimento.ValorProcedimento = 175.00;
 
             return Procedimento;
         }

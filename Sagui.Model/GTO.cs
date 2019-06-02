@@ -19,7 +19,9 @@ namespace Sagui.Model
         public DateTime Solicitacao { get; set; }
         public DateTime Vencimento { get; set; }
         public List<Procedimentos> Procedimentos { get; set; }
-        
+        public double TotalProcedimentos { get; set; }
+        public double ValorTotalProcedimentos { get; set; }
+
         public GTO()
         {
             Arquivos = new List<Arquivo_GTO>();

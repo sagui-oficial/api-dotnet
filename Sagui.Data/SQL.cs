@@ -206,14 +206,18 @@ namespace Sagui.Data
                            , ""PlanoOperadoraId""
                            , ""PacienteId""
                            , ""Solicitacao""
-                           , ""Vencimento"")
+                           , ""Vencimento""
+                           , ""TotalProcedimentos""
+                           , ""ValorTotalProcedimentos"")
                      VALUES
                            (@Numero
                            , @Status
                            , @PlanoOperadora
                            , @Paciente
                            , @Solicitacao
-                           , @Vencimento)
+                           , @Vencimento
+                           , @TotalProcedimentos
+                           , @ValorTotalProcedimentos)
                 
                  RETURNING ""Id"";";
 

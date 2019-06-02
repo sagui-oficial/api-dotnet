@@ -26,7 +26,9 @@ namespace Sagui.Test.Mocks
             Guia.Paciente.Nome = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
-            Guia.Procedimentos = new List<Model.Procedimentos>() { mockProcedimento.CriarMockProcedimento() };
+            Guia.Procedimentos = new List<Model.Procedimentos>();
+            Guia.Procedimentos.Add(mockProcedimento.CriarMockProcedimento());
+            Guia.Procedimentos.Add(mockProcedimento.CriarMockProcedimentoB());
             Guia.Arquivos = new List<Model.Arquivo_GTO>() { mockArquivos.CriarMockArquivo() };
             Guia.Status = 1;
             Guia.PublicID = new Guid("9ac0756a-7fbe-11e9-a228-705a0f6970c5");

@@ -16,6 +16,7 @@ namespace Sagui.Model
         public byte[] Stream { get; set; }
         public DateTime DataCriacao { get; set; }
         public string PathArquivo { get; set; }
-        
+        public string Extensao { get; set; }
+
     }
 }
