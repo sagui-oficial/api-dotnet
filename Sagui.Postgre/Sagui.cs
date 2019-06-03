@@ -25,6 +25,10 @@ namespace Sagui.Postgres
         
         public DbSet<Lote> Lote { get; set; }
 
+        public DbSet<GTO_Lote> GTO_Lote { get; set; }
+
+        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

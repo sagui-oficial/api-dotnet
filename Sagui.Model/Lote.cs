@@ -11,13 +11,12 @@ namespace Sagui.Model
 {
     public class Lote : BaseModel
     {
-       
-        public PlanoOperadora PlanoOperadora { get; set; }
-        public List<GTO> ListaGTO { get; set; }
-        public int TotalGTOLote { get; set; }
         public decimal ValorTotalLote { get; set; }
         public DateTime DataEnvioCorreio { get; set; }
         public DateTime DataPrevistaRecebimento { get; set; }
+        public int TotalGTOLote { get; set; }
         public Funcionario Funcionario { get; set; }
+        public PlanoOperadora PlanoOperadora { get; set; }
+        public  List<GTO> ListaGTO { get; set; }
     }
 }
