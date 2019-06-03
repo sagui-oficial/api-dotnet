@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Sagui.Test.Mocks
 {
-    public class MockUsuario
+    public static class MockUsuario
     {
-        public RequestUsuarioFuncionario CriarMockUsuarioFuncionario()
+        public static RequestUsuarioFuncionario CriarMockUsuarioFuncionario()
         {
             RequestUsuarioFuncionario UsuarioFuncionario = new RequestUsuarioFuncionario();
             UsuarioFuncionario.Nome = "Maria";
@@ -26,7 +26,7 @@ namespace Sagui.Test.Mocks
             return UsuarioFuncionario;
         }
 
-        public RequestUsuarioDentista CriarMockUsuarioDentista()
+        public static RequestUsuarioDentista CriarMockUsuarioDentista()
         {
             RequestUsuarioDentista UsuarioDentista = new RequestUsuarioDentista();
             UsuarioDentista.Nome = "Maria";
@@ -43,7 +43,7 @@ namespace Sagui.Test.Mocks
         }
 
 
-        public RequestUsuarioPaciente CriarMockUsuarioPaciente()
+        public static RequestUsuarioPaciente CriarMockUsuarioPaciente()
         {
             RequestUsuarioPaciente UsuarioPaciente = new RequestUsuarioPaciente();
             UsuarioPaciente.Nome = "Maria";

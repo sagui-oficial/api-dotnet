@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sagui.Test.Mocks
 {
-    public class MockLote
+    public static class MockLote
     {
-        public RequestLote CriarMockLote()
+        public static RequestLote CriarMockLote()
         {
             RequestLote Lote = new RequestLote();
             Lote.Id = 1;
@@ -22,15 +22,16 @@ namespace Sagui.Test.Mocks
             Lote.Funcionario.Nome = "Funcionario 1";
             Lote.DataEnvioCorreio = DateTime.Now;
             Lote.DataPrevistaRecebimento = DateTime.Now.AddMonths(1);
-            Lote.TotalGTOLote = 10;
-            Lote.ValorTotalLote = 5000;
+            Lote.TotalGTOLote = 0;
+            Lote.ValorTotalLote = 0;
             Lote.Status = 1;
-           // Lote.PublicID = new Guid("");
+
+            // Lote.PublicID = new Guid("");
 
             return Lote;
         }
 
-         public RequestLote AtualizarMockGTO()
+        public static RequestLote AtualizarMockGTO()
         {
             RequestLote Lote = new RequestLote();
             Lote.Id = 1;
@@ -50,7 +51,7 @@ namespace Sagui.Test.Mocks
             return Lote;
         }
 
-        public RequestGTO DeletarMockGTO()
+        public static RequestGTO DeletarMockGTO()
         {
             MockProcedimento mockProcedimento = new MockProcedimento();
             MockArquivos mockArquivos = new MockArquivos();

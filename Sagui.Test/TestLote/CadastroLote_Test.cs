@@ -17,9 +17,8 @@ namespace Sagui.Test.TestLote
         public async Task CadastrarLote()
         {
             RequestLote requestLote = new RequestLote();
-            MockLote mock = new MockLote();
 
-            requestLote = mock.CriarMockLote();
+            requestLote = MockLote.CriarMockLote();
 
             LoteService LoteService = new LoteService();
 

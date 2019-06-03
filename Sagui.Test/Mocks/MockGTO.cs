@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Sagui.Test.Mocks
 {
-    public class MockGTO
+    public static class MockGTO
     {
-        public RequestGTO CriarMockGTO()
+        public static RequestGTO CriarMockGTO()
         {
             MockProcedimento mockProcedimento = new MockProcedimento();
-            MockArquivos mockArquivos  = new MockArquivos();
+            MockArquivos mockArquivos = new MockArquivos();
 
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 10;
@@ -36,10 +36,10 @@ namespace Sagui.Test.Mocks
             return Guia;
         }
 
-         public RequestGTO AtualizarMockGTO()
+        public static RequestGTO AtualizarMockGTO()
         {
             MockProcedimento mockProcedimento = new MockProcedimento();
-            MockArquivos mockArquivos  = new MockArquivos();
+            MockArquivos mockArquivos = new MockArquivos();
 
             RequestGTO Guia = new RequestGTO();
             Guia.Id = 1;
@@ -68,7 +68,7 @@ namespace Sagui.Test.Mocks
             return Guia;
         }
 
-        public RequestGTO DeletarMockGTO()
+        public static RequestGTO DeletarMockGTO()
         {
             MockProcedimento mockProcedimento = new MockProcedimento();
             MockArquivos mockArquivos = new MockArquivos();

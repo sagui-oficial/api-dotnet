@@ -9,7 +9,7 @@ namespace Sagui.Test.Mocks
 {
     public class MockProcedimento
     {
-        public RequestProcedimento CriarMockProcedimento()
+        public static RequestProcedimento CriarMockProcedimento()
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.Id = 1;
@@ -22,7 +22,7 @@ namespace Sagui.Test.Mocks
             return Procedimento;
         }
 
-        public RequestProcedimento CriarMockProcedimentoB()
+        public static RequestProcedimento CriarMockProcedimentoB()
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.Id = 2;
@@ -35,7 +35,7 @@ namespace Sagui.Test.Mocks
             return Procedimento;
         }
 
-        public RequestProcedimento AtualizarMockProcedimento()
+        public static RequestProcedimento AtualizarMockProcedimento()
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.Id = 1;
@@ -49,7 +49,7 @@ namespace Sagui.Test.Mocks
             return Procedimento;
         }
 
-        public RequestProcedimento ObterMockProcedimento()
+        public static RequestProcedimento ObterMockProcedimento()
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.Id = 1;
@@ -63,7 +63,7 @@ namespace Sagui.Test.Mocks
             return Procedimento;
         }
 
-        public RequestProcedimento DeletarMockProcedimento()
+        public static RequestProcedimento DeletarMockProcedimento()
         {
             RequestProcedimento Procedimento = new RequestProcedimento();
             Procedimento.Id = 1;

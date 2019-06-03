@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Sagui.Test.Mocks
 {
-    public class MockPlanoOperadora
+    public static class MockPlanoOperadora
     {
         
-        public RequestPlanoOperadora CriarMockPlanoOperadora()
+        public static RequestPlanoOperadora CriarMockPlanoOperadora()
         {
             MockProcedimento mockProcedimento = new MockProcedimento();
             MockArquivos mockArquivos = new MockArquivos();
@@ -30,7 +30,7 @@ namespace Sagui.Test.Mocks
             return planoOperadora;
         }
 
-        public RequestPlanoOperadora AtualizarMockPlanoOperadora()
+        public static RequestPlanoOperadora AtualizarMockPlanoOperadora()
         {
             MockProcedimento mockProcedimento = new MockProcedimento();
             MockArquivos mockArquivos = new MockArquivos();
