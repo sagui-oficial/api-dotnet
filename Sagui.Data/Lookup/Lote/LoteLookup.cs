@@ -13,7 +13,7 @@ namespace Sagui.Data.Lookup.Lote
         {
             List<Model.Lote> ListLote = new List<Model.Lote>();
 
-            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListGTO))
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListLote))
             {
                 try
                 {

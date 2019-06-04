@@ -37,5 +37,16 @@ namespace Sagui.Service.Lote
                 return _return;
             }
         }
+
+
+        public List<Model.Lote> Obter()
+        {
+            using (var LoteBusiness = new Business.Lote.LoteBusiness())
+            {
+                var _return = LoteBusiness.ListLote();
+                LoteBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }
