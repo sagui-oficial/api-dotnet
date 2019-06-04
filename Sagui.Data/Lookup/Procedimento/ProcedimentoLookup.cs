@@ -110,5 +110,42 @@ namespace Sagui.Data.Lookup.Procedimento
 
             return ListProcedimento;
         }
+
+        
+
+        public List<Model.Procedimentos> ListarProcedimento_PlanoOperadora(int IdPlanoOperadora)
+        {
+            List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
+
+            DbParams.Clear();
+            DbParams.Add("IdPlanoOperadora", IdPlanoOperadora);
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarProcedimentoPlanoOperadora, DbParams))
+            {
+                try
+                {
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Model.Procedimentos _Procedimento = new Model.Procedimentos();
+                        _Procedimento.Id = Convert.ToInt32(reader["Id"]);
+                        _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
+                        _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
+                        _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
+                        _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
+                        _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+                        _Procedimento.PublicID = (Guid)(reader["PublicID"]);
+                        ListProcedimento.Add(_Procedimento);
+                    }
+                }
+                catch (Exception e)
+                {
+                    ListProcedimento = null;
+                }
+            }
+
+            return ListProcedimento;
+        }
     }
 }

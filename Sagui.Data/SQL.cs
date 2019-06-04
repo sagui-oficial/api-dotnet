@@ -158,10 +158,12 @@ namespace Sagui.Data
         public static string CreateProcedimentoGTO = @"
                     INSERT INTO public.""Procedimento_GTO""
                                (""IdGTO""
-                               ,""IdProcedimento"")
+                               ,""IdProcedimento""
+                               ,""ValorProcedimento"")
                          VALUES
                                (@IdGTO
-                               ,@IdProcedimento)
+                               ,@IdProcedimento
+                               ,@ValorProcedimento)
                             RETURNING ""IdGTO"";";
 
         public static string DeleteProcedimentoGTO = @"
@@ -173,7 +175,7 @@ namespace Sagui.Data
 	                       b.""Id""
                           ,b.""Codigo""
                           ,b.""NomeProcedimento""
-                          ,b.""ValorProcedimento""
+                          ,a.""ValorProcedimento""
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
@@ -181,7 +183,21 @@ namespace Sagui.Data
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
                     where a.""IdGTO"" = @idGTO";
 
-      
+
+        public static string ListarProcedimentoPlanoOperadora = @"
+                     SELECT  
+	                       b.""Id""
+                          ,b.""Codigo""
+                          ,b.""NomeProcedimento""
+                          ,a.""ValorProcedimento""
+                          ,b.""Exigencias""
+                          ,b.""Anotacoes""
+                          ,b.""PublicID""
+                    FROM ""Procedimento_PlanoOperadora"" a 
+		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
+                    where a.""IdPlanoOperadora"" = @IdPlanoOperadora";
+
+
 
 
 

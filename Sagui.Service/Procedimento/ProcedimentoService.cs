@@ -76,5 +76,15 @@ namespace Sagui.Service.Procedimento
                 return _return;
             }
         }
+
+        public List<Procedimentos> ListarProcedimento_PlanoOperadora(Model.PlanoOperadora planoOperadora)
+        {
+            using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
+            {
+                var _return = ProcedimentoBusiness.ListarProcedimento_PlanoOperadora(planoOperadora.Id);
+                ProcedimentoBusiness.Dispose();
+                return _return;
+            }
+        }
     }
 }

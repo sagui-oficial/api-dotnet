@@ -49,6 +49,22 @@ namespace Sagui.Test.TestGTO
             Assert.IsTrue(response.Procedimento.Id > 0);
         }
 
+        [TestMethod]
+        public async Task ListarTodosProcedimento_PlanoOperadora()
+        {
+            ProcedimentoService procedimentoService = new ProcedimentoService();
+
+            ListarProcedimento_PlanoOperadoraRequestHandler listarProcedimentoRequestHandler = new ListarProcedimento_PlanoOperadoraRequestHandler(procedimentoService);
+
+            RequestPlanoOperadora requestPlanoOperadora = default(RequestPlanoOperadora);
+            requestPlanoOperadora = MockPlanoOperadora.AtualizarMockPlanoOperadora();
+
+            var response = await listarProcedimentoRequestHandler.Handle(requestPlanoOperadora);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.Procedimentos.Count > 0);
+        }
+
         //[TestMethod]
         //public async Task ListarNenhumProcedimento()
         //{

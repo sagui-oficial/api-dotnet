@@ -22,12 +22,11 @@ namespace Sagui.Postgres
         public DbSet<Dentinsta> Dentinsta { get; set; }
         public DbSet<Funcionario> Funcionario { get; set; }
         public DbSet<Paciente> Paciente { get; set; }
-        
         public DbSet<Lote> Lote { get; set; }
-
         public DbSet<GTO_Lote> GTO_Lote { get; set; }
+        public DbSet<Procedimento_PlanoOperadora> Procedimento_PlanoOperadora { get; set; }
 
-        
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -50,8 +50,20 @@ namespace Sagui.Application.Controllers
             
         }
 
-       
-       
+        [HttpGet("Procedimento_Operadora", Name = "Procedimento_Operadora")]
+        public async Task<IActionResult> ListarProcedimento_Operadora([FromBody]  RequestPlanoOperadora requestPlanoOperadora)
+        {
+            
+            ProcedimentoService procedimentoService = new ProcedimentoService();
+
+            ListarProcedimento_PlanoOperadoraRequestHandler listarProcedimentoRequestHandler = new ListarProcedimento_PlanoOperadoraRequestHandler(procedimentoService);
+
+            return await this.HandleRequest(listarProcedimentoRequestHandler, requestPlanoOperadora);
+
+        }
+
+
+
         [HttpPost("", Name = "CriarProcedimento")]
         public async Task<IActionResult> CriarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
