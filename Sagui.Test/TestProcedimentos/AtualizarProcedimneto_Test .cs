@@ -19,9 +19,8 @@ namespace Sagui.Test.TestProcedimentos
         public async Task AtualizarProcedimento()
         {
             RequestProcedimento requestProcedimento = new RequestProcedimento();
-            MockProcedimento mock = new MockProcedimento();
 
-            requestProcedimento = mock.AtualizarMockProcedimento();
+            requestProcedimento = MockProcedimento.AtualizarMockProcedimento();
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

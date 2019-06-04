@@ -19,9 +19,8 @@ namespace Sagui.Test.TestPlanoOperadora
         public async Task AtualizarPlanoOperadora()
         {
             RequestPlanoOperadora requestPlanoOperadora = new RequestPlanoOperadora();
-            MockPlanoOperadora mock = new MockPlanoOperadora();
 
-            requestPlanoOperadora = mock.AtualizarMockPlanoOperadora();
+            requestPlanoOperadora = MockPlanoOperadora.AtualizarMockPlanoOperadora();
 
             PlanoOperadoraService planoOperadoraService = new PlanoOperadoraService();
 

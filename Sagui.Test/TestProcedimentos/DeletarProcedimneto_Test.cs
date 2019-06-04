@@ -19,9 +19,8 @@ namespace Sagui.Test.TestProcedimentos
         public async Task DeletarProcedimento()
         {
             RequestProcedimento requestProcedimento = new RequestProcedimento();
-            MockProcedimento mock = new MockProcedimento();
 
-            requestProcedimento = mock.DeletarMockProcedimento();
+            requestProcedimento = MockProcedimento.DeletarMockProcedimento();
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

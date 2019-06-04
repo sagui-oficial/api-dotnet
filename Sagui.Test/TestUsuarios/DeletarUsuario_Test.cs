@@ -19,9 +19,8 @@ namespace Sagui.Test.TestProcedimentos
         public async Task DeletarUsuarioFuncionario()
         {
             RequestUsuarioFuncionario requestusuario = new RequestUsuarioFuncionario();
-            MockUsuario mock = new MockUsuario();
 
-            requestusuario = mock.CriarMockUsuarioFuncionario();
+            requestusuario = MockUsuario.CriarMockUsuarioFuncionario();
 
             UsuarioFuncionarioService UsuarioService = new UsuarioFuncionarioService();
 
@@ -38,9 +37,8 @@ namespace Sagui.Test.TestProcedimentos
         public async Task DeletarUsuarioDentista()
         {
             RequestUsuarioDentista requestusuario = new RequestUsuarioDentista();
-            MockUsuario mock = new MockUsuario();
 
-            requestusuario = mock.CriarMockUsuarioDentista();
+            requestusuario = MockUsuario.CriarMockUsuarioDentista();
 
             UsuarioDentistaService UsuarioService = new UsuarioDentistaService();
 
@@ -57,9 +55,8 @@ namespace Sagui.Test.TestProcedimentos
         public async Task DeletarUsuarioPaciente()
         {
             RequestUsuarioPaciente requestusuario = new RequestUsuarioPaciente();
-            MockUsuario mock = new MockUsuario();
 
-            requestusuario = mock.CriarMockUsuarioPaciente();
+            requestusuario = MockUsuario.CriarMockUsuarioPaciente();
 
             UsuarioPacienteService UsuarioService = new UsuarioPacienteService();
 

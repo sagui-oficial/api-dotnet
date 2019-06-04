@@ -19,9 +19,8 @@ namespace Sagui.Test.TestProcedimentos
         public async Task CadastrarProcedimento()
         {
             RequestProcedimento requestProcedimento = new RequestProcedimento();
-            MockProcedimento mock = new MockProcedimento();
 
-            requestProcedimento = mock.CriarMockProcedimento();
+            requestProcedimento = MockProcedimento.CriarMockProcedimento();
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

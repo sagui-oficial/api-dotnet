@@ -20,9 +20,8 @@ namespace Sagui.Test.TestPlanoOperadora
         public async Task CadastrarPlanoOperadora()
         {
             RequestPlanoOperadora requestPlanoOperadora = new RequestPlanoOperadora();
-            MockPlanoOperadora mock = new MockPlanoOperadora();
 
-            requestPlanoOperadora = mock.CriarMockPlanoOperadora();
+            requestPlanoOperadora = MockPlanoOperadora.CriarMockPlanoOperadora();
 
             PlanoOperadoraService planoOperadoraService = new PlanoOperadoraService();
 

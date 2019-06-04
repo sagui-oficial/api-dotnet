@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Sagui.Test.Mocks
 {
-    public class MockArquivos
+    public static class MockArquivos
     {
-        public RequestArquivoGTO CriarMockArquivo()
+        public static RequestArquivoGTO CriarMockArquivo()
         {
             RequestArquivoGTO arquivo = new RequestArquivoGTO();
             arquivo.DataCriacao = DateTime.Now;
@@ -19,7 +19,7 @@ namespace Sagui.Test.Mocks
             return arquivo;
         }
 
-        public RequestArquivoGTO CriarMockArquivoNaBase()
+        public static RequestArquivoGTO CriarMockArquivoNaBase()
         {
             RequestArquivoGTO arquivo = new RequestArquivoGTO();
             arquivo.DataCriacao = DateTime.Now;

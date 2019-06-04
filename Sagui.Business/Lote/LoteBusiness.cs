@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.Lote;
 using Sagui.Data.Lookup.Usuario;
@@ -20,19 +21,33 @@ namespace Sagui.Business.Lote
 
         public Model.Lote Cadastrar(Model.Lote Lote)
         {
-            LotePersister LotePersister = new LotePersister();
-            Model.Lote responseLote = LotePersister.SaveLote(Lote);
+            Lote.TotalGTOLote = Lote.ListaGTO.Count;
+            Lote.ValorTotalLote = Lote.ListaGTO.Sum(g => g.ValorTotalProcedimentos);
 
-            if (responseLote == null)
+            LotePersister LotePersister = new LotePersister();
+
+            var _lote = LotePersister.SaveLote(Lote);
+
+            if (_lote != null)
             {
-                LotePersister.CommitCommand(false);
-            }
-            else
-            {
+                Lote.Id = _lote.Id;
+
+                foreach (Model.GTO gto in Lote.ListaGTO)
+                {
+                    LoteGTOPersister loteGTOPersister = new LoteGTOPersister();
+                    var _persisted = loteGTOPersister.SaveLoteGTO(Lote.Id, gto.Id);
+
+                    if (!_persisted)
+                    {
+                        LotePersister.CommitCommand(false);
+                        return null;
+                    }
+                }
+
                 LotePersister.CommitCommand(true);
             }
 
-            return responseLote;
+            return _lote;
         }
     }
 }

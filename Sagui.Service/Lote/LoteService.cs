@@ -2,6 +2,7 @@
 using Sagui.Service.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sagui.Service.Lote
 {

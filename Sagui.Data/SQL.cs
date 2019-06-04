@@ -604,6 +604,16 @@ namespace Sagui.Data
                             DELETE FROM public.""Lote""
                             WHERE ""PublicID""::uuid = @PublicID";
 
+
+        public static string CreateLoteGTO = @"
+                    INSERT INTO public.""GTO_Lote""
+                       (""IdLote""
+                       ,""IdGTO"")
+                 VALUES
+                       (@IdLote
+                       ,@IdGTO)
+                        RETURNING ""Id"";";
+
         #endregion
     }
 }

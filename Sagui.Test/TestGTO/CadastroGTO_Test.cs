@@ -18,9 +18,8 @@ namespace Sagui.Test.TestGTO
         public async Task CadastrarGTO()
         {
             RequestGTO requestGTO = new RequestGTO();
-            MockGTO mock = new MockGTO();
 
-            requestGTO = mock.CriarMockGTO();
+            requestGTO = MockGTO.CriarMockGTO();
 
             GTOService gTOService = new GTOService();
 

@@ -17,9 +17,8 @@ namespace Sagui.Test.TestGTO
         public async Task AtualizarGTO()
         {
             RequestGTO requestGTO = new RequestGTO();
-            MockGTO mock = new MockGTO();
 
-            requestGTO = mock.AtualizarMockGTO();
+            requestGTO = MockGTO.AtualizarMockGTO();
 
             GTOService gTOService = new GTOService();
 

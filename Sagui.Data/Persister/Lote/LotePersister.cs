@@ -29,24 +29,20 @@ namespace Sagui.Data.Persister.Lote
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateLote, DbParams);
 
+            try
+            {
+                var newId = dataInfrastructure.command.ExecuteScalar();
 
-                try
+                if (Convert.ToInt32(newId) > 0)
                 {
-                    var newId = dataInfrastructure.command.ExecuteScalar();
-
-                    if (Convert.ToInt32(newId) > 0)
-                    {
-                        Lote.Id = Convert.ToInt32(newId);
-                    }
+                    Lote.Id = Convert.ToInt32(newId);
                 }
-                catch (Exception e)
-                {
+            }
+            catch (Exception e)
+            {
                 Lote = null;
-                }
-
-            
-
-
+            }
+                                 
             return Lote;
         }
     }

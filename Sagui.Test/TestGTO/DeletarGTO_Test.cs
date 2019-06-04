@@ -17,9 +17,8 @@ namespace Sagui.Test.TestGTO
         public async Task DeletarGTO()
         {
             RequestGTO requestGTO = new RequestGTO();
-            MockGTO mock = new MockGTO();
 
-            requestGTO = mock.DeletarMockGTO();
+            requestGTO = MockGTO.DeletarMockGTO();
 
             GTOService gTOService = new GTOService();
 

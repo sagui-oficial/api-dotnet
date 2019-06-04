@@ -17,9 +17,8 @@ namespace Sagui.Test.TestUsuarios
         public async Task AtualizarFuncionario()
         {
             RequestUsuarioFuncionario requestUsuarioFuncionario = new RequestUsuarioFuncionario();
-            MockUsuario mock = new MockUsuario();
 
-            requestUsuarioFuncionario = mock.CriarMockUsuarioFuncionario();
+            requestUsuarioFuncionario = MockUsuario.CriarMockUsuarioFuncionario();
 
             UsuarioFuncionarioService usuarioService = new UsuarioFuncionarioService();
 
@@ -36,9 +35,8 @@ namespace Sagui.Test.TestUsuarios
         public async Task AtualizarDentista()
         {
             RequestUsuarioDentista requestUsuario = new RequestUsuarioDentista();
-            MockUsuario mock = new MockUsuario();
 
-            requestUsuario = mock.CriarMockUsuarioDentista();
+            requestUsuario = MockUsuario.CriarMockUsuarioDentista();
 
             UsuarioDentistaService usuarioService = new UsuarioDentistaService();
 
@@ -55,9 +53,8 @@ namespace Sagui.Test.TestUsuarios
         public async Task AtualizarPaciente()
         {
             RequestUsuarioPaciente requestUsuario = new RequestUsuarioPaciente();
-            MockUsuario mock = new MockUsuario();
 
-            requestUsuario = mock.CriarMockUsuarioPaciente();
+            requestUsuario = MockUsuario.CriarMockUsuarioPaciente();
 
             UsuarioPacienteService usuarioService = new UsuarioPacienteService();
 
