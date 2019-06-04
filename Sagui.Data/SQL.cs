@@ -181,7 +181,7 @@ namespace Sagui.Data
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
                     where a.""IdGTO"" = @idGTO";
 
-      
+
 
 
 
@@ -613,6 +613,27 @@ namespace Sagui.Data
                        (@IdLote
                        ,@IdGTO)
                         RETURNING ""Id"";";
+
+
+
+        public static string ObterLotebyPublicID = @"
+                                     SELECT  a.""Id""
+                                        ,a.""Numero""
+                                        ,a.""Status""
+                                        ,a.""PlanoOperadoraId""
+		                                ,b.""NomeFantasia""
+		                                ,b.""RazaoSocial""
+                                        ,a.""PacienteId""
+		                                ,c.""Nome""
+                                        ,a.""Solicitacao""
+                                        ,a.""Vencimento""
+                                        ,a.""PublicID""
+                                        ,a.""TotalProcedimentos""
+                                        ,a.""ValorTotalProcedimentos""
+                                    FROM public.""GTO"" a 
+			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
+                            WHERE a.""PublicID""::text = @PublicID";
 
         #endregion
     }

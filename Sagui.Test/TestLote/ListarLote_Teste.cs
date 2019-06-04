@@ -40,12 +40,12 @@ namespace Sagui.Test.TestLote
 
             RequestLote requestLote = default(RequestLote);
 
-            RequestLote = MockLote.();
+            requestLote = MockLote.ObterLoterMock();
 
-            var response = await ObterGTORequestHandler.Handle(requestGTO);
+            var response = await ObterGTORequestHandler.Handle(requestLote);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.GTO.Id > 0);
+            Assert.IsTrue(response.Lote.Id > 0);
         }
     }
 }

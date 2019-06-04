@@ -34,7 +34,7 @@ namespace Sagui.Test.Mocks
             return Lote;
         }
 
-        public static RequestLote AtualizarMockGTO()
+        public static RequestLote AtualizarMockLote()
         {
             RequestLote Lote = new RequestLote();
             Lote.Id = 1;
@@ -42,38 +42,37 @@ namespace Sagui.Test.Mocks
             Lote.PlanoOperadora.Id = 1;
             Lote.PlanoOperadora.NomeFantasia = "Operadora 1";
             Lote.Funcionario = new Funcionario();
-            Lote.Funcionario.Id = 2;
-            Lote.Funcionario.Nome = "Funcionario 2";
+            Lote.Funcionario.Id = 1;
+            Lote.Funcionario.Nome = "Funcionario 1";
             Lote.DataEnvioCorreio = DateTime.Now;
             Lote.DataPrevistaRecebimento = DateTime.Now.AddMonths(1);
-            Lote.TotalGTOLote = 12;
-            Lote.ValorTotalLote = 7000;
-            Lote.Status = 2;
+            Lote.TotalGTOLote = 0;
+            Lote.ValorTotalLote = 0;
+            Lote.Status = 1;
+            Lote.ListaGTO = new List<GTO>();
+            Lote.ListaGTO.Add(MockGTO.CriarMockGTO());
+            Lote.ListaGTO.Add(MockGTO.CriarMockGTO_A());
             Lote.PublicID = new Guid("b597e110-7ff6-11e9-b649-705a0f6970c5");
 
             return Lote;
         }
 
-        public static RequestGTO DeletarMockGTO()
+        public static RequestLote DeletarMockLote()
         {
-            RequestGTO Lote = new RequestGTO();
+            RequestLote Lote = new RequestLote();
             Lote.Id = 1;
-            Lote.Numero = "1";
-            Lote.PlanoOperadora = new PlanoOperadora();
-            Lote.PlanoOperadora.Id = 1;
-            Lote.PlanoOperadora.NomeFantasia = "Operadora 1";
-            Lote.Paciente = new Paciente();
-            Lote.Paciente.Id = 2;
-            Lote.Paciente.Nome = "Paciente 1";
-            Lote.Solicitacao = DateTime.Now;
-            Lote.Vencimento = DateTime.Now.AddMonths(1);
-            Lote.Procedimentos = new List<Model.Procedimentos>() { MockProcedimento.CriarMockProcedimento() };
-            Lote.Arquivos = new List<Arquivo_GTO>() { MockArquivos.CriarMockArquivo() };
-            Lote.Status = 99;
             Lote.PublicID = new Guid("b597e110-7ff6-11e9-b649-705a0f6970c5");
 
             return Lote;
         }
 
+        public static RequestLote ObterLoterMock()
+        {
+            RequestLote Lote = new RequestLote();
+            Lote.Id = 1;
+            Lote.PublicID = new Guid("b597e110-7ff6-11e9-b649-705a0f6970c5");
+
+            return Lote;
+        }
     }
 }

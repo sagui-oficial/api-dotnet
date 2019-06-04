@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sagui.Business.Base;
 using Sagui.Data.Lookup.Lote;
 using Sagui.Data.Lookup.Usuario;
 using Sagui.Data.Persister.GTO;
 using Sagui.Data.Persister.Lote;
+using Sagui.Model;
 
 namespace Sagui.Business.Lote
 {
@@ -48,6 +50,14 @@ namespace Sagui.Business.Lote
             }
 
             return _lote;
+        }
+
+        public Model.Lote ObterLote(Model.Lote lote)
+        {
+            LoteLookup loteLookup = new LoteLookup();
+            var listLote = loteLookup.ObterLote(lote);
+
+            return listLote;
         }
     }
 }
