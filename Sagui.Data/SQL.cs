@@ -303,7 +303,6 @@ namespace Sagui.Data
                             SELECT ""Id"", 
                                    ""Codigo"", 
                                    ""NomeProcedimento"", 
-                                   ""ValorProcedimento"", 
                                    ""Exigencias"", 
                                    ""Anotacoes"", 
                                    ""PublicID""
