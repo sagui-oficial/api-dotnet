@@ -168,7 +168,7 @@ namespace Sagui.Data
                                ,@ValorProcedimento
                                ,@Pago
                             )
-                            RETURNING ""IdGTO"";";
+                            RETURNING ""Id"";";
 
         public static string DeleteProcedimentoGTO = @"
                     DELETE FROM  public.""Procedimento_GTO""
@@ -575,6 +575,27 @@ namespace Sagui.Data
                            UPDATE public.""PlanoOperadora""
                        SET ""Status"" = @Status
                      WHERE ""PublicID""::uuid = @PublicID";
+
+
+        public static string CreateProcedimento_PlanoOperadora = @"
+                    INSERT INTO public.""Procedimento_PlanoOperadora""
+                               (""IdPlanoOperadora""
+                               ,""IdProcedimento""
+                               ,""ValorProcedimento""
+                                )
+                         VALUES
+                               (@IdPlanoOperadora
+                               ,@IdProcedimento
+                               ,@ValorProcedimento
+                               )
+                            RETURNING ""Id"";";
+
+
+        public static string DeleteProcedimento_PlanoOperadora = @"
+                    DELETE FROM  public.""Procedimento_PlanoOperadora""
+                          WHERE ""IdPlanoOperadora"" = @IdPlanoOperadora";
+
+
 
         #endregion
 

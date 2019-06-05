@@ -4,6 +4,8 @@ using Sagui.Data.Lookup.GTO;
 using Sagui.Data.Lookup.Usuario;
 using Sagui.Data.Persister.GTO;
 using Sagui.Data.Persister.PlanoOperadora;
+using Sagui.Data.Persister.Procedimento;
+using Sagui.Model;
 
 namespace Sagui.Business.PlanoOperadora
 {
@@ -33,6 +35,19 @@ namespace Sagui.Business.PlanoOperadora
 
             if(responsePlanoOperadora != null)
             {
+                foreach (Procedimentos procedimento in planoOperadora.Procedimentos)
+                {
+                    Procedimento_PlanoOperadoraPersister procedimento_PlanoOperadora = new Procedimento_PlanoOperadoraPersister();
+                    var _persisted = procedimento_PlanoOperadora.SaveProcedimento_PlanoOperadora(planoOperadora.Id, procedimento);
+
+                    if (!_persisted)
+                    {
+                        procedimento_PlanoOperadora.CommitCommand(false);
+                        return null;
+                    }
+                }
+
+
                 planoOperadoraPersister.CommitCommand(true);
             }
             else
