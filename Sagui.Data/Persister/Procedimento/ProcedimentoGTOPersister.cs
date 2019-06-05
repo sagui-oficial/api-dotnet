@@ -15,12 +15,14 @@ namespace Sagui.Data.Persister.Procedimento
             DataInfrastructure.dataInfrastructure.Dispose();
         }
 
-        public bool SaveProcedimentoGTO(int IdGTO, int IdProcedimento, double ValorProcedimento)
+        public bool SaveProcedimentoGTO(int IdGTO, Model.Procedimentos procedimento)
         {
             DbParams.Clear();
             DbParams.Add(nameof(IdGTO), IdGTO);
-            DbParams.Add(nameof(IdProcedimento), IdProcedimento);
-            DbParams.Add(nameof(ValorProcedimento), ValorProcedimento);
+            DbParams.Add("IdProcedimento", procedimento.Id);
+            DbParams.Add(nameof(procedimento.ValorProcedimento), procedimento.ValorProcedimento);
+            DbParams.Add(nameof(procedimento.Pago), procedimento.Pago);
+
 
             DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimentoGTO, DbParams);
 

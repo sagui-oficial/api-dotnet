@@ -159,11 +159,15 @@ namespace Sagui.Data
                     INSERT INTO public.""Procedimento_GTO""
                                (""IdGTO""
                                ,""IdProcedimento""
-                               ,""ValorProcedimento"")
+                               ,""ValorProcedimento""
+                               ,""Pago""
+                                )
                          VALUES
                                (@IdGTO
                                ,@IdProcedimento
-                               ,@ValorProcedimento)
+                               ,@ValorProcedimento
+                               ,@Pago
+                            )
                             RETURNING ""IdGTO"";";
 
         public static string DeleteProcedimentoGTO = @"
