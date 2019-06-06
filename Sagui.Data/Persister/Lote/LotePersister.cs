@@ -1,4 +1,5 @@
 ﻿using Sagui.Data.Base;
+using Sagui.Model.ValueObject;
 using System;
 using System.Collections.Generic;
 
@@ -43,6 +44,27 @@ namespace Sagui.Data.Persister.Lote
                 Lote = null;
             }
                                  
+            return Lote;
+        }
+
+        public Model.Lote DeleteLote(Model.Lote Lote)
+        {
+            if (Lote == null)
+                throw new ArgumentNullException(nameof(GTO));
+            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID.ToString());
+            DbParams.Add(nameof(Lote.Status), Status.Lote.Deletada.GetHashCode());
+
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteLote, DbParams);
+
+            try
+            {
+                dataInfrastructure.command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Lote = null;
+            }
+
             return Lote;
         }
     }

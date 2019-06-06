@@ -256,7 +256,7 @@ namespace Sagui.Data.Persister.Usuario
                 throw new ArgumentNullException(nameof(Usuario));
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(Usuario.Status), StatusUsuario.Status.Deletada.GetHashCode());
+            DbParams.Add(nameof(Usuario.Status), Status.Usuario.Deletada.GetHashCode());
             DbParams.Add(nameof(Usuario.PublicID), Usuario.PublicID);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteUsuario, DbParams);

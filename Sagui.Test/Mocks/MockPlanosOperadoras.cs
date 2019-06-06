@@ -23,7 +23,7 @@ namespace Sagui.Test.Mocks
             planoOperadora.DataRecebimentoLote = DateTime.Now;
             planoOperadora.Procedimentos = new List<Model.Procedimentos>() { MockProcedimento.CriarMockProcedimento() };
             planoOperadora.Arquivos = new List<Arquivos>() { MockArquivos.CriarMockArquivo() };
-            planoOperadora.Status = StatusPlanoOperadora.Status.Criada.GetHashCode();
+            planoOperadora.Status = Status.PlanoOperadora.Criada.GetHashCode();
             return planoOperadora;
         }
 
@@ -39,7 +39,7 @@ namespace Sagui.Test.Mocks
             planoOperadora.Procedimentos = new List<Model.Procedimentos>() { MockProcedimento.CriarMockProcedimento() };
             planoOperadora.Arquivos = new List<Arquivos>() { MockArquivos.CriarMockArquivo() };
             planoOperadora.PublicID = new Guid("a99b558a-7e17-11e9-b2e1-705a0f6970c5");
-            planoOperadora.Status = StatusPlanoOperadora.Status.Criada.GetHashCode();
+            planoOperadora.Status = Status.PlanoOperadora.Criada.GetHashCode();
 
             return planoOperadora;
         }

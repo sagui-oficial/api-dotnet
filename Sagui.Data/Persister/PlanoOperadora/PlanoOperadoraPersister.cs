@@ -86,7 +86,7 @@ namespace Sagui.Data.Persister.PlanoOperadora
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(PlanoOperadora.PublicID), PlanoOperadora.PublicID);
-            DbParams.Add(nameof(PlanoOperadora.Status), StatusPlanoOperadora.Status.Deletada.GetHashCode());
+            DbParams.Add(nameof(PlanoOperadora.Status), Status.PlanoOperadora.Deletada.GetHashCode());
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeletePlanoOperadora, DbParams);
 

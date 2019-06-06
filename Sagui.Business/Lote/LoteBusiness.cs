@@ -59,5 +59,24 @@ namespace Sagui.Business.Lote
 
             return lote;
         }
+
+        public Model.Lote Deletar(Model.Lote lote)
+        {
+
+            LotePersister lotePersister = new LotePersister();
+            Model.Lote responseLote = lotePersister.DeleteLote(lote);
+
+            if (responseLote == null)
+            {
+                lotePersister.CommitCommand(false);
+            }
+            else
+            {
+                lotePersister.CommitCommand(true);
+            }
+
+            return responseLote;
+        }
+
     }
 }

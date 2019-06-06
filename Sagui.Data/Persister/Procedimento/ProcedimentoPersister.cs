@@ -53,7 +53,7 @@ namespace Sagui.Data.Persister.Procedimento
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID.ToString());
-            DbParams.Add(nameof(Procedimentos.Status), StatusProcedimento.Status.Deletada.GetHashCode());
+            DbParams.Add(nameof(Procedimentos.Status), Status.Procedimento.Deletada.GetHashCode());
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimento, DbParams);
 

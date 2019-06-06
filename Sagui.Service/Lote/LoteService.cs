@@ -23,9 +23,14 @@ namespace Sagui.Service.Lote
             }
         }
 
-        public Model.Lote Deletar(Model.Lote model)
+        public Model.Lote Deletar(Model.Lote lote)
         {
-            throw new NotImplementedException();
+            using (var LoteBusiness = new Business.Lote.LoteBusiness())
+            {
+                var _return = LoteBusiness.Deletar(lote);
+                LoteBusiness.Dispose();
+                return _return;
+            }
         }
 
         public List<Model.Lote> Listar()
