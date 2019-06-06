@@ -48,6 +48,11 @@ namespace Sagui.Data
             return dataInfrastructure;
         }
 
+        internal static DataInfrastructure GetInstanceDb(object obterLotebyPublicID, Dictionary<string, object> dbParams)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void ConnTranControl(bool commit)
         {
             if (commit)

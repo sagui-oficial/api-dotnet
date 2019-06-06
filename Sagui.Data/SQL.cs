@@ -181,7 +181,7 @@ namespace Sagui.Data
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
                     where a.""IdGTO"" = @idGTO";
 
-      
+
 
 
 
