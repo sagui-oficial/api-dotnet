@@ -13,7 +13,12 @@ namespace Sagui.Model
     {
         public string Codigo { get; set; }
         public string NomeProcedimento { get; set; }
+
+        [NotMapped]
         public double ValorProcedimento { get; set; }
+
+        [NotMapped]
+        public bool Pago { get; set; }
         public string Exigencias { get; set; }
         public string Anotacoes { get; set; }
     }

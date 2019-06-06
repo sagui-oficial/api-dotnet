@@ -16,7 +16,7 @@ namespace Sagui.Model
         public string CNPJ { get; set; }
         public DateTime DataEnvioLote { get; set; }
         public DateTime DataRecebimentoLote { get; set; }
-        public List<Procedimentos> ListaProcedimentos { get; set; }
-        public List<Arquivos> ListaArquivos { get; set; }
+        public List<Procedimentos> Procedimentos { get; set; }
+        public List<Arquivos> Arquivos { get; set; }
     }
 }

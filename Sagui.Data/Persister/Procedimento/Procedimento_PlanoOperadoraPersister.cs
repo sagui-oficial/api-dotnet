@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sagui.Data.Persister.Procedimento
 {
-    public class ProcedimentoGTOPersister: DBParams, IDataInfrastructure
+    public class Procedimento_PlanoOperadoraPersister : DBParams, IDataInfrastructure
     {
         public void CommitCommand(bool commit)
         {
@@ -15,16 +15,14 @@ namespace Sagui.Data.Persister.Procedimento
             DataInfrastructure.dataInfrastructure.Dispose();
         }
 
-        public bool SaveProcedimentoGTO(int IdGTO, Model.Procedimentos procedimento)
+        public bool SaveProcedimento_PlanoOperadora(int IdPlanoOperadora, Model.Procedimentos procedimento)
         {
             DbParams.Clear();
-            DbParams.Add(nameof(IdGTO), IdGTO);
+            DbParams.Add(nameof(IdPlanoOperadora), IdPlanoOperadora);
             DbParams.Add("IdProcedimento", procedimento.Id);
             DbParams.Add(nameof(procedimento.ValorProcedimento), procedimento.ValorProcedimento);
-            DbParams.Add(nameof(procedimento.Pago), procedimento.Pago);
-
-
-            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimentoGTO, DbParams);
+            
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateProcedimento_PlanoOperadora, DbParams);
 
             dynamic newId = 0;
             try
@@ -47,12 +45,12 @@ namespace Sagui.Data.Persister.Procedimento
 
         }
 
-        public bool DeletarProcedimentoGTO(int IdGTO)
+        public bool DeletarProcedimentoGTO(int IdPlanoOperadora)
         {
-            DbParams.Add(nameof(IdGTO), IdGTO);
+            DbParams.Add(nameof(IdPlanoOperadora), IdPlanoOperadora);
             
 
-            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimentoGTO, DbParams);
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimento_PlanoOperadora, DbParams);
 
             try
             {

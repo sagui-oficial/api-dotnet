@@ -39,7 +39,7 @@ namespace Sagui.Business.GTO
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
                     ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
-                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.Id);
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento);
 
                     if (!_persisted)
                     {
@@ -90,8 +90,7 @@ namespace Sagui.Business.GTO
         {
             gto.TotalProcedimentos = gto.Procedimentos.Count();
             gto.ValorTotalProcedimentos = gto.Procedimentos.Sum(p => p.ValorProcedimento);
-
-
+            
             GTOPersister gtoPersister = new GTOPersister();
             Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);
 
@@ -109,7 +108,7 @@ namespace Sagui.Business.GTO
                 foreach (Procedimentos procedimento in gto.Procedimentos)
                 {
 
-                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento.Id);
+                    var _persisted = procedimentoGTOPersister.SaveProcedimentoGTO(gto.Id, procedimento);
 
 
                     if (!_persisted)
