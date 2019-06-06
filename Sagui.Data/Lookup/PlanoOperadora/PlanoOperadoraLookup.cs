@@ -21,16 +21,7 @@ namespace Sagui.Data.Lookup.Usuario
 
                     while (reader.Read())
                     {
-                        Model.PlanoOperadora _PlanoOperadora = new Model.PlanoOperadora();
-                        _PlanoOperadora.Id = Convert.ToInt32(reader["Id"]);
-                        _PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
-                        _PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
-                        _PlanoOperadora.CNPJ = Convert.ToString(reader["CNPJ"]);
-                        _PlanoOperadora.DataEnvioLote = Convert.ToDateTime(reader["DataEnvioLote"]);
-                        _PlanoOperadora.DataRecebimentoLote = Convert.ToDateTime(reader["DataRecebimentoLote"]);
-                        _PlanoOperadora.PublicID = (Guid)reader["PublicID"];
-
-
+                        Model.PlanoOperadora _PlanoOperadora = Helper.Parser.ParsePlanoOperadora(reader);
                         ListPlanoOperadora.Add(_PlanoOperadora);
                     }
                 }
@@ -55,22 +46,9 @@ namespace Sagui.Data.Lookup.Usuario
                 {
                     var reader = dataInfrastructure.command.ExecuteReader();
 
-                    
-
                     while (reader.Read())
                     {
-                        Model.PlanoOperadora _PlanoOperadora = new Model.PlanoOperadora();
-                        _PlanoOperadora.Id = Convert.ToInt32(reader["Id"]);
-                        _PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
-                        _PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
-                        _PlanoOperadora.CNPJ = Convert.ToString(reader["CNPJ"]);
-                        _PlanoOperadora.DataEnvioLote = Convert.ToDateTime(reader["DataEnvioLote"]);
-                        _PlanoOperadora.DataRecebimentoLote = Convert.ToDateTime(reader["DataRecebimentoLote"]);
-                        _PlanoOperadora.PublicID = (Guid)reader["PublicID"];
-
-                        planoOperadora = _PlanoOperadora;
-
-                        
+                        planoOperadora = Helper.Parser.ParsePlanoOperadora(reader);
                     }
                 }
                 catch (Exception e)

@@ -1,4 +1,6 @@
 ﻿using Sagui.Data.Base;
+using Sagui.Data.Helper;
+using Sagui.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,7 @@ namespace Sagui.Data.Lookup.Lote
 
                     while (reader.Read())
                     {
-                        Model.Lote _Lote = new Model.Lote();
-
-
+                        Model.Lote _Lote = Parser.ParseLote(reader, null);
                         ListLote.Add(_Lote);
                     }
                 }
@@ -31,12 +31,35 @@ namespace Sagui.Data.Lookup.Lote
                 {
 
                 }
-                finally
+            }
+
+            return ListLote;
+        }
+
+        public Model.Lote ObterLote(Model.Lote Lote)
+        {
+            if (Lote == null)
+                throw new ArgumentNullException(nameof(Lote));
+            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID.ToString());
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterLotebyPublicID, DbParams))
+            {
+                try
                 {
-                    dataInfrastructure.Dispose();
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Lote = Parser.ParseLote(reader, Lote);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Lote = null;
                 }
             }
-            return ListLote;
+
+            return Lote;
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Sagui.Base.Utils
         public static string MensagemGTONaoDeletada = "GTO não deletada!";
         public static string MensagemGTOObtidacomSucesso = "GTOs obtida com sucesso!";
         public static string MensagemGTONaoObtidacomSucesso = "GTOs não encontrada! Verifique as informações informadas para pesquisa.";
+        
 
         #endregion
 
@@ -62,10 +63,12 @@ namespace Sagui.Base.Utils
         #region Lote
         public static string MensagemLotesInseridosComSucesso = "Lote(s) inserido(s) com sucesso!";
         public static string MensagemLoteNaoInserido = "Lote(s) não inserido(s)!";
-        public static string MensagemLoteListadoComSucesso = "GTOs listadas com sucesso!";
-        public static string MensagemLoteNaoListado = "Lotes não listados!";
+        public static string MensagemLoteListadoComSucesso = "Lotes listados com sucesso!";
+        public static string MensagemLoteNaoListado = "Lotes não encontrados!";
         public static string MensagemLoteDeletado = "Lote deletado!";
         public static string MensagemLoteNaoDeletado = "Lote não deletado!";
+        public static string MensagemLoteObtidocomSucesso = "Lote obtido com sucesso!";
+        public static string MensagemLoteNaoObtido = "Lote não obtido!";
         #endregion
 
         #region Usuarios

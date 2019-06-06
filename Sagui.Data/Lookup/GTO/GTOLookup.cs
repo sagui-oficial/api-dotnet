@@ -1,9 +1,7 @@
 ﻿using Sagui.Data.Base;
+using Sagui.Data.Helper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sagui.Data.Lookup.GTO
 {
@@ -24,22 +22,7 @@ namespace Sagui.Data.Lookup.GTO
 
                     while (reader.Read())
                     {
-                        Model.GTO _GTO = new Model.GTO();
-                        _GTO.Id = Convert.ToInt32(reader["Id"]);
-                        _GTO.Numero = Convert.ToString(reader["Numero"]);
-                        _GTO.Status = Convert.ToInt32(reader["Status"]);
-                        _GTO.PlanoOperadora = new Model.PlanoOperadora();
-                        _GTO.PlanoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
-                        _GTO.PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
-                        _GTO.PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
-                        _GTO.Paciente = new Model.Paciente();
-                        _GTO.Paciente.Id = Convert.ToInt32(reader["PacienteId"]);
-                        _GTO.Paciente.Nome = Convert.ToString(reader["Nome"]);
-                        _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
-                        _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
-                        _GTO.TotalProcedimentos = Convert.ToDouble(reader["TotalProcedimentos"]);
-                        _GTO.ValorTotalProcedimentos = Convert.ToDouble(reader["ValorTotalProcedimentos"]);
-                        _GTO.PublicID = (Guid)reader["PublicID"];
+                        Model.GTO _GTO = Parser.ParseGTO(reader);
                         ListGTO.Add(_GTO);
                     }
                 }
@@ -66,22 +49,7 @@ namespace Sagui.Data.Lookup.GTO
 
                     while (reader.Read())
                     {
-                        Model.GTO _GTO = new Model.GTO();
-                        _GTO.Id = Convert.ToInt32(reader["Id"]);
-                        _GTO.Numero = Convert.ToString(reader["Numero"]);
-                        _GTO.Status = Convert.ToInt32(reader["Status"]);
-                        _GTO.PlanoOperadora = new Model.PlanoOperadora();
-                        _GTO.PlanoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
-                        _GTO.PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
-                        _GTO.PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
-                        _GTO.Paciente = new Model.Paciente();
-                        _GTO.Paciente.Id = Convert.ToInt32(reader["PacienteId"]);
-                        _GTO.Paciente.Nome = Convert.ToString(reader["Nome"]);
-                        _GTO.Solicitacao = Convert.ToDateTime(reader["Solicitacao"]);
-                        _GTO.Vencimento = Convert.ToDateTime(reader["Vencimento"]);
-                        _GTO.PublicID = (Guid)reader["PublicID"];
-                        _GTO.TotalProcedimentos = Convert.ToDouble(reader["TotalProcedimentos"]);
-                        _GTO.ValorTotalProcedimentos = Convert.ToDouble(reader["ValorTotalProcedimentos"]);
+                        Model.GTO _GTO = Parser.ParseGTO(reader);
                         GTO = _GTO;
                     }
                 }
@@ -92,8 +60,35 @@ namespace Sagui.Data.Lookup.GTO
                 
             }
 
-            
             return GTO;
+        }
+
+        public List<Model.GTO> ListarGTOLote(int idLote)
+        {
+            List<Model.GTO> ListGTO = new List<Model.GTO>();
+
+            DbParams.Clear();
+            DbParams.Add("idLote", idLote);
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarGTOLote, DbParams))
+            {
+                try
+                {
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Model.GTO _GTO = Parser.ParseGTO(reader);
+                        ListGTO.Add(_GTO);
+                    }
+                }
+                catch (Exception e)
+                {
+                    ListGTO = null;
+                }
+            }
+
+            return ListGTO;
         }
     }
 }

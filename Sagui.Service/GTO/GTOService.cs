@@ -1,5 +1,6 @@
 ﻿using Sagui.Model;
 using Sagui.Service.Contracts;
+using System;
 using System.Collections.Generic;
 
 namespace Sagui.Service.GTO
@@ -46,11 +47,22 @@ namespace Sagui.Service.GTO
             }
         }
 
+
         public Model.GTO Obter(Model.GTO GTO)
         {
             using (var GTOBusiness = new Business.GTO.GTOBusiness())
             {
                 var _return = GTOBusiness.ObterGTO(GTO);
+                GTOBusiness.Dispose();
+                return _return;
+            }
+        }
+
+        public List<Model.GTO> ListarGTOPorLote(Model.Lote lote)
+        {
+            using (var GTOBusiness = new Business.GTO.GTOBusiness())
+            {
+                var _return = GTOBusiness.ListarGTOLote(lote.Id);
                 GTOBusiness.Dispose();
                 return _return;
             }

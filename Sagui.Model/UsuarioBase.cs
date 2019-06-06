@@ -11,7 +11,6 @@ namespace Sagui.Model
 {
     public class UsuarioBase : BaseModel
     {
-        
         public string Funcao { get; set; }
         public string Nome { get; set; }
         public string Anotacoes { get; set; }

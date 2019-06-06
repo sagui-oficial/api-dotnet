@@ -40,7 +40,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             else
             {
                 responseLote.ExecutionDate = DateTime.Now;
-                responseLote.ResponseType = ResponseType.Error;
+                responseLote.ResponseType = ResponseType.Info;
                 responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(Lote), Constantes.MensagemLoteNaoListado));
                 return responseLote;
             }

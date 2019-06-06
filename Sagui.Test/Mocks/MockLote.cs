@@ -28,8 +28,7 @@ namespace Sagui.Test.Mocks
             Lote.ListaGTO = new List<GTO>();
             Lote.ListaGTO.Add(MockGTO.CriarMockGTO());
             Lote.ListaGTO.Add(MockGTO.CriarMockGTO_A());
-
-            // Lote.PublicID = new Guid("");
+            Lote.PublicID = new Guid("75bd6e88-87ea-11e9-b59f-74867af96707");
 
             return Lote;
         }

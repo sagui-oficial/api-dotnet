@@ -17,43 +17,45 @@ namespace Sagui.Service.RequestResponse.Handlers
     public class ObterLoteRequestHandler : IBaseRequestHandler<RequestLote, ResponseLote>
     {
         LoteService LoteService;
+        GTOService GTOService;
 
         private Business.Validador.Lote.ValidadorLote validadorLote { get; set; }
 
         ResponseLote responseLote;
 
-        public ObterLoteRequestHandler(LoteService _LoteService)
+        public ObterLoteRequestHandler(LoteService _LoteService,
+                                       GTOService _GTOService)
         {
             LoteService = _LoteService;
+            GTOService = _GTOService;
             validadorLote = new Business.Validador.Lote.ValidadorLote();
             responseLote = new ResponseLote();
         }
 
-        public Task<ResponseLote> Handle(RequestLote request)
+        public async Task<ResponseLote> Handle(RequestLote request)
         {
             var Lote = LoteService.Obter(request);
 
             if (Lote != null)
             {
-                // GTO.Arquivos = arquivoService.ListarArquivoPorGTO(GTO);
-                Lote.Procedimentos = procedimentoService.ListarProcedimentoPorGTO(GTO);
+                Lote.ListaGTO = GTOService.ListarGTOPorLote(Lote);
             }
 
             if (Lote.Id > 0)
             {
-                responseGTO.GTO = GTO;
-                responseGTO.ExecutionDate = DateTime.Now;
-                responseGTO.ResponseType = ResponseType.Success;
-                responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOObtidacomSucesso));
-                return responseGTO;
+                responseLote.Lote = Lote;
+                responseLote.ExecutionDate = DateTime.Now;
+                responseLote.ResponseType = ResponseType.Success;
+                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(Lote), Constantes.MensagemLoteObtidocomSucesso));
+                return responseLote;
             }
             else
             {
-                responseGTO.GTO = GTO;
-                responseGTO.ExecutionDate = DateTime.Now;
-                responseGTO.ResponseType = ResponseType.Info;
-                responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
-                return responseGTO;
+                responseLote.Lote = Lote;
+                responseLote.ExecutionDate = DateTime.Now;
+                responseLote.ResponseType = ResponseType.Info;
+                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(Lote), Constantes.MensagemLoteNaoObtido));
+                return responseLote;
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sagui.Service.GTO;
 using Sagui.Service.Lote;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
@@ -35,17 +36,18 @@ namespace Sagui.Test.TestLote
         public async Task ObterLote()
         {
             LoteService loteService = new LoteService();
+            GTOService gtoService = new GTOService();
 
-            ObterLoteRequestHandler ObterGTORequestHandler = new ObterLoteRequestHandler(loteService);
+            ObterLoteRequestHandler ObterGTORequestHandler = new ObterLoteRequestHandler(loteService, gtoService);
 
             RequestLote requestLote = default(RequestLote);
 
-            RequestLote = MockLote.();
+            requestLote = MockLote.CriarMockLote();
 
-            var response = await ObterGTORequestHandler.Handle(requestGTO);
+            var response = await ObterGTORequestHandler.Handle(requestLote);
 
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
-            Assert.IsTrue(response.GTO.Id > 0);
+            Assert.IsTrue(response.Lote.Id > 0);
         }
     }
 }

@@ -579,16 +579,27 @@ namespace Sagui.Data
                         RETURNING ""Id"";";
 
         public static string ListLote = @"
-                            SELECT 
-                                 ""Id""
-                                ,""NomeFantasia""
-                                ,""RazaoSocial""
-                                ,""CNPJ""
-                                ,""DataEnvioLote""
-                                ,""DataRecebimentoLote""
-                                ,""PublicID""
-                              FROM public.""PlanoOperadora""
-                              WHERE ""Status"" <>  99 ";
+                             SELECT a.""Id"",
+	                                a.""PublicID"",
+	                                a.""Status"",
+	                                a.""PlanoOperadoraId"",
+	                                a.""TotalGTOLote"",
+	                                a.""ValorTotalLote"",
+	                                a.""DataEnvioCorreio"",
+	                                a.""DataPrevistaRecebimento"",
+	                                a.""FuncionarioId"",
+                                    b.""Id"",
+                                    b.""NomeFantasia"",
+		                            b.""RazaoSocial"",
+		                            c.""Id"",
+                                    c.""Nome""
+	                              FROM public.""Lote"" a
+			                INNER JOIN  ""PlanoOperadora"" b  
+                                    ON  a.""PlanoOperadoraId"" = b.""Id""
+			                INNER JOIN  ""UsuarioBase"" c  
+                                    ON  a.""FuncionarioId"" = c.""Id""
+                                 WHERE a.""Status"" <>  99 ";
+
 
         public static string UpdateLote = @"
                 UPDATE public.""PlanoOperadora""
@@ -613,6 +624,52 @@ namespace Sagui.Data
                        (@IdLote
                        ,@IdGTO)
                         RETURNING ""Id"";";
+
+        public static string ObterLotebyPublicID = @"
+                                   SELECT a.""Id"",
+	                                      a.""PublicID"",
+	                                      a.""Status"",
+	                                      a.""PlanoOperadoraId"",
+	                                      a.""TotalGTOLote"",
+	                                      a.""ValorTotalLote"",
+	                                      a.""DataEnvioCorreio"",
+	                                      a.""DataPrevistaRecebimento"",
+	                                      a.""FuncionarioId"",
+                                          b.""Id"",
+                                          b.""NomeFantasia"",
+		                                  b.""RazaoSocial"",
+		                                  c.""Id"",
+                                          c.""Nome""
+	                                    FROM public.""Lote"" a
+			                      INNER JOIN  ""PlanoOperadora"" b  
+                                          ON  a.""PlanoOperadoraId"" = b.""Id""
+			                      INNER JOIN  ""UsuarioBase"" c  
+                                          ON  a.""FuncionarioId"" = c.""Id""
+		                               WHERE a.""PublicID""::text = @PublicID";
+
+
+        public static string ListarGTOLote = @"SELECT a.""Id""
+	                                                 ,a.""Numero""
+	                                                 ,a.""Status""
+	                                                 ,a.""PlanoOperadoraId""
+	                                                 ,b.""NomeFantasia""
+	                                                 ,b.""RazaoSocial""
+	                                                 ,a.""PacienteId""
+	                                                 ,c.""Nome""
+	                                                 ,a.""Solicitacao""
+	                                                 ,a.""Vencimento""
+	                                                 ,a.""PublicID""
+	                                                 ,a.""TotalProcedimentos""
+	                                                 ,a.""ValorTotalProcedimentos""
+                                                 FROM ""GTO_Lote"" gl 
+                                                INNER JOIN public.""GTO"" a
+                                                   ON gl.""IdGTO"" = a.""Id"" 
+                                                INNER JOIN  ""PlanoOperadora"" b  
+                                                   ON a.""PlanoOperadoraId"" = b.""Id""
+                                                INNER JOIN  ""UsuarioBase"" c  
+                                                   ON  a.""PacienteId"" = c.""Id""
+                                                WHERE gl.""IdLote"" = @idLote
+                                                  AND a.""Status"" <>  99 ";
 
         #endregion
     }

@@ -11,14 +11,10 @@ namespace Sagui.Model
 {
     public class Procedimentos : BaseModel
     {
-        
         public string Codigo { get; set; }
         public string NomeProcedimento { get; set; }
         public double ValorProcedimento { get; set; }
         public string Exigencias { get; set; }
         public string Anotacoes { get; set; }
-        
-
-
     }
 }

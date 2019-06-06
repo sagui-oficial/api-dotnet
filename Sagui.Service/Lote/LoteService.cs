@@ -38,12 +38,11 @@ namespace Sagui.Service.Lote
             }
         }
 
-
-        public List<Model.Lote> Obter()
+        public Model.Lote Obter(Model.Lote Lote)
         {
             using (var LoteBusiness = new Business.Lote.LoteBusiness())
             {
-                var _return = LoteBusiness.ListLote();
+                var _return = LoteBusiness.ObterLote(Lote);
                 LoteBusiness.Dispose();
                 return _return;
             }

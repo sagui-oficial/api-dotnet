@@ -13,7 +13,7 @@ namespace Sagui.Test.Mocks
         public static RequestGTO CriarMockGTO()
         {
             RequestGTO Guia = new RequestGTO();
-            Guia.Id = 10;
+            Guia.Id = 6;
             Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
@@ -36,7 +36,7 @@ namespace Sagui.Test.Mocks
         public static RequestGTO CriarMockGTO_A()
         {
             RequestGTO Guia = new RequestGTO();
-            Guia.Id = 10;
+            Guia.Id = 7;
             Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
