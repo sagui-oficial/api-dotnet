@@ -289,13 +289,11 @@ namespace Sagui.Data
                     INSERT INTO public.""Procedimento""
                                (""Codigo""
                                ,""NomeProcedimento""
-                               ,""ValorProcedimento""
                                ,""Exigencias""
                                ,""Anotacoes"")
                          VALUES
                                (@Codigo
                                ,@NomeProcedimento
-                               ,@ValorProcedimento
                                ,@Exigencias
                                ,@Anotacoes)
                             RETURNING ""Id"";";
@@ -327,7 +325,6 @@ namespace Sagui.Data
                             UPDATE  public.""Procedimento""
                                     SET ""Codigo"" = @Codigo
                                   ,""NomeProcedimento""  = @NomeProcedimento
-                                  ,""ValorProcedimento"" = @ValorProcedimento
                                   ,""Exigencias"" = @Exigencias
                                   ,""Anotacoes"" = @Anotacoes
                                   ,""Status"" = @Status

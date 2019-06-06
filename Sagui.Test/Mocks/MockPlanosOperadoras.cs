@@ -15,7 +15,7 @@ namespace Sagui.Test.Mocks
         public static RequestPlanoOperadora CriarMockPlanoOperadora()
         {
             RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
-            planoOperadora.Id = 3;
+            planoOperadora.Id = 1;
             planoOperadora.NomeFantasia = "AMIL";
             planoOperadora.RazaoSocial = "AMIL";
             planoOperadora.CNPJ = "0000000000191";
@@ -30,7 +30,7 @@ namespace Sagui.Test.Mocks
         public static RequestPlanoOperadora AtualizarMockPlanoOperadora()
         {
             RequestPlanoOperadora planoOperadora = new RequestPlanoOperadora();
-            planoOperadora.Id = 8;
+            planoOperadora.Id = 1;
             planoOperadora.NomeFantasia = "FANTA";
             planoOperadora.RazaoSocial = "COCA";
             planoOperadora.CNPJ = "27664821000189";

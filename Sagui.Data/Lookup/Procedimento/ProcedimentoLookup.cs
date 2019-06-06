@@ -77,7 +77,7 @@ namespace Sagui.Data.Lookup.Procedimento
 
                     while (reader.Read())
                     {
-                        Model.Procedimentos _Procedimento = Parser.ParseProcedimento(reader);
+                        Model.Procedimentos _Procedimento = Parser.ParseProcedimento(reader, true);
                         ListProcedimento.Add(_Procedimento);
                     }
                 }
@@ -107,14 +107,8 @@ namespace Sagui.Data.Lookup.Procedimento
 
                     while (reader.Read())
                     {
-                        Model.Procedimentos _Procedimento = new Model.Procedimentos();
-                        _Procedimento.Id = Convert.ToInt32(reader["Id"]);
-                        _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
-                        _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
-                        _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
-                        _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
-                        _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
-                        _Procedimento.PublicID = (Guid)(reader["PublicID"]);
+                       
+                        Model.Procedimentos _Procedimento = Parser.ParseProcedimento(reader, true);
                         ListProcedimento.Add(_Procedimento);
                     }
                 }

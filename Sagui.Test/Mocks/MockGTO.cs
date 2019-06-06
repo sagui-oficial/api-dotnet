@@ -13,13 +13,13 @@ namespace Sagui.Test.Mocks
         public static RequestGTO CriarMockGTO()
         {
             RequestGTO Guia = new RequestGTO();
-            Guia.Id = 6;
+            Guia.Id = 1;
             Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
             Guia.Paciente = new Paciente();
-            Guia.Paciente.Id = 4;
+            Guia.Paciente.Id = 1;
             Guia.Paciente.Nome = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
@@ -36,13 +36,13 @@ namespace Sagui.Test.Mocks
         public static RequestGTO CriarMockGTO_A()
         {
             RequestGTO Guia = new RequestGTO();
-            Guia.Id = 7;
+            Guia.Id = 2;
             Guia.Numero = "1";
             Guia.PlanoOperadora = new PlanoOperadora();
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
             Guia.Paciente = new Paciente();
-            Guia.Paciente.Id = 4;
+            Guia.Paciente.Id = 1;
             Guia.Paciente.Nome = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);

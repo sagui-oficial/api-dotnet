@@ -63,13 +63,18 @@ namespace Sagui.Data.Helper
             return _PlanoOperadora;
         }
 
-        internal static Model.Procedimentos ParseProcedimento(Npgsql.NpgsqlDataReader reader)
+        internal static Model.Procedimentos ParseProcedimento(Npgsql.NpgsqlDataReader reader,  bool comValor = false)
         {
             Model.Procedimentos _Procedimento = new Model.Procedimentos();
             _Procedimento.Id = Convert.ToInt32(reader["Id"]);
             _Procedimento.NomeProcedimento = Convert.ToString(reader["NomeProcedimento"]);
             _Procedimento.Codigo = Convert.ToString(reader["Codigo"]);
-            _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
+
+            if (comValor)
+            {
+                _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
+            }
+
             _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
             _Procedimento.Anotacoes = Convert.ToString(reader["Anotacoes"]);
             _Procedimento.PublicID = (Guid)reader["PublicID"];
