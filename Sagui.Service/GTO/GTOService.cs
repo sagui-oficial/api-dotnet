@@ -37,7 +37,7 @@ namespace Sagui.Service.GTO
             }
         }
 
-        public List<Model.GTO> Listar(Model.GTO GTO)
+        public List<Model.GTO> Listar()
         {
             using (var GTOBusiness = new Business.GTO.GTOBusiness())
             {

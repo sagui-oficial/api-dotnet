@@ -23,7 +23,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseUsuarioDentista> Handle(RequestUsuarioDentista request)
         {
-            var ListUsuarioFuncionario = usuarioFuncionarioService.Listar(request);
+            var ListUsuarioFuncionario = usuarioFuncionarioService.Listar();
 
             if (ListUsuarioFuncionario.Count > 0)
             {

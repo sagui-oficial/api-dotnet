@@ -35,7 +35,7 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public List<Model.Funcionario> Listar(Model.Funcionario Usuario)
+        public List<Model.Funcionario> Listar()
         {
             using (var usuarioBusiness = new Business.Usuario.UsuarioFuncionarioBusiness())
             {

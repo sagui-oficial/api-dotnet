@@ -29,7 +29,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseUsuarioFuncionario> Handle(RequestUsuarioFuncionario request)
         {
-            var ListUsuarioFuncionario = usuarioFuncionarioService.Listar(request);
+            var ListUsuarioFuncionario = usuarioFuncionarioService.Listar();
 
             if (ListUsuarioFuncionario.Count > 0)
             {

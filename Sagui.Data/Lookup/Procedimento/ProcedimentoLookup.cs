@@ -11,14 +11,9 @@ namespace Sagui.Data.Lookup.Procedimento
 {
     public class ProcedimentoLookup: DBParams
     {
-        public List<Model.Procedimentos> ListProcedimento(Model.Procedimentos procedimentos)
+        public List<Model.Procedimentos> ListProcedimento()
         {
             List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
-
-            DbParams.Add(nameof(procedimentos.PagingParameter.Status), procedimentos.PagingParameter.Status);
-
-            DbParams.Add("limite", procedimentos.PagingParameter.numeroLinhas);
-            DbParams.Add("offset", procedimentos.PagingParameter.offset);
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListProcedimento, DbParams))
             {
@@ -29,8 +24,6 @@ namespace Sagui.Data.Lookup.Procedimento
                     while (reader.Read())
                     {
                         Model.Procedimentos _Procedimento = Parser.ParseProcedimento(reader);
-                        _Procedimento.PagingParameter = procedimentos.PagingParameter;
-                        _Procedimento.PagingParameter.TotalPaginas = Convert.ToInt32(reader["TotalPaginas"]);
                         ListProcedimento.Add(_Procedimento);
                     }
                 }

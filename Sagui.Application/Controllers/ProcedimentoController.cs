@@ -35,11 +35,9 @@ namespace Sagui.Application.Controllers
 
 
         [HttpGet("", Name = "ListarProcedimento")]
-        public async Task<IActionResult> GetAsync([FromQuery] PagingParameterModel paging )
+        public async Task<IActionResult> GetAsync()
         {
-            RequestProcedimento requestProcedimento = new RequestProcedimento();
-
-            requestProcedimento.PagingParameter = paging;
+            RequestProcedimento requestProcedimento = default(RequestProcedimento);
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

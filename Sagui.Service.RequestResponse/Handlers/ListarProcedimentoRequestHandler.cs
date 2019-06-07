@@ -27,7 +27,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseProcedimento> Handle(RequestProcedimento request)
         {
-            var ListProcedimento = procedimentoService.Listar(request);
+            var ListProcedimento = procedimentoService.Listar();
 
             if (ListProcedimento.Count > 0)
             {
@@ -36,7 +36,7 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseProcedimento.ResponseType = ResponseType.Success;
                 responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(responseProcedimento.Procedimento), 
                                                                              String.Format(Constantes.MensagemListadaComSucesso, nameof(responseProcedimento.Procedimento))  ));
-                responseProcedimento.PagingParameter = ListProcedimento[0].PagingParameter;
+                
                 return responseProcedimento;
             }
             else

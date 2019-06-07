@@ -16,6 +16,6 @@ namespace Sagui.Model.Base
         public Guid PublicID { get; set; }
         public int Status { get; set; }
 
-        public PagingParameterModel PagingParameter { get; set; }
+        
     }
 }

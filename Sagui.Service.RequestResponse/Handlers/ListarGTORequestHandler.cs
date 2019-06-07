@@ -36,7 +36,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseGTO> Handle(RequestGTO request)
         {
-            var ListGTO = GTOService.Listar(request);
+            var ListGTO = GTOService.Listar();
 
             foreach(var gto in ListGTO)
             {

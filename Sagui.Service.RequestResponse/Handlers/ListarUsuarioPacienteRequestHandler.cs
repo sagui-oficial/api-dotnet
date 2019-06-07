@@ -28,7 +28,7 @@ namespace Sagui.Service.RequestResponse.Handlers
        
         public async Task<ResponseUsuarioPaciente> Handle(RequestUsuarioPaciente request)
         {
-            var ListUsuarioPaciente = usuarioPacienteService.Listar(request);
+            var ListUsuarioPaciente = usuarioPacienteService.Listar();
 
             //foreach (var paciente in ListUsuarioPaciente)
             //{

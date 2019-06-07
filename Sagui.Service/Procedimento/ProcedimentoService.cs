@@ -37,11 +37,11 @@ namespace Sagui.Service.Procedimento
             }
         }
 
-        public List<Procedimentos> Listar(Model.Procedimentos Procedimento)
+        public List<Procedimentos> Listar()
         {
             using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
             {
-                var _return = ProcedimentoBusiness.ListProcedimentos(Procedimento);
+                var _return = ProcedimentoBusiness.ListProcedimentos();
                 ProcedimentoBusiness.Dispose();
                 return _return;
             }

@@ -27,7 +27,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponsePlanoOperadora> Handle(RequestPlanoOperadora request)
         {
-            var ListPlanoOperadora = planoOperadoraService.Listar(request);
+            var ListPlanoOperadora = planoOperadoraService.Listar();
 
             if (ListPlanoOperadora.Count > 0)
             {
