@@ -67,6 +67,7 @@ namespace Sagui.Application.Controllers
         public async Task<IActionResult> CriarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
+            requestProcedimento.ValorProcedimento = 1;
 
             CriarProcedimentoRequestHandler criarProcedimentoRequestHandler = new CriarProcedimentoRequestHandler(ProcedimentoService);
 
@@ -78,6 +79,7 @@ namespace Sagui.Application.Controllers
         public async Task<IActionResult> AtualizarProcedimento([FromBody]  RequestProcedimento requestProcedimento)
         {
             ProcedimentoService ProcedimentoService = new ProcedimentoService();
+            requestProcedimento.ValorProcedimento = 1;
 
             AtualizarProcedimentoRequestHandler criarProcedimentoRequestHandler = new AtualizarProcedimentoRequestHandler(ProcedimentoService);
 

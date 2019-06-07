@@ -16,6 +16,7 @@ namespace Sagui.Service.RequestResponse.Handlers
     {
         PlanoOperadoraService planoOperadoraService;
         private Business.Validador.PlanoOperadora.ValidadorPlanoOperadora ValidadorPlanoOperadora { get; set; }
+        private Business.Validador.Procedimentos.ValidatorProcedimento ValidatorProcedimento { get; set; }
 
         ResponsePlanoOperadora responsePlanoOperadora;
 
@@ -23,12 +24,20 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             planoOperadoraService = _planoOperadoraService;
             ValidadorPlanoOperadora = new Business.Validador.PlanoOperadora.ValidadorPlanoOperadora();
+            ValidatorProcedimento = new Business.Validador.Procedimentos.ValidatorProcedimento();
             responsePlanoOperadora = new ResponsePlanoOperadora();
         }
 
         public async Task<ResponsePlanoOperadora> Handle(RequestPlanoOperadora PlanoOperadora)
         {
             var errors = ValidadorPlanoOperadora.Validate(PlanoOperadora);
+            if (errors.Count() == 0) {
+                foreach (var p in PlanoOperadora.Procedimentos)
+                {
+                    errors = ValidatorProcedimento.Validate(p);
+                }
+            }
+            
 
             if (errors.Count() == 0)
             {
