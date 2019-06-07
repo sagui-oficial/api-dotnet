@@ -39,14 +39,22 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responseGTO.GTO = _GTO;
                     responseGTO.ExecutionDate = DateTime.Now;
                     responseGTO.ResponseType = ResponseType.Success;
-                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, nameof(GTO), Constantes.MensagemGTOInseridaComSucesso));
+                    
+
+                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, nameof(responseGTO.GTO),
+                                                         String.Format(Constantes.MensagemInseridaComSucesso, nameof(responseGTO.GTO))));
+
                     return responseGTO;
                 }
                 else
                 {
                     responseGTO.ExecutionDate = DateTime.Now;
                     responseGTO.ResponseType = ResponseType.Info;
-                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir, nameof(GTO), Constantes.MensagemGTONaoInserida));
+                   
+
+                    responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir, nameof(responseGTO.GTO),
+                                                         String.Format(Constantes.MensagemNaoInserida, nameof(responseGTO.GTO))));
+
                     return responseGTO;
                 }
             }

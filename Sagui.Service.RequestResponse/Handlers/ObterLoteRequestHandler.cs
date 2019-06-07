@@ -46,7 +46,9 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseLote.Lote = Lote;
                 responseLote.ExecutionDate = DateTime.Now;
                 responseLote.ResponseType = ResponseType.Success;
-                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(Lote), Constantes.MensagemLoteObtidocomSucesso));
+                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ObterComSucesso, nameof(responseLote.Lote),
+                    String.Format(Constantes.MensagemObtidacomSucesso, nameof(responseLote.Lote))));
+
                 return responseLote;
             }
             else
@@ -54,7 +56,10 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseLote.Lote = Lote;
                 responseLote.ExecutionDate = DateTime.Now;
                 responseLote.ResponseType = ResponseType.Info;
-                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(Lote), Constantes.MensagemLoteNaoObtido));
+                
+                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoObter, nameof(responseLote.Lote),
+                    String.Format(Constantes.MensagemNaoObtidacomSucesso, nameof(responseLote.Lote))));
+
                 return responseLote;
             }
         }

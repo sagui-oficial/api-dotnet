@@ -42,18 +42,20 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responseUsuario.Dentinsta = _Usuario;
                     responseUsuario.ExecutionDate = DateTime.Now;
                     responseUsuario.ResponseType = ResponseType.Success;
-                    responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
-                                                                                          nameof(Usuario),
-                                                                                          Constantes.MensagemUsuarioInseridosComSucesso));
+
+                    responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, nameof(responseUsuario.Dentinsta),
+                                                         String.Format(Constantes.MensagemInseridaComSucesso, nameof(responseUsuario.Dentinsta))));
+
+                    
                     return responseUsuario;
                 }
                 else
                 {
                     responseUsuario.ExecutionDate = DateTime.Now;
                     responseUsuario.ResponseType = ResponseType.Info;
-                    responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
-                                                                                nameof(Usuario),
-                                                                                Constantes.MensagemUsuarioNaoInserido));
+                    responseUsuario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir, nameof(responseUsuario.Dentinsta),
+                                                          String.Format(Constantes.MensagemNaoInserida, nameof(responseUsuario.Dentinsta))));
+
                     return responseUsuario;
                 }
             }

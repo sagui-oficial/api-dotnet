@@ -34,14 +34,20 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseLote.Lotes = ListLote;
                 responseLote.ExecutionDate = DateTime.Now;
                 responseLote.ResponseType = ResponseType.Success;
-                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(Lote), Constantes.MensagemLoteListadoComSucesso));
+              
+                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(responseLote.Lote),
+                        String.Format(Constantes.MensagemListadaComSucesso, nameof(responseLote.Lote))));
                 return responseLote;
             }
             else
             {
                 responseLote.ExecutionDate = DateTime.Now;
                 responseLote.ResponseType = ResponseType.Info;
-                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(Lote), Constantes.MensagemLoteNaoListado));
+              
+
+                responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(responseLote.Lote),
+                        String.Format(Constantes.MensagemNaoListada, nameof(responseLote.Lote))));
+
                 return responseLote;
             }
         }

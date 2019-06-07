@@ -34,14 +34,20 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responsePlanoOperadora.PlanosOperadoras = ListPlanoOperadora;
                 responsePlanoOperadora.ExecutionDate = DateTime.Now;
                 responsePlanoOperadora.ResponseType = ResponseType.Success;
-                responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOListadaComSucesso));
+               
+                responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(responsePlanoOperadora.PlanoOperadora),
+                        String.Format(Constantes.MensagemListadaComSucesso, nameof(responsePlanoOperadora.PlanoOperadora))));
+
                 return responsePlanoOperadora;
             }
             else
             {
                 responsePlanoOperadora.ExecutionDate = DateTime.Now;
                 responsePlanoOperadora.ResponseType = ResponseType.Info;
-                responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemPlanoOperadoraNaoListado));
+               
+                responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(responsePlanoOperadora.PlanoOperadora),
+                        String.Format(Constantes.MensagemNaoListada, nameof(responsePlanoOperadora.PlanoOperadora))));
+
                 return responsePlanoOperadora;
             }
         }

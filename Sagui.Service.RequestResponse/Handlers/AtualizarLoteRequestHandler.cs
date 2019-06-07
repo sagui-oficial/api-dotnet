@@ -39,18 +39,21 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responseLote.Lote = _Lote;
                     responseLote.ExecutionDate = DateTime.Now;
                     responseLote.ResponseType = ResponseType.Success;
-                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
-                                                                                          nameof(Lotes),
-                                                                                          Constantes.MensagemLotesInseridosComSucesso));
+                   
+
+                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.AtualizadoComSucesso, nameof(responseLote.Lote),
+                                                                         String.Format(Constantes.MensagemListadaComSucesso, nameof(responseLote.Lote))));
+
                     return responseLote;
                 }
                 else
                 {
                     responseLote.ExecutionDate = DateTime.Now;
                     responseLote.ResponseType = ResponseType.Error;
-                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
-                                                                                nameof(Lotes),
-                                                                                Constantes.MensagemLoteNaoInserido));
+                    
+
+                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoAtualizar, nameof(responseLote.Lote),
+                                                                         String.Format(Constantes.MensagemNaoAtualizado, nameof(responseLote.Lote))));
                     return responseLote;
                 }
             }

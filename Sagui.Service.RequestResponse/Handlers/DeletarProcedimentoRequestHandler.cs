@@ -39,19 +39,20 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responseProcedimento.Procedimento = _Procedimento;
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Success;
-                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
-                                                                                          nameof(Procedimentos),
-                                                                                          Constantes.MensagemProcedimentosInseridosComSucesso));
-                    return responseProcedimento;
+                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.DeletadaComSucesso, nameof(responseProcedimento.Procedimento),
+                                   String.Format(Constantes.MensagemDeletada, nameof(responseProcedimento.Procedimento))));
+
+                return responseProcedimento;
                 }
                 else
                 {
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Error;
-                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
-                                                                                nameof(Procedimentos),
-                                                                                Constantes.MensagemProcedimentoNaoInserida));
-                    return responseProcedimento;
+                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoDeletada, nameof(responseProcedimento.Procedimento),
+                                   String.Format(Constantes.MensagemDeletada, nameof(responseProcedimento.Procedimento))));
+
+
+                return responseProcedimento;
                 }
             //}
             //else

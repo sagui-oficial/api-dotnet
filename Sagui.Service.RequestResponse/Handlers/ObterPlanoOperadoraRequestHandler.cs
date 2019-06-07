@@ -18,7 +18,7 @@ namespace Sagui.Service.RequestResponse.Handlers
         ProcedimentoService procedimentoService;
         private Business.Validador.Procedimentos.ValidatorProcedimento ValidatorProcedimento { get; set; }
 
-        ResponsePlanoOperadora responseProcedimento;
+        ResponsePlanoOperadora responsePlanoOperadora;
 
         public ObterPlanoOperadoraRequestHandler(PlanoOperadoraService _planoOperadoraService, 
             ProcedimentoService _procedimentoService)
@@ -26,7 +26,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             planoOperadoraService = _planoOperadoraService;
             procedimentoService = _procedimentoService;
             ValidatorProcedimento = new Business.Validador.Procedimentos.ValidatorProcedimento();
-            responseProcedimento = new ResponsePlanoOperadora();
+            responsePlanoOperadora = new ResponsePlanoOperadora();
         }
 
         public async Task<ResponsePlanoOperadora> Handle(RequestPlanoOperadora request)
@@ -41,18 +41,24 @@ namespace Sagui.Service.RequestResponse.Handlers
 
             if (planoOperadora.Id > 0)
             {
-                responseProcedimento.PlanoOperadora = planoOperadora;
-                responseProcedimento.ExecutionDate = DateTime.Now;
-                responseProcedimento.ResponseType = ResponseType.Success;
-                responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOObtidacomSucesso));
-                return responseProcedimento;
+                responsePlanoOperadora.PlanoOperadora = planoOperadora;
+                responsePlanoOperadora.ExecutionDate = DateTime.Now;
+                responsePlanoOperadora.ResponseType = ResponseType.Success;
+                
+                responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ObterComSucesso, nameof(responsePlanoOperadora.PlanoOperadora),
+                   String.Format(Constantes.MensagemObtidacomSucesso, nameof(responsePlanoOperadora.PlanoOperadora))));
+
+
+                return responsePlanoOperadora;
             }
             else
             {
-                responseProcedimento.ExecutionDate = DateTime.Now;
-                responseProcedimento.ResponseType = ResponseType.Error;
-                responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
-                return responseProcedimento;
+                responsePlanoOperadora.ExecutionDate = DateTime.Now;
+                responsePlanoOperadora.ResponseType = ResponseType.Error;
+                responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoObter, nameof(responsePlanoOperadora.PlanoOperadora),
+                   String.Format(Constantes.MensagemNaoObtidacomSucesso, nameof(responsePlanoOperadora.PlanoOperadora))));
+
+                return responsePlanoOperadora;
             }
         }
     }

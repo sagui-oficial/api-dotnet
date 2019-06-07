@@ -38,16 +38,22 @@ namespace Sagui.Service.RequestResponse.Handlers
                 {
                     responseLote.ExecutionDate = DateTime.Now;
                     responseLote.ResponseType = ResponseType.Success;
-                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.MensagemLoteDeletado, nameof(Lote), Constantes.MensagemLoteDeletado));
+                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.DeletadaComSucesso, nameof(responseLote.Lote),
+                        String.Format(Constantes.MensagemDeletada, nameof(responseLote.Lote))));
                     return responseLote;
-                }
+
+
+            }
                 else
                 {
                     responseLote.ExecutionDate = DateTime.Now;
                     responseLote.ResponseType = ResponseType.Error;
-                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.MensagemLoteNaoDeletado, nameof(Lote), Constantes.MensagemLoteNaoDeletado));
+                    responseLote.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoDeletada, nameof(responseLote.Lote),
+                               String.Format(Constantes.MensagemNaoDeletada, nameof(responseLote.Lote))));
                     return responseLote;
-                }
+
+
+            }
             //}
             //else
             //{

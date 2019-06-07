@@ -36,14 +36,17 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseUsuarioFuncionario.Funcionarios = ListUsuarioFuncionario;
                 responseUsuarioFuncionario.ExecutionDate = DateTime.Now;
                 responseUsuarioFuncionario.ResponseType = ResponseType.Success;
-                responseUsuarioFuncionario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOListadaComSucesso));
+                responseUsuarioFuncionario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(responseUsuarioFuncionario.Funcionario),
+                       String.Format(Constantes.MensagemListadaComSucesso, nameof(responseUsuarioFuncionario.Funcionario))));
+
                 return responseUsuarioFuncionario;
             }
             else
             {
                 responseUsuarioFuncionario.ExecutionDate = DateTime.Now;
                 responseUsuarioFuncionario.ResponseType = ResponseType.Info;
-                responseUsuarioFuncionario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemProcedimentoNaoListado));
+                responseUsuarioFuncionario.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(responseUsuarioFuncionario.Funcionario),
+                       String.Format(Constantes.MensagemNaoListada, nameof(responseUsuarioFuncionario.Funcionario))));
                 return responseUsuarioFuncionario;
             }
         }

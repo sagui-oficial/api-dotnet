@@ -50,7 +50,10 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseGTO.GTO = GTO;
                 responseGTO.ExecutionDate = DateTime.Now;
                 responseGTO.ResponseType = ResponseType.Success;
-                responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOObtidacomSucesso));
+                
+                responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ObterComSucesso, nameof(responseGTO.GTO),
+                 String.Format(Constantes.MensagemObtidacomSucesso, nameof(responseGTO.GTO))));
+
                 return responseGTO;
             }
             else
@@ -58,7 +61,11 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseGTO.GTO = GTO;
                 responseGTO.ExecutionDate = DateTime.Now;
                 responseGTO.ResponseType = ResponseType.Info;
-                responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
+              
+
+                responseGTO.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoObter, nameof(responseGTO.GTO),
+                    String.Format(Constantes.MensagemNaoObtidacomSucesso, nameof(responseGTO.GTO))));
+
                 return responseGTO;
             }
         }

@@ -38,18 +38,17 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responseProcedimento.Procedimento = _Procedimento;
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Success;
-                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
-                                                                                          nameof(Procedimentos),
-                                                                                          Constantes.MensagemProcedimentosInseridosComSucesso));
+                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso, nameof(responseProcedimento.Procedimento),
+                                                 String.Format(Constantes.MensagemInseridaComSucesso, nameof(responseProcedimento.Procedimento))));
                     return responseProcedimento;
                 }
                 else
                 {
                     responseProcedimento.ExecutionDate = DateTime.Now;
                     responseProcedimento.ResponseType = ResponseType.Error;
-                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
-                                                                                nameof(Procedimentos),
-                                                                                Constantes.MensagemProcedimentoNaoInserida));
+                    responseProcedimento.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir, nameof(responseProcedimento.Procedimento),
+                                     String.Format(Constantes.MensagemNaoInserida, nameof(responseProcedimento.Procedimento))));
+
                     return responseProcedimento;
                 }
             }

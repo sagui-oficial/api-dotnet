@@ -28,14 +28,18 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseArquivo.Arquivo = Arquivo;
                 responseArquivo.ExecutionDate = DateTime.Now;
                 responseArquivo.ResponseType = ResponseType.Success;
-                responseArquivo.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(Arquivo), Constantes.MensagemArquivoObtidocomSucesso));
+                responseArquivo.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ObterComSucesso, nameof(responseArquivo.Arquivo),
+                      String.Format(Constantes.MensagemObtidacomSucesso, nameof(responseArquivo.Arquivo))));
+
                 return responseArquivo;
             }
             else
             {
                 responseArquivo.ExecutionDate = DateTime.Now;
                 responseArquivo.ResponseType = ResponseType.Error;
-                responseArquivo.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(Arquivo), Constantes.MensagemArquivoNaoObtidocomSucesso));
+                responseArquivo.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoObter, nameof(responseArquivo.Arquivo),
+                      String.Format(Constantes.MensagemNaoObtidacomSucesso, nameof(responseArquivo.Arquivo))));
+
                 return responseArquivo;
             }
         }

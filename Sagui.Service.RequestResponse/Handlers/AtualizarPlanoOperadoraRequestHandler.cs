@@ -39,18 +39,22 @@ namespace Sagui.Service.RequestResponse.Handlers
                     responsePlanoOperadora.PlanoOperadora = _PlanoOperadora;
                     responsePlanoOperadora.ExecutionDate = DateTime.Now;
                     responsePlanoOperadora.ResponseType = ResponseType.Success;
-                    responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.InseridoComSucesso,
-                                                                                          nameof(PlanoOperadoras),
-                                                                                          Constantes.MensagemPlanoOperadorasInseridosComSucesso));
+               
+
+                    responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.AtualizadoComSucesso, nameof(responsePlanoOperadora.PlanoOperadora),
+                                                                        String.Format(Constantes.MensagemListadaComSucesso, nameof(responsePlanoOperadora.PlanoOperadora))));
+
                     return responsePlanoOperadora;
                 }
                 else
                 {
                     responsePlanoOperadora.ExecutionDate = DateTime.Now;
                     responsePlanoOperadora.ResponseType = ResponseType.Error;
-                    responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoInserir,
-                                                                                nameof(PlanoOperadoras),
-                                                                                Constantes.MensagemPlanoOperadoraNaoInserida));
+               
+
+                    responsePlanoOperadora.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoAtualizar, nameof(responsePlanoOperadora.PlanoOperadora),
+                                                                        String.Format(Constantes.MensagemNaoAtualizado, nameof(responsePlanoOperadora.PlanoOperadora))));
+
                     return responsePlanoOperadora;
                 }
             }

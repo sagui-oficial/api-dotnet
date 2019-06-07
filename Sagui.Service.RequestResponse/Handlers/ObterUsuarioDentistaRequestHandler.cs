@@ -34,14 +34,18 @@ namespace Sagui.Service.RequestResponse.Handlers
                 responseUsuarioDentista.Dentinsta = usuario;
                 responseUsuarioDentista.ExecutionDate = DateTime.Now;
                 responseUsuarioDentista.ResponseType = ResponseType.Success;
-                responseUsuarioDentista.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(GTO), Constantes.MensagemGTOObtidacomSucesso));
+                responseUsuarioDentista.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ObterComSucesso, nameof(responseUsuarioDentista.Dentinsta),
+                        String.Format(Constantes.MensagemObtidacomSucesso, nameof(responseUsuarioDentista.Dentinsta))));
+
                 return responseUsuarioDentista;
             }
             else
             {
                 responseUsuarioDentista.ExecutionDate = DateTime.Now;
                 responseUsuarioDentista.ResponseType = ResponseType.Error;
-                responseUsuarioDentista.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoListar, nameof(GTO), Constantes.MensagemGTONaoObtidacomSucesso));
+                responseUsuarioDentista.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ProblemaAoObter, nameof(responseUsuarioDentista.Dentinsta),
+                        String.Format(Constantes.MensagemNaoObtidacomSucesso, nameof(responseUsuarioDentista.Dentinsta))));
+
                 return responseUsuarioDentista;
             }
         }
