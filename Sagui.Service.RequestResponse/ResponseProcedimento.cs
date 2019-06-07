@@ -11,5 +11,6 @@ namespace Sagui.Service.RequestResponse
     {
         public Model.Procedimentos Procedimento { get; set; }
         public List<Model.Procedimentos> Procedimentos { get; set; }
+        
     }
 }

@@ -11,10 +11,10 @@ namespace Sagui.Business.Procedimento
 
     public class ProcedimentoBusiness : BusinessBase
     {
-        public List<Model.Procedimentos> ListProcedimentos()
+        public List<Model.Procedimentos> ListProcedimentos(Model.Procedimentos procedimento)
         {
             ProcedimentoLookup procedimentoLookup = new ProcedimentoLookup();
-            var listProcedimento = procedimentoLookup.ListProcedimento();
+            var listProcedimento = procedimentoLookup.ListProcedimento(procedimento);
 
             return listProcedimento;
         }

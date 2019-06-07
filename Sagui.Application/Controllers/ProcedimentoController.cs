@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
+using Sagui.Model;
 using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
@@ -28,32 +29,30 @@ namespace Sagui.Application.Controllers
 
             ObterProcedimentoRequestHandler ObterProcedimentoRequestHandler = new ObterProcedimentoRequestHandler(procedimentoService);
 
-              return await this.HandleRequest(ObterProcedimentoRequestHandler, requestProcedimento);
+            return await this.HandleRequest(ObterProcedimentoRequestHandler, requestProcedimento);
 
         }
 
-        
+
         [HttpGet("", Name = "ListarProcedimento")]
-        public async Task<IActionResult> GetAsync()
+        public async Task<IActionResult> GetAsync([FromQuery] PagingParameterModel paging )
         {
-            RequestProcedimento requestProcedimento = default(RequestProcedimento);
-            //if (status != 0)
-            //{
-            //    requestProcedimento.Status = status;
-            //}
+            RequestProcedimento requestProcedimento = new RequestProcedimento();
+
+            requestProcedimento.PagingParameter = paging;
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
             ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
-            
+
             return await this.HandleRequest(listarProcedimentoRequestHandler, requestProcedimento);
-            
+
         }
 
         [HttpGet("Procedimento_Operadora", Name = "Procedimento_Operadora")]
         public async Task<IActionResult> ListarProcedimento_Operadora([FromBody]  RequestPlanoOperadora requestPlanoOperadora)
         {
-            
+
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
             ListarProcedimento_PlanoOperadoraRequestHandler listarProcedimentoRequestHandler = new ListarProcedimento_PlanoOperadoraRequestHandler(procedimentoService);
@@ -102,5 +101,7 @@ namespace Sagui.Application.Controllers
 
         }
 
+
+       
     }
 }

@@ -36,7 +36,7 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public List<Dentinsta> Listar()
+        public List<Dentinsta> Listar(Dentinsta Usuario)
         {
             using (var usuarioBusiness = new Business.Usuario.UsuarioDentistaBusiness())
             {

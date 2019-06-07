@@ -23,7 +23,9 @@ namespace Sagui.Test.TestGTO
 
             ListarProcedimentoRequestHandler listarProcedimentoRequestHandler = new ListarProcedimentoRequestHandler(procedimentoService);
 
-            RequestProcedimento requestProcedimento = default(RequestProcedimento);
+            RequestProcedimento requestProcedimento = new RequestProcedimento();
+
+            requestProcedimento.PagingParameter = new Model.PagingParameterModel();
 
             var response = await listarProcedimentoRequestHandler.Handle(requestProcedimento);
 

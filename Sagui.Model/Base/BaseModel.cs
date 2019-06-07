@@ -15,5 +15,7 @@ namespace Sagui.Model.Base
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PublicID { get; set; }
         public int Status { get; set; }
+
+        public PagingParameterModel PagingParameter { get; set; }
     }
 }

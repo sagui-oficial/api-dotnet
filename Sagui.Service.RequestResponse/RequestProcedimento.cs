@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sagui.Service.RequestResponse
 {
-    public class RequestProcedimento : Model.Procedimentos
+    public class RequestProcedimento : Model.Procedimentos 
     {
+        
     }
 }

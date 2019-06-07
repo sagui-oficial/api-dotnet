@@ -304,8 +304,10 @@ namespace Sagui.Data
                                    ""Exigencias"", 
                                    ""Anotacoes"", 
                                    ""PublicID""
+                                   ,(select count(*) from ""Procedimento"") / @limite ""TotalPaginas""
 	                        FROM public.""Procedimento""
-                            WHERE ""Status"" <>  99 ";
+                            WHERE ""Status"" = @Status 
+                            LIMIT @limite  OFFSET @offset";
 
         public static string ObterProcedimento = @"
                             SELECT ""Id""
