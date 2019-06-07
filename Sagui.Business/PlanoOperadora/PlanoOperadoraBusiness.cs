@@ -64,6 +64,29 @@ namespace Sagui.Business.PlanoOperadora
 
             if (responsePlanoOperadora != null)
             {
+                Procedimento_PlanoOperadoraPersister procedimento_PlanoOperadoraPersister = new Procedimento_PlanoOperadoraPersister();
+                var _persisted2 = procedimento_PlanoOperadoraPersister.DeletarProcedimento_PlanoOperadora(planoOperadora.Id);
+
+                if (!_persisted2)
+                {
+                    procedimento_PlanoOperadoraPersister.CommitCommand(false);
+                    return null;
+                }
+
+                foreach (Procedimentos procedimento in planoOperadora.Procedimentos)
+                {
+
+                    var _persisted = procedimento_PlanoOperadoraPersister.SaveProcedimento_PlanoOperadora(planoOperadora.Id, procedimento);
+
+
+                    if (!_persisted)
+                    {
+                        procedimento_PlanoOperadoraPersister.CommitCommand(false);
+                        return null;
+                    }
+                }
+
+
                 planoOperadoraPersister.CommitCommand(true);
             }
             else

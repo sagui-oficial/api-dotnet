@@ -45,7 +45,7 @@ namespace Sagui.Data.Persister.Procedimento
 
         }
 
-        public bool DeletarProcedimentoGTO(int IdPlanoOperadora)
+        public bool DeletarProcedimento_PlanoOperadora(int IdPlanoOperadora)
         {
             DbParams.Add(nameof(IdPlanoOperadora), IdPlanoOperadora);
             
