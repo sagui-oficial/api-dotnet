@@ -34,7 +34,7 @@ namespace Sagui.Service.RequestResponse.Handlers
             //{
                 var _PlanoOperadora = planoOperadoraService.Deletar(PlanoOperadoras);
 
-                if (_PlanoOperadora.Id != 0)
+                if (_PlanoOperadora != null)
                 {
                     responsePlanoOperadora.PlanoOperadora = _PlanoOperadora;
                     responsePlanoOperadora.ExecutionDate = DateTime.Now;
