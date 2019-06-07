@@ -15,13 +15,16 @@ namespace Sagui.Service.RequestResponse.Handlers
     public class ObterPlanoOperadoraRequestHandler :IBaseRequestHandler<RequestPlanoOperadora, ResponsePlanoOperadora>
     {
         PlanoOperadoraService planoOperadoraService;
+        ProcedimentoService procedimentoService;
         private Business.Validador.Procedimentos.ValidatorProcedimento ValidatorProcedimento { get; set; }
 
         ResponsePlanoOperadora responseProcedimento;
 
-        public ObterPlanoOperadoraRequestHandler(PlanoOperadoraService _ProcedimentoService)
+        public ObterPlanoOperadoraRequestHandler(PlanoOperadoraService _planoOperadoraService, 
+            ProcedimentoService _procedimentoService)
         {
-            planoOperadoraService = _ProcedimentoService;
+            planoOperadoraService = _planoOperadoraService;
+            procedimentoService = _procedimentoService;
             ValidatorProcedimento = new Business.Validador.Procedimentos.ValidatorProcedimento();
             responseProcedimento = new ResponsePlanoOperadora();
         }
@@ -29,6 +32,12 @@ namespace Sagui.Service.RequestResponse.Handlers
         public async Task<ResponsePlanoOperadora> Handle(RequestPlanoOperadora request)
         {
             var planoOperadora = planoOperadoraService.Obter(request);
+
+            if (planoOperadora != null)
+            {
+                // GTO.Arquivos = arquivoService.ListarArquivoPorGTO(GTO);
+                planoOperadora.Procedimentos = procedimentoService.ListarProcedimento_PlanoOperadora(planoOperadora);
+            }
 
             if (planoOperadora.Id > 0)
             {

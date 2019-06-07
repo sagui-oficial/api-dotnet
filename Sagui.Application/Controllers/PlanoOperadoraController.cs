@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
 using Sagui.Service.PlanoOperadora;
+using Sagui.Service.Procedimento;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
 
@@ -26,8 +27,9 @@ namespace Sagui.Application.Controllers
             };
 
            PlanoOperadoraService planoOperadoraService = new PlanoOperadoraService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ObterPlanoOperadoraRequestHandler ObterProcedimentoRequestHandler = new ObterPlanoOperadoraRequestHandler(planoOperadoraService);
+            ObterPlanoOperadoraRequestHandler ObterProcedimentoRequestHandler = new ObterPlanoOperadoraRequestHandler(planoOperadoraService, procedimentoService);
 
             return await this.HandleRequest(ObterProcedimentoRequestHandler, requestPlanoOperadora);
 
