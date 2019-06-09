@@ -41,7 +41,7 @@ namespace Sagui.Data.Persister.GTO
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
-            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
+            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID);
             DbParams.Add(nameof(GTO.Status), Status.GTO.Deletada.GetHashCode());
 
             DataInfrastructure dataInfrastructure =  DataInfrastructure.GetInstanceDb(SQL.DeleteGTO, DbParams);

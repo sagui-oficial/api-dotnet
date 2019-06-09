@@ -27,7 +27,7 @@ namespace Sagui.Data.Persister.Procedimento
             DbParams.Add(nameof(Procedimentos.Exigencias), Procedimentos.Exigencias);
             DbParams.Add(nameof(Procedimentos.NomeProcedimento), Procedimentos.NomeProcedimento);
             DbParams.Add(nameof(Procedimentos.ValorProcedimento), Procedimentos.ValorProcedimento);
-            DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID.ToString());
+            DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
             DbParams.Add(nameof(Procedimentos.Status), Procedimentos.Status);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateProcedimento, DbParams);
@@ -52,7 +52,7 @@ namespace Sagui.Data.Persister.Procedimento
                 throw new ArgumentNullException(nameof(Procedimentos));
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
-            DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID.ToString());
+            DbParams.Add(nameof(Procedimentos.PublicID), Procedimentos.PublicID);
             DbParams.Add(nameof(Procedimentos.Status), Status.Procedimento.Deletada.GetHashCode());
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteProcedimento, DbParams);

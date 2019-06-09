@@ -51,7 +51,7 @@ namespace Sagui.Data.Persister.Lote
         {
             if (Lote == null)
                 throw new ArgumentNullException(nameof(GTO));
-            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID.ToString());
+            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID);
             DbParams.Add(nameof(Lote.Status), Status.Lote.Deletada.GetHashCode());
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteLote, DbParams);
@@ -82,6 +82,7 @@ namespace Sagui.Data.Persister.Lote
             DbParams.Add(nameof(Lote.TotalGTOLote), Lote.TotalGTOLote);
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
             DbParams.Add(nameof(Lote.ValorTotalPagoLote), Lote.ValorTotalPagoLote);
+            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID);
             //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
 
             DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateLote, DbParams);

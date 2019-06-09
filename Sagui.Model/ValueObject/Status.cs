@@ -14,8 +14,16 @@ namespace Sagui.Model.ValueObject
         {
             [Description("Criada")]
             Criada = 1,
+
             [Description("Concluida")]
             Concluida = 2,
+
+            [Description("Paga")]
+            Paga = 3,
+
+            [Description("Glosada")]
+            Glosada = 3,
+
             [Description("Deletada")]
             Deletada = 99
         }
