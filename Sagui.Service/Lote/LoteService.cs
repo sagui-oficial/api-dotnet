@@ -8,9 +8,14 @@ namespace Sagui.Service.Lote
 {
     public class LoteService : ILoteService<Model.Lote, Model.Lote>
     {
-        public Model.Lote Atualizar(Model.Lote model)
+        public Model.Lote Atualizar(Model.Lote Lote)
         {
-            throw new NotImplementedException();
+            using (var LoteBusiness = new Business.Lote.LoteBusiness())
+            {
+                var _return = LoteBusiness.Atualizar(Lote);
+                LoteBusiness.Dispose();
+                return _return;
+            }
         }
 
         public Model.Lote Cadastrar(Model.Lote Lote)

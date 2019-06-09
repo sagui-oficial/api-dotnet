@@ -81,7 +81,7 @@ namespace Sagui.Service.Procedimento
         {
             using (var ProcedimentoBusiness = new Business.Procedimento.ProcedimentoBusiness())
             {
-                var _return = ProcedimentoBusiness.ListarProcedimento_PlanoOperadora(planoOperadora.Id);
+                var _return = ProcedimentoBusiness.ListarProcedimento_PlanoOperadora(planoOperadora);
                 ProcedimentoBusiness.Dispose();
                 return _return;
             }

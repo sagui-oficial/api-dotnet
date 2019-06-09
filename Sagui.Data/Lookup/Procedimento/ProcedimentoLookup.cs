@@ -41,7 +41,7 @@ namespace Sagui.Data.Lookup.Procedimento
             if (procedimentos == null)
                 throw new ArgumentNullException(nameof(procedimentos));
 
-            DbParams.Add(nameof(procedimentos.PublicID), procedimentos.PublicID.ToString());
+            DbParams.Add(nameof(procedimentos.PublicID), procedimentos.PublicID);
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterProcedimento, DbParams))
             {
                 try
@@ -92,12 +92,12 @@ namespace Sagui.Data.Lookup.Procedimento
 
         
 
-        public List<Model.Procedimentos> ListarProcedimento_PlanoOperadora(int IdPlanoOperadora)
+        public List<Model.Procedimentos> ListarProcedimento_PlanoOperadora(Model.PlanoOperadora planoOperadora)
         {
             List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();
 
             DbParams.Clear();
-            DbParams.Add("IdPlanoOperadora", IdPlanoOperadora);
+            DbParams.Add(nameof(planoOperadora.PublicID), planoOperadora.PublicID);
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarProcedimentoPlanoOperadora, DbParams))
             {

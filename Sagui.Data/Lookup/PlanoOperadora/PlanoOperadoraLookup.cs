@@ -39,7 +39,7 @@ namespace Sagui.Data.Lookup.Usuario
             if (planoOperadora == null)
                 throw new ArgumentNullException(nameof(planoOperadora));
 
-            DbParams.Add(nameof(planoOperadora.PublicID), planoOperadora.PublicID.ToString());
+            DbParams.Add(nameof(planoOperadora.PublicID), planoOperadora.PublicID);
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterPlanoOperadora, DbParams))
             {
                 try

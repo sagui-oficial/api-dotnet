@@ -47,9 +47,13 @@ namespace Sagui.Application.Controllers
 
         }
 
-        [HttpGet("Procedimento_Operadora", Name = "Procedimento_Operadora")]
-        public async Task<IActionResult> ListarProcedimento_Operadora([FromBody]  RequestPlanoOperadora requestPlanoOperadora)
+        [HttpGet("{uuid}/Procedimento_Operadora", Name = "Procedimento_Operadora")]
+        public async Task<IActionResult> ListarProcedimento_Operadora(Guid uuid)
         {
+            RequestPlanoOperadora requestPlanoOperadora = new RequestPlanoOperadora
+            {
+                PublicID = uuid
+            };
 
             ProcedimentoService procedimentoService = new ProcedimentoService();
 

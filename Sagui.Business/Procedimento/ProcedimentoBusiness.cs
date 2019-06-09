@@ -86,10 +86,10 @@ namespace Sagui.Business.Procedimento
         }
 
 
-        public List<Model.Procedimentos> ListarProcedimento_PlanoOperadora(int idPlanoOperadora)
+        public List<Model.Procedimentos> ListarProcedimento_PlanoOperadora(Model.PlanoOperadora planoOperadora)
         {
             ProcedimentoLookup procedimentoLookup = new ProcedimentoLookup();
-            var listProcedimento = procedimentoLookup.ListarProcedimento_PlanoOperadora(idPlanoOperadora);
+            var listProcedimento = procedimentoLookup.ListarProcedimento_PlanoOperadora(planoOperadora);
 
             return listProcedimento;
         }

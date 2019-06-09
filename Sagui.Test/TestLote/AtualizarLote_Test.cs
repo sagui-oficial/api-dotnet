@@ -1,0 +1,62 @@
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sagui.Model;
+using Sagui.Service.Lote;
+using Sagui.Service.RequestResponse;
+using Sagui.Service.RequestResponse.Handlers;
+using Sagui.Service.RequestResponse.ValueObject;
+using Sagui.Test.Mocks;
+
+namespace Sagui.Test.TestLote
+{
+    [TestClass]
+    public class AtualizarLote_Test
+    {
+        [TestMethod]
+        public async Task AtualizarLote()
+        {
+            RequestLote requestLote = new RequestLote();
+
+            requestLote = MockLote.AtualizarMockLote();
+
+            LoteService LoteService = new LoteService();
+
+            AtualizarLoteRequestHandler criarLoteRequestHandler = new AtualizarLoteRequestHandler(LoteService);
+
+            var response = await criarLoteRequestHandler.Handle(requestLote);
+
+            Assert.IsNotNull(response.Lote);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+        }
+
+
+        //     [TestMethod]
+        //     public void CadastrarLote_SemDataSolicitacao()
+        //     {
+        ////         Lote Guia = new Lote();
+        ////         MockLote mock = new MockLote();
+        ////         Guia = mock.CriarMockLote();
+        ////         Guia.Solicitacao = DateTime.MinValue;
+        ////Guia.Vencimento = DateTime.MinValue;
+
+        ////         Business.Lote.CadastrarLoteBusiness LoteBusiness = new Business.Lote.CadastrarLoteBusiness();
+        ////         LoteBusiness.Cadastrar(Guia);
+        //     }
+
+        //     [TestMethod]
+        //     public void CadastrarLote_SemDataVencimento()
+        //     {
+        ////         Lote Guia = new Lote();
+        ////         MockLote mock = new MockLote();
+        ////         Guia = mock.CriarMockLote();
+        ////         Guia.Solicitacao = DateTime.MinValue;
+        ////Guia.Vencimento = DateTime.MinValue;
+
+        ////         Business.Lote.CadastrarLoteBusiness LoteBusiness = new Business.Lote.CadastrarLoteBusiness();
+        ////         LoteBusiness.Cadastrar(Guia);
+        //     }
+
+
+    }
+}

@@ -40,7 +40,7 @@ namespace Sagui.Data.Lookup.Lote
         {
             if (Lote == null)
                 throw new ArgumentNullException(nameof(Lote));
-            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID.ToString());
+            DbParams.Add(nameof(Lote.PublicID), Lote.PublicID);
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterLotebyPublicID, DbParams))
             {

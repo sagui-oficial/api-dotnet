@@ -34,7 +34,24 @@ namespace Sagui.Test.TestGTO
             Assert.IsTrue(response.GTOs.Count > 0 );
         }
 
-       // [TestMethod]
+        [TestMethod]
+        public async Task ListarGTOPorOperdoda()
+        {
+            GTOService gTOService = new GTOService();
+            ArquivoService arquivoService = new ArquivoService();
+            ProcedimentoService procedimentoService = new ProcedimentoService();
+
+            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
+
+            RequestGTO requestGTO = default(RequestGTO);
+
+            var response = await listarGTORequestHandler.Handle(requestGTO);
+
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+            Assert.IsTrue(response.GTOs.Count > 0);
+        }
+
+        // [TestMethod]
         //public async Task ListarNenhumsGTO()
         //{
         //    GTOService gTOService = new GTOService();

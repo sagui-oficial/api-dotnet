@@ -78,5 +78,36 @@ namespace Sagui.Business.Lote
             return responseLote;
         }
 
+        public Model.Lote Atualizar(Model.Lote Lote)
+        {
+            Lote.TotalGTOLote = Lote.ListaGTO.Count;
+            Lote.ValorTotalLote = Lote.ListaGTO.Sum(g => g.ValorTotalProcedimentos);
+
+            LotePersister LotePersister = new LotePersister();
+
+            var _lote = LotePersister.AtualizarLote(Lote);
+
+            if (_lote != null)
+            {
+                Lote.Id = _lote.Id;
+
+                foreach (Model.GTO gto in Lote.ListaGTO)
+                {
+                    LoteGTOPersister loteGTOPersister = new LoteGTOPersister();
+                    var _persisted = loteGTOPersister.SaveLoteGTO(Lote.Id, gto.Id);
+
+                    if (!_persisted)
+                    {
+                        LotePersister.CommitCommand(false);
+                        return null;
+                    }
+                }
+
+                LotePersister.CommitCommand(true);
+            }
+
+            return _lote;
+        }
+
     }
 }

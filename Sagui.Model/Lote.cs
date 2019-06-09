@@ -12,6 +12,7 @@ namespace Sagui.Model
     public class Lote : BaseModel
     {
         public double ValorTotalLote { get; set; }
+        public double ValorTotalPagoLote { get; set; }
         public DateTime DataEnvioCorreio { get; set; }
         public DateTime DataPrevistaRecebimento { get; set; }
         public int TotalGTOLote { get; set; }

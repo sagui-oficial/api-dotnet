@@ -197,9 +197,10 @@ namespace Sagui.Data
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
-                    FROM ""Procedimento_PlanoOperadora"" a 
+                    FROM ""PlanoOperadora"" c 
+                            inner join ""Procedimento_PlanoOperadora"" a on a.""IdPlanoOperadora"" = c.""Id""
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
-                    where a.""IdPlanoOperadora"" = @IdPlanoOperadora";
+                    where c.""PublicID""::uuid = @PublicID";
 
 
 
@@ -207,7 +208,7 @@ namespace Sagui.Data
 
         public static string DeleteGTO = @" UPDATE public.""GTO""
                                        SET ""Status"" = @Status
-                                       WHERE ""PublicID""::text = @PublicID   ";
+                                       WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string UpdateGTO = @"
                    UPDATE public.""GTO""
@@ -257,6 +258,8 @@ namespace Sagui.Data
                                         ,a.""PublicID""
                                         ,a.""TotalProcedimentos""
                                         ,a.""ValorTotalProcedimentos""
+                                        ,b.""PublicID"" ""PlanoOperadoraPublicID""
+                                        ,c.""PublicID"" ""UsuarioBasePublicID""
                                     FROM public.""GTO"" a 
 			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
@@ -276,10 +279,12 @@ namespace Sagui.Data
                                         ,a.""PublicID""
                                         ,a.""TotalProcedimentos""
                                         ,a.""ValorTotalProcedimentos""
+                                        ,b.""PublicID"" ""PlanoOperadoraPublicID""
+                                        ,c.""PublicID"" ""UsuarioBasePublicID""
                                     FROM public.""GTO"" a 
 			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
-                            WHERE a.""PublicID""::text = @PublicID";
+                            WHERE a.""PublicID""::uuid = @PublicID";
 
         #endregion
 
@@ -315,11 +320,12 @@ namespace Sagui.Data
                                   ,""Anotacoes""
                                   ,""PublicID""
                              FROM public.""Procedimento""
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
+
         public static string DeleteProcedimento = @"
                             UPDATE public.""Procedimento""
                                     SET ""Status"" = @Status
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
 
         public static string UpdateProcedimento = @"
                             UPDATE  public.""Procedimento""
@@ -329,7 +335,7 @@ namespace Sagui.Data
                                   ,""Anotacoes"" = @Anotacoes
                                   ,""Status"" = @Status
             
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
         #endregion
 
         #region usuario
@@ -351,7 +357,7 @@ namespace Sagui.Data
                               FROM public.""UsuarioBase"" a
                                     LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
                             WHERE a.""TipoUsuario"" = @TipoUsuario
-                              AND a.""PublicID""::text = @PublicID";
+                              AND a.""PublicID""::uuid = @PublicID";
 
 
         public static string ListUsuario = @"
@@ -540,7 +546,7 @@ namespace Sagui.Data
                                 ,""DataRecebimentoLote""
                                 ,""PublicID""
                               FROM public.""PlanoOperadora"" 
-                            WHERE ""PublicID""::text = @PublicID";
+                            WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string ListPlanoOperadora = @"
@@ -638,18 +644,21 @@ namespace Sagui.Data
 
 
         public static string UpdateLote = @"
-                UPDATE public.""PlanoOperadora""
-                       SET ""NomeFantasia"" = @NomeFantasia
-                          ,""RazaoSocial"" = @RazaoSocial
-                          ,""CNPJ"" = @CNPJ
-                          ,""DataEnvioLote"" = @DataEnvioLote
-                          ,""DataRecebimentoLote"" = @DataRecebimentoLote
+                UPDATE public.""Lote""
+                       SET ""DataEnvioCorreio"" = @DataEnvioCorreio
+                          ,""DataPrevistaRecebimento"" = @DataPrevistaRecebimento
+                          ,""PlanoOperadora"" = @PlanoOperadoraId
+                          ,""Funcionario"" = @FuncionarioId
+                          ,""Status"" = @Status
+                          ,""TotalGTOLote"" = @TotalGTOLote
+                          ,""ValorTotalLote"" = @ValorTotalLote
                      WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string DeleteLote = @"
-                            DELETE FROM public.""Lote""
-                            WHERE ""PublicID""::uuid = @PublicID";
+                             UPDATE public.""Lote""
+                       SET ""Status"" = @Status
+                     WHERE ""PublicID""::uuid = @PublicID";
 
 
         public static string CreateLoteGTO = @"
@@ -681,7 +690,7 @@ namespace Sagui.Data
                                           ON  a.""PlanoOperadoraId"" = b.""Id""
 			                      INNER JOIN  ""UsuarioBase"" c  
                                           ON  a.""FuncionarioId"" = c.""Id""
-		                               WHERE a.""PublicID""::text = @PublicID";
+		                               WHERE a.""PublicID""::uuid = @PublicID";
 
 
         public static string ListarGTOLote = @"SELECT a.""Id""

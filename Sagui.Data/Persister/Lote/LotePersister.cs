@@ -67,5 +67,36 @@ namespace Sagui.Data.Persister.Lote
 
             return Lote;
         }
+
+        public Model.Lote AtualizarLote(Model.Lote Lote)
+        {
+            if (Lote == null)
+                throw new ArgumentNullException(nameof(Lote));
+
+            //DbParams.Add(nameof(Lote.IdLote), Lote.IdLote);
+            DbParams.Add(nameof(Lote.DataEnvioCorreio), Lote.DataEnvioCorreio);
+            DbParams.Add(nameof(Lote.DataPrevistaRecebimento), Lote.DataPrevistaRecebimento);
+            DbParams.Add(nameof(Lote.PlanoOperadora), Lote.PlanoOperadora.Id);
+            DbParams.Add(nameof(Lote.Funcionario), Lote.Funcionario.Id);
+            DbParams.Add(nameof(Lote.Status), Lote.Status);
+            DbParams.Add(nameof(Lote.TotalGTOLote), Lote.TotalGTOLote);
+            DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
+            DbParams.Add(nameof(Lote.ValorTotalPagoLote), Lote.ValorTotalPagoLote);
+            //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
+
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateLote, DbParams);
+
+            try
+            {
+                dataInfrastructure.command.ExecuteScalar();
+
+            }
+            catch (Exception e)
+            {
+                Lote = null;
+            }
+
+            return Lote;
+        }
     }
 }

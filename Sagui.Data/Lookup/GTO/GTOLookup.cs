@@ -39,7 +39,7 @@ namespace Sagui.Data.Lookup.GTO
         {
             if (GTO == null)
                 throw new ArgumentNullException(nameof(GTO));
-            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID.ToString());
+            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID);
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ObterGTObyPublicID, DbParams))
             {
