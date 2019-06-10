@@ -707,14 +707,35 @@ namespace Sagui.Data
 	                                                 ,a.""TotalProcedimentos""
 	                                                 ,a.""ValorTotalProcedimentos""
                                                  FROM ""GTO_Lote"" gl 
-                                                INNER JOIN public.""GTO"" a
+                                                INNER JOIN public.""GTO"" a 
                                                    ON gl.""IdGTO"" = a.""Id"" 
                                                 INNER JOIN  ""PlanoOperadora"" b  
                                                    ON a.""PlanoOperadoraId"" = b.""Id""
                                                 INNER JOIN  ""UsuarioBase"" c  
                                                    ON  a.""PacienteId"" = c.""Id""
-                                                WHERE gl.""IdLote"" = @idLote
-                                                  AND a.""Status"" <>  99 ";
+                                                WHERE gl.""PublicID""::uuid = @PublicID
+                                                AND a.""Status"" <>  99 ";
+
+        public static string ListarGTOPlanoOperadora = @"
+                                SELECT  a.""Id""
+                                        ,a.""Numero""
+                                        ,a.""Status""
+                                        ,a.""PlanoOperadoraId""
+		                                ,b.""NomeFantasia""
+		                                ,b.""RazaoSocial""
+                                        ,a.""PacienteId""
+		                                ,c.""Nome""
+                                        ,a.""Solicitacao""
+                                        ,a.""Vencimento""
+                                        ,a.""PublicID""
+                                        ,a.""TotalProcedimentos""
+                                        ,a.""ValorTotalProcedimentos""
+                                        ,b.""PublicID"" ""PlanoOperadoraPublicID""
+                                        ,c.""PublicID"" ""UsuarioBasePublicID""
+                                    FROM public.""GTO"" a 
+			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
+                            WHERE b.""PublicID""::uuid = @PublicID";
 
         #endregion
     }

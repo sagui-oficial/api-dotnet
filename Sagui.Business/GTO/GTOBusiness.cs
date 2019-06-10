@@ -84,7 +84,7 @@ namespace Sagui.Business.GTO
             return gto;
         }
 
-
+        
 
         public Model.GTO Atualizar(Model.GTO gto)
         {
@@ -156,12 +156,20 @@ namespace Sagui.Business.GTO
 
             return listGTO;
         }
+        
 
-
-        public List<Model.GTO> ListarGTOLote(int idLote)
+        public List<Model.GTO> ListarGTOPorPlanoOperadora(Model.PlanoOperadora planoOperadora)
         {
             GTOLookup procedimentoLookup = new GTOLookup();
-            var listGTO = procedimentoLookup.ListarGTOLote(idLote);
+            var listGTO = procedimentoLookup.ListarGTOPorPlanoOperadora(planoOperadora);
+
+            return listGTO;
+        }
+
+        public List<Model.GTO> ListarGTOLote(Model.Lote lote)
+        {
+            GTOLookup procedimentoLookup = new GTOLookup();
+            var listGTO = procedimentoLookup.ListarGTOLote(lote);
 
             return listGTO;
         }

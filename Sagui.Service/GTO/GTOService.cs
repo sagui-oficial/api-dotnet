@@ -58,11 +58,22 @@ namespace Sagui.Service.GTO
             }
         }
 
+        public List<Model.GTO> ListarGTOPorPlanoOperadora(Model.PlanoOperadora planoOperadora)
+        {
+            using (var GTOBusiness = new Business.GTO.GTOBusiness())
+            {
+                var _return = GTOBusiness.ListarGTOPorPlanoOperadora(planoOperadora);
+                GTOBusiness.Dispose();
+                return _return;
+            }
+        }
+
+
         public List<Model.GTO> ListarGTOPorLote(Model.Lote lote)
         {
             using (var GTOBusiness = new Business.GTO.GTOBusiness())
             {
-                var _return = GTOBusiness.ListarGTOLote(lote.Id);
+                var _return = GTOBusiness.ListarGTOLote(lote);
                 GTOBusiness.Dispose();
                 return _return;
             }

@@ -35,15 +35,15 @@ namespace Sagui.Test.TestGTO
         }
 
         [TestMethod]
-        public async Task ListarGTOPorOperdoda()
+        public async Task ListarGTOPorOperadoda()
         {
             GTOService gTOService = new GTOService();
             ArquivoService arquivoService = new ArquivoService();
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
+            ListarGTO_PlanoOperadoraRequestHandler listarGTORequestHandler = new ListarGTO_PlanoOperadoraRequestHandler(gTOService, arquivoService, procedimentoService);
 
-            RequestGTO requestGTO = default(RequestGTO);
+            RequestPlanoOperadora requestGTO = new RequestPlanoOperadora();
 
             var response = await listarGTORequestHandler.Handle(requestGTO);
 

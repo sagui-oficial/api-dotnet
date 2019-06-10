@@ -63,12 +63,40 @@ namespace Sagui.Data.Lookup.GTO
             return GTO;
         }
 
-        public List<Model.GTO> ListarGTOLote(int idLote)
+        public List<Model.GTO> ListarGTOPorPlanoOperadora(Model.PlanoOperadora planoOperadora)
         {
             List<Model.GTO> ListGTO = new List<Model.GTO>();
 
             DbParams.Clear();
-            DbParams.Add("idLote", idLote);
+            DbParams.Add(nameof(planoOperadora.PublicID), planoOperadora.PublicID);
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarGTOPlanoOperadora, DbParams))
+            {
+                try
+                {
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Model.GTO _GTO = Parser.ParseGTO(reader);
+                        ListGTO.Add(_GTO);
+                    }
+                }
+                catch (Exception e)
+                {
+                    ListGTO = null;
+                }
+            }
+
+            return ListGTO;
+        }
+
+        public List<Model.GTO> ListarGTOLote(Model.Lote  lote)
+        {
+            List<Model.GTO> ListGTO = new List<Model.GTO>();
+
+            DbParams.Clear();
+            DbParams.Add(nameof(lote.PublicID), lote.PublicID);
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarGTOLote, DbParams))
             {
