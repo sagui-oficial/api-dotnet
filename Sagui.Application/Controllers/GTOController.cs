@@ -63,7 +63,7 @@ namespace Sagui.Application.Controllers
             ArquivoService arquivoService = new ArquivoService();
             ProcedimentoService procedimentoService = new ProcedimentoService();
 
-            ListarGTORequestHandler listarGTORequestHandler = new ListarGTORequestHandler(gTOService, arquivoService, procedimentoService);
+            ListarGTO_PlanoOperadoraRequestHandler listarGTORequestHandler = new ListarGTO_PlanoOperadoraRequestHandler(gTOService, arquivoService, procedimentoService);
 
             return await this.HandleRequest(listarGTORequestHandler, requestGTO);
 
