@@ -635,6 +635,8 @@ namespace Sagui.Data
 		                            b.""RazaoSocial"",
 		                            c.""Id"",
                                     c.""Nome""
+                                    ,b.""PublicID"" ""PlanoOperadoraPublicID""
+                                    ,c.""PublicID"" ""UsuarioBasePublicID""
 	                              FROM public.""Lote"" a
 			                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
@@ -683,11 +685,11 @@ namespace Sagui.Data
 		                                  b.""RazaoSocial"",
 		                                  c.""Id"",
                                           c.""Nome""
+                                         ,b.""PublicID"" ""PlanoOperadoraPublicID""
+                                         ,c.""PublicID"" ""UsuarioBasePublicID""
 	                                    FROM public.""Lote"" a
-			                      INNER JOIN  ""PlanoOperadora"" b  
-                                          ON  a.""PlanoOperadoraId"" = b.""Id""
-			                      INNER JOIN  ""UsuarioBase"" c  
-                                          ON  a.""FuncionarioId"" = c.""Id""
+			                      INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                      INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
 		                               WHERE a.""PublicID""::uuid = @PublicID";
 
 

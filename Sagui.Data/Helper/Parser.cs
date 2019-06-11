@@ -38,10 +38,13 @@ namespace Sagui.Data.Helper
             _Lote.PublicID = (Guid)reader["PublicID"];
             _Lote.Status = Convert.ToInt32(reader["Status"]);
             _Lote.PlanoOperadora = new Model.PlanoOperadora();
+            _Lote.PlanoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
             _Lote.PlanoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
             _Lote.PlanoOperadora.RazaoSocial = Convert.ToString(reader["RazaoSocial"]);
+            _Lote.PlanoOperadora.PublicID = (Guid)reader["PlanoOperadoraPublicID"];
             _Lote.Funcionario = new Model.Funcionario();
             _Lote.Funcionario.Id = Convert.ToInt32(reader["FuncionarioId"]);
+            _Lote.Funcionario.PublicID = (Guid)reader["UsuarioBasePublicID"];
             _Lote.Funcionario.Nome = Convert.ToString(reader["Nome"]);
             _Lote.DataEnvioCorreio = Convert.ToDateTime(reader["DataEnvioCorreio"]);
             _Lote.DataPrevistaRecebimento = Convert.ToDateTime(reader["DataPrevistaRecebimento"]);
