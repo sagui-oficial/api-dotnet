@@ -706,15 +706,15 @@ namespace Sagui.Data
 	                                                 ,a.""PublicID""
 	                                                 ,a.""TotalProcedimentos""
 	                                                 ,a.""ValorTotalProcedimentos""
-                                                 FROM ""GTO_Lote"" gl 
-                                                INNER JOIN public.""GTO"" a 
-                                                   ON gl.""IdGTO"" = a.""Id"" 
-                                                INNER JOIN  ""PlanoOperadora"" b  
-                                                   ON a.""PlanoOperadoraId"" = b.""Id""
-                                                INNER JOIN  ""UsuarioBase"" c  
-                                                   ON  a.""PacienteId"" = c.""Id""
-                                                WHERE gl.""PublicID""::uuid = @PublicID
-                                                AND a.""Status"" <>  99 ";
+                                                     ,b.""PublicID"" ""PlanoOperadoraPublicID""
+                                                     ,c.""PublicID"" ""UsuarioBasePublicID""
+                                                 FROM  ""Lote"" l 
+                                                        INNER JOIN ""GTO_Lote"" gl ON l.""Id"" = gl.""IdLote""
+                                                        INNER JOIN public.""GTO"" a ON gl.""IdGTO"" = a.""Id"" 
+                                                        INNER JOIN  ""PlanoOperadora"" b  ON a.""PlanoOperadoraId"" = b.""Id""
+                                                        INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
+                                                WHERE l.""PublicID""::uuid = @PublicID
+                                                AND l.""Status"" <>  99 ";
 
         public static string ListarGTOPlanoOperadora = @"
                                 SELECT  a.""Id""

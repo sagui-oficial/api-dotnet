@@ -29,7 +29,7 @@ namespace Sagui.Data.Lookup.Lote
                 }
                 catch (Exception e)
                 {
-
+                    ListLote = null;
                 }
             }
 
