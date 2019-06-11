@@ -22,13 +22,10 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         ResponseGTO responseGTO;
 
-        public ListarGTO_PlanoOperadoraRequestHandler(GTOService _GTOService, 
-                                       ArquivoService _arquivoService, 
-                                       ProcedimentoService _procedimentoService)
+        public ListarGTO_PlanoOperadoraRequestHandler(GTOService _GTOService)
         {
             GTOService = _GTOService;
-            arquivoService = _arquivoService;
-            procedimentoService = _procedimentoService;
+            
             validadorGTO = new Business.Validador.GTO.ValidadorGTO();
             responseGTO = new ResponseGTO();
             procedimentoService = new ProcedimentoService();
@@ -38,11 +35,11 @@ namespace Sagui.Service.RequestResponse.Handlers
         {
             var ListGTO = GTOService.ListarGTOPorPlanoOperadora(request);
 
-            foreach(var gto in ListGTO)
-            {
-             //   gto.Arquivos = arquivoService.ListarArquivoPorGTO(gto);
-                gto.Procedimentos = procedimentoService.ListarProcedimentoPorGTO(gto);
-            }
+            //foreach(var gto in ListGTO)
+            //{
+            // //   gto.Arquivos = arquivoService.ListarArquivoPorGTO(gto);
+            //    gto.Procedimentos = procedimentoService.ListarProcedimentoPorGTO(gto);
+            //}
 
             if (ListGTO.Count > 0)
             {
