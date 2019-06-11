@@ -636,10 +636,8 @@ namespace Sagui.Data
 		                            c.""Id"",
                                     c.""Nome""
 	                              FROM public.""Lote"" a
-			                INNER JOIN  ""PlanoOperadora"" b  
-                                    ON  a.""PlanoOperadoraId"" = b.""Id""
-			                INNER JOIN  ""UsuarioBase"" c  
-                                    ON  a.""FuncionarioId"" = c.""Id""
+			                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
+			                INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
                                  WHERE a.""Status"" <>  99 ";
 
 
@@ -647,8 +645,8 @@ namespace Sagui.Data
                 UPDATE public.""Lote""
                        SET ""DataEnvioCorreio"" = @DataEnvioCorreio
                           ,""DataPrevistaRecebimento"" = @DataPrevistaRecebimento
-                          ,""PlanoOperadora"" = @PlanoOperadoraId
-                          ,""Funcionario"" = @FuncionarioId
+                          ,""PlanoOperadoraId"" = @PlanoOperadoraId
+                          ,""FuncionarioId"" = @FuncionarioId
                           ,""Status"" = @Status
                           ,""TotalGTOLote"" = @TotalGTOLote
                           ,""ValorTotalLote"" = @ValorTotalLote
@@ -713,8 +711,7 @@ namespace Sagui.Data
                                                         INNER JOIN public.""GTO"" a ON gl.""IdGTO"" = a.""Id"" 
                                                         INNER JOIN  ""PlanoOperadora"" b  ON a.""PlanoOperadoraId"" = b.""Id""
                                                         INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
-                                                WHERE l.""PublicID""::uuid = @PublicID
-                                                AND l.""Status"" <>  99 ";
+                                                WHERE l.""PublicID""::uuid = @PublicID ";
 
         public static string ListarGTOPlanoOperadora = @"
                                 SELECT  a.""Id""
