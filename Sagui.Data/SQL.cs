@@ -732,7 +732,8 @@ namespace Sagui.Data
                                     FROM public.""GTO"" a 
 			                                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                                INNER JOIN  ""UsuarioBase"" c  ON  a.""PacienteId"" = c.""Id""
-                            WHERE b.""PublicID""::uuid = @PublicID";
+                            WHERE b.""PublicID""::uuid = @PublicID
+                            AND a.""Status"" = 2 ";
 
         #endregion
     }

@@ -22,7 +22,7 @@ namespace Sagui.Model.ValueObject
             Paga = 3,
 
             [Description("Glosada")]
-            Glosada = 3,
+            Glosada = 4,
 
             [Description("Deletada")]
             Deletada = 99
