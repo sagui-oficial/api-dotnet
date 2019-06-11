@@ -16,7 +16,7 @@ staging:
 staging:
  stage: prod
  variables:
-  HEROKU_API_KEY: $HEROKU_PROD_API_KEY
+  HEROKU_API_KEY_PROD: $HEROKU_PROD_API_KEY
  script:
  - apt-get update -qy
  - apt-get install -y ruby-dev
