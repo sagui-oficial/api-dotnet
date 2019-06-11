@@ -354,6 +354,7 @@ namespace Sagui.Data
                                   ,a.""PlanoOperadoraId""
                                   ,a.""PublicID""
                                   ,b.""NomeFantasia""
+                                  ,b.""PublicID"" ""PublicIDPlanoOperadora""
                               FROM public.""UsuarioBase"" a
                                     LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
                             WHERE a.""TipoUsuario"" = @TipoUsuario
@@ -372,7 +373,8 @@ namespace Sagui.Data
                                   ,a.""NumeroPlano""
                                   ,a.""PlanoOperadoraId""
                                   ,a.""PublicID""
-                                 ,b.""NomeFantasia""
+                                  ,b.""NomeFantasia""
+                                  ,b.""PublicID"" ""PublicIDPlanoOperadora""
                               FROM public.""UsuarioBase"" a
                                     LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
                             WHERE a.""TipoUsuario"" = @TipoUsuario
