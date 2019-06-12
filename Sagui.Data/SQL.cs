@@ -610,7 +610,6 @@ namespace Sagui.Data
                        ,""ValorTotalLote""
                        ,""DataEnvioCorreio""
                        ,""DataPrevistaRecebimento""
-                       ,""Status""
                        ,""FuncionarioId"")
                  VALUES
                        (@PlanoOperadora
@@ -618,7 +617,6 @@ namespace Sagui.Data
                        ,@ValorTotalLote
                        ,@DataEnvioCorreio
                        ,@DataPrevistaRecebimento
-                       ,@Status
                        ,@Funcionario)
                         RETURNING ""Id"";";
 
