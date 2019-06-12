@@ -53,17 +53,16 @@ namespace Sagui.Application.Controllers
         [HttpGet("{uuid}/ListarGTOOperadora", Name = "ListarGTOOperadora")]
         public async Task<IActionResult> ListarGTOOperadora(Guid uuid)
         {
-            RequestGTO requestGTO = new RequestGTO
+            RequestPlanoOperadora requestGTO = new RequestPlanoOperadora
             {
                 PublicID = uuid
             };
 
 
             GTOService gTOService = new GTOService();
-            ArquivoService arquivoService = new ArquivoService();
-            ProcedimentoService procedimentoService = new ProcedimentoService();
+         
 
-            ListarGTO_PlanoOperadoraRequestHandler listarGTORequestHandler = new ListarGTO_PlanoOperadoraRequestHandler(gTOService, arquivoService, procedimentoService);
+            ListarGTO_PlanoOperadoraRequestHandler listarGTORequestHandler = new ListarGTO_PlanoOperadoraRequestHandler(gTOService);
 
             return await this.HandleRequest(listarGTORequestHandler, requestGTO);
 

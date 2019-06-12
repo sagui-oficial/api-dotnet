@@ -38,12 +38,12 @@ namespace Sagui.Test.TestGTO
         public async Task ListarGTOPorOperadoda()
         {
             GTOService gTOService = new GTOService();
-            ArquivoService arquivoService = new ArquivoService();
-            ProcedimentoService procedimentoService = new ProcedimentoService();
+           
 
-            ListarGTO_PlanoOperadoraRequestHandler listarGTORequestHandler = new ListarGTO_PlanoOperadoraRequestHandler(gTOService, arquivoService, procedimentoService);
+            ListarGTO_PlanoOperadoraRequestHandler listarGTORequestHandler = new ListarGTO_PlanoOperadoraRequestHandler(gTOService);
 
             RequestPlanoOperadora requestGTO = new RequestPlanoOperadora();
+            requestGTO = MockPlanoOperadora.AtualizarMockPlanoOperadora();
 
             var response = await listarGTORequestHandler.Handle(requestGTO);
 

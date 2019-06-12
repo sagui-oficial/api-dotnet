@@ -23,7 +23,7 @@ namespace Sagui.Data.Persister.Lote
             DbParams.Add(nameof(Lote.DataPrevistaRecebimento), Lote.DataPrevistaRecebimento);
             DbParams.Add(nameof(Lote.PlanoOperadora), Lote.PlanoOperadora.Id);
             DbParams.Add(nameof(Lote.Funcionario), Lote.Funcionario.Id);
-            DbParams.Add(nameof(Lote.Status), Lote.Status);
+            //DbParams.Add(nameof(Lote.Status), Lote.Status);
             DbParams.Add(nameof(Lote.TotalGTOLote), Lote.TotalGTOLote);
             DbParams.Add(nameof(Lote.ValorTotalLote), Lote.ValorTotalLote);
             //DbParams.Add(nameof(Lote.ListaGTO), Lote.ListaGTO);
