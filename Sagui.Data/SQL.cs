@@ -183,6 +183,7 @@ namespace Sagui.Data
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
+                          ,a.""Pago""
                     FROM ""Procedimento_GTO"" a 
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
                     where a.""IdGTO"" = @idGTO";

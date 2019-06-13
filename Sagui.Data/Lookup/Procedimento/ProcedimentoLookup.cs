@@ -89,9 +89,7 @@ namespace Sagui.Data.Lookup.Procedimento
 
             return ListProcedimento;
         }
-
         
-
         public List<Model.Procedimentos> ListarProcedimento_PlanoOperadora(Model.PlanoOperadora planoOperadora)
         {
             List<Model.Procedimentos> ListProcedimento = new List<Model.Procedimentos>();

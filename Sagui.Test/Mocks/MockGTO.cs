@@ -65,14 +65,14 @@ namespace Sagui.Test.Mocks
             Guia.PlanoOperadora.Id = 1;
             Guia.PlanoOperadora.NomeFantasia = "Operadora 1";
             Guia.Paciente = new Paciente();
-            Guia.Paciente.Id = 4;
+            Guia.Paciente.Id = 1;
             Guia.Paciente.Nome = "Paciente 1";
             Guia.Solicitacao = DateTime.Now;
             Guia.Vencimento = DateTime.Now.AddMonths(1);
             Guia.Procedimentos = new List<Model.Procedimentos>() { MockProcedimento.CriarMockProcedimento() };
             Guia.Arquivos = new List<Arquivo_GTO>() { MockArquivos.CriarMockArquivo() };
-            Guia.Status = 100;
-            Guia.PublicID = new Guid("d52405b8-84a1-11e9-924d-705a0f6970c5");
+            Guia.Status = 3;
+            Guia.PublicID = new Guid("3bc1cec8-8e2e-11e9-bb65-705a0f6970c5");
 
             List<Procedimentos> procedimentos = new List<Procedimentos>();
 

@@ -78,6 +78,7 @@ namespace Sagui.Data.Helper
             if (comValor)
             {
                 _Procedimento.ValorProcedimento = Convert.ToDouble(reader["ValorProcedimento"]);
+                _Procedimento.Pago = Convert.ToBoolean(reader["Pago"]);
             }
 
             _Procedimento.Exigencias = Convert.ToString(reader["Exigencias"]);
