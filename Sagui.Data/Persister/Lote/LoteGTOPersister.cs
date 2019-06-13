@@ -41,5 +41,27 @@ namespace Sagui.Data.Persister.Lote
                 return false;
             }
         }
+
+        public bool DeletarLoteGTO(int IdLote)
+        {
+            DbParams.Add(nameof(IdLote), IdLote);
+
+
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DeleteLoteGTO, DbParams);
+
+            try
+            {
+                _dataInfrastructure.command.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                return false;
+            }
+
+
+        }
     }
 }

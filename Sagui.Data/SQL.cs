@@ -670,6 +670,10 @@ namespace Sagui.Data
                        ,@IdGTO)
                         RETURNING ""Id"";";
 
+        public static string DeleteLoteGTO = @"
+                    DELETE FROM  public.""GTO_Lote""
+                          WHERE ""IdLote"" = @IdLote";
+
         public static string ObterLotebyPublicID = @"
                                    SELECT a.""Id"",
 	                                      a.""PublicID"",

@@ -91,9 +91,20 @@ namespace Sagui.Business.Lote
             {
                 Lote.Id = _lote.Id;
 
+
+                LoteGTOPersister loteGTOPersister = new LoteGTOPersister();
+                var _persisted2 = loteGTOPersister.DeletarLoteGTO(Lote.Id);
+
+                if (!_persisted2)
+                {
+                    loteGTOPersister.CommitCommand(false);
+                    return null;
+                }
+
+
                 foreach (Model.GTO gto in Lote.ListaGTO)
                 {
-                    LoteGTOPersister loteGTOPersister = new LoteGTOPersister();
+                
                     var _persisted = loteGTOPersister.SaveLoteGTO(Lote.Id, gto.Id);
 
                     if (!_persisted)
