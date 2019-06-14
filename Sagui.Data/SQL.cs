@@ -174,6 +174,11 @@ namespace Sagui.Data
                     DELETE FROM  public.""Procedimento_GTO""
                           WHERE ""IdGTO"" = @IdGTO";
 
+        public static string PagarProcedimentoGTO = @"
+                    UPDATE public.""Procedimento_GTO""
+                            SET ""Pago"" = true
+                          WHERE ""IdGTO"" = @IdGTO";
+
         public static string ListarProcedimentoGTO = @"
                      SELECT  
 	                       b.""Id""

@@ -6,7 +6,9 @@ using Sagui.Data.Lookup.Lote;
 using Sagui.Data.Lookup.Usuario;
 using Sagui.Data.Persister.GTO;
 using Sagui.Data.Persister.Lote;
+using Sagui.Data.Persister.Procedimento;
 using Sagui.Model;
+using Sagui.Model.ValueObject;
 
 namespace Sagui.Business.Lote
 {
@@ -104,13 +106,27 @@ namespace Sagui.Business.Lote
 
                 foreach (Model.GTO gto in Lote.ListaGTO)
                 {
-                
+                                    
                     var _persisted = loteGTOPersister.SaveLoteGTO(Lote.Id, gto.Id);
 
                     if (!_persisted)
                     {
                         LotePersister.CommitCommand(false);
                         return null;
+                    }
+
+                    ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
+
+                    if (gto.Status == Status.GTO.Paga.GetHashCode())
+                    {
+
+                        var _persisted3 = procedimentoGTOPersister.PagarProcedimentoGTO(gto.Id);
+
+                        if (!_persisted3)
+                        {
+                            LotePersister.CommitCommand(false);
+                            return null;
+                        }
                     }
                 }
 
