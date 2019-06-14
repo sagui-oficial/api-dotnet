@@ -198,7 +198,7 @@ namespace Sagui.Data
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
-                          ,true ""Pago""
+                          ,false ""Pago""
                     FROM ""PlanoOperadora"" c 
                             inner join ""Procedimento_PlanoOperadora"" a on a.""IdPlanoOperadora"" = c.""Id""
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
