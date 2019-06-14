@@ -639,7 +639,10 @@ namespace Sagui.Data
                                     c.""Nome""
                                     ,b.""PublicID"" ""PlanoOperadoraPublicID""
                                     ,c.""PublicID"" ""UsuarioBasePublicID""
-                                 FROM public.""Lote"" a
+                                    ,(select COALESCE(SUM(e.""ValorProcedimento""), 0 ) from  ""GTO_Lote"" d 
+                                                                                INNER JOIN ""Procedimento_GTO"" e ON e.""IdGTO"" = d.""IdGTO""
+                                                                            where e.""Pago"" = true AND d.""IdLote"" = a.""Id"" ) ValorTotalPagoLote
+                                FROM public.""Lote"" a
 			                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
                                  WHERE a.""Status"" <>  99 ";
@@ -693,6 +696,9 @@ namespace Sagui.Data
                                           c.""Nome""
                                          ,b.""PublicID"" ""PlanoOperadoraPublicID""
                                          ,c.""PublicID"" ""UsuarioBasePublicID""
+                                        ,(select COALESCE(SUM(e.""ValorProcedimento""), 0 ) from  ""GTO_Lote"" d 
+                                                                                INNER JOIN ""Procedimento_GTO"" e ON e.""IdGTO"" = d.""IdGTO""
+                                                                            where e.""Pago"" = true AND d.""IdLote"" = a.""Id"" ) ValorTotalPagoLote
 	                                    FROM public.""Lote"" a
 			                      INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                      INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
