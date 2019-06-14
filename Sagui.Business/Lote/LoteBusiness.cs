@@ -117,16 +117,21 @@ namespace Sagui.Business.Lote
 
                     ProcedimentoGTOPersister procedimentoGTOPersister = new ProcedimentoGTOPersister();
 
+                    bool Pago = false;
+
                     if (gto.Status == Status.GTO.Paga.GetHashCode())
                     {
+                        Pago = true;
 
-                        var _persisted3 = procedimentoGTOPersister.PagarProcedimentoGTO(gto.Id);
 
-                        if (!_persisted3)
-                        {
-                            LotePersister.CommitCommand(false);
-                            return null;
-                        }
+                    }
+
+                    var _persisted3 = procedimentoGTOPersister.PagarProcedimentoGTO(gto.Id, Pago);
+
+                    if (!_persisted3)
+                    {
+                        LotePersister.CommitCommand(false);
+                        return null;
                     }
                 }
 

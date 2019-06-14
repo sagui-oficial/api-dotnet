@@ -176,7 +176,7 @@ namespace Sagui.Data
 
         public static string PagarProcedimentoGTO = @"
                     UPDATE public.""Procedimento_GTO""
-                            SET ""Pago"" = true
+                            SET ""Pago"" = @Pago
                           WHERE ""IdGTO"" = @IdGTO";
 
         public static string ListarProcedimentoGTO = @"
