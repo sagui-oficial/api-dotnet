@@ -198,6 +198,7 @@ namespace Sagui.Data
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
+                          ,true ""Pago""
                     FROM ""PlanoOperadora"" c 
                             inner join ""Procedimento_PlanoOperadora"" a on a.""IdPlanoOperadora"" = c.""Id""
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
@@ -638,7 +639,7 @@ namespace Sagui.Data
                                     c.""Nome""
                                     ,b.""PublicID"" ""PlanoOperadoraPublicID""
                                     ,c.""PublicID"" ""UsuarioBasePublicID""
-	                              FROM public.""Lote"" a
+                                 FROM public.""Lote"" a
 			                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
                                  WHERE a.""Status"" <>  99 ";
