@@ -106,10 +106,19 @@ namespace Sagui.Business.Lote
 
                 foreach (Model.GTO gto in Lote.ListaGTO)
                 {
-                                    
+
                     var _persisted = loteGTOPersister.SaveLoteGTO(Lote.Id, gto.Id);
 
                     if (!_persisted)
+                    {
+                        LotePersister.CommitCommand(false);
+                        return null;
+                    }
+
+                    GTOPersister gtoPersister = new GTOPersister();
+                    var _persisted4 = gtoPersister.AtualizarStatusGTO(gto);
+
+                    if (!_persisted4)
                     {
                         LotePersister.CommitCommand(false);
                         return null;

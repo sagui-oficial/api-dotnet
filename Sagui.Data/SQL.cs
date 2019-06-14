@@ -229,6 +229,13 @@ namespace Sagui.Data
                           ,""ValorTotalProcedimentos"" = @ValorTotalProcedimentos
                       WHERE ""PublicID""::uuid = @PublicID   ";
 
+        
+
+        public static string UpdateGTOStatus = @"
+                   UPDATE public.""GTO""
+                       SET ""Status"" = @Status
+                      WHERE ""PublicID""::uuid = @PublicID   ";
+
         public static string CreateGTO = @"
                 INSERT INTO public.""GTO""
                            ( ""Numero""
