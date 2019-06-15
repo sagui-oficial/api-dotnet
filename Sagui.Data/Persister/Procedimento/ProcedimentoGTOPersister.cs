@@ -68,5 +68,28 @@ namespace Sagui.Data.Persister.Procedimento
                         
 
         }
+
+        public bool PagarProcedimentoGTO(int IdGTO, bool Pago)
+        {
+            DbParams.Add(nameof(IdGTO), IdGTO);
+            DbParams.Add(nameof(Pago), Pago);
+
+
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.PagarProcedimentoGTO, DbParams);
+
+            try
+            {
+                _dataInfrastructure.command.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                return false;
+            }
+
+
+        }
     }
 }

@@ -13,6 +13,7 @@ staging:
  - dpl --provider=heroku --app=sagui-api --api-key=$HEROKU_STAGING_API_KEY
  only:
  - master
+
 staging:
  stage: prod
  variables:
@@ -24,4 +25,3 @@ staging:
  - dpl --provider=heroku --app=sagui-prod --api-key=$HEROKU_PROD_API_KEY 
  only:
  - PRODUCAO
-

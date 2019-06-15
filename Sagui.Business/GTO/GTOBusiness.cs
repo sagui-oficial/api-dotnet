@@ -9,6 +9,7 @@ using Sagui.Data.Persister.Arquivo;
 using Sagui.Data.Persister.GTO;
 using Sagui.Data.Persister.Procedimento;
 using Sagui.Model;
+using Sagui.Model.ValueObject;
 
 namespace Sagui.Business.GTO
 {
@@ -90,7 +91,13 @@ namespace Sagui.Business.GTO
         {
             gto.TotalProcedimentos = gto.Procedimentos.Count();
             gto.ValorTotalProcedimentos = gto.Procedimentos.Sum(p => p.ValorProcedimento);
-            
+
+            if (gto.Status == Status.GTO.Paga.GetHashCode())
+            {
+                gto.Procedimentos.ForEach(p => p.Pago = true);
+            }
+
+
             GTOPersister gtoPersister = new GTOPersister();
             Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);
 

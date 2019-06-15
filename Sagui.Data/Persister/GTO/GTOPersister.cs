@@ -96,5 +96,27 @@ namespace Sagui.Data.Persister.GTO
             DataInfrastructure.ConnTranControl(commit);
             DataInfrastructure.dataInfrastructure.Dispose();
         }
+
+        public bool AtualizarStatusGTO(Model.GTO GTO)
+        {
+            if (GTO == null)
+                throw new ArgumentNullException(nameof(GTO));
+            DbParams.Add(nameof(GTO.Status), GTO.Status);
+            DbParams.Add(nameof(GTO.PublicID), GTO.PublicID);
+           
+            DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.UpdateGTOStatus, DbParams);
+
+            try
+            {
+                dataInfrastructure.command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+           
+        }
     }
 }

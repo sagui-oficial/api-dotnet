@@ -174,6 +174,11 @@ namespace Sagui.Data
                     DELETE FROM  public.""Procedimento_GTO""
                           WHERE ""IdGTO"" = @IdGTO";
 
+        public static string PagarProcedimentoGTO = @"
+                    UPDATE public.""Procedimento_GTO""
+                            SET ""Pago"" = @Pago
+                          WHERE ""IdGTO"" = @IdGTO";
+
         public static string ListarProcedimentoGTO = @"
                      SELECT  
 	                       b.""Id""
@@ -183,6 +188,7 @@ namespace Sagui.Data
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
+                          ,a.""Pago""
                     FROM ""Procedimento_GTO"" a 
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
                     where a.""IdGTO"" = @idGTO";
@@ -197,6 +203,7 @@ namespace Sagui.Data
                           ,b.""Exigencias""
                           ,b.""Anotacoes""
                           ,b.""PublicID""
+                          ,false ""Pago""
                     FROM ""PlanoOperadora"" c 
                             inner join ""Procedimento_PlanoOperadora"" a on a.""IdPlanoOperadora"" = c.""Id""
 		                    inner join ""Procedimento"" b ON a.""IdProcedimento"" = b.""Id""
@@ -220,6 +227,13 @@ namespace Sagui.Data
                           ,""PlanoOperadoraId"" = @PlanoOperadora
                           ,""TotalProcedimentos"" = @TotalProcedimentos
                           ,""ValorTotalProcedimentos"" = @ValorTotalProcedimentos
+                      WHERE ""PublicID""::uuid = @PublicID   ";
+
+        
+
+        public static string UpdateGTOStatus = @"
+                   UPDATE public.""GTO""
+                       SET ""Status"" = @Status
                       WHERE ""PublicID""::uuid = @PublicID   ";
 
         public static string CreateGTO = @"
@@ -637,7 +651,10 @@ namespace Sagui.Data
                                     c.""Nome""
                                     ,b.""PublicID"" ""PlanoOperadoraPublicID""
                                     ,c.""PublicID"" ""UsuarioBasePublicID""
-	                              FROM public.""Lote"" a
+                                    ,(select COALESCE(SUM(e.""ValorProcedimento""), 0 ) from  ""GTO_Lote"" d 
+                                                                                INNER JOIN ""Procedimento_GTO"" e ON e.""IdGTO"" = d.""IdGTO""
+                                                                            where e.""Pago"" = true AND d.""IdLote"" = a.""Id"" ) ValorTotalPagoLote
+                                FROM public.""Lote"" a
 			                INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""
                                  WHERE a.""Status"" <>  99 ";
@@ -691,6 +708,9 @@ namespace Sagui.Data
                                           c.""Nome""
                                          ,b.""PublicID"" ""PlanoOperadoraPublicID""
                                          ,c.""PublicID"" ""UsuarioBasePublicID""
+                                        ,(select COALESCE(SUM(e.""ValorProcedimento""), 0 ) from  ""GTO_Lote"" d 
+                                                                                INNER JOIN ""Procedimento_GTO"" e ON e.""IdGTO"" = d.""IdGTO""
+                                                                            where e.""Pago"" = true AND d.""IdLote"" = a.""Id"" ) ValorTotalPagoLote
 	                                    FROM public.""Lote"" a
 			                      INNER JOIN  ""PlanoOperadora"" b  ON  a.""PlanoOperadoraId"" = b.""Id""
 			                      INNER JOIN  ""UsuarioBase"" c  ON  a.""FuncionarioId"" = c.""Id""

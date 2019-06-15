@@ -30,6 +30,23 @@ namespace Sagui.Test.TestGTO
             Assert.IsTrue(response.ResponseType == ResponseType.Success);
         }
 
+        [TestMethod]
+        public async Task AtualizarGTOPagar()
+        {
+            RequestGTO requestGTO = new RequestGTO();
+
+            requestGTO = MockGTO.AtualizarMockGTOPagar();
+
+            GTOService gTOService = new GTOService();
+
+            AtualizarGTORequestHandler AtualizarGTORequestHandler = new AtualizarGTORequestHandler(gTOService);
+
+            var response = await AtualizarGTORequestHandler.Handle(requestGTO);
+
+            Assert.IsNotNull(response.GTO);
+            Assert.IsTrue(response.ResponseType == ResponseType.Success);
+        }
+
 
         //     [TestMethod]
         //     public void CadastrarGTO_SemDataSolicitacao()

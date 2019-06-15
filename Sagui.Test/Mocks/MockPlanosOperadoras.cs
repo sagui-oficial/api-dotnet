@@ -41,6 +41,15 @@ namespace Sagui.Test.Mocks
             planoOperadora.PublicID = new Guid("65477444-8859-11e9-a07d-705a0f6970c5");
             planoOperadora.Status = Status.PlanoOperadora.Criada.GetHashCode();
 
+
+            List<Procedimentos> procedimentos = new List<Procedimentos>();
+
+            procedimentos.Add(new Procedimentos { Id = 1, ValorProcedimento = 10 });
+            procedimentos.Add(new Procedimentos { Id = 2, ValorProcedimento = 50 });
+            procedimentos.Add(new Procedimentos { Id = 3, ValorProcedimento = 10 });
+
+            planoOperadora.Procedimentos = procedimentos;
+
             return planoOperadora;
         }
 
