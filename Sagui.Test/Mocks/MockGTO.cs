@@ -28,7 +28,8 @@ namespace Sagui.Test.Mocks
             Guia.Procedimentos.Add(MockProcedimento.CriarMockProcedimentoB());
             Guia.Arquivos = new List<Model.Arquivo_GTO>() { MockArquivos.CriarMockArquivo() };
             Guia.Status = 1;
-            Guia.PublicID = new Guid("9ac0756a-7fbe-11e9-a228-705a0f6970c5");
+            Guia.ValorTotalProcedimentos = 100;
+            Guia.PublicID = new Guid("12671800-8e31-11e9-8f2c-705a0f6970c5");
 
             return Guia;
         }
@@ -51,7 +52,8 @@ namespace Sagui.Test.Mocks
             Guia.Procedimentos.Add(MockProcedimento.CriarMockProcedimentoB());
             Guia.Arquivos = new List<Model.Arquivo_GTO>() { MockArquivos.CriarMockArquivo() };
             Guia.Status = 1;
-            Guia.PublicID = new Guid("9ac0756a-7fbe-11e9-a228-705a0f6970c5");
+            Guia.ValorTotalProcedimentos = 50;
+            Guia.PublicID = new Guid("46e570b8-8e95-11e9-82dc-705a0f6970c5");
 
             return Guia;
         }
