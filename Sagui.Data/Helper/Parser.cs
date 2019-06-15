@@ -50,7 +50,7 @@ namespace Sagui.Data.Helper
             _Lote.DataPrevistaRecebimento = Convert.ToDateTime(reader["DataPrevistaRecebimento"]);
             _Lote.TotalGTOLote = Convert.ToInt32(reader["TotalGTOLote"]);
             _Lote.ValorTotalLote = Convert.ToDouble(reader["ValorTotalLote"]);
-            _Lote.ValorTotalLote = Convert.ToDouble(reader["ValorTotalPagoLote"]);
+            _Lote.ValorTotalPagoLote = Convert.ToDouble(reader["ValorTotalPagoLote"]);
             return _Lote;
         }
 
