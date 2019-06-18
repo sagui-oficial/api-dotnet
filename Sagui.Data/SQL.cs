@@ -392,8 +392,7 @@ namespace Sagui.Data
                               FROM public.""UsuarioBase"" a
                                     LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
                             WHERE a.""TipoUsuario"" = @TipoUsuario
-                            AND a.""Status"" <>  99 
-                            AND a.""Id"" <  250 ";
+                            AND a.""Status"" <>  99 ";
 
 
         public static string CreateUsuarioPaciente = @"
