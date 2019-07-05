@@ -23,9 +23,16 @@ namespace Sagui.Application.Controllers
         {
 
             string fakeReturn = @"{
-                faturamento: 10000.00,
-	            guiasGlosadas: 500.00,
-	            planosCadastrados: 6,
+                faturamento: {
+                                previsto: 1000.00,
+                                realizado: 950.00
+                            },
+	            guiasGlosadas:
+                            { 
+                            valor: 500.00,
+                            quantidade: 10
+                            } ,
+	            pacienteAtendidos: 6,
 	            grafico: [
                         { operadora: ""Dental Par"", total: 8260.9, glosadas: 490.8},
                         { operadora: ""Prodent"", total: 6900.67, glosadas: 898.56},
