@@ -766,24 +766,24 @@ namespace Sagui.Data
         #region Dashboard
 
         public static string DashboardFaturamento = @"
-                                SELECT  SUM(a.""ValorTotalProcedimentos"") previsto
-		                                ,(SELECT SUM(a.""ValorProcedimento"") FROM ""Procedimento_GTO"" a where a where ""IdGTO"" = a.""Id"" AND ""Pago"" = true) realizado
+                                SELECT  COALESCE(SUM(a.""ValorTotalProcedimentos""),0) previsto
+		                                ,SUM((SELECT COALESCE(SUM(b.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" b where b.""IdGTO"" = a.""Id"" AND ""Pago"" = true)) realizado
                                     FROM ""GTO"" a 
                                     WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
                                 ";
 
         public static string DashboardGuiasGlosadas = @"
-                               SELECT  count(a.""ValorTotalProcedimentos"") Quantidade
-		                                ,(SELECT COALESCE(SUM(a.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" a where ""IdGTO"" = a.""Id"" AND ""Pago"" = false) valor
+                               SELECT  COALESCE(count(a.""ValorTotalProcedimentos""),0) Quantidade
+		                                ,SUM((SELECT COALESCE(SUM(b.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" b where b.""IdGTO"" = a.""Id"" AND ""Pago"" = false)) valor
                                    FROM ""GTO"" a
-                                WHERE a.""Status"" = 4
-                                AND a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                AND a.""Status"" = 4
                                 ";
 
         public static string DashboardGrafico = @"
                                SELECT  b.""NomeFantasia"" operadora
-                                        ,SUM(a.""ValorTotalProcedimentos"") total
-		                                ,(SELECT COALESCE(SUM(a.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" a where ""IdGTO"" = a.""Id"" AND ""Pago"" = false) glosadas
+                                        ,COALESCE(SUM(a.""ValorTotalProcedimentos""),0) total
+		                                ,SUM((SELECT COALESCE(SUM(b.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" b where b.""IdGTO"" = a.""Id"" AND ""Pago"" = false)) glosadas
                                            FROM ""GTO"" a
                                                    inner join ""PlanoOperadora"" b ON a.""PlanoOperadoraId"" = b.""Id"" 
                                          WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim

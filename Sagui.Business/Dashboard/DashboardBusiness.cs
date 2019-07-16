@@ -13,8 +13,7 @@ namespace Sagui.Business.Dashboard
         public Model.ViewModel.Dashboard Obter(DateTime Inicio, DateTime Fim)
         {
             DashboardLookup dashboardLookup = new DashboardLookup();
-           // var dashboard = dashboardLookup.Obter();
-
+           
             Model.ViewModel.Dashboard db = new Model.ViewModel.Dashboard();
 
             db.Faturamento = dashboardLookup.Faturamento(Inicio, Fim);
