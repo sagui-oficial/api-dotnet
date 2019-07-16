@@ -5,6 +5,7 @@ using Sagui.Service.Dashboard;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
 using Sagui.Service.RequestResponse.ValueObject;
+using System;
 using System.Threading.Tasks;
 
 namespace Sagui.Test.TestGTO
@@ -19,7 +20,10 @@ namespace Sagui.Test.TestGTO
 
             ObterDashboardRequestHandler obterDashboardRequestHandler = new ObterDashboardRequestHandler(dashboardService);
 
-            RequestDashboard requestDashboard = default(RequestDashboard);
+            RequestDashboard requestDashboard = new RequestDashboard();
+
+            requestDashboard.Inicio = DateTime.Now.AddMonths(-1);
+            requestDashboard.Fim = DateTime.Now;
 
             var response = await obterDashboardRequestHandler.Handle(requestDashboard);
 

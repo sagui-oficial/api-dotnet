@@ -29,7 +29,9 @@ namespace Sagui.Application.Controllers
 
             ObterDashboardRequestHandler obterDashboardRequestHandler = new ObterDashboardRequestHandler(dashboardService);
 
-            RequestDashboard requestDashboard = default(RequestDashboard);
+            RequestDashboard requestDashboard = new RequestDashboard();
+            requestDashboard.Inicio = Inicio;
+            requestDashboard.Fim = Fim;
 
             return await this.HandleRequest(obterDashboardRequestHandler, requestDashboard);
 

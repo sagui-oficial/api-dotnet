@@ -30,7 +30,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseDashboard> Handle(RequestDashboard request)
         {
-            var dashboard = DashboardService.Obter();
+            var dashboard = DashboardService.Obter(request.Inicio, request.Fim);
                        
          
 

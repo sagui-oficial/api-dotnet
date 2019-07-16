@@ -10,12 +10,18 @@ namespace Sagui.Business.Dashboard
     public class DashboardBusiness : BusinessBase
     {
 
-        public Model.ViewModel.Dashboard Obter()
+        public Model.ViewModel.Dashboard Obter(DateTime Inicio, DateTime Fim)
         {
             DashboardLookup dashboardLookup = new DashboardLookup();
-            var dashboard = dashboardLookup.Obter();
+           // var dashboard = dashboardLookup.Obter();
 
-            return dashboard;
+            Model.ViewModel.Dashboard db = new Model.ViewModel.Dashboard();
+
+            db.Faturamento = dashboardLookup.Faturamento(Inicio, Fim);
+            db.GuiasGlosadas = dashboardLookup.GuiasGlosadas(Inicio, Fim);
+            db.Grafico = dashboardLookup.ListGrafico(Inicio, Fim);
+
+            return db;
         }
 
     }

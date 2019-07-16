@@ -762,5 +762,35 @@ namespace Sagui.Data
                             AND a.""Status"" = 2 ";
 
         #endregion
+
+        #region Dashboard
+
+        public static string DashboardFaturamento = @"
+                                SELECT  SUM(a.""ValorTotalProcedimentos"") previsto
+		                                ,(SELECT SUM(a.""ValorProcedimento"") FROM ""Procedimento_GTO"" a where a where ""IdGTO"" = a.""Id"" AND ""Pago"" = true) realizado
+                                    FROM ""GTO"" a 
+                                    WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                ";
+
+        public static string DashboardGuiasGlosadas = @"
+                               SELECT  count(a.""ValorTotalProcedimentos"") Quantidade
+		                                ,(SELECT COALESCE(SUM(a.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" a where ""IdGTO"" = a.""Id"" AND ""Pago"" = false) valor
+                                   FROM ""GTO"" a
+                                WHERE a.""Status"" = 4
+                                AND a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                ";
+
+        public static string DashboardGrafico = @"
+                               SELECT  b.""NomeFantasia"" operadora
+                                        ,SUM(a.""ValorTotalProcedimentos"") total
+		                                ,(SELECT COALESCE(SUM(a.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" a where ""IdGTO"" = a.""Id"" AND ""Pago"" = false) glosadas
+                                           FROM ""GTO"" a
+                                                   inner join ""PlanoOperadora"" b ON a.""PlanoOperadoraId"" = b.""Id"" 
+                                         WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                        group by b.""NomeFantasia""
+                                ";
+
+        #endregion
+
     }
 }

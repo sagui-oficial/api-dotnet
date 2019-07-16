@@ -8,6 +8,7 @@ namespace Sagui.Service.RequestResponse
 {
     public class RequestDashboard : Model.ViewModel.Dashboard
     {
-
+        public DateTime Inicio { get; set; }
+        public DateTime Fim { get; set; }
     }
 }
