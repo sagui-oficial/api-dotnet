@@ -89,6 +89,47 @@ namespace Sagui.Data.Lookup
             return guiasGlosadas;
         }
 
+        public int PacientesAtendidos(DateTime Inicio, DateTime Fim)
+        {
+            if (Inicio > Fim)
+                throw new ArgumentNullException(nameof(Faturamento));
+
+            DbParams.Clear();
+            DbParams.Add("Inicio", Inicio);
+            DbParams.Add("Fim", Fim);
+
+            int PacientesAtendidos = new int();
+
+
+            using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.DashboardPacienteAtendidos, DbParams))
+            {
+                try
+                {
+                    var reader = dataInfrastructure.command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int _pacientesAtendidos = new int();
+
+                        _pacientesAtendidos = Convert.ToInt32(reader["PacientesAtendidos"]);
+                        PacientesAtendidos = _pacientesAtendidos;
+
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    PacientesAtendidos = 0;
+                }
+            }
+
+
+
+
+            return 1;
+        }
+
+
         public List<Model.ViewModel.Grafico> ListGrafico(DateTime Inicio, DateTime Fim)
         {
             if (Inicio > Fim)

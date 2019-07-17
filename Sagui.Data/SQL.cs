@@ -780,14 +780,20 @@ namespace Sagui.Data
                                 AND a.""Status"" = 4
                                 ";
 
+        public static string DashboardPacienteAtendidos = @"
+                               SELECT  COUNT(*) PacienteAtendidos
+		                           FROM ""GTO"" a
+                                WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                ";
+
         public static string DashboardGrafico = @"
-                               SELECT  b.""NomeFantasia"" operadora
-                                        ,COALESCE(SUM(a.""ValorTotalProcedimentos""),0) total
-		                                ,SUM((SELECT COALESCE(SUM(b.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" b where b.""IdGTO"" = a.""Id"" AND ""Pago"" = false)) glosadas
-                                           FROM ""GTO"" a
-                                                   inner join ""PlanoOperadora"" b ON a.""PlanoOperadoraId"" = b.""Id"" 
-                                         WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
-                                        group by b.""NomeFantasia""
+                               select ""NomeFantasia"" operadora
+                                    ,COALESCE(SUM(b.""ValorTotalProcedimentos""),0) total
+                                    ,SUM((SELECT COALESCE(SUM(c.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" c where c.""IdGTO"" = b.""Id"" AND ""Pago"" = false)) glosadas
+                                    from ""PlanoOperadora"" a
+                                            left JOIN ""GTO"" b ON a.""Id"" = b.""PlanoOperadoraId""
+                                    AND b.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                    GROUP by a.""NomeFantasia""
                                 ";
 
         #endregion

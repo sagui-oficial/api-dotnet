@@ -18,6 +18,7 @@ namespace Sagui.Business.Dashboard
 
             db.Faturamento = dashboardLookup.Faturamento(Inicio, Fim);
             db.GuiasGlosadas = dashboardLookup.GuiasGlosadas(Inicio, Fim);
+            db.PacienteAtendidos = dashboardLookup.PacientesAtendidos(Inicio, Fim);
             db.Grafico = dashboardLookup.ListGrafico(Inicio, Fim);
 
             return db;
