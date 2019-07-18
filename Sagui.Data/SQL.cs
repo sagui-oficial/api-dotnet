@@ -781,7 +781,7 @@ namespace Sagui.Data
                                 ";
 
         public static string DashboardPacienteAtendidos = @"
-                               SELECT  COUNT(*) PacienteAtendidos
+                               SELECT  COUNT(*) PacientesAtendidos
 		                           FROM ""GTO"" a
                                 WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
                                 ";
