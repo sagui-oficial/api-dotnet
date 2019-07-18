@@ -769,7 +769,8 @@ namespace Sagui.Data
                                 SELECT  COALESCE(SUM(a.""ValorTotalProcedimentos""),0) previsto
 		                                ,SUM((SELECT COALESCE(SUM(b.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" b where b.""IdGTO"" = a.""Id"" AND ""Pago"" = true)) realizado
                                     FROM ""GTO"" a 
-                                    WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                    WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim 
+                                    AND a.""Status"" <> 99
                                 ";
 
         public static string DashboardGuiasGlosadas = @"
@@ -786,17 +787,16 @@ namespace Sagui.Data
                                 where ""Id"" in(
                                 SELECT ""Id""
 		                           FROM ""GTO"" a
-                                WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim)
+                                WHERE a.""Vencimento"" BETWEEN @Inicio AND @Fim AND a.""Status"" <> 99)
                                 ";
 
         public static string DashboardGrafico = @"
-                               select ""NomeFantasia"" operadora
+                               SELECT ""NomeFantasia"" operadora
                                     ,COALESCE(SUM(b.""ValorTotalProcedimentos""),0) total
                                     ,SUM((SELECT COALESCE(SUM(c.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" c where c.""IdGTO"" = b.""Id"" AND ""Pago"" = false)) glosadas
                                     from ""PlanoOperadora"" a
-                                            left JOIN ""GTO"" b ON a.""Id"" = b.""PlanoOperadoraId""
-                                    AND b.""Vencimento"" BETWEEN @Inicio AND @Fim
-                                    WHERE a.""Status"" <> '99'
+                                            left JOIN ""GTO"" b ON a.""Id"" = b.""PlanoOperadoraId"" AND b.""Vencimento"" BETWEEN @Inicio AND @Fim WHERE a.""Status"" <> '99' 
+                                    WHERE a.""Status"" <> '99' 
                                     GROUP by a.""NomeFantasia""
                                 ";
 
