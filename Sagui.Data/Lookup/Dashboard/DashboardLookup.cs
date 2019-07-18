@@ -126,7 +126,7 @@ namespace Sagui.Data.Lookup
 
 
 
-            return 1;
+            return PacientesAtendidos;
         }
 
 
