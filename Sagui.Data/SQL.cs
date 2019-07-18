@@ -795,7 +795,7 @@ namespace Sagui.Data
                                     ,COALESCE(SUM(b.""ValorTotalProcedimentos""),0) total
                                     ,SUM((SELECT COALESCE(SUM(c.""ValorProcedimento""),0) FROM ""Procedimento_GTO"" c where c.""IdGTO"" = b.""Id"" AND ""Pago"" = false)) glosadas
                                     from ""PlanoOperadora"" a
-                                            left JOIN ""GTO"" b ON a.""Id"" = b.""PlanoOperadoraId"" AND b.""Vencimento"" BETWEEN @Inicio AND @Fim WHERE a.""Status"" <> '99' 
+                                            left JOIN ""GTO"" b ON a.""Id"" = b.""PlanoOperadoraId"" AND b.""Vencimento"" BETWEEN @Inicio AND @Fim AND a.""Status"" <> '99' 
                                     WHERE a.""Status"" <> '99' 
                                     GROUP by a.""NomeFantasia""
                                 ";
