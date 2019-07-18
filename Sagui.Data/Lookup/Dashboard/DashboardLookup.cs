@@ -70,7 +70,7 @@ namespace Sagui.Data.Lookup
                     while (reader.Read())
                     {
                         GuiasGlosadas _guiasGlosadas = new GuiasGlosadas();
-                        _guiasGlosadas.Quantidade = Convert.ToDouble(reader["quantidade"]);
+                        _guiasGlosadas.quantidade = Convert.ToDouble(reader["quantidade"]);
                         _guiasGlosadas.Valor = Convert.ToDouble(reader["valor"]);
                         guiasGlosadas = _guiasGlosadas;
 
