@@ -21,7 +21,7 @@ namespace Sagui.Model.ViewModel
     public class GuiasGlosadas
     {
         public Double Valor { get; set; }
-        public Double Quantidade { get; set; }
+        public Double quantidade { get; set; }
 
     }
 
