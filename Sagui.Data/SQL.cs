@@ -793,6 +793,7 @@ namespace Sagui.Data
                                     from ""PlanoOperadora"" a
                                             left JOIN ""GTO"" b ON a.""Id"" = b.""PlanoOperadoraId""
                                     AND b.""Vencimento"" BETWEEN @Inicio AND @Fim
+                                    WHERE a.""Status"" <> '99'
                                     GROUP by a.""NomeFantasia""
                                 ";
 
