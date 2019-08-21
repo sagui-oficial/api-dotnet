@@ -17,7 +17,7 @@ namespace Sagui.Business.Validador.Usuario
             ErrorsResult = validadorCampo.HandleValidation(usuario.Nome, nameof(usuario.Nome), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(usuario.CPF, nameof(usuario.CPF), ref ErrorsResult);
             ErrorsResult = validadorCampo.HandleValidation(usuario.Email, nameof(usuario.Email), ref ErrorsResult);
-            ErrorsResult = validadorCampo.HandleValidation(usuario.Email, nameof(usuario.Telefone), ref ErrorsResult);
+            ErrorsResult = validadorCampo.HandleValidation(usuario.Telefone, nameof(usuario.Telefone), ref ErrorsResult);
 
             Sagui.Base.Utils.ValidadorCPF.Validar(usuario.CPF, nameof(usuario.CPF), ref ErrorsResult);
 

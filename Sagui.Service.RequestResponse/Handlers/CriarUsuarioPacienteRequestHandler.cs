@@ -31,7 +31,8 @@ namespace Sagui.Service.RequestResponse.Handlers
         public async Task<ResponseUsuarioPaciente> Handle(RequestUsuarioPaciente Usuario)
         {
             var errors = ValidatorUsuarioBase.Validate(Usuario);
-           
+             errors = ValidatorUsuarioPaciente.Validate(Usuario);
+
             if (errors.Count() == 0)
             {
                 var _Usuario = usuarioService.Cadastrar(Usuario);

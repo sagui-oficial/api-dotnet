@@ -14,7 +14,7 @@ namespace Sagui.Business.Validador.Usuario
         public override List<Tuple<dynamic, dynamic, dynamic>> Validate(Model.Paciente usuario)
         {
 
-
+            ErrorsResult = validadorCampo.HandleValidation(usuario.PlanoOperadoraId, nameof(usuario.PlanoOperadoraId), ref ErrorsResult);
 
 
             return ErrorsResult;
