@@ -24,6 +24,9 @@ namespace Sagui.Model.ValueObject
             [Description("Glosada")]
             Glosada = 4,
 
+            [Description("Viculada")]
+            Viculada = 5,
+
             [Description("Deletada")]
             Deletada = 99
         }
