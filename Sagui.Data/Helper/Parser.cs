@@ -87,5 +87,40 @@ namespace Sagui.Data.Helper
 
             return _Procedimento;
         }
+
+        internal static Model.Paciente ParsePaciente(Npgsql.NpgsqlDataReader reader)
+        {
+            Model.Paciente _Usuario = new Model.Paciente();
+
+            try
+            {
+                
+                _Usuario.Id = Convert.ToInt32(reader["Id"]);
+                _Usuario.Nome = Convert.ToString(reader["Nome"]);
+                _Usuario.Funcao = Convert.ToString(reader["Funcao"]);
+                _Usuario.Anotacoes = Convert.ToString(reader["Anotacoes"]);
+                _Usuario.CPF = Convert.ToString(reader["CPF"]);
+                _Usuario.Email = Convert.ToString(reader["Email"]);
+                _Usuario.Telefone = Convert.ToString(reader["Telefone"]);
+                _Usuario.PublicID = (Guid)(reader["PublicID"]);
+                _Usuario.NumeroPlano = Convert.ToString(reader["NumeroPlano"]);
+                _Usuario.PlanoOperadoraId = Convert.ToInt32(reader["PlanoOperadoraId"]);
+
+                Model.PlanoOperadora planoOperadora = new Model.PlanoOperadora();
+                planoOperadora.Id = Convert.ToInt32(reader["PlanoOperadoraId"]);
+                planoOperadora.NomeFantasia = Convert.ToString(reader["NomeFantasia"]);
+                planoOperadora.PublicID = (Guid)(reader["PublicIDPlanoOperadora"]);
+                _Usuario.PlanoOperadora = planoOperadora;
+            }
+            catch (Exception)
+            {
+                _Usuario = null;
+            }
+
+
+            return _Usuario;
+
+
+        }
     }
 }
