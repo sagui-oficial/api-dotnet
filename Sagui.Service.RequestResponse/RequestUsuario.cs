@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Model.ValueObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,6 @@ namespace Sagui.Service.RequestResponse
 
     public class RequestUsuarioPaciente : Model.Paciente
     {
-
+      public PagingParameter paging;
     }
 }

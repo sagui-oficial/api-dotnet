@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sagui.Application.Infra;
+using Sagui.Model.ValueObject;
 using Sagui.Service.Contracts;
 using Sagui.Service.RequestResponse;
 using Sagui.Service.RequestResponse.Handlers;
@@ -36,9 +37,11 @@ namespace Sagui.Application.Controllers
         }
 
         [HttpGet("", Name = "ListarPaciente")]
-        public async Task<IActionResult> ListarPaciente()
+        public async Task<IActionResult> ListarPaciente([FromQuery] PagingParameter paging)
         {
-            RequestUsuarioPaciente requestUsuarioPaciente = default(RequestUsuarioPaciente);
+            RequestUsuarioPaciente requestUsuarioPaciente = new RequestUsuarioPaciente();
+
+            requestUsuarioPaciente.paging = paging;
 
             UsuarioPacienteService pacienteService = new UsuarioPacienteService();
 
