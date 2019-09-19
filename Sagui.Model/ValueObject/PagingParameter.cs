@@ -12,7 +12,9 @@ namespace Sagui.Model.ValueObject
 
         public int Linhas { get; set; } = 10;
 
-        public int TotalPaginas { get; } = 1;
+        public int TotalPaginas { get; set; } = 1;
+
+        public string Pesquisa { get; set; }
 
 
         public int Offset

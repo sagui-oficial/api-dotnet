@@ -19,6 +19,6 @@ namespace Sagui.Service.RequestResponse
 
     public class RequestUsuarioPaciente : Model.Paciente
     {
-      public PagingParameter paging;
+      
     }
 }

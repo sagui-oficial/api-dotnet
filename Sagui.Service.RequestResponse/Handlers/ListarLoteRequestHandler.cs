@@ -27,7 +27,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseLote> Handle(RequestLote request)
         {
-            var ListLote = LoteService.Listar();
+            var ListLote = LoteService.Listar(request);
 
             if (ListLote.Count > 0)
             {

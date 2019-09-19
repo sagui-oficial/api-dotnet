@@ -37,7 +37,7 @@ namespace Sagui.Service.PlanoOperadora
             }
         }
 
-        public List<Model.PlanoOperadora> Listar()
+        public List<Model.PlanoOperadora> Listar(Model.PlanoOperadora PlanoOperadora)
         {
             using (var PlanoOperadoraBusiness = new Business.PlanoOperadora.PlanoOperadoraBusiness())
             {

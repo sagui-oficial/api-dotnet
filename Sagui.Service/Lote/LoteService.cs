@@ -38,7 +38,7 @@ namespace Sagui.Service.Lote
             }
         }
 
-        public List<Model.Lote> Listar()
+        public List<Model.Lote> Listar(Model.Lote Lote)
         {
             using (var LoteBusiness = new Business.Lote.LoteBusiness())
             {

@@ -389,10 +389,12 @@ namespace Sagui.Data
                                   ,a.""PublicID""
                                   ,b.""NomeFantasia""
                                   ,b.""PublicID"" ""PublicIDPlanoOperadora""
+                                  ,(select COUNT(*) FROM public.""UsuarioBase"" z where z.""TipoUsuario"" = @TipoUsuario AND z.""Status"" = @Status ) / 10 +1 TotalPaginas
                               FROM public.""UsuarioBase"" a
                                     LEFT JOIN ""PlanoOperadora"" b on a.""PlanoOperadoraId"" = b.""Id""
                             WHERE a.""TipoUsuario"" = @TipoUsuario
-                            AND a.""Status"" <>  99 ";
+                            AND a.""Status"" = @Status
+                            LIMIT @Linhas OFFSET @Offset;   ";
 
 
         public static string CreateUsuarioPaciente = @"

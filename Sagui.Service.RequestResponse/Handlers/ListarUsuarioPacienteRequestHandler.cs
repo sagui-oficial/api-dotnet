@@ -28,7 +28,7 @@ namespace Sagui.Service.RequestResponse.Handlers
        
         public async Task<ResponseUsuarioPaciente> Handle(RequestUsuarioPaciente request)
         {
-            var ListUsuarioPaciente = usuarioPacienteService.Listar();
+            var ListUsuarioPaciente = usuarioPacienteService.Listar(request);
 
             //foreach (var paciente in ListUsuarioPaciente)
             //{
@@ -38,12 +38,21 @@ namespace Sagui.Service.RequestResponse.Handlers
 
             if (ListUsuarioPaciente.Count > 0)
             {
+                responseUsuarioPaciente.paging = ListUsuarioPaciente[0].paging;
+
+                foreach (Model.Paciente p in ListUsuarioPaciente)
+                {
+                    p.paging = null;
+
+                }
+                                
                 responseUsuarioPaciente.Pacientes = ListUsuarioPaciente;
                 responseUsuarioPaciente.ExecutionDate = DateTime.Now;
                 responseUsuarioPaciente.ResponseType = ResponseType.Success;
                 responseUsuarioPaciente.Message.Add(new Tuple<dynamic, dynamic, dynamic>(Constantes.ListadoComSucesso, nameof(responseUsuarioPaciente.Paciente),
                        String.Format(Constantes.MensagemListadaComSucesso, nameof(responseUsuarioPaciente.Paciente))));
 
+                
                 return responseUsuarioPaciente;
             }
             else

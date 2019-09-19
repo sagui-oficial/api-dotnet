@@ -14,7 +14,7 @@ namespace Sagui.Service.Contracts.Base
 
         TResponse Deletar(TModel model);
 
-        List<TResponse> Listar();
+        List<TResponse> Listar(TModel model);
                 
     }
 }

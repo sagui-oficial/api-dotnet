@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -73,7 +74,20 @@ namespace Sagui.Application.Controllers
         [HttpPost("", Name = "CriarGTO")]
         public async Task<IActionResult> CriarGTO([FromBody]  RequestGTO requestGTO)
         {
+            //var files = Request.Form.Files;
             GTOService gTOService = new GTOService();
+
+            //foreach (var formFile in files)
+            //{
+            //    requestGTO.Arquivos.Add(new Model.Arquivos
+            //    {
+            //        Nome = formFile.FileName,
+            //        DataCriacao = DateTime.Now,
+            //        PathArquivo = "",
+            //        Extensao = Path.GetExtension(formFile.FileName)
+            //    });
+            //}
+        
 
             CriarGTORequestHandler GTORequestHandler = new CriarGTORequestHandler(gTOService);
 

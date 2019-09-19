@@ -44,8 +44,8 @@ namespace Sagui.Application.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            // return Content(logoContent);
-            return View();
+             return Content(logoContent);
+            //return View();
         }
 
         [AllowAnonymous]

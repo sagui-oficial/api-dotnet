@@ -35,11 +35,11 @@ namespace Sagui.Service.Usuario
             }
         }
 
-        public List<Model.Paciente> Listar()
+        public List<Model.Paciente> Listar(Model.Paciente Usuario)
         {
             using (var usuarioBusiness = new Business.Usuario.UsuarioPacienteBusiness())
             {
-                var _return = usuarioBusiness.ListUsuarios();
+                var _return = usuarioBusiness.ListUsuarios(Usuario);
                 usuarioBusiness.Dispose();
                 return _return;
             }

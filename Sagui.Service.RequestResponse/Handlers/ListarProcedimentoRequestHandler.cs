@@ -27,7 +27,7 @@ namespace Sagui.Service.RequestResponse.Handlers
 
         public async Task<ResponseProcedimento> Handle(RequestProcedimento request)
         {
-            var ListProcedimento = procedimentoService.Listar();
+            var ListProcedimento = procedimentoService.Listar(request);
 
             if (ListProcedimento.Count > 0)
             {

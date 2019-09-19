@@ -8,12 +8,17 @@ namespace Sagui.Data.Lookup.GTO
 {
     public class UsuarioPacienteLookup
     {
-        public List<Model.Paciente> ListUsuarioPaciente()
+        public List<Model.Paciente> ListUsuarioPaciente(Model.Paciente Usuario)
         {
             List<Model.Paciente> ListUsuario = new List<Model.Paciente>();
 
             Dictionary<string, object> DbParams = new Dictionary<string, object>();
             DbParams.Add("TipoUsuario", TipoUsuario.Tipo.Paciente.GetHashCode());
+            DbParams.Add(nameof(Usuario.paging.Status), Usuario.paging.Status);
+            DbParams.Add(nameof(Usuario.paging.Linhas), Usuario.paging.Linhas);
+            DbParams.Add(nameof(Usuario.paging.Offset), Usuario.paging.Offset);
+            //DbParams.Add(nameof(Usuario.paging.Pesquisa), Usuario.paging.Pesquisa);
+
 
             try { 
 
@@ -28,6 +33,8 @@ namespace Sagui.Data.Lookup.GTO
                     while (reader.Read())
                     {
                             Model.Paciente _Usuario = Parser.ParsePaciente(reader);
+                            _Usuario.paging = Usuario.paging;
+                            _Usuario.paging.TotalPaginas = Convert.ToInt32(reader["TotalPaginas"]);
                             ListUsuario.Add(_Usuario);
 
                     }

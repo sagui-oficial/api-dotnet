@@ -11,13 +11,23 @@ namespace Sagui.Base.Utils
         {
             byte[] stream = default(byte[]);
 
-            using (var _stream = new FileStream(PathArquivo, FileMode.Open, FileAccess.Read))
+            try
             {
-                using (var reader = new BinaryReader(_stream))
+                using (var _stream = new FileStream(PathArquivo, FileMode.Open, FileAccess.Read))
                 {
-                    stream = reader.ReadBytes((int)_stream.Length);
+                    using (var reader = new BinaryReader(_stream))
+                    {
+                        stream = reader.ReadBytes((int)_stream.Length);
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                stream = null;
+            }
+
+            
 
             return stream;
         }

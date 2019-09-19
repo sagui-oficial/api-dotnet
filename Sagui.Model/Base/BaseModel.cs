@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sagui.Model.ValueObject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +17,10 @@ namespace Sagui.Model.Base
         public Guid PublicID { get; set; }
         public int Status { get; set; }
 
-        
+        [NotMapped]
+        public PagingParameter paging {get; set;}
+
+
+
     }
 }
