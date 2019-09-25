@@ -30,6 +30,8 @@ namespace Sagui.Business.Lote
 
             LotePersister LotePersister = new LotePersister();
 
+            //UpdateGTO
+
             var _lote = LotePersister.SaveLote(Lote);
 
             if (_lote != null)
@@ -40,13 +42,21 @@ namespace Sagui.Business.Lote
                 {
                     LoteGTOPersister loteGTOPersister = new LoteGTOPersister();
                     var _persisted = loteGTOPersister.SaveLoteGTO(Lote.Id, gto.Id);
+                    GTOPersister gtoPersister = new GTOPersister();
+                    gto.Status = Status.GTO.Viculada.GetHashCode();
+
+                    Model.GTO responseGTO = gtoPersister.AtualizarGTO(gto);
 
                     if (!_persisted)
                     {
                         LotePersister.CommitCommand(false);
                         return null;
                     }
+                    
                 }
+
+                
+
 
                 LotePersister.CommitCommand(true);
             }

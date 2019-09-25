@@ -9,8 +9,8 @@ namespace Sagui.Service.RequestResponse
 {
     public class ResponseArquivoGTO : ResponseBase
     {
-        public List<Model.Arquivo_GTO> Arquivos { get; set; }
+        public List<Model.Arquivos> Arquivos { get; set; }
 
-        public Model.Arquivo_GTO Arquivo { get; set; }
+        public Model.Arquivos Arquivo { get; set; }
     }
 }

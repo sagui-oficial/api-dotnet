@@ -11,9 +11,9 @@ namespace Sagui.Data.Lookup.Arquivo
     {
         #region GTO
 
-        public List<Model.Arquivo_GTO> ListArquivosGTO()
+        public List<Model.Arquivos> ListArquivosGTO()
         {
-            List<Model.Arquivo_GTO> ListArquivos = new List<Model.Arquivo_GTO>();
+            List<Model.Arquivos> ListArquivos = new List<Model.Arquivos>();
 
             using (DataInfrastructure dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.ListarArquivosGTO))
             {
@@ -23,7 +23,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
                     while (reader.Read())
                     {
-                        Model.Arquivo_GTO arquivos = new Model.Arquivo_GTO();
+                        Model.Arquivos arquivos = new Model.Arquivos();
                         arquivos.Id = Convert.ToInt32(reader["Id"]);
                         arquivos.Nome = Convert.ToString(reader["Nome"]);
                         arquivos.Stream = (byte[])reader["Stream"];
@@ -45,7 +45,7 @@ namespace Sagui.Data.Lookup.Arquivo
             return ListArquivos;
         }
 
-        public Model.Arquivo_GTO ObterArquivoGTOPorPublicId(Model.Arquivo_GTO Arquivo)
+        public Model.Arquivos ObterArquivoGTOPorPublicId(Model.Arquivos Arquivo)
         {
             if (Arquivo == null)
                 throw new ArgumentNullException(nameof(Arquivo));
@@ -60,7 +60,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
                     while (reader.Read())
                     {
-                        Model.Arquivo_GTO arquivo = new Model.Arquivo_GTO();
+                        Model.Arquivos arquivo = new Model.Arquivos();
                         arquivo.Id = Convert.ToInt32(reader["Id"]);
                         arquivo.Nome = Convert.ToString(reader["Nome"]);
                         arquivo.Stream = (byte[])reader["Stream"];
@@ -82,9 +82,9 @@ namespace Sagui.Data.Lookup.Arquivo
             return Arquivo;
         }
 
-        public List<Model.Arquivo_GTO> ListarArquivoPorGTO(Model.GTO gto)
+        public List<Model.Arquivos> ListarArquivoPorGTO(Model.GTO gto)
         {
-            List<Model.Arquivo_GTO> ListArquivo = new List<Model.Arquivo_GTO>();
+            List<Model.Arquivos> ListArquivo = new List<Model.Arquivos>();
 
             DbParams.Clear();
             DbParams.Add("idGTO", gto.Id);
@@ -96,7 +96,7 @@ namespace Sagui.Data.Lookup.Arquivo
 
                     while (reader.Read())
                     {
-                        Model.Arquivo_GTO arquivos = new Model.Arquivo_GTO();
+                        Model.Arquivos arquivos = new Model.Arquivos();
                         arquivos.Id = Convert.ToInt32(reader["Id"]);
                         arquivos.Nome = Convert.ToString(reader["Nome"]);
                         arquivos.Stream = (byte[])reader["Stream"];

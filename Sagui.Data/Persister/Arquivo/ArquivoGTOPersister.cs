@@ -15,10 +15,10 @@ namespace Sagui.Data.Persister.Arquivo
 
         public bool SaveArquivoGTO(int IdGTO, int IdArquivo)
         {
-            DbParams.Add(nameof(IdGTO), IdGTO);
-            DbParams.Add(nameof(IdArquivo), IdArquivo);
+            DbParams.Add("idGTO", IdGTO);
+            DbParams.Add("idArquivo", IdArquivo);
 
-            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateArquivo, DbParams);
+            DataInfrastructure _dataInfrastructure = DataInfrastructure.GetInstanceDb(SQL.CreateArquivoGTO, DbParams);
 
             dynamic newId = 0;
             try
@@ -32,7 +32,7 @@ namespace Sagui.Data.Persister.Arquivo
             }
             catch (Exception e)
             {
-                throw e;
+                return false;
             }
         }
     }

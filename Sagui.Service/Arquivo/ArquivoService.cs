@@ -9,7 +9,7 @@ namespace Sagui.Service.Arquivo
 
         #region GTO
 
-        public Model.Arquivo_GTO ObterArquivoGTOPorPublicId(Arquivo_GTO Arquivo)
+        public Model.Arquivos ObterArquivoGTOPorPublicId(Arquivos Arquivo)
         {
             using (var ArquivoBusiness = new Business.Arquivo.ArquivoBusiness())
             {
@@ -19,7 +19,7 @@ namespace Sagui.Service.Arquivo
             }
         }
 
-        public List<Model.Arquivo_GTO> ListarArquivoPorGTO(Model.GTO gto)
+        public List<Model.Arquivos> ListarArquivoPorGTO(Model.GTO gto)
         {
             using (var ArquivoBusiness = new Business.Arquivo.ArquivoBusiness())
             {

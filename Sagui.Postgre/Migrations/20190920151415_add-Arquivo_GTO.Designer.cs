@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sagui.Postgres;
@@ -9,9 +10,10 @@ using Sagui.Postgres;
 namespace Sagui.Postgres.Migrations
 {
     [DbContext(typeof(Sagui))]
-    partial class SaguiModelSnapshot : ModelSnapshot
+    [Migration("20190920151415_add-Arquivo_GTO")]
+    partial class addArquivo_GTO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

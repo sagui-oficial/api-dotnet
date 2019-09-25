@@ -11,7 +11,7 @@ namespace Sagui.Business.Arquivo
         #region GTO
 
        
-        public Model.Arquivo_GTO ObterArquivoGTOPorPublicId(Arquivo_GTO arquivo)
+        public Model.Arquivos ObterArquivoGTOPorPublicId(Arquivos arquivo)
         {
             ArquivoLookup arquivoLookup = new ArquivoLookup();
             var _arquivo = arquivoLookup.ObterArquivoGTOPorPublicId(arquivo);
@@ -20,7 +20,7 @@ namespace Sagui.Business.Arquivo
         }
 
 
-        public List<Model.Arquivo_GTO> ListarArquivoPorGto(Model.GTO gto)
+        public List<Model.Arquivos> ListarArquivoPorGto(Model.GTO gto)
         {
             ArquivoLookup arquivoLookup = new ArquivoLookup();
             var _arquivo = arquivoLookup.ListarArquivoPorGTO(gto);

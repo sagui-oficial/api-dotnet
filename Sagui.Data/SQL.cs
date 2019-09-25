@@ -26,16 +26,12 @@ namespace Sagui.Data
         #region ArquivoGTO
 
         public static string CreateArquivoGTO = @"
-                      INSERT INTO public.""Arquivo""
-                               (""Nome""
-                               ,""DataCriacao""
-                               ,""Stream""
-                               ,""PathArquivo"")
+                      INSERT INTO public.""Arquivo_GTO""
+                               (""idGTO""
+                               ,""idArquivo"")
                          VALUES
-                               (@Nome
-                               ,@DataCriacao
-                               ,@Stream
-                               ,@PathArquivo) RETURNING ""Id"";";
+                               (@idGTO
+                               ,@idArquivo) RETURNING ""Id"";";
 
         public static string ListarArquivosGTO = @"
                     SELECT arq.""Id""
