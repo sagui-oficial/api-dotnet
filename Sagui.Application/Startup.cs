@@ -57,7 +57,8 @@ namespace Sagui.Application
             }
 
             app.UseCors(builder => builder
-              .WithOrigins("sagui-dev.firebaseapp.com", "sagui.app")
+              //.WithOrigins("sagui-dev.firebaseapp.com", "sagui.app")
+              .AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader());
 
