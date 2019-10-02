@@ -58,6 +58,7 @@ namespace Sagui.Application
 
             app.UseCors(builder => builder
               .WithOrigins("https://sagui-dev.firebaseapp.com", "https://sagui.app")
+              .WithHeaders("origin")
               // .AllowAnyOrigin()
               // .AllowAnyMethod()
               // .AllowAnyHeader()
@@ -75,8 +76,6 @@ namespace Sagui.Application
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sagui API V1");
             });
-
-
         }
     }
 }
