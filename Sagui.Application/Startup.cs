@@ -32,7 +32,7 @@ namespace Sagui.Application
             //services.AddDbContext<Sagui.DB.Sagui>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddEntityFrameworkNpgsql().AddDbContext<Sagui.Postgres.Sagui>(options => 
+            services.AddEntityFrameworkNpgsql().AddDbContext<Sagui.Postgres.Sagui>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("SaguiPostgres")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -57,7 +57,7 @@ namespace Sagui.Application
             }
 
             app.UseCors(builder => builder
-              //.WithOrigins("sagui-dev.firebaseapp.com", "sagui.app")
+              .WithOrigins("https://sagui-dev.firebaseapp.com", "https://sagui.app")
               .AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader());
@@ -68,7 +68,7 @@ namespace Sagui.Application
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
