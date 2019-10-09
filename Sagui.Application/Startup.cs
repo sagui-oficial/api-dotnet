@@ -57,11 +57,11 @@ namespace Sagui.Application
             }
 
             app.UseCors(builder => builder
-              .WithOrigins("https://sagui-dev.firebaseapp.com", "https://sagui.app")
+              // .WithOrigins("https://sagui-dev.firebaseapp.com", "https://sagui.app", "http://localhost:3000")
               .WithHeaders("origin")
-              // .AllowAnyOrigin()
-              // .AllowAnyMethod()
-              // .AllowAnyHeader()
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader()
             );
 
             app.UseHttpsRedirection();
